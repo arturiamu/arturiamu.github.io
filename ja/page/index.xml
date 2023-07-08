@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Pages on ムー・リンビアオの個人ブログ</title>
+        <link>https://arturiamu.github.io/ja/page/</link>
+        <description>Recent content in Pages on ムー・リンビアオの個人ブログ</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>ja</language>
+        <lastBuildDate>Wed, 21 Jun 2023 10:35:25 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/ja/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>について</title>
+        <link>https://arturiamu.github.io/ja/about/</link>
+        <pubDate>Wed, 21 Jun 2023 10:35:25 +0800</pubDate>
+        
+        <guid>https://arturiamu.github.io/ja/about/</guid>
+        <description>&lt;img src="https://arturiamu.github.io/ja/about/a.png" alt="Featured image of post について" /&gt;&lt;h2 id=&#34;著者について&#34;&gt;著者について&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;arturiamu 木林彪&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;昆明科技大学でソフトウェア工学を専攻する学部生&lt;/p&gt;
+&lt;p&gt;IT 担当者&lt;/p&gt;
+&lt;h3 id=&#34;テクノロジースタック&#34;&gt;テクノロジースタック&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Golang&lt;/li&gt;
+&lt;li&gt;Java&lt;/li&gt;
+&lt;li&gt;Vue&lt;/li&gt;
+&lt;li&gt;Database&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;実務経験&#34;&gt;実務経験&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;時間&lt;/th&gt;
+&lt;th&gt;会社&lt;/th&gt;
+&lt;th&gt;位置&lt;/th&gt;
+&lt;th&gt;技术栈&lt;/th&gt;
+&lt;th&gt;述べる&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2022.08-2022.12&lt;/td&gt;
+&lt;td&gt;bilibili(shanghai)&lt;/td&gt;
+&lt;td&gt;テスト開発&lt;/td&gt;
+&lt;td&gt;go,gorm&lt;/td&gt;
+&lt;td&gt;練習&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2023.02-2023.06&lt;/td&gt;
+&lt;td&gt;qiniu(shanghai)&lt;/td&gt;
+&lt;td&gt;バックエンド開発&lt;/td&gt;
+&lt;td&gt;go,kubernetes,kubevirt,sms&lt;/td&gt;
+&lt;td&gt;練習&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2023.07-至今&lt;/td&gt;
+&lt;td&gt;zhihu(beijing)&lt;/td&gt;
+&lt;td&gt;バックエンド開発&lt;/td&gt;
+&lt;td&gt;go,kubernetes,TiDB&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;連絡先&#34;&gt;連絡先&lt;/h3&gt;
+&lt;p&gt;郵便&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;mailto:arturiamumu@gmail.com&#34; &gt;arturiamumu@gmail.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;mailto:1743089727@qq.com&#34; &gt;1743089727@qq.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;mailto:mlbwork@163.com&#34; &gt;mlbwork@163.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;このサイトについて&#34;&gt;このサイトについて&lt;/h2&gt;
+&lt;p&gt;このウェブサイトは著者の個人的なウェブサイトです&lt;/p&gt;
+&lt;p&gt;このウェブサイトは主に著者の学習と仕事の過程でいくつかの問題を記録するために使用されます&lt;/p&gt;
+&lt;p&gt;このウェブサイトはHugo+GitHubページを使用して構築されています&lt;/p&gt;
+&lt;p&gt;このサイトはヒューゴーのテーマ &lt;a class=&#34;link&#34; href=&#34;https://github.com/CaiJimmy/hugo-theme-stack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;stack&lt;/a&gt; &lt;a class=&#34;link&#34; href=&#34;https://jimmycai.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Jimmy Cai&lt;/a&gt; によって公開されています&lt;/p&gt;
+&lt;h3 id=&#34;hugoについて&#34;&gt;Hugoについて&lt;/h3&gt;
+&lt;p&gt;Hugo は Apache 2.0 オープンソースプロトコルを使って Go で書かれた静的なウェブサイトジェネレータです。&lt;/p&gt;
+&lt;p&gt;ヒューゴはTOML / YAML / JSON構成ファイルをサポートしています&lt;/p&gt;
+&lt;p&gt;Hugoは、マークダウンとHTML形式のページ、およびページコンテンツを充実させるためのショートコードをサポートしています&lt;/p&gt;
+&lt;p&gt;Hugoは多言語、ページ分類、画像処理などをネイティブにサポートしています&lt;/p&gt;
+&lt;p&gt;Hugoは非常に高速にウェブサイトを生成し、プライベートサーバー、商用サーバー、GitHubページ、Netlifyなどにすばやくデプロイできます。&lt;/p&gt;
+&lt;p&gt;公式ホームページ &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;hugo.io&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;GitHub ホームページ &lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio/hugo&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/gohugoio/hugo&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;stackトピックについて&#34;&gt;stackトピックについて&lt;/h3&gt;
+&lt;p&gt;開発は &lt;a class=&#34;link&#34; href=&#34;https://jimmycai.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Jimmy Cai&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;ヒューゴテーマスタックプロジェクトのGitHubホームページ &lt;a class=&#34;link&#34; href=&#34;https://github.com/CaiJimmy/hugo-theme-stack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/CaiJimmy/hugo-theme-stack&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;オープンソースライセンスGPL v3.0に従ってください&lt;/p&gt;
+&lt;p&gt;テーマ例 &lt;a class=&#34;link&#34; href=&#34;https://demo.stack.jimmycai.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://demo.stack.jimmycai.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;主な機能は次のとおりです。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ダークモード&lt;/li&gt;
+&lt;li&gt;オンサイト検索&lt;/li&gt;
+&lt;li&gt;自動アーカイブ&lt;/li&gt;
+&lt;li&gt;ピクチャーライトボックス
+-タグクラウド&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>アーカイブ</title>
+        <link>https://arturiamu.github.io/ja/archives/</link>
+        <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
+        
+        <guid>https://arturiamu.github.io/ja/archives/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>リンク</title>
+        <link>https://arturiamu.github.io/ja/links/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://arturiamu.github.io/ja/links/</guid>
+        <description>&lt;img src="https://arturiamu.github.io/ja/links/l.png" alt="Featured image of post リンク" /&gt;</description>
+        </item>
+        <item>
+        <title>検索</title>
+        <link>https://arturiamu.github.io/ja/search/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://arturiamu.github.io/ja/search/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

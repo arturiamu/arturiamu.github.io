@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <sitemap>
+    <loc>https://arturiamu.github.io/zh-cn/sitemap.xml</loc>
+    
+      <lastmod>2023-06-23T16:37:15+08:00</lastmod>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>https://arturiamu.github.io/en-us/sitemap.xml</loc>
+    
+      <lastmod>2023-06-21T10:35:25+08:00</lastmod>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>https://arturiamu.github.io/ja/sitemap.xml</loc>
+    
+      <lastmod>2023-06-21T10:35:25+08:00</lastmod>
+    
+  </sitemap>
+  
+</sitemapindex>
