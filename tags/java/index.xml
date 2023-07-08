@@ -12,7 +12,8 @@
         <pubDate>Fri, 23 Jun 2023 16:28:51 +0800</pubDate>
         
         <guid>https://arturiamu.github.io/p/spring-boot-reject-mapper/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/p/spring-boot-reject-mapper/spring-boot-reject-mapper.png" alt="Featured image of post springboot 普通类自动注入mapper" /&gt;&lt;p&gt;&lt;strong&gt;本文从作者CSDN &lt;a class=&#34;link&#34; href=&#34;&#34; &gt;springboot 普通类自动注入mapper&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
+        <description>&lt;img src="https://arturiamu.github.io/p/spring-boot-reject-mapper/spring-boot-reject-mapper.png" alt="Featured image of post springboot 普通类自动注入mapper" /&gt;&lt;p&gt;&lt;strong&gt;本文从作者CSDN &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/article/details/125187441&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;springboot 普通类自动注入mapper&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;解决方法&#34;&gt;解决方法&lt;/h2&gt;
 &lt;p&gt;普通类使用@Component注解修饰，添加本类型静态属性、所需mapper属性，添加init方法，用@PostConstruct注解修饰，方法内初始化以上2个属性：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
