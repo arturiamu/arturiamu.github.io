@@ -8,11 +8,11 @@
         <language>zh-cn</language>
         <lastBuildDate>Sun, 18 Jun 2023 13:14:35 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/tags/bug/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>博客bug日志</title>
-        <link>https://arturiamu.github.io/p/blog-bug-log/</link>
+        <link>https://arturiamu.github.io/post/blog-bug-log/</link>
         <pubDate>Sun, 18 Jun 2023 13:14:35 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/p/blog-bug-log/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/p/blog-bug-log/blog-bug-log-home.jpg" alt="Featured image of post 博客bug日志" /&gt;&lt;h2 id=&#34;bug日志&#34;&gt;bug日志&lt;/h2&gt;
+        <guid>https://arturiamu.github.io/post/blog-bug-log/</guid>
+        <description>&lt;img src="https://arturiamu.github.io/post/blog-bug-log/blog-bug-log-home.jpg" alt="Featured image of post 博客bug日志" /&gt;&lt;h2 id=&#34;bug日志&#34;&gt;bug日志&lt;/h2&gt;
 &lt;h3 id=&#34;2023-06-20-163034&#34;&gt;2023-06-20-16:30:34&lt;/h3&gt;
 &lt;h4 id=&#34;bug描述&#34;&gt;bug描述&lt;/h4&gt;
 &lt;p&gt;博客评论功能不可用，具体表现为：&lt;/p&gt;

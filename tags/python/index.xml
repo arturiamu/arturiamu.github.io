@@ -8,11 +8,11 @@
         <language>zh-cn</language>
         <lastBuildDate>Fri, 23 Jun 2023 14:21:55 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>蓝桥杯 Python 语法</title>
-        <link>https://arturiamu.github.io/p/lq-pyb-py-grammar/</link>
+        <link>https://arturiamu.github.io/post/lq-pyb-py-grammar/</link>
         <pubDate>Fri, 23 Jun 2023 14:21:55 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/p/lq-pyb-py-grammar/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/p/lq-pyb-py-grammar/lq-pythonb-py-gr.png" alt="Featured image of post 蓝桥杯 Python 语法" /&gt;&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <guid>https://arturiamu.github.io/post/lq-pyb-py-grammar/</guid>
+        <description>&lt;img src="https://arturiamu.github.io/post/lq-pyb-py-grammar/lq-pythonb-py-gr.png" alt="Featured image of post 蓝桥杯 Python 语法" /&gt;&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;python创建数组&#34;&gt;python创建数组&lt;/h2&gt;
@@ -209,11 +209,11 @@ map函数可以直接使用列表生成来替代
         </item>
         <item>
         <title>蓝桥杯 Python B组-代码模板</title>
-        <link>https://arturiamu.github.io/p/lq-py-code-template/</link>
+        <link>https://arturiamu.github.io/post/lq-py-code-template/</link>
         <pubDate>Fri, 23 Jun 2023 14:08:55 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/p/lq-py-code-template/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/p/lq-py-code-template/lq-pythonb-code-tp.png" alt="Featured image of post 蓝桥杯 Python B组-代码模板" /&gt;&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <guid>https://arturiamu.github.io/post/lq-py-code-template/</guid>
+        <description>&lt;img src="https://arturiamu.github.io/post/lq-py-code-template/lq-pythonb-code-tp.png" alt="Featured image of post 蓝桥杯 Python B组-代码模板" /&gt;&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;gcd&#34;&gt;gcd&lt;/h2&gt;
@@ -506,11 +506,11 @@ map函数可以直接使用列表生成来替代
         </item>
         <item>
         <title>蓝桥杯 Python B组-Python基础</title>
-        <link>https://arturiamu.github.io/p/lq-pyb-py/</link>
+        <link>https://arturiamu.github.io/post/lq-pyb-py/</link>
         <pubDate>Fri, 23 Jun 2023 14:05:35 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/p/lq-pyb-py/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/p/lq-pyb-py/lq-pythonb-py.png" alt="Featured image of post 蓝桥杯 Python B组-Python基础" /&gt;&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <guid>https://arturiamu.github.io/post/lq-pyb-py/</guid>
+        <description>&lt;img src="https://arturiamu.github.io/post/lq-pyb-py/lq-pythonb-py.png" alt="Featured image of post 蓝桥杯 Python B组-Python基础" /&gt;&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;输入输出&#34;&gt;输入输出&lt;/h2&gt;
