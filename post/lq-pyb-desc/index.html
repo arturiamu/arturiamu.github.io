@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://arturiamu.github.io/post/lq-pyb-desc/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='蓝桥杯 Python B组-说明'>
+<link rel="stylesheet" href="/scss/style.min.e6a80bb75c24d7fe41371a866f8d798fef964a909bc5261520998e281c05c4e7.css"><meta property='og:title' content='蓝桥杯 Python B组-说明'>
 <meta property='og:description' content='关于蓝桥杯PythonB组规则、难度等说明'>
 <meta property='og:url' content='https://arturiamu.github.io/post/lq-pyb-desc/'>
 <meta property='og:site_name' content='木林彪的个人博客'>
@@ -421,7 +421,8 @@ if (!doNotTrack) {
     
     
     <p><strong>本文从作者CSDN专栏 <a class="link" href="https://blog.csdn.net/qq_43353586/category_11935685.html"  target="_blank" rel="noopener"
-    >蓝桥杯 Python B组</a> 同步</strong></p>
+    >蓝桥杯 Python B组</a>
+ 同步</strong></p>
 <p><strong>本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。</strong></p>
 <p>我参加的是2022年的pythonB组，本来是只打算混混省赛的，可能是今年省赛比较简单，加上运气比较好，混到了国二，排名在1/3左右，说实话挺意外的。</p>
 <p>比赛基本上是零基础开始准备的，省赛之后因为项目比较忙，自己也是一心摆烂，直接没有准备国赛，到国赛时候写个dfs都要推半天了。其实还是有点遗憾的，当初要是好好准备一个月说不定国一就有了。</p>
@@ -638,19 +639,45 @@ if (!doNotTrack) {
 
     
 
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-        2023 木林彪的个人博客
-    </section>
     
-    <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
-    </section>
-</footer>
+<section class="running-time">
+  本博客已稳定运行
+  <span id="runningdays" class="running-days"></span>
+</section>
 
+<section class="totalcount">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  共发表 8 篇文章 ·
+  总计6.30 k 字
+</section>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 
     
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -748,6 +775,22 @@ if (!doNotTrack) {
         document.head.appendChild(customFont);
     }());
 </script>
+
+<script>
+    let s1 = '2023-6-18'; 
+    s1 = new Date(s1.replace(/-/g, "/"));
+    let s2 = new Date();
+    let timeDifference = s2.getTime() - s1.getTime();
+
+    let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+    let result = days + " 天 " + hours + " 小时 " + minutes + " 分钟 ";
+    document.getElementById('runningdays').innerHTML = result;
+
+</script>
+
 
     </body>
 </html>

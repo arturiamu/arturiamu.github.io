@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://arturiamu.github.io/en-us/post/blog-description/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Blog description'>
+<link rel="stylesheet" href="/scss/style.min.e6a80bb75c24d7fe41371a866f8d798fef964a909bc5261520998e281c05c4e7.css"><meta property='og:title' content='Blog description'>
 <meta property='og:description' content='Site introduction, license agreement'>
 <meta property='og:url' content='https://arturiamu.github.io/en-us/post/blog-description/'>
 <meta property='og:site_name' content='arturiamu&#39;s blog'>
@@ -460,8 +460,10 @@ but also share one&rsquo;s own mental journey with others.</p>
 insights with other bloggers,readers and peers, to gain more inspiration and learning opportunities.</p>
 <h2 id="about-this-blog">About this blog</h2>
 <p>This blog is built using <code>Hugo+Github Pages</code>,please refer to <a class="link" href="https://cuttontail.blog/blog/create-a-wesite-using-github-pages-and-hugo/"  target="_blank" rel="noopener"
-    >如何用 GitHub Pages + Hugo 搭建个人博客</a> and <a class="link" href="https://segmentfault.com/a/1190000011203711"  target="_blank" rel="noopener"
-    >个人博客记 —— Github pages 绑定个人域名</a> .
+    >如何用 GitHub Pages + Hugo 搭建个人博客</a>
+ and <a class="link" href="https://segmentfault.com/a/1190000011203711"  target="_blank" rel="noopener"
+    >个人博客记 —— Github pages 绑定个人域名</a>
+ .
 In addition,for the purpose of learn foreign languages,I will try my best to publish the Chinese,English and Japanese versions of the blog at the same time.
 If you find any language or content errors,you are welcome to criticize correct.</p>
 <p>This blog uses the second-level domain name <code>blog.mulinbiao.com</code> to resolve to <code>arturiamu.github.io</code>.
@@ -469,7 +471,8 @@ Since the domain name <code>blog.mulinbiao.com</code> involves issues such as re
 It is recommended to use <code>arturiamu.github.io</code> for access.</p>
 <h2 id="agreement">Agreement</h2>
 <p>Unless otherwise stated,all articles on this site use the <a class="link" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"  target="_blank" rel="noopener"
-    >CC BY-NC-SA 4.0</a> Creative Commons Licence</p>
+    >CC BY-NC-SA 4.0</a>
+ Creative Commons Licence</p>
 <h3 id="you-are-free-to">You are free to:</h3>
 <p><strong>Share</strong> — copy and redistribute the material in any medium or format</p>
 <p><strong>Adapt</strong> — remix,transform,and build upon the material</p>
@@ -612,19 +615,33 @@ For example,other rights such as publicity,privacy,or moral rights may limit how
 
     
 
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-        2023 arturiamu&#39;s blog
-    </section>
     
-    <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
-    </section>
-</footer>
+<section class="running-time">
+  本博客已稳定运行
+  <span id="runningdays" class="running-days"></span>
+</section>
 
+<section class="totalcount">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  共发表 2 篇文章 ·
+  总计0.80 k 字
+</section>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 
     
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -722,6 +739,22 @@ For example,other rights such as publicity,privacy,or moral rights may limit how
         document.head.appendChild(customFont);
     }());
 </script>
+
+<script>
+    let s1 = '2023-6-18'; 
+    s1 = new Date(s1.replace(/-/g, "/"));
+    let s2 = new Date();
+    let timeDifference = s2.getTime() - s1.getTime();
+
+    let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+    let result = days + " 天 " + hours + " 小时 " + minutes + " 分钟 ";
+    document.getElementById('runningdays').innerHTML = result;
+
+</script>
+
 
     </body>
 </html>

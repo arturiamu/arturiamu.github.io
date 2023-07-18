@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://arturiamu.github.io/post/vue-axios-cors/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='vue axios 跨域问题'>
+<link rel="stylesheet" href="/scss/style.min.e6a80bb75c24d7fe41371a866f8d798fef964a909bc5261520998e281c05c4e7.css"><meta property='og:title' content='vue axios 跨域问题'>
 <meta property='og:description' content='vue&#43;axios&#43;sprigboot 前后端分离项目 跨域请求资源和获取session不一致问题'>
 <meta property='og:url' content='https://arturiamu.github.io/post/vue-axios-cors/'>
 <meta property='og:site_name' content='木林彪的个人博客'>
@@ -417,7 +417,8 @@ if (!doNotTrack) {
     
     
     <p><strong>本文从作者CSDN <a class="link" href="https://blog.csdn.net/qq_43353586/article/details/125134439"  target="_blank" rel="noopener"
-    >解决 vue+axios+sprigboot 前后端分离项目 跨域请求资源和获取session不一致问题</a> 同步</strong></p>
+    >解决 vue+axios+sprigboot 前后端分离项目 跨域请求资源和获取session不一致问题</a>
+ 同步</strong></p>
 <h2 id="直接上解决方法">直接上解决方法</h2>
 <h3 id="跨域请求资源问题">跨域请求资源问题</h3>
 <p>后端添加过滤器，实现HandlerInterceptor接口，重写preHandle方法，添加如下内容：</p>
@@ -693,19 +694,45 @@ if (!doNotTrack) {
 
     
 
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-        2023 木林彪的个人博客
-    </section>
     
-    <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
-    </section>
-</footer>
+<section class="running-time">
+  本博客已稳定运行
+  <span id="runningdays" class="running-days"></span>
+</section>
 
+<section class="totalcount">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  共发表 8 篇文章 ·
+  总计6.30 k 字
+</section>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 
     
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -803,6 +830,22 @@ if (!doNotTrack) {
         document.head.appendChild(customFont);
     }());
 </script>
+
+<script>
+    let s1 = '2023-6-18'; 
+    s1 = new Date(s1.replace(/-/g, "/"));
+    let s2 = new Date();
+    let timeDifference = s2.getTime() - s1.getTime();
+
+    let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+    let result = days + " 天 " + hours + " 小时 " + minutes + " 分钟 ";
+    document.getElementById('runningdays').innerHTML = result;
+
+</script>
+
 
     </body>
 </html>

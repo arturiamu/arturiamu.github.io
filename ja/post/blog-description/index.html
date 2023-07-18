@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://arturiamu.github.io/ja/post/blog-description/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='ブログの説明'>
+<link rel="stylesheet" href="/scss/style.min.e6a80bb75c24d7fe41371a866f8d798fef964a909bc5261520998e281c05c4e7.css"><meta property='og:title' content='ブログの説明'>
 <meta property='og:description' content='サイト紹介、ライセンス契約'>
 <meta property='og:url' content='https://arturiamu.github.io/ja/post/blog-description/'>
 <meta property='og:site_name' content='ムー・リンビアオの個人ブログ'>
@@ -455,13 +455,16 @@ if (!doNotTrack) {
 <p>ブログはコミュニケーションと学習のプラットフォームにもなり、自分の経験や洞察を他のブロガー、読者、仲間と交換して共有し、インスピレーションや学習の機会を増やすことができます。</p>
 <h2 id="このブログについて">このブログについて</h2>
 <p>このブログは「Hugo + Githubページ」を使用して構築されており、詳細については <a class="link" href="https://cuttontail.blog/blog/create-a-wesite-using-github-pages-and-hugo/"  target="_blank" rel="noopener"
-    >如何用 GitHub Pages + Hugo 搭建个人博客</a> と <a class="link" href="https://segmentfault.com/a/1190000011203711"  target="_blank" rel="noopener"
-    >个人博客记 —— Github pages 绑定个人域名</a> を参照してください。
+    >如何用 GitHub Pages + Hugo 搭建个人博客</a>
+ と <a class="link" href="https://segmentfault.com/a/1190000011203711"  target="_blank" rel="noopener"
+    >个人博客记 —— Github pages 绑定个人域名</a>
+ を参照してください。
 また、外国語学習を目的として、中国語版、英語版、日本語版のブログを同時に公開するように努め、言語や内容の誤りを見つけた場合は、批判や訂正を歓迎します。</p>
 <p>このブログでは、セカンドレベルドメイン名 <code>blog.mulinbiao.com</code> を使用して <code>arturiamu.github.io</code> に解決し、<code>blog.mulinbiao.com</code>ドメイン名には更新、ICPファイリング、その他の問題が含まれるため、接続を保証できないため、アクセスには <code>arturiamu.github.io</code> を使用することをお勧めします。</p>
 <h2 id="ライセンス契約">ライセンス契約</h2>
 <p>特に明記されていない限り、このサイトのすべての記事は <a class="link" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"  target="_blank" rel="noopener"
-    >表示 - 非営利 - 継承 4.0 国際 (CC BY-NC-SA 4.0)</a> クリエイティブコモンズライセンスの下でライセンスされています</p>
+    >表示 - 非営利 - 継承 4.0 国際 (CC BY-NC-SA 4.0)</a>
+ クリエイティブコモンズライセンスの下でライセンスされています</p>
 <h3 id="あなたは以下の条件に従う限り自由に">あなたは以下の条件に従う限り、自由に：</h3>
 <p><strong>共有</strong> — どのようなメディアやフォーマットでも資料を複製したり、再配布できます。</p>
 <p><strong>翻案</strong> — マテリアルをリミックスしたり、改変したり、別の作品のベースにしたりできます。</p>
@@ -602,19 +605,33 @@ if (!doNotTrack) {
 
     
 
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-        2023 ムー・リンビアオの個人ブログ
-    </section>
     
-    <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
-    </section>
-</footer>
+<section class="running-time">
+  本博客已稳定运行
+  <span id="runningdays" class="running-days"></span>
+</section>
 
+<section class="totalcount">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  共发表 2 篇文章 ·
+  总计2.45 k 字
+</section>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 
     
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -712,6 +729,22 @@ if (!doNotTrack) {
         document.head.appendChild(customFont);
     }());
 </script>
+
+<script>
+    let s1 = '2023-6-18'; 
+    s1 = new Date(s1.replace(/-/g, "/"));
+    let s2 = new Date();
+    let timeDifference = s2.getTime() - s1.getTime();
+
+    let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+    let result = days + " 天 " + hours + " 小时 " + minutes + " 分钟 ";
+    document.getElementById('runningdays').innerHTML = result;
+
+</script>
+
 
     </body>
 </html>

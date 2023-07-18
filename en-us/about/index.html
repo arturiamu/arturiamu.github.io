@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://arturiamu.github.io/en-us/about/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='About'>
+<link rel="stylesheet" href="/scss/style.min.e6a80bb75c24d7fe41371a866f8d798fef964a909bc5261520998e281c05c4e7.css"><meta property='og:title' content='About'>
 <meta property='og:description' content='和作者、网站相关的一些信息'>
 <meta property='og:url' content='https://arturiamu.github.io/en-us/about/'>
 <meta property='og:site_name' content='arturiamu&#39;s blog'>
@@ -492,17 +492,22 @@ if (!doNotTrack) {
 <h3 id="contact-information">Contact information</h3>
 <p>mail</p>
 <ul>
-<li><a class="link" href="mailto:arturiamumu@gmail.com" >arturiamumu@gmail.com</a></li>
-<li><a class="link" href="mailto:1743089727@qq.com" >1743089727@qq.com</a></li>
-<li><a class="link" href="mailto:mlbwork@163.com" >mlbwork@163.com</a></li>
+<li><a class="link" href="mailto:arturiamumu@gmail.com" >arturiamumu@gmail.com</a>
+</li>
+<li><a class="link" href="mailto:1743089727@qq.com" >1743089727@qq.com</a>
+</li>
+<li><a class="link" href="mailto:mlbwork@163.com" >mlbwork@163.com</a>
+</li>
 </ul>
 <h2 id="about-the-site">About the site</h2>
 <p>This site is the personal website of author himself</p>
 <p>This website is mainly used to record some problems in the author&rsquo;s study and work process</p>
 <p>This website is built using Hugo+GitHub Pages</p>
 <p>This website is based on the Hugo theme <a class="link" href="https://github.com/CaiJimmy/hugo-theme-stack"  target="_blank" rel="noopener"
-    >stack</a>,published by <a class="link" href="https://jimmycai.com/"  target="_blank" rel="noopener"
-    >Jimmy Cai</a></p>
+    >stack</a>
+,published by <a class="link" href="https://jimmycai.com/"  target="_blank" rel="noopener"
+    >Jimmy Cai</a>
+</p>
 <h3 id="about-the-hugo">About the Hugo</h3>
 <p>Hugo is a static website generator written in Go language,using the Apache 2.0 open source license</p>
 <p>Hugo supports configuration files in three formats:TOML/YAML/JSON</p>
@@ -510,17 +515,22 @@ if (!doNotTrack) {
 <p>Hugo natively supports multi-language,page classification,image processing,etc.</p>
 <p>Hugo generates websites very fast and can be quickly deployed to private servers,commercial servers,GitHub Pages,Netlify,etc.</p>
 <p>Official homepage <a class="link" href="https://gohugo.io"  target="_blank" rel="noopener"
-    >gohugo.io</a></p>
+    >gohugo.io</a>
+</p>
 <p>GitHub homepage <a class="link" href="https://github.com/gohugoio/hugo"  target="_blank" rel="noopener"
-    >https://github.com/gohugoio/hugo</a></p>
+    >https://github.com/gohugoio/hugo</a>
+</p>
 <h3 id="about-the-hugo-theme-stack">About the hugo-theme-stack</h3>
 <p>Developed by <a class="link" href="https://jimmycai.com"  target="_blank" rel="noopener"
-    >Jimmy Cai</a></p>
+    >Jimmy Cai</a>
+</p>
 <p>The GitHub homepage of the hugo-theme-stack project <a class="link" href="https://github.com/CaiJimmy/hugo-theme-stack"  target="_blank" rel="noopener"
-    >https://github.com/CaiJimmy/hugo-theme-stack</a></p>
+    >https://github.com/CaiJimmy/hugo-theme-stack</a>
+</p>
 <p>Follow the open source agreement GPL v3.0</p>
 <p>Theme example <a class="link" href="https://demo.stack.jimmycai.com/"  target="_blank" rel="noopener"
-    >https://demo.stack.jimmycai.com/</a></p>
+    >https://demo.stack.jimmycai.com/</a>
+</p>
 <p>Key features include:</p>
 <ul>
 <li>dark mode</li>
@@ -618,19 +628,33 @@ if (!doNotTrack) {
 
     
 
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-        2023 arturiamu&#39;s blog
-    </section>
     
-    <section class="powerby">
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
-    </section>
-</footer>
+<section class="running-time">
+  本博客已稳定运行
+  <span id="runningdays" class="running-days"></span>
+</section>
 
+<section class="totalcount">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  共发表 2 篇文章 ·
+  总计0.80 k 字
+</section>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 
     
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -728,6 +752,22 @@ if (!doNotTrack) {
         document.head.appendChild(customFont);
     }());
 </script>
+
+<script>
+    let s1 = '2023-6-18'; 
+    s1 = new Date(s1.replace(/-/g, "/"));
+    let s2 = new Date();
+    let timeDifference = s2.getTime() - s1.getTime();
+
+    let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+    let result = days + " 天 " + hours + " 小时 " + minutes + " 分钟 ";
+    document.getElementById('runningdays').innerHTML = result;
+
+</script>
+
 
     </body>
 </html>

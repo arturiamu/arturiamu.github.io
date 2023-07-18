@@ -42,13 +42,16 @@
 &lt;p&gt;博客也是一个交流和学习的平台，可以与其他博主、读者和同行交流和分享自己的经验和见解，从而获得更多的启发和学习机会。&lt;/p&gt;
 &lt;h2 id=&#34;关于本博客&#34;&gt;关于本博客&lt;/h2&gt;
 &lt;p&gt;本博客使用 &lt;code&gt;Hugo+Github Pages&lt;/code&gt;搭建，详细过程请自行参考 &lt;a class=&#34;link&#34; href=&#34;https://cuttontail.blog/blog/create-a-wesite-using-github-pages-and-hugo/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;如何用 GitHub Pages + Hugo 搭建个人博客&lt;/a&gt; 以及 &lt;a class=&#34;link&#34; href=&#34;https://segmentfault.com/a/1190000011203711&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;个人博客记 —— Github pages 绑定个人域名&lt;/a&gt; 。
+    &gt;如何用 GitHub Pages + Hugo 搭建个人博客&lt;/a&gt;
+ 以及 &lt;a class=&#34;link&#34; href=&#34;https://segmentfault.com/a/1190000011203711&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;个人博客记 —— Github pages 绑定个人域名&lt;/a&gt;
+ 。
 另外，出于学习外语的目的，我会尽量同时发布中英日版本博客，若发现语言或内容上的错误，欢迎批评指正。&lt;/p&gt;
 &lt;p&gt;本博客使用二级域名 &lt;code&gt;blog.mulinbiao.com&lt;/code&gt; 解析到 &lt;code&gt;arturiamu.github.io&lt;/code&gt;，由于 &lt;code&gt;blog.mulinbiao.com&lt;/code&gt; 域名涉及到续费、备案等问题，连通性无法得到保障，建议使用 &lt;code&gt;arturiamu.github.io&lt;/code&gt; 进行访问。&lt;/p&gt;
 &lt;h2 id=&#34;许可协议&#34;&gt;许可协议&lt;/h2&gt;
 &lt;p&gt;除特别声明外，本站点所有文章均使用 &lt;a class=&#34;link&#34; href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)&lt;/a&gt; 知识共享许可协议&lt;/p&gt;
+    &gt;署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)&lt;/a&gt;
+ 知识共享许可协议&lt;/p&gt;
 &lt;h3 id=&#34;您可以自由地&#34;&gt;您可以自由地：&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;共享&lt;/strong&gt; — 在任何媒介以任何形式复制、发行本作品&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;演绎&lt;/strong&gt; — 修改、转换或以本作品为基础进行创作&lt;/p&gt;
