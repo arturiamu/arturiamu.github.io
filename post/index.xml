@@ -13,8 +13,7 @@
         
         <guid>https://arturiamu.github.io/post/vue-axios-cors/</guid>
         <description>&lt;img src="https://arturiamu.github.io/post/vue-axios-cors/vue-axios-cors.jpg" alt="Featured image of post vue axios 跨域问题" /&gt;&lt;p&gt;&lt;strong&gt;本文从作者CSDN &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/article/details/125134439&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;解决 vue+axios+sprigboot 前后端分离项目 跨域请求资源和获取session不一致问题&lt;/a&gt;
- 同步&lt;/strong&gt;&lt;/p&gt;
+    &gt;解决 vue+axios+sprigboot 前后端分离项目 跨域请求资源和获取session不一致问题&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;直接上解决方法&#34;&gt;直接上解决方法&lt;/h2&gt;
 &lt;h3 id=&#34;跨域请求资源问题&#34;&gt;跨域请求资源问题&lt;/h3&gt;
 &lt;p&gt;后端添加过滤器，实现HandlerInterceptor接口，重写preHandle方法，添加如下内容：&lt;/p&gt;
@@ -204,8 +203,7 @@
         
         <guid>https://arturiamu.github.io/post/spring-boot-reject-mapper/</guid>
         <description>&lt;img src="https://arturiamu.github.io/post/spring-boot-reject-mapper/spring-boot-reject-mapper.png" alt="Featured image of post springboot 普通类自动注入mapper" /&gt;&lt;p&gt;&lt;strong&gt;本文从作者CSDN &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/article/details/125187441&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;springboot 普通类自动注入mapper&lt;/a&gt;
- 同步&lt;/strong&gt;&lt;/p&gt;
+    &gt;springboot 普通类自动注入mapper&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;解决方法&#34;&gt;解决方法&lt;/h2&gt;
 &lt;p&gt;普通类使用@Component注解修饰，添加本类型静态属性、所需mapper属性，添加init方法，用@PostConstruct注解修饰，方法内初始化以上2个属性：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -260,8 +258,7 @@
         
         <guid>https://arturiamu.github.io/post/lq-pyb-py-grammar/</guid>
         <description>&lt;img src="https://arturiamu.github.io/post/lq-pyb-py-grammar/lq-pythonb-py-gr.png" alt="Featured image of post 蓝桥杯 Python 语法" /&gt;&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;蓝桥杯 Python B组&lt;/a&gt;
- 同步&lt;/strong&gt;&lt;/p&gt;
+    &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;python创建数组&#34;&gt;python创建数组&lt;/h2&gt;
 &lt;h3 id=&#34;直接定义法&#34;&gt;直接定义法&lt;/h3&gt;
@@ -462,8 +459,7 @@ map函数可以直接使用列表生成来替代
         
         <guid>https://arturiamu.github.io/post/lq-py-code-template/</guid>
         <description>&lt;img src="https://arturiamu.github.io/post/lq-py-code-template/lq-pythonb-code-tp.png" alt="Featured image of post 蓝桥杯 Python B组-代码模板" /&gt;&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;蓝桥杯 Python B组&lt;/a&gt;
- 同步&lt;/strong&gt;&lt;/p&gt;
+    &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;gcd&#34;&gt;gcd&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -760,8 +756,7 @@ map函数可以直接使用列表生成来替代
         
         <guid>https://arturiamu.github.io/post/lq-pyb-py/</guid>
         <description>&lt;img src="https://arturiamu.github.io/post/lq-pyb-py/lq-pythonb-py.png" alt="Featured image of post 蓝桥杯 Python B组-Python基础" /&gt;&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;蓝桥杯 Python B组&lt;/a&gt;
- 同步&lt;/strong&gt;&lt;/p&gt;
+    &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;输入输出&#34;&gt;输入输出&lt;/h2&gt;
 &lt;h3 id=&#34;输入&#34;&gt;输入&lt;/h3&gt;
@@ -1114,8 +1109,7 @@ map函数可以直接使用列表生成来替代
         
         <guid>https://arturiamu.github.io/post/lq-pyb-desc/</guid>
         <description>&lt;img src="https://arturiamu.github.io/post/lq-pyb-desc/lq-pythonb-desc.png" alt="Featured image of post 蓝桥杯 Python B组-说明" /&gt;&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;蓝桥杯 Python B组&lt;/a&gt;
- 同步&lt;/strong&gt;&lt;/p&gt;
+    &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;我参加的是2022年的pythonB组，本来是只打算混混省赛的，可能是今年省赛比较简单，加上运气比较好，混到了国二，排名在1/3左右，说实话挺意外的。&lt;/p&gt;
 &lt;p&gt;比赛基本上是零基础开始准备的，省赛之后因为项目比较忙，自己也是一心摆烂，直接没有准备国赛，到国赛时候写个dfs都要推半天了。其实还是有点遗憾的，当初要是好好准备一个月说不定国一就有了。&lt;/p&gt;
@@ -1196,16 +1190,13 @@ map函数可以直接使用列表生成来替代
 &lt;p&gt;博客也是一个交流和学习的平台，可以与其他博主、读者和同行交流和分享自己的经验和见解，从而获得更多的启发和学习机会。&lt;/p&gt;
 &lt;h2 id=&#34;关于本博客&#34;&gt;关于本博客&lt;/h2&gt;
 &lt;p&gt;本博客使用 &lt;code&gt;Hugo+Github Pages&lt;/code&gt;搭建，详细过程请自行参考 &lt;a class=&#34;link&#34; href=&#34;https://cuttontail.blog/blog/create-a-wesite-using-github-pages-and-hugo/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;如何用 GitHub Pages + Hugo 搭建个人博客&lt;/a&gt;
- 以及 &lt;a class=&#34;link&#34; href=&#34;https://segmentfault.com/a/1190000011203711&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;个人博客记 —— Github pages 绑定个人域名&lt;/a&gt;
- 。
+    &gt;如何用 GitHub Pages + Hugo 搭建个人博客&lt;/a&gt; 以及 &lt;a class=&#34;link&#34; href=&#34;https://segmentfault.com/a/1190000011203711&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;个人博客记 —— Github pages 绑定个人域名&lt;/a&gt; 。
 另外，出于学习外语的目的，我会尽量同时发布中英日版本博客，若发现语言或内容上的错误，欢迎批评指正。&lt;/p&gt;
 &lt;p&gt;本博客使用二级域名 &lt;code&gt;blog.mulinbiao.com&lt;/code&gt; 解析到 &lt;code&gt;arturiamu.github.io&lt;/code&gt;，由于 &lt;code&gt;blog.mulinbiao.com&lt;/code&gt; 域名涉及到续费、备案等问题，连通性无法得到保障，建议使用 &lt;code&gt;arturiamu.github.io&lt;/code&gt; 进行访问。&lt;/p&gt;
 &lt;h2 id=&#34;许可协议&#34;&gt;许可协议&lt;/h2&gt;
 &lt;p&gt;除特别声明外，本站点所有文章均使用 &lt;a class=&#34;link&#34; href=&#34;https://creativecommons.org/licenses/by-nc-sa/4.0/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)&lt;/a&gt;
- 知识共享许可协议&lt;/p&gt;
+    &gt;署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)&lt;/a&gt; 知识共享许可协议&lt;/p&gt;
 &lt;h3 id=&#34;您可以自由地&#34;&gt;您可以自由地：&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;共享&lt;/strong&gt; — 在任何媒介以任何形式复制、发行本作品&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;演绎&lt;/strong&gt; — 修改、转换或以本作品为基础进行创作&lt;/p&gt;

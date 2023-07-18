@@ -455,16 +455,13 @@ if (!doNotTrack) {
 <p>博客也是一个交流和学习的平台，可以与其他博主、读者和同行交流和分享自己的经验和见解，从而获得更多的启发和学习机会。</p>
 <h2 id="关于本博客">关于本博客</h2>
 <p>本博客使用 <code>Hugo+Github Pages</code>搭建，详细过程请自行参考 <a class="link" href="https://cuttontail.blog/blog/create-a-wesite-using-github-pages-and-hugo/"  target="_blank" rel="noopener"
-    >如何用 GitHub Pages + Hugo 搭建个人博客</a>
- 以及 <a class="link" href="https://segmentfault.com/a/1190000011203711"  target="_blank" rel="noopener"
-    >个人博客记 —— Github pages 绑定个人域名</a>
- 。
+    >如何用 GitHub Pages + Hugo 搭建个人博客</a> 以及 <a class="link" href="https://segmentfault.com/a/1190000011203711"  target="_blank" rel="noopener"
+    >个人博客记 —— Github pages 绑定个人域名</a> 。
 另外，出于学习外语的目的，我会尽量同时发布中英日版本博客，若发现语言或内容上的错误，欢迎批评指正。</p>
 <p>本博客使用二级域名 <code>blog.mulinbiao.com</code> 解析到 <code>arturiamu.github.io</code>，由于 <code>blog.mulinbiao.com</code> 域名涉及到续费、备案等问题，连通性无法得到保障，建议使用 <code>arturiamu.github.io</code> 进行访问。</p>
 <h2 id="许可协议">许可协议</h2>
 <p>除特别声明外，本站点所有文章均使用 <a class="link" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"  target="_blank" rel="noopener"
-    >署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a>
- 知识共享许可协议</p>
+    >署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 知识共享许可协议</p>
 <h3 id="您可以自由地">您可以自由地：</h3>
 <p><strong>共享</strong> — 在任何媒介以任何形式复制、发行本作品</p>
 <p><strong>演绎</strong> — 修改、转换或以本作品为基础进行创作</p>
@@ -605,45 +602,75 @@ if (!doNotTrack) {
 
     
 
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 木林彪的个人博客
+    </section>
     
-<section class="running-time">
-  本博客已稳定运行
-  <span id="runningdays" class="running-days"></span>
-</section>
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
 
-<section class="totalcount">
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  共发表 8 篇文章 ·
-  总计6.30 k 字
-</section>
+    
+    <section class="running-time">
+        本博客已稳定运行
+        <span id="runningdays" class="running-days"></span>
+    </section>
+    
+    <section class="totalcount">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        共发表 8 篇文章 ·
+        总计6.31 k 字
+    </section>
+
+    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+</footer>
+
+
+<script>
+    let s1 = '2023-6-18'; 
+    s1 = new Date(s1.replace(/-/g, "/"));
+    let s2 = new Date();
+    let timeDifference = s2.getTime() - s1.getTime();
+
+    let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+
+    let result = days + " 天 " + hours + " 小时 " + minutes + " 分钟 ";
+    document.getElementById('runningdays').innerHTML = result;
+
+</script>
 
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 
     
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -741,22 +768,6 @@ if (!doNotTrack) {
         document.head.appendChild(customFont);
     }());
 </script>
-
-<script>
-    let s1 = '2023-6-18'; 
-    s1 = new Date(s1.replace(/-/g, "/"));
-    let s2 = new Date();
-    let timeDifference = s2.getTime() - s1.getTime();
-
-    let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-    let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-
-    let result = days + " 天 " + hours + " 小时 " + minutes + " 分钟 ";
-    document.getElementById('runningdays').innerHTML = result;
-
-</script>
-
 
     </body>
 </html>
