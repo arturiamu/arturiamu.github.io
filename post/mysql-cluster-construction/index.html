@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Python基础语法'>
-<title>蓝桥杯 Python 语法</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='mysql主从同步原理、集群搭建教程'>
+<title>MySQL主从同步集群搭建</title>
 
-<link rel='canonical' href='https://arturiamu.github.io/post/lq-pyb-py-grammar/'>
+<link rel='canonical' href='https://arturiamu.github.io/post/mysql-cluster-construction/'>
 
-<link rel="stylesheet" href="/scss/style.min.d178df6d5c165699216ef5116ed00940c92ef1ddf654f82a2b2e5bdb4e4f4ea5.css"><meta property='og:title' content='蓝桥杯 Python 语法'>
-<meta property='og:description' content='Python基础语法'>
-<meta property='og:url' content='https://arturiamu.github.io/post/lq-pyb-py-grammar/'>
+<link rel="stylesheet" href="/scss/style.min.d178df6d5c165699216ef5116ed00940c92ef1ddf654f82a2b2e5bdb4e4f4ea5.css"><meta property='og:title' content='MySQL主从同步集群搭建'>
+<meta property='og:description' content='mysql主从同步原理、集群搭建教程'>
+<meta property='og:url' content='https://arturiamu.github.io/post/mysql-cluster-construction/'>
 <meta property='og:site_name' content='木林彪的个人博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='python' /><meta property='article:published_time' content='2023-06-23T14:21:55&#43;08:00'/><meta property='article:modified_time' content='2023-06-23T14:21:55&#43;08:00'/><meta property='og:image' content='https://arturiamu.github.io/post/lq-pyb-py-grammar/lq-pythonb-py-gr.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-07-21T16:48:07&#43;08:00'/><meta property='article:modified_time' content='2023-07-21T16:48:07&#43;08:00'/><meta property='og:image' content='https://arturiamu.github.io/post/mysql-cluster-construction/mysql-cluster.png' />
 <meta name="twitter:site" content="@ArturiaMu">
-    <meta name="twitter:creator" content="@ArturiaMu"><meta name="twitter:title" content="蓝桥杯 Python 语法">
-<meta name="twitter:description" content="Python基础语法"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://arturiamu.github.io/post/lq-pyb-py-grammar/lq-pythonb-py-gr.png' />
+    <meta name="twitter:creator" content="@ArturiaMu"><meta name="twitter:title" content="MySQL主从同步集群搭建">
+<meta name="twitter:description" content="mysql主从同步原理、集群搭建教程"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://arturiamu.github.io/post/mysql-cluster-construction/mysql-cluster.png' />
     <link rel="shortcut icon" href="img/favicon.ico" />
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JJG6TYWNYX"></script>
@@ -322,30 +322,14 @@ if (!doNotTrack) {
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#python创建数组">python创建数组</a>
+    <li><a href="#为什么需要搭建集群">为什么需要搭建集群</a></li>
+    <li><a href="#主从同步原理">主从同步原理</a></li>
+    <li><a href="#集群搭建流程">集群搭建流程</a>
       <ol>
-        <li><a href="#直接定义法">直接定义法</a></li>
-        <li><a href="#间接定义法">间接定义法</a></li>
-        <li><a href="#列表生成式">列表生成式</a></li>
+        <li><a href="#master-配置">master 配置</a></li>
+        <li><a href="#slave配置">slave配置</a></li>
       </ol>
     </li>
-    <li><a href="#ascii码与字符相互转换">ASCII码与字符相互转换</a></li>
-    <li><a href="#列表转化为字符串">列表转化为字符串</a></li>
-    <li><a href="#修改字符串某一个字符">修改字符串某一个字符</a>
-      <ol>
-        <li><a href="#转化法">转化法</a></li>
-        <li><a href="#replace函数">replace函数</a></li>
-      </ol>
-    </li>
-    <li><a href="#接收由空格分开的多个数据">接收由空格分开的多个数据</a></li>
-    <li><a href="#同时改变列表中所有元素的类型">同时改变列表中所有元素的类型</a></li>
-    <li><a href="#python索引">Python索引</a>
-      <ol>
-        <li><a href="#逆序">逆序</a></li>
-        <li><a href="#获取末尾元素">获取末尾元素</a></li>
-      </ol>
-    </li>
-    <li><a href="#读取多行">读取多行</a></li>
   </ol>
 </nav>
         </div>
@@ -360,13 +344,13 @@ if (!doNotTrack) {
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/post/lq-pyb-py-grammar/">
-                <img src="/post/lq-pyb-py-grammar/lq-pythonb-py-gr_hucedda07b5e03d8a074688c65d496c205_1302005_800x0_resize_box_3.png"
-                        srcset="/post/lq-pyb-py-grammar/lq-pythonb-py-gr_hucedda07b5e03d8a074688c65d496c205_1302005_800x0_resize_box_3.png 800w, /post/lq-pyb-py-grammar/lq-pythonb-py-gr_hucedda07b5e03d8a074688c65d496c205_1302005_1600x0_resize_box_3.png 1600w"
+            <a href="/post/mysql-cluster-construction/">
+                <img src="/post/mysql-cluster-construction/mysql-cluster_hu5103b474e038ce5851b69a1ca0d5bd7e_808841_800x0_resize_box_3.png"
+                        srcset="/post/mysql-cluster-construction/mysql-cluster_hu5103b474e038ce5851b69a1ca0d5bd7e_808841_800x0_resize_box_3.png 800w, /post/mysql-cluster-construction/mysql-cluster_hu5103b474e038ce5851b69a1ca0d5bd7e_808841_1600x0_resize_box_3.png 1600w"
                         width="800" 
-                        height="450" 
+                        height="337" 
                         loading="lazy"
-                        alt="Featured image of post 蓝桥杯 Python 语法" />
+                        alt="Featured image of post MySQL主从同步集群搭建" />
                 
             </a>
         </div>
@@ -376,8 +360,8 @@ if (!doNotTrack) {
     
     <header class="article-category">
         
-            <a href="/archives/lq-cup/" style="background-color: #2a9d8f; color: #fff;">
-                蓝桥杯
+            <a href="/archives/database/" style="background-color: #2a9d8f; color: #fff;">
+                数据库
             </a>
         
     </header>
@@ -385,12 +369,12 @@ if (!doNotTrack) {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/post/lq-pyb-py-grammar/">蓝桥杯 Python 语法</a>
+            <a href="/post/mysql-cluster-construction/">MySQL主从同步集群搭建</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            Python基础语法
+            mysql主从同步原理、集群搭建教程
         </h3>
         
     </div>
@@ -411,7 +395,7 @@ if (!doNotTrack) {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2023-06-23 14:21:55 CST</time>
+                <time class="article-time--published">2023-07-21 16:48:07 CST</time>
             </div>
         
 
@@ -426,7 +410,7 @@ if (!doNotTrack) {
 
 
                 <time class="article-time--reading">
-                    阅读时长: 2 分钟
+                    阅读时长: 3 分钟
                 </time>
             </div>
         
@@ -441,90 +425,37 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <p><strong>本文从作者CSDN专栏 <a class="link" href="https://blog.csdn.net/qq_43353586/category_11935685.html"  target="_blank" rel="noopener"
-    >蓝桥杯 Python B组</a> 同步</strong></p>
-<p><strong>本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。</strong></p>
-<h2 id="python创建数组">python创建数组</h2>
-<h3 id="直接定义法">直接定义法</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">matrix</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="间接定义法">间接定义法</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">a</span> <span class="o">=</span> <span class="mi">255</span>
-</span></span><span class="line"><span class="cl"><span class="n">li</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">a</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="列表生成式">列表生成式</h3>
+    <h2 id="为什么需要搭建集群">为什么需要搭建集群</h2>
+<p>搭建主从同步集群可以实现MySQL数据库的高可用、可扩展和读写分离，提升系统的性能和稳定性。这在对数据库的可靠性、
+并发读写能力和扩展性有较高要求的业务场景中尤为重要。</p>
+<h2 id="主从同步原理">主从同步原理</h2>
+<p>主数据库（Master）： 主数据库是数据变更的源头。它接收来自应用程序的写操作（INSERT、UPDATE、DELETE等），
+并记录这些操作在二进制日志（Binary Log）中， 这个过程叫做二进制日志事件 binary log events。</p>
+<p>从数据库（Slave）： 从数据库是主数据库的复制目标。它连接到主数据库，并通过读取主数据库的二进制日志来获取数据变更信息，
+然后在从数据库上重现这些操作，从而保持与主数据库的数据一致性。改过程具体分为以下2个步骤：</p>
+<ul>
+<li>slave 将binary log events 拷贝到它的中继日志（relay_log）。</li>
+<li>slave重做中继日志中的事件，将改变应用到自己的数据库中，mysql复制时异步的且串行化的</li>
+</ul>
+<h2 id="集群搭建流程">集群搭建流程</h2>
+<p>安装MySQL：在主库和从库上都安装MySQL数据库服务器。确保主库和从库的MySQL版本相同或兼容</p>
+<h3 id="master-配置">master 配置</h3>
+<p>1、打开主库的二进制日志功能。修改主机的配置文件（通常是my.cnf或my.ini），启用二进制日志，设置服务器ID。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">matrix</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
-</span></span><span class="line"><span class="cl"><span class="n">matrix</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl">log-bin <span class="o">=</span> master-bin <span class="c1"># 打开bin log日志文件，必须</span>
+</span></span><span class="line"><span class="cl">server-id <span class="o">=</span> <span class="m">1</span> <span class="c1"># 指定master服务id,必须 只要保证集群中唯一即可</span>
+</span></span><span class="line"><span class="cl">......
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="ascii码与字符相互转换">ASCII码与字符相互转换</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1">#以下代码用于实现ASCII码与字符相互转换：</span>
-</span></span><span class="line"><span class="cl"><span class="c1">## 用户输入字符 </span>
-</span></span><span class="line"><span class="cl"><span class="n">c</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&#34;请输入一个字符: &#34;</span><span class="p">)</span>  
-</span></span><span class="line"><span class="cl"><span class="c1">## 用户输入ASCII码，并将输入的数字转为整型 </span>
-</span></span><span class="line"><span class="cl"><span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&#34;请输入一个ASCII码: &#34;</span><span class="p">))</span>   
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span> <span class="n">c</span> <span class="o">+</span> <span class="s2">&#34; 的ASCII 码为&#34;</span><span class="p">,</span> <span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> 
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span> <span class="n">a</span> <span class="p">,</span> <span class="s2">&#34; 对应的字符为&#34;</span><span class="p">,</span> <span class="nb">chr</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#以上代码输出结果</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#python3 test.py </span>
-</span></span><span class="line"><span class="cl"><span class="c1">#请输入一个字符: a</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#请输入一个ASCII码: 101</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#a 的ASCII 码为 97</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#101  对应的字符为 e</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="列表转化为字符串">列表转化为字符串</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;1&#34;</span><span class="p">,</span><span class="s2">&#34;2&#34;</span><span class="p">,</span><span class="s2">&#34;3&#34;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ls</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="修改字符串某一个字符">修改字符串某一个字符</h2>
-<p><em><strong>字符串是不可变的，不能直接修改</strong></em></p>
-<h3 id="转化法">转化法</h3>
+</div><p>2、启动主库MySQL服务，登陆root用户后创建主从复制用户slave并授权。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -532,72 +463,18 @@ if (!doNotTrack) {
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
+</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="s2">&#34;abc&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">temp</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">temp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&#34;d&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 登录</span>
+</span></span><span class="line"><span class="cl">mysql -u root -p
+</span></span><span class="line"><span class="cl"><span class="c1"># 创建用户 slave，注意这里的ip是从库服务器的ip</span>
+</span></span><span class="line"><span class="cl">CREATE USER <span class="s1">&#39;slave&#39;</span>@<span class="s1">&#39;ip&#39;</span> IDENTIFIED WITH mysql_native_password BY <span class="s1">&#39;123456&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 给主从复制账号授权</span>
+</span></span><span class="line"><span class="cl">grant replication slave on *.* to <span class="s1">&#39;slave&#39;</span>@<span class="s1">&#39;ip&#39;</span><span class="p">;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="replace函数">replace函数</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="s2">&#34;abc&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">,</span><span class="s2">&#34;d&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="接收由空格分开的多个数据">接收由空格分开的多个数据</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ls</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="同时改变列表中所有元素的类型">同时改变列表中所有元素的类型</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ls1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="n">ls2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="n">ls</span><span class="p">))</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="python索引">Python索引</h2>
-<p>python里面的索引的特征是包含起点，但是不包含结束的索引值，-1表示最后一个元素，但是-1是结尾的index，所以含义就是取原始数据的除最后一个元素之外的值</p>
-<h3 id="逆序">逆序</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">li</span> <span class="o">=</span> <span class="n">li</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="获取末尾元素">获取末尾元素</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">a</span> <span class="o">=</span> <span class="n">li</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="读取多行">读取多行</h2>
-<p>使用python的标准输入函数，strip()是取出输入收尾的多余的空格、回车、缩进等等字符，在很多测试用例是必须的
-map函数可以直接使用列表生成来替代
-可以看到，此时可以一直读取输入，直到输入为空。</p>
+</div><p>3、重启主库的mysql服务，登录root查看配置是否生效</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -617,21 +494,78 @@ map函数可以直接使用列表生成来替代
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
-</span></span><span class="line"><span class="cl"><span class="k">try</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">        <span class="n">line1</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">line1</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">            <span class="k">break</span>
-</span></span><span class="line"><span class="cl">        <span class="n">line2</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">        <span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">line1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">l</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">line2</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
-</span></span><span class="line"><span class="cl">        <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">line2</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">except</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="k">pass</span>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 重启服务</span>
+</span></span><span class="line"><span class="cl">service mysqld restart
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 登录root</span>
+</span></span><span class="line"><span class="cl">mysql -u root -p
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 查看配置</span>
+</span></span><span class="line"><span class="cl">show master status<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 出现如下内容说明配置成功</span>
+</span></span><span class="line"><span class="cl">+---------------+----------+--------------+------------------+-------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> File          <span class="p">|</span> Position <span class="p">|</span> Binlog_Do_DB <span class="p">|</span> Binlog_Ignore_DB <span class="p">|</span> Executed_Gtid_Set <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+---------------+----------+--------------+------------------+-------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> binlog.000001 <span class="p">|</span>     <span class="m">2463</span> <span class="p">|</span>              <span class="p">|</span>                  <span class="p">|</span>                   <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+---------------+----------+--------------+------------------+-------------------+
+</span></span><span class="line"><span class="cl"><span class="m">1</span> row in <span class="nb">set</span> <span class="o">(</span>0.01 sec<span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="slave配置">slave配置</h3>
+<p>1、修改从库的配置文件，设置服务器ID，启用从库功能.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl">server-id <span class="o">=</span> <span class="m">2</span> <span class="c1">#只要保证集群中唯一即可</span>
+</span></span><span class="line"><span class="cl">......
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>2、重启服务并配置主从同步</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 重启服务</span>
+</span></span><span class="line"><span class="cl">service mysqld restart
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 登录</span>
+</span></span><span class="line"><span class="cl">mysql -u root -p
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 关闭从库</span>
+</span></span><span class="line"><span class="cl">stop slave<span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 设置同步，注意这里是主库ip，master_log_file和master_log_pos是配置master第3步中 show master status 命令查出的值</span>
+</span></span><span class="line"><span class="cl">change master to <span class="nv">master_host</span><span class="o">=</span><span class="s1">&#39;ip&#39;</span>,master_user<span class="o">=</span><span class="s1">&#39;slave&#39;</span>,master_password<span class="o">=</span><span class="s1">&#39;123456&#39;</span>,master_log_file<span class="o">=</span><span class="s1">&#39;mysql-bin.000001&#39;</span>,master_log_pos<span class="o">=</span>2463<span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 开启从库</span>
+</span></span><span class="line"><span class="cl">start slave<span class="p">;</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 检查服务器状态</span>
+</span></span><span class="line"><span class="cl">show slave status <span class="se">\G</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 看到Replica has read all relay log; waiting for more updates基本说明配置成功了，已经开始了主从复制。</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -640,12 +574,6 @@ map函数可以直接使用列表生成来替代
 
     <footer class="article-footer">
     
-    <section class="article-tags">
-        
-            <a href="/tags/python/">python</a>
-        
-    </section>
-
 
     
     <section class="article-copyright">
@@ -692,87 +620,6 @@ map函数可以直接使用列表生成来替代
     
 
     
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">相关文章</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/post/lq-py-code-template/">
-        
-        
-            <div class="article-image">
-                <img src="/post/lq-py-code-template/lq-pythonb-code-tp.981aceafbdfb46843ea1aa715404cc97_hubb53abda1444630e51940fb56d9abc2a_1235795_250x150_fill_box_smart1_3.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post 蓝桥杯 Python B组-代码模板"
-                        data-key="lq-py-code-template" 
-                        data-hash="md5-mBrOr737RoQ&#43;oapxVATMlw==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">蓝桥杯 Python B组-代码模板</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/post/lq-pyb-py/">
-        
-        
-            <div class="article-image">
-                <img src="/post/lq-pyb-py/lq-pythonb-py.5ecf16e7e3ffc6107a82e32eff049486_huca73eb8ee7dcacb7d011976895be0ad9_1102979_250x150_fill_box_smart1_3.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post 蓝桥杯 Python B组-Python基础"
-                        data-key="lq-pyb-py" 
-                        data-hash="md5-Xs8W5&#43;P/xhB6guMu/wSUhg==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">蓝桥杯 Python B组-Python基础</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/post/lq-pyb-desc/">
-        
-        
-            <div class="article-image">
-                <img src="/post/lq-pyb-desc/lq-pythonb-desc.158845285cbbd8cf893cbb1d0f32e2f8_hude2b1a583557ec9177d0a415ff708a9e_1273698_250x150_fill_box_smart1_3.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post 蓝桥杯 Python B组-说明"
-                        data-key="lq-pyb-desc" 
-                        data-hash="md5-FYhFKFy72M&#43;JPLsdDzLi&#43;A==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">蓝桥杯 Python B组-说明</h2>
-        </div>
-    </a>
-</article>
-
-            
-        </div>
-    </div>
-</aside>
 
      
     
