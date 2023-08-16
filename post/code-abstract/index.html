@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Python基础语法'>
-<title>蓝桥杯 Python 语法</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='代码抽象小技巧，能有效提升你在公司的不可替代性🐶'>
+<title>代码抽象艺术（bushi</title>
 
-<link rel='canonical' href='https://arturiamu.github.io/post/lq-pyb-py-grammar/'>
+<link rel='canonical' href='https://arturiamu.github.io/post/code-abstract/'>
 
-<link rel="stylesheet" href="/scss/style.min.d178df6d5c165699216ef5116ed00940c92ef1ddf654f82a2b2e5bdb4e4f4ea5.css"><meta property='og:title' content='蓝桥杯 Python 语法'>
-<meta property='og:description' content='Python基础语法'>
-<meta property='og:url' content='https://arturiamu.github.io/post/lq-pyb-py-grammar/'>
+<link rel="stylesheet" href="/scss/style.min.d178df6d5c165699216ef5116ed00940c92ef1ddf654f82a2b2e5bdb4e4f4ea5.css"><meta property='og:title' content='代码抽象艺术（bushi'>
+<meta property='og:description' content='代码抽象小技巧，能有效提升你在公司的不可替代性🐶'>
+<meta property='og:url' content='https://arturiamu.github.io/post/code-abstract/'>
 <meta property='og:site_name' content='木林彪的个人博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='python' /><meta property='article:published_time' content='2023-06-23T14:21:55&#43;08:00'/><meta property='article:modified_time' content='2023-06-23T14:21:55&#43;08:00'/><meta property='og:image' content='https://arturiamu.github.io/post/lq-pyb-py-grammar/lq-pythonb-py-gr.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='啥也不是' /><meta property='article:published_time' content='2023-08-16T11:17:42&#43;08:00'/><meta property='article:modified_time' content='2023-08-16T11:17:42&#43;08:00'/><meta property='og:image' content='https://arturiamu.github.io/post/code-abstract/code-abstract.png' />
 <meta name="twitter:site" content="@ArturiaMu">
-    <meta name="twitter:creator" content="@ArturiaMu"><meta name="twitter:title" content="蓝桥杯 Python 语法">
-<meta name="twitter:description" content="Python基础语法"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://arturiamu.github.io/post/lq-pyb-py-grammar/lq-pythonb-py-gr.png' />
+    <meta name="twitter:creator" content="@ArturiaMu"><meta name="twitter:title" content="代码抽象艺术（bushi">
+<meta name="twitter:description" content="代码抽象小技巧，能有效提升你在公司的不可替代性🐶"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://arturiamu.github.io/post/code-abstract/code-abstract.png' />
     <link rel="shortcut icon" href="/favicon.ico" />
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JJG6TYWNYX"></script>
@@ -322,30 +322,16 @@ if (!doNotTrack) {
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#python创建数组">python创建数组</a>
+    <li><a href="#抽象小技巧">抽象小技巧</a></li>
+    <li><a href="#抽象案例">抽象案例</a>
       <ol>
-        <li><a href="#直接定义法">直接定义法</a></li>
-        <li><a href="#间接定义法">间接定义法</a></li>
-        <li><a href="#列表生成式">列表生成式</a></li>
+        <li><a href="#用位运算代替加法">用位运算代替加法</a></li>
+        <li><a href="#使用i和l组合作为变量名">使用I和l组合作为变量名</a></li>
+        <li><a href="#使用奇怪宏定义">使用奇怪宏定义</a></li>
+        <li><a href="#让人摸不着头脑">让人摸不着头脑</a></li>
       </ol>
     </li>
-    <li><a href="#ascii码与字符相互转换">ASCII码与字符相互转换</a></li>
-    <li><a href="#列表转化为字符串">列表转化为字符串</a></li>
-    <li><a href="#修改字符串某一个字符">修改字符串某一个字符</a>
-      <ol>
-        <li><a href="#转化法">转化法</a></li>
-        <li><a href="#replace函数">replace函数</a></li>
-      </ol>
-    </li>
-    <li><a href="#接收由空格分开的多个数据">接收由空格分开的多个数据</a></li>
-    <li><a href="#同时改变列表中所有元素的类型">同时改变列表中所有元素的类型</a></li>
-    <li><a href="#python索引">Python索引</a>
-      <ol>
-        <li><a href="#逆序">逆序</a></li>
-        <li><a href="#获取末尾元素">获取末尾元素</a></li>
-      </ol>
-    </li>
-    <li><a href="#读取多行">读取多行</a></li>
+    <li><a href="#抽象实践">抽象实践</a></li>
   </ol>
 </nav>
         </div>
@@ -360,13 +346,13 @@ if (!doNotTrack) {
     <article class="has-image main-article">
     <header class="article-header">
         <div class="article-image">
-            <a href="/post/lq-pyb-py-grammar/">
-                <img src="/post/lq-pyb-py-grammar/lq-pythonb-py-gr_hucedda07b5e03d8a074688c65d496c205_1302005_800x0_resize_box_3.png"
-                        srcset="/post/lq-pyb-py-grammar/lq-pythonb-py-gr_hucedda07b5e03d8a074688c65d496c205_1302005_800x0_resize_box_3.png 800w, /post/lq-pyb-py-grammar/lq-pythonb-py-gr_hucedda07b5e03d8a074688c65d496c205_1302005_1600x0_resize_box_3.png 1600w"
+            <a href="/post/code-abstract/">
+                <img src="/post/code-abstract/code-abstract_hub303ba6bb9c1b00fd3b05f1441a0a25f_904422_800x0_resize_box_3.png"
+                        srcset="/post/code-abstract/code-abstract_hub303ba6bb9c1b00fd3b05f1441a0a25f_904422_800x0_resize_box_3.png 800w, /post/code-abstract/code-abstract_hub303ba6bb9c1b00fd3b05f1441a0a25f_904422_1600x0_resize_box_3.png 1600w"
                         width="800" 
-                        height="450" 
+                        height="340" 
                         loading="lazy"
-                        alt="Featured image of post 蓝桥杯 Python 语法" />
+                        alt="Featured image of post 代码抽象艺术（bushi" />
                 
             </a>
         </div>
@@ -374,23 +360,15 @@ if (!doNotTrack) {
 
     <div class="article-details">
     
-    <header class="article-category">
-        
-            <a href="/archives/lq-cup/" style="background-color: #2a9d8f; color: #fff;">
-                蓝桥杯
-            </a>
-        
-    </header>
-    
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/post/lq-pyb-py-grammar/">蓝桥杯 Python 语法</a>
+            <a href="/post/code-abstract/">代码抽象艺术（bushi</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            Python基础语法
+            代码抽象小技巧，能有效提升你在公司的不可替代性🐶
         </h3>
         
     </div>
@@ -411,7 +389,7 @@ if (!doNotTrack) {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2023-06-23 14:21:55 CST</time>
+                <time class="article-time--published">2023-08-16 11:17:42 CST</time>
             </div>
         
 
@@ -441,90 +419,19 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <p><strong>本文从作者CSDN专栏 <a class="link" href="https://blog.csdn.net/qq_43353586/category_11935685.html"  target="_blank" rel="noopener"
-    >蓝桥杯 Python B组</a> 同步</strong></p>
-<p><strong>本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。</strong></p>
-<h2 id="python创建数组">python创建数组</h2>
-<h3 id="直接定义法">直接定义法</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">matrix</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="间接定义法">间接定义法</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">a</span> <span class="o">=</span> <span class="mi">255</span>
-</span></span><span class="line"><span class="cl"><span class="n">li</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">a</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="列表生成式">列表生成式</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">matrix</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
-</span></span><span class="line"><span class="cl"><span class="n">matrix</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="ascii码与字符相互转换">ASCII码与字符相互转换</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1">#以下代码用于实现ASCII码与字符相互转换：</span>
-</span></span><span class="line"><span class="cl"><span class="c1">## 用户输入字符 </span>
-</span></span><span class="line"><span class="cl"><span class="n">c</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&#34;请输入一个字符: &#34;</span><span class="p">)</span>  
-</span></span><span class="line"><span class="cl"><span class="c1">## 用户输入ASCII码，并将输入的数字转为整型 </span>
-</span></span><span class="line"><span class="cl"><span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&#34;请输入一个ASCII码: &#34;</span><span class="p">))</span>   
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span> <span class="n">c</span> <span class="o">+</span> <span class="s2">&#34; 的ASCII 码为&#34;</span><span class="p">,</span> <span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> 
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span> <span class="n">a</span> <span class="p">,</span> <span class="s2">&#34; 对应的字符为&#34;</span><span class="p">,</span> <span class="nb">chr</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">#以上代码输出结果</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#python3 test.py </span>
-</span></span><span class="line"><span class="cl"><span class="c1">#请输入一个字符: a</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#请输入一个ASCII码: 101</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#a 的ASCII 码为 97</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#101  对应的字符为 e</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="列表转化为字符串">列表转化为字符串</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ls</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;1&#34;</span><span class="p">,</span><span class="s2">&#34;2&#34;</span><span class="p">,</span><span class="s2">&#34;3&#34;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ls</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="修改字符串某一个字符">修改字符串某一个字符</h2>
-<p><em><strong>字符串是不可变的，不能直接修改</strong></em></p>
-<h3 id="转化法">转化法</h3>
+    <p>最近偶然刷到了B站UP主 <a class="link" href="https://space.bilibili.com/231911980"  target="_blank" rel="noopener"
+    >Erik_Tse</a> 的视频，了解到了一些<strong>代码抽象艺术</strong>，感觉很有意思，
+所以特地开篇博客总结记录一下，欢迎大家补充~</p>
+<h2 id="抽象小技巧">抽象小技巧</h2>
+<ul>
+<li>使用奇怪的变量名</li>
+<li>滥用宏定义</li>
+<li>简单操作复杂化</li>
+<li>。。。。。。</li>
+</ul>
+<h2 id="抽象案例">抽象案例</h2>
+<h3 id="用位运算代替加法">用位运算代替加法</h3>
+<p><code>a + b = a ^ b + ((a &amp; b) &lt;&lt; 1)</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -534,70 +441,33 @@ if (!doNotTrack) {
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="s2">&#34;abc&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">temp</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">temp</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&#34;d&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">// 计算 x + y
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span><span class="kt">int</span> <span class="n">a</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">a</span><span class="p">)</span> <span class="k">return</span> <span class="n">b</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nf">add</span><span class="p">((</span><span class="n">x</span><span class="o">&amp;</span><span class="n">y</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="o">^</span><span class="n">y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="replace函数">replace函数</h3>
+</div><h3 id="使用i和l组合作为变量名">使用I和l组合作为变量名</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="s2">&#34;abc&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">,</span><span class="s2">&#34;d&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">IIIIIlllllIlIlllIIIIIlllllIlIlll</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">IIIIIlllllIlIlllIIIIIlllllIlIlll</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">IIIIIlllllIlIlll</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="接收由空格分开的多个数据">接收由空格分开的多个数据</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ls</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="同时改变列表中所有元素的类型">同时改变列表中所有元素的类型</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">ls1</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl"><span class="n">ls2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span><span class="n">ls</span><span class="p">))</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="python索引">Python索引</h2>
-<p>python里面的索引的特征是包含起点，但是不包含结束的索引值，-1表示最后一个元素，但是-1是结尾的index，所以含义就是取原始数据的除最后一个元素之外的值</p>
-<h3 id="逆序">逆序</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">li</span> <span class="o">=</span> <span class="n">li</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="获取末尾元素">获取末尾元素</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">a</span> <span class="o">=</span> <span class="n">li</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="读取多行">读取多行</h2>
-<p>使用python的标准输入函数，strip()是取出输入收尾的多余的空格、回车、缩进等等字符，在很多测试用例是必须的
-map函数可以直接使用列表生成来替代
-可以看到，此时可以一直读取输入，直到输入为空。</p>
+</div><h3 id="使用奇怪宏定义">使用奇怪宏定义</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -615,23 +485,196 @@ map函数可以直接使用列表生成来替代
 </span><span class="lnt">13
 </span><span class="lnt">14
 </span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
-</span></span><span class="line"><span class="cl"><span class="k">try</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">        <span class="n">line1</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">line1</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">            <span class="k">break</span>
-</span></span><span class="line"><span class="cl">        <span class="n">line2</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">        <span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">line1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">l</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">line2</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
-</span></span><span class="line"><span class="cl">        <span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">line2</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="k">except</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="k">pass</span>
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define false 1
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define true 0
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define _ int
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define ___ 1
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">_</span> <span class="nf">main</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_</span> <span class="n">llllIlIlllIIIIllIlIl</span><span class="p">;</span><span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">llllIlIlllIIIIllIlIl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_</span> <span class="n">llllIlIlllIlllIlIlllIIIII</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="n">_</span> <span class="n">__</span> <span class="o">=</span> <span class="n">___</span><span class="p">;</span><span class="n">__</span> <span class="o">&lt;=</span> <span class="n">llllIlIlllIIIIllIlIl</span> <span class="o">/</span> <span class="n">__</span><span class="p">;</span><span class="n">__</span> <span class="o">+=</span> <span class="nb">false</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">llllIlIlllIIIIllIlIl</span> <span class="o">%</span> <span class="n">__</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">llllIlIlllIlllIlIlllIIIII</span> <span class="o">+=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">__</span> <span class="o">!=</span> <span class="n">llllIlIlllIIIIllIlIl</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">                <span class="n">llllIlIlllIlllIlIlllIIIII</span> <span class="o">+=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">llllIlIlllIlllIlIlllIIIII</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="让人摸不着头脑">让人摸不着头脑</h3>
+<p>尊嘟假嘟</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define false 1
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define true 0
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">ZDJD</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">O</span><span class="p">(</span><span class="kt">bool</span> <span class="n">x</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">x</span> <span class="o">?</span> <span class="nb">true</span> <span class="o">:</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="n">o</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">mian</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">a</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="nf">O</span><span class="p">(</span><span class="o">*&amp;</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">ans</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">ans</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="抽象实践">抽象实践</h2>
+<p>题目：求数组内偶数个数：</p>
+<p>思路：遍历数组，挨个判断元素是否为偶数</p>
+<p>正常代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">mian</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">a</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">            <span class="n">ans</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">ans</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>抽象代码:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define false 1
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define true 0
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define _ int
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define ___ 0
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">struct</span> <span class="n">ZDJD</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">bool</span> <span class="nf">O</span><span class="p">(</span><span class="kt">bool</span> <span class="n">IIllIIlllIIIIIIllIlIll</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">IIllIIlllIIIIIIllIlIll</span> <span class="o">?</span> <span class="nb">true</span> <span class="o">:</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span><span class="n">o</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">_</span> <span class="nf">mian</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_</span> <span class="n">IIIIIllIIlllllIIIl</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_</span> <span class="n">IIIIIllIIIIIIllIlIlllIIlIlI</span> <span class="o">=</span> <span class="n">___</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(</span><span class="n">_</span> <span class="n">__</span> <span class="o">=</span> <span class="n">___</span><span class="p">;</span><span class="n">__</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span><span class="n">__</span><span class="o">-=</span><span class="mh">0xffffffff</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">o</span><span class="p">.</span><span class="nf">O</span><span class="p">(</span><span class="o">*&amp;</span><span class="p">(</span><span class="n">__</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)[</span><span class="n">__</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">IIIIIllIIIIIIllIlIlllIIlIlI</span><span class="o">-=</span><span class="mh">0xffffffff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">IIIIIllIIIIIIllIlIlllIIlIlI</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -642,7 +685,7 @@ map函数可以直接使用列表生成来替代
     
     <section class="article-tags">
         
-            <a href="/tags/python/">python</a>
+            <a href="/tags/%E5%95%A5%E4%B9%9F%E4%B8%8D%E6%98%AF/">啥也不是</a>
         
     </section>
 
@@ -692,87 +735,6 @@ map函数可以直接使用列表生成来替代
     
 
     
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">相关文章</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/post/lq-py-code-template/">
-        
-        
-            <div class="article-image">
-                <img src="/post/lq-py-code-template/lq-pythonb-code-tp.981aceafbdfb46843ea1aa715404cc97_hubb53abda1444630e51940fb56d9abc2a_1235795_250x150_fill_box_smart1_3.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post 蓝桥杯 Python B组-代码模板"
-                        data-key="lq-py-code-template" 
-                        data-hash="md5-mBrOr737RoQ&#43;oapxVATMlw==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">蓝桥杯 Python B组-代码模板</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/post/lq-pyb-py/">
-        
-        
-            <div class="article-image">
-                <img src="/post/lq-pyb-py/lq-pythonb-py.5ecf16e7e3ffc6107a82e32eff049486_huca73eb8ee7dcacb7d011976895be0ad9_1102979_250x150_fill_box_smart1_3.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post 蓝桥杯 Python B组-Python基础"
-                        data-key="lq-pyb-py" 
-                        data-hash="md5-Xs8W5&#43;P/xhB6guMu/wSUhg==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">蓝桥杯 Python B组-Python基础</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/post/lq-pyb-desc/">
-        
-        
-            <div class="article-image">
-                <img src="/post/lq-pyb-desc/lq-pythonb-desc.158845285cbbd8cf893cbb1d0f32e2f8_hude2b1a583557ec9177d0a415ff708a9e_1273698_250x150_fill_box_smart1_3.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post 蓝桥杯 Python B组-说明"
-                        data-key="lq-pyb-desc" 
-                        data-hash="md5-FYhFKFy72M&#43;JPLsdDzLi&#43;A==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">蓝桥杯 Python B组-说明</h2>
-        </div>
-    </a>
-</article>
-
-            
-        </div>
-    </div>
-</aside>
 
      
     
