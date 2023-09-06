@@ -235,6 +235,23 @@
                 href="https://arturiamu.github.io/en/links/"
                 />
   </url><url>
+    <loc>https://arturiamu.github.io/en/message/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://arturiamu.github.io/message/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://arturiamu.github.io/ja/message/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://arturiamu.github.io/en/message/"
+                />
+  </url><url>
     <loc>https://arturiamu.github.io/en/search/</loc>
     <xhtml:link
                 rel="alternate"
