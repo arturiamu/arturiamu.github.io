@@ -12,7 +12,7 @@
         <pubDate>Wed, 13 Sep 2023 22:37:12 +0800</pubDate>
         
         <guid>https://arturiamu.github.io/post/gin-global-err/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/post/gin-global-err/img.png" alt="Featured image of post gin中间件统一返回结果、处理错误" /&gt;&lt;h2 id=&#34;现状及问题&#34;&gt;现状及问题&lt;/h2&gt;
+        <description>&lt;h2 id=&#34;现状及问题&#34;&gt;现状及问题&lt;/h2&gt;
 &lt;p&gt;在golang开发中我们经常会使用gin作为web框架，gin一直以高性能和简单著称，并且有十分完善的官方文档。然而gin的错误处理却一直以来都被人吐槽，
 正常情况下我们在handler层需要根据service层返回的结果给前端相应的响应内容，如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -476,7 +476,7 @@
         <pubDate>Wed, 16 Aug 2023 11:17:42 +0800</pubDate>
         
         <guid>https://arturiamu.github.io/post/code-abstract/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/post/code-abstract/code-abstract.png" alt="Featured image of post 代码抽象艺术（bushi" /&gt;&lt;p&gt;最近偶然刷到了B站UP主 &lt;a class=&#34;link&#34; href=&#34;https://space.bilibili.com/231911980&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <description>&lt;p&gt;最近偶然刷到了B站UP主 &lt;a class=&#34;link&#34; href=&#34;https://space.bilibili.com/231911980&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Erik_Tse&lt;/a&gt; 的视频，了解到了一些&lt;strong&gt;代码抽象艺术&lt;/strong&gt;，感觉很有意思，
 所以特地开篇博客总结记录一下，欢迎大家补充~&lt;/p&gt;
 &lt;h2 id=&#34;抽象小技巧&#34;&gt;抽象小技巧&lt;/h2&gt;
@@ -742,7 +742,7 @@
         <pubDate>Wed, 09 Aug 2023 16:17:15 +0800</pubDate>
         
         <guid>https://arturiamu.github.io/post/blog-seo/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/post/blog-seo/blog-seo.png" alt="Featured image of post 博客搜索引擎优化 SEO" /&gt;&lt;h2 id=&#34;google&#34;&gt;Google&lt;/h2&gt;
+        <description>&lt;h2 id=&#34;google&#34;&gt;Google&lt;/h2&gt;
 &lt;p&gt;1、添加站点资源&lt;/p&gt;
 &lt;p&gt;打开&lt;a class=&#34;link&#34; href=&#34;https://search.google.com/search-console/sitemaps?resource_id=https%3A%2F%2Fblog.mulinbiao.com%2F&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;google search-console&lt;/a&gt;,
@@ -1288,7 +1288,7 @@
         <pubDate>Fri, 21 Jul 2023 16:48:07 +0800</pubDate>
         
         <guid>https://arturiamu.github.io/post/mysql-cluster-construction/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/post/mysql-cluster-construction/mysql-cluster.png" alt="Featured image of post MySQL主从同步集群搭建" /&gt;&lt;h2 id=&#34;为什么需要搭建集群&#34;&gt;为什么需要搭建集群&lt;/h2&gt;
+        <description>&lt;h2 id=&#34;为什么需要搭建集群&#34;&gt;为什么需要搭建集群&lt;/h2&gt;
 &lt;p&gt;搭建主从同步集群可以实现MySQL数据库的高可用、可扩展和读写分离，提升系统的性能和稳定性。这在对数据库的可靠性、
 并发读写能力和扩展性有较高要求的业务场景中尤为重要。&lt;/p&gt;
 &lt;h2 id=&#34;主从同步原理&#34;&gt;主从同步原理&lt;/h2&gt;
@@ -1439,7 +1439,7 @@
         <pubDate>Fri, 23 Jun 2023 16:37:15 +0800</pubDate>
         
         <guid>https://arturiamu.github.io/post/vue-axios-cors/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/post/vue-axios-cors/vue-axios-cors.jpg" alt="Featured image of post vue axios 跨域问题" /&gt;&lt;p&gt;&lt;strong&gt;本文从作者CSDN &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/article/details/125134439&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/article/details/125134439&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;解决 vue+axios+sprigboot 前后端分离项目 跨域请求资源和获取session不一致问题&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;直接上解决方法&#34;&gt;直接上解决方法&lt;/h2&gt;
 &lt;h3 id=&#34;跨域请求资源问题&#34;&gt;跨域请求资源问题&lt;/h3&gt;
@@ -1629,7 +1629,7 @@
         <pubDate>Fri, 23 Jun 2023 16:28:51 +0800</pubDate>
         
         <guid>https://arturiamu.github.io/post/spring-boot-reject-mapper/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/post/spring-boot-reject-mapper/spring-boot-reject-mapper.png" alt="Featured image of post springboot 普通类自动注入mapper" /&gt;&lt;p&gt;&lt;strong&gt;本文从作者CSDN &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/article/details/125187441&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/article/details/125187441&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;springboot 普通类自动注入mapper&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;解决方法&#34;&gt;解决方法&lt;/h2&gt;
 &lt;p&gt;普通类使用@Component注解修饰，添加本类型静态属性、所需mapper属性，添加init方法，用@PostConstruct注解修饰，方法内初始化以上2个属性：&lt;/p&gt;
@@ -1684,7 +1684,7 @@
         <pubDate>Fri, 23 Jun 2023 14:21:55 +0800</pubDate>
         
         <guid>https://arturiamu.github.io/post/lq-pyb-py-grammar/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/post/lq-pyb-py-grammar/lq-pythonb-py-gr.png" alt="Featured image of post 蓝桥杯 Python 语法" /&gt;&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;python创建数组&#34;&gt;python创建数组&lt;/h2&gt;
@@ -1885,7 +1885,7 @@ map函数可以直接使用列表生成来替代
         <pubDate>Fri, 23 Jun 2023 14:08:55 +0800</pubDate>
         
         <guid>https://arturiamu.github.io/post/lq-py-code-template/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/post/lq-py-code-template/lq-pythonb-code-tp.png" alt="Featured image of post 蓝桥杯 Python B组-代码模板" /&gt;&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;gcd&#34;&gt;gcd&lt;/h2&gt;
@@ -2182,7 +2182,7 @@ map函数可以直接使用列表生成来替代
         <pubDate>Fri, 23 Jun 2023 14:05:35 +0800</pubDate>
         
         <guid>https://arturiamu.github.io/post/lq-pyb-py/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/post/lq-pyb-py/lq-pythonb-py.png" alt="Featured image of post 蓝桥杯 Python B组-Python基础" /&gt;&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;输入输出&#34;&gt;输入输出&lt;/h2&gt;
@@ -2535,7 +2535,7 @@ map函数可以直接使用列表生成来替代
         <pubDate>Fri, 23 Jun 2023 13:17:35 +0800</pubDate>
         
         <guid>https://arturiamu.github.io/post/lq-pyb-desc/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/post/lq-pyb-desc/lq-pythonb-desc.png" alt="Featured image of post 蓝桥杯 Python B组-说明" /&gt;&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+        <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;我参加的是2022年的pythonB组，本来是只打算混混省赛的，可能是今年省赛比较简单，加上运气比较好，混到了国二，排名在1/3左右，说实话挺意外的。&lt;/p&gt;
@@ -2681,7 +2681,7 @@ map函数可以直接使用列表生成来替代
         <pubDate>Sun, 18 Jun 2023 13:14:35 +0800</pubDate>
         
         <guid>https://arturiamu.github.io/post/blog-bug-log/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/post/blog-bug-log/blog-bug-log-home.jpg" alt="Featured image of post 博客bug日志" /&gt;&lt;h2 id=&#34;bug日志&#34;&gt;bug日志&lt;/h2&gt;
+        <description>&lt;h2 id=&#34;bug日志&#34;&gt;bug日志&lt;/h2&gt;
 &lt;h3 id=&#34;2023-06-20-163034&#34;&gt;2023-06-20-16:30:34&lt;/h3&gt;
 &lt;h4 id=&#34;bug描述&#34;&gt;bug描述&lt;/h4&gt;
 &lt;p&gt;博客评论功能不可用，具体表现为：&lt;/p&gt;
@@ -2703,7 +2703,7 @@ map函数可以直接使用列表生成来替代
         <pubDate>Sun, 18 Jun 2023 12:25:48 +0800</pubDate>
         
         <guid>https://arturiamu.github.io/post/blog-description/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/post/blog-description/blog_description_home.webp" alt="Featured image of post 博客说明" /&gt;&lt;h2 id=&#34;前序&#34;&gt;前序&lt;/h2&gt;
+        <description>&lt;h2 id=&#34;前序&#34;&gt;前序&lt;/h2&gt;
 &lt;p&gt;很早之前就很想要开个自己的博客， 但是一直都比较忙（lǎn），趁着临近毕业的空隙，才终于决定抽出时间开始实现。开这个博客的主要目的有如下两个：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;记录生活和思考&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;写博客可以将自己的经验、感悟、思考和见解以文字的形式记录下来，不仅可以帮助自己更好地理清思路和总结经验，也能够与他人分享自己的心路历程。&lt;/p&gt;

@@ -12,7 +12,7 @@
         <pubDate>Wed, 13 Sep 2023 22:37:12 +0800</pubDate>
         
         <guid>https://arturiamu.github.io/post/gin-global-err/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/post/gin-global-err/img.png" alt="Featured image of post gin中间件统一返回结果、处理错误" /&gt;&lt;h2 id=&#34;现状及问题&#34;&gt;现状及问题&lt;/h2&gt;
+        <description>&lt;h2 id=&#34;现状及问题&#34;&gt;现状及问题&lt;/h2&gt;
 &lt;p&gt;在golang开发中我们经常会使用gin作为web框架，gin一直以高性能和简单著称，并且有十分完善的官方文档。然而gin的错误处理却一直以来都被人吐槽，
 正常情况下我们在handler层需要根据service层返回的结果给前端相应的响应内容，如下：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;

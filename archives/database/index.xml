@@ -12,7 +12,7 @@
         <pubDate>Fri, 21 Jul 2023 16:48:07 +0800</pubDate>
         
         <guid>https://arturiamu.github.io/post/mysql-cluster-construction/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/post/mysql-cluster-construction/mysql-cluster.png" alt="Featured image of post MySQL主从同步集群搭建" /&gt;&lt;h2 id=&#34;为什么需要搭建集群&#34;&gt;为什么需要搭建集群&lt;/h2&gt;
+        <description>&lt;h2 id=&#34;为什么需要搭建集群&#34;&gt;为什么需要搭建集群&lt;/h2&gt;
 &lt;p&gt;搭建主从同步集群可以实现MySQL数据库的高可用、可扩展和读写分离，提升系统的性能和稳定性。这在对数据库的可靠性、
 并发读写能力和扩展性有较高要求的业务场景中尤为重要。&lt;/p&gt;
 &lt;h2 id=&#34;主从同步原理&#34;&gt;主从同步原理&lt;/h2&gt;
