@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://arturiamu.github.io/</loc>
-    <lastmod>2023-09-13T22:37:12+08:00</lastmod>
+    <lastmod>2023-09-15T13:47:01+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -20,17 +20,14 @@
                 href="https://arturiamu.github.io/"
                 />
   </url><url>
-    <loc>https://arturiamu.github.io/tags/gin/</loc>
-    <lastmod>2023-09-13T22:37:12+08:00</lastmod>
+    <loc>https://arturiamu.github.io/tags/git/</loc>
+    <lastmod>2023-09-15T13:47:01+08:00</lastmod>
   </url><url>
-    <loc>https://arturiamu.github.io/post/gin-global-err/</loc>
-    <lastmod>2023-09-13T22:37:12+08:00</lastmod>
-  </url><url>
-    <loc>https://arturiamu.github.io/tags/golang/</loc>
-    <lastmod>2023-09-13T22:37:12+08:00</lastmod>
+    <loc>https://arturiamu.github.io/post/gitlab-contributions-to-github/</loc>
+    <lastmod>2023-09-15T13:47:01+08:00</lastmod>
   </url><url>
     <loc>https://arturiamu.github.io/post/</loc>
-    <lastmod>2023-09-13T22:37:12+08:00</lastmod>
+    <lastmod>2023-09-15T13:47:01+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -48,7 +45,7 @@
                 />
   </url><url>
     <loc>https://arturiamu.github.io/tags/</loc>
-    <lastmod>2023-09-13T22:37:12+08:00</lastmod>
+    <lastmod>2023-09-15T13:47:01+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -64,6 +61,15 @@
                 hreflang="zh-cn"
                 href="https://arturiamu.github.io/tags/"
                 />
+  </url><url>
+    <loc>https://arturiamu.github.io/tags/gin/</loc>
+    <lastmod>2023-09-13T22:37:12+08:00</lastmod>
+  </url><url>
+    <loc>https://arturiamu.github.io/post/gin-global-err/</loc>
+    <lastmod>2023-09-13T22:37:12+08:00</lastmod>
+  </url><url>
+    <loc>https://arturiamu.github.io/tags/golang/</loc>
+    <lastmod>2023-09-13T22:37:12+08:00</lastmod>
   </url><url>
     <loc>https://arturiamu.github.io/post/code-abstract/</loc>
     <lastmod>2023-08-16T11:17:42+08:00</lastmod>
