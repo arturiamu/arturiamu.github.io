@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://arturiamu.github.io/en/archives/'>
 
-<link rel="stylesheet" href="/scss/style.min.6bb7d51218625cadea2ff65733e2d66064ef76f9517a4bebbff13733fdd714a5.css"><meta property='og:title' content='Archives'>
+<link rel="stylesheet" href="/scss/style.min.80ee0b693f5c9a750f34abb1d31cc9170cdc83e7e5592be7d8200bb0634e955f.css"><meta property='og:title' content='Archives'>
 <meta property='og:description' content=''>
 <meta property='og:url' content='https://arturiamu.github.io/en/archives/'>
 <meta property='og:site_name' content='arturiamu&#39;s blog'>
@@ -383,40 +383,45 @@ if (!doNotTrack) {
         
         2023 arturiamu&#39;s blog
     </section>
+
+    <section class="count_info">
+        <div>
+            This blog has been running stably for
+            <span id="ds" class="running-days"></span>
+            day,
+            <span id="hs" class="running-days"></span>
+            hours and
+            <span id="ms" class="running-days"></span>
+            minutes
+        </div>
+        <div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            Published 2 articles in total · totaling 0.80 k words
+        </div>
+        <div>
+            <span id="busuanzi_container_site_pv">The total number of visits to this site is<span id="busuanzi_value_site_pv"></span>times</span>
+        </div>
+    </section>
     
-    <section class="powerby">
+    <section class="powerby" style="margin-top: 7px">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
         Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.18.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
     </section>
-
-    
-    <section class="running-time">
-        本博客已稳定运行
-        <span id="runningdays" class="running-days"></span>
-    </section>
-    
-    <section class="totalcount">
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        共发表 2 篇文章 ·
-        总计0.80 k 字
-    </section>
-
-    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 </footer>
 
 
@@ -429,9 +434,9 @@ if (!doNotTrack) {
     let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
     let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-
-    let result = days + " 天 " + hours + " 小时 " + minutes + " 分钟 ";
-    document.getElementById('runningdays').innerHTML = result;
+    document.getElementById('ds').innerHTML = days;
+    document.getElementById('hs').innerHTML = hours;
+    document.getElementById('ms').innerHTML = minutes;
 
 </script>
 

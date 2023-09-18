@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://arturiamu.github.io/tags/blog/'>
 
-<link rel="stylesheet" href="/scss/style.min.6bb7d51218625cadea2ff65733e2d66064ef76f9517a4bebbff13733fdd714a5.css"><meta property='og:title' content='Tag: blog - 木林彪的个人博客'>
+<link rel="stylesheet" href="/scss/style.min.80ee0b693f5c9a750f34abb1d31cc9170cdc83e7e5592be7d8200bb0634e955f.css"><meta property='og:title' content='Tag: blog - 木林彪的个人博客'>
 <meta property='og:description' content='记录和分享生活、交流技术'>
 <meta property='og:url' content='https://arturiamu.github.io/tags/blog/'>
 <meta property='og:site_name' content='木林彪的个人博客'>
@@ -509,64 +509,69 @@ if (!doNotTrack) {
         
         2023 木林彪的个人博客
     </section>
+
+    <section class="count_info">
+        <div>
+            本博客已稳定运行
+            <span id="ds" class="running-days"></span>
+            天
+            <span id="hs" class="running-days"></span>
+            小时
+            <span id="ms" class="running-days"></span>
+            分钟
+        </div>
+        <div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            共发表 14 篇文章 · 总计 34.49 k 字
+        </div>
+        <div>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+        </div>
+    </section>
     
-    <section class="powerby">
+    <section class="powerby" style="margin-top: 7px">
         Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
         主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.18.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
     </section>
-
-    
-    <section class="running-time">
-        本博客已稳定运行
-        <span id="runningdays" class="running-days"></span>
-    </section>
-    
-    <section class="totalcount">
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        共发表 14 篇文章 ·
-        总计34.49 k 字
-    </section>
-
-    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
 </footer>
 
 
@@ -579,9 +584,9 @@ if (!doNotTrack) {
     let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
     let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-
-    let result = days + " 天 " + hours + " 小时 " + minutes + " 分钟 ";
-    document.getElementById('runningdays').innerHTML = result;
+    document.getElementById('ds').innerHTML = days;
+    document.getElementById('hs').innerHTML = hours;
+    document.getElementById('ms').innerHTML = minutes;
 
 </script>
 
