@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Pages on 木林彪的个人博客</title>
+        <link>https://arturiamu.github.io/page/</link>
+        <description>Recent content in Pages on 木林彪的个人博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Wed, 21 Jun 2023 10:35:25 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>关于</title>
+        <link>https://arturiamu.github.io/about/</link>
+        <pubDate>Wed, 21 Jun 2023 10:35:25 +0800</pubDate>
+        
+        <guid>https://arturiamu.github.io/about/</guid>
+        <description>&lt;img src="https://arturiamu.github.io/about/a.png" alt="Featured image of post 关于" /&gt;&lt;h2 id=&#34;关于作者&#34;&gt;关于作者&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;arturiamu 木林彪&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;昆明理工大学软件工程专业本科生&lt;/p&gt;
+&lt;p&gt;IT从业者&lt;/p&gt;
+&lt;h3 id=&#34;技术栈&#34;&gt;技术栈&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Golang&lt;/li&gt;
+&lt;li&gt;Java&lt;/li&gt;
+&lt;li&gt;Vue&lt;/li&gt;
+&lt;li&gt;Database&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;工作经历&#34;&gt;工作经历&lt;/h3&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;时间&lt;/th&gt;
+&lt;th&gt;公司&lt;/th&gt;
+&lt;th&gt;职位&lt;/th&gt;
+&lt;th&gt;技术栈&lt;/th&gt;
+&lt;th&gt;备注&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2022.08-2022.12&lt;/td&gt;
+&lt;td&gt;上海哔哩哔哩&lt;/td&gt;
+&lt;td&gt;测试开发&lt;/td&gt;
+&lt;td&gt;go,gorm&lt;/td&gt;
+&lt;td&gt;实习&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2023.02-2023.06&lt;/td&gt;
+&lt;td&gt;上海七牛云&lt;/td&gt;
+&lt;td&gt;后端开发&lt;/td&gt;
+&lt;td&gt;go,kubernetes,kubevirt,sms&lt;/td&gt;
+&lt;td&gt;实习&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;2023.07-至今&lt;/td&gt;
+&lt;td&gt;北京知乎&lt;/td&gt;
+&lt;td&gt;后端开发&lt;/td&gt;
+&lt;td&gt;go,kubernetes,TiDB&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 id=&#34;联系方式&#34;&gt;联系方式&lt;/h3&gt;
+&lt;p&gt;邮箱&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;mailto:arturiamumu@gmail.com&#34; &gt;arturiamumu@gmail.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;mailto:1743089727@qq.com&#34; &gt;1743089727@qq.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;mailto:mlbwork@163.com&#34; &gt;mlbwork@163.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;关于此网站&#34;&gt;关于此网站&lt;/h2&gt;
+&lt;p&gt;此网站是作者本人的个人网站&lt;/p&gt;
+&lt;p&gt;此网站主要用于记录作者学习和工作过程中的一些问题&lt;/p&gt;
+&lt;p&gt;此网站使用Hugo+GitHub Pages搭建&lt;/p&gt;
+&lt;p&gt;此网站基于&lt;a class=&#34;link&#34; href=&#34;https://jimmycai.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Jimmy Cai&lt;/a&gt;发布的Hugo主题 &lt;a class=&#34;link&#34; href=&#34;https://github.com/CaiJimmy/hugo-theme-stack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;stack&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;关于hugo&#34;&gt;关于Hugo&lt;/h3&gt;
+&lt;p&gt;Hugo是用Go语言编写的一个静态网站生成器，使用Apache 2.0开源协议&lt;/p&gt;
+&lt;p&gt;Hugo支持TOML/YAML/JSON三种格式的配置文件&lt;/p&gt;
+&lt;p&gt;Hugo支持Markdown和HTML格式的页面，也支持使用短代码丰富页面内容&lt;/p&gt;
+&lt;p&gt;Hugo原生支持多语言、页面分类、图片处理等&lt;/p&gt;
+&lt;p&gt;Hugo生成网站的速度非常快，可以快速部署到私人服务器、商业服务器、GitHub Pages、Netlify等&lt;/p&gt;
+&lt;p&gt;官方主页 &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;hugo.io&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;GitHub主页 &lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio/hugo&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/gohugoio/hugo&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;关于stack主题&#34;&gt;关于stack主题&lt;/h3&gt;
+&lt;p&gt;由 &lt;a class=&#34;link&#34; href=&#34;https://jimmycai.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Jimmy Cai&lt;/a&gt; 开发&lt;/p&gt;
+&lt;p&gt;hugo-theme-stack项目的GitHub主页 &lt;a class=&#34;link&#34; href=&#34;https://github.com/CaiJimmy/hugo-theme-stack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/CaiJimmy/hugo-theme-stack&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;遵循开源协议GPL v3.0&lt;/p&gt;
+&lt;p&gt;主题示例 &lt;a class=&#34;link&#34; href=&#34;https://demo.stack.jimmycai.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://demo.stack.jimmycai.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;主要特色功能包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;暗色模式&lt;/li&gt;
+&lt;li&gt;站内搜索&lt;/li&gt;
+&lt;li&gt;自动归档&lt;/li&gt;
+&lt;li&gt;图片灯箱&lt;/li&gt;
+&lt;li&gt;标签云&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>归档</title>
+        <link>https://arturiamu.github.io/archives/</link>
+        <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
+        
+        <guid>https://arturiamu.github.io/archives/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>链接</title>
+        <link>https://arturiamu.github.io/links/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://arturiamu.github.io/links/</guid>
+        <description>&lt;img src="https://arturiamu.github.io/links/l.png" alt="Featured image of post 链接" /&gt;</description>
+        </item>
+        <item>
+        <title>留言</title>
+        <link>https://arturiamu.github.io/message/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://arturiamu.github.io/message/</guid>
+        <description>&lt;h2 id=&#34;畅所欲言&#34;&gt;畅所欲言&lt;/h2&gt;
+</description>
+        </item>
+        <item>
+        <title>搜索</title>
+        <link>https://arturiamu.github.io/search/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://arturiamu.github.io/search/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

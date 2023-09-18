@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>bug on ムー・リンビアオの個人ブログ</title>
+        <link>https://arturiamu.github.io/ja/tags/bug/</link>
+        <description>Recent content in bug on ムー・リンビアオの個人ブログ</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>ja</language>
+        <lastBuildDate>Sun, 18 Jun 2023 13:14:35 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/ja/tags/bug/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>ブログのバグログ</title>
+        <link>https://arturiamu.github.io/ja/post/blog-bug-log/</link>
+        <pubDate>Sun, 18 Jun 2023 13:14:35 +0800</pubDate>
+        
+        <guid>https://arturiamu.github.io/ja/post/blog-bug-log/</guid>
+        <description>&lt;h2 id=&#34;バグログ&#34;&gt;バグログ&lt;/h2&gt;
+&lt;h3 id=&#34;2023-06-20-163034&#34;&gt;2023-06-20 16:30:34&lt;/h3&gt;
+&lt;h4 id=&#34;バグの説明&#34;&gt;バグの説明&lt;/h4&gt;
+&lt;p&gt;ブログのコメント機能は、次の方法では使用できません：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ブログの最後にあるコメントには、「コメントに関連する問題が見つかりません。xxx初期化に連絡して作成してください」という言葉が表示されます&lt;/li&gt;
+&lt;li&gt;「GitHubでログイン」をクリックしてブログに戻ります&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;ソースをたどる&#34;&gt;ソースをたどる&lt;/h4&gt;
+&lt;p&gt;Googleは、ブログのURIが長すぎる可能性があることを発見し、トラブルシューティングの結果、問題の原因ではないことがわかりました&lt;/p&gt;
+&lt;p&gt;観察の結果、ページがジャンプした後、アドレスバーのURLに間違ったパラメータ「error=redirect_urixxx」やその他の単語が含まれていることが判明し、GitHubコールバックエラーと推測されます。&lt;/p&gt;
+&lt;p&gt;トラブルシューティングの結果、&lt;code&gt;blog.mulinbiao.com&lt;/code&gt; ドメイン名が以前にバインドされていたため、&lt;code&gt;GitHub OAuth&lt;/code&gt; 用に構成された &lt;code&gt;callback&lt;/code&gt; が更新されなかったことがわかりました。&lt;/p&gt;
+&lt;h4 id=&#34;バグ修正&#34;&gt;バグ修正&lt;/h4&gt;
+&lt;p&gt;GitHub settings -&amp;gt; developer settings -&amp;gt; OAuth Apps、アプリによって構成された&lt;code&gt;Homepage URL&lt;/code&gt; と &lt;code&gt;Authorization callback URL&lt;/code&gt;を &lt;code&gt;https://blog.mulinbiao.com/&lt;/code&gt; に変更します&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

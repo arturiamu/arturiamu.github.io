@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>bug on 木林彪的个人博客</title>
+        <link>https://arturiamu.github.io/tags/bug/</link>
+        <description>Recent content in bug on 木林彪的个人博客</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <lastBuildDate>Sun, 18 Jun 2023 13:14:35 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/tags/bug/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>博客bug日志</title>
+        <link>https://arturiamu.github.io/post/blog-bug-log/</link>
+        <pubDate>Sun, 18 Jun 2023 13:14:35 +0800</pubDate>
+        
+        <guid>https://arturiamu.github.io/post/blog-bug-log/</guid>
+        <description>&lt;h2 id=&#34;bug日志&#34;&gt;bug日志&lt;/h2&gt;
+&lt;h3 id=&#34;2023-06-20-163034&#34;&gt;2023-06-20-16:30:34&lt;/h3&gt;
+&lt;h4 id=&#34;bug描述&#34;&gt;bug描述&lt;/h4&gt;
+&lt;p&gt;博客评论功能不可用，具体表现为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;博客末评论处尾显示&amp;quot;未找到相关的 Issues 进行评论，请联系xxx初始化创建&amp;quot;字样&lt;/li&gt;
+&lt;li&gt;点击&amp;quot;使用GitHub登录&amp;quot;后跳转回该博客，无其他反应&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;bug溯源&#34;&gt;bug溯源&lt;/h4&gt;
+&lt;p&gt;Google查到可能是博客uri过长，经排查后发现并不是该问题导致&lt;/p&gt;
+&lt;p&gt;观察后发现页面跳转时候地址栏网址后带了错误参数&amp;quot;error=redirect_urixxx&amp;quot;等字样，推测是GitHub回调错误。&lt;/p&gt;
+&lt;p&gt;排查后发现是由于之前绑定了 &lt;code&gt;blog.mulinbiao.com&lt;/code&gt; 域名，未更新&lt;code&gt;GitHub OAuth&lt;/code&gt; 配置的 &lt;code&gt;callback&lt;/code&gt; 导致&lt;/p&gt;
+&lt;h4 id=&#34;bug修复&#34;&gt;bug修复&lt;/h4&gt;
+&lt;p&gt;打开GitHub settings -&amp;gt; developer settings -&amp;gt; OAuth Apps，将APP配置的 &lt;code&gt;Homepage URL&lt;/code&gt; 和 &lt;code&gt;Authorization callback URL&lt;/code&gt; 改为 &lt;code&gt;https://blog.mulinbiao.com/&lt;/code&gt; 即可&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Categories on ムー・リンビアオの個人ブログ</title>
+        <link>https://arturiamu.github.io/ja/categories/</link>
+        <description>Recent content in Categories on ムー・リンビアオの個人ブログ</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>ja</language>
+        <lastBuildDate>Sun, 18 Jun 2023 13:14:35 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/ja/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>本站</title>
+        <link>https://arturiamu.github.io/ja/archives/%E6%9C%AC%E7%AB%99/</link>
+        <pubDate>Sun, 18 Jun 2023 13:14:35 +0800</pubDate>
+        
+        <guid>https://arturiamu.github.io/ja/archives/%E6%9C%AC%E7%AB%99/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>
