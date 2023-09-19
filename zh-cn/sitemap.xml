@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://arturiamu.github.io/</loc>
-    <lastmod>2023-09-19T11:35:24+08:00</lastmod>
+    <lastmod>2023-09-19T15:51:30+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -20,8 +20,26 @@
                 href="https://arturiamu.github.io/"
                 />
   </url><url>
+    <loc>https://arturiamu.github.io/tags/bug/</loc>
+    <lastmod>2023-09-19T15:51:30+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://arturiamu.github.io/en/tags/bug/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://arturiamu.github.io/ja/tags/bug/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://arturiamu.github.io/tags/bug/"
+                />
+  </url><url>
     <loc>https://arturiamu.github.io/categories/</loc>
-    <lastmod>2023-09-19T11:35:24+08:00</lastmod>
+    <lastmod>2023-09-19T15:51:30+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -38,14 +56,11 @@
                 href="https://arturiamu.github.io/categories/"
                 />
   </url><url>
-    <loc>https://arturiamu.github.io/tags/gtid/</loc>
-    <lastmod>2023-09-19T11:35:24+08:00</lastmod>
-  </url><url>
-    <loc>https://arturiamu.github.io/tags/mysql/</loc>
-    <lastmod>2023-09-19T11:35:24+08:00</lastmod>
+    <loc>https://arturiamu.github.io/post/stack-beautify/</loc>
+    <lastmod>2023-09-19T15:51:30+08:00</lastmod>
   </url><url>
     <loc>https://arturiamu.github.io/post/</loc>
-    <lastmod>2023-09-19T11:35:24+08:00</lastmod>
+    <lastmod>2023-09-19T15:51:30+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -63,7 +78,7 @@
                 />
   </url><url>
     <loc>https://arturiamu.github.io/tags/</loc>
-    <lastmod>2023-09-19T11:35:24+08:00</lastmod>
+    <lastmod>2023-09-19T15:51:30+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -79,6 +94,30 @@
                 hreflang="zh-cn"
                 href="https://arturiamu.github.io/tags/"
                 />
+  </url><url>
+    <loc>https://arturiamu.github.io/archives/this-site/</loc>
+    <lastmod>2023-09-19T15:51:30+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://arturiamu.github.io/en/archives/%E6%9C%AC%E7%AB%99/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://arturiamu.github.io/ja/archives/%E6%9C%AC%E7%AB%99/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://arturiamu.github.io/archives/this-site/"
+                />
+  </url><url>
+    <loc>https://arturiamu.github.io/tags/gtid/</loc>
+    <lastmod>2023-09-19T11:35:24+08:00</lastmod>
+  </url><url>
+    <loc>https://arturiamu.github.io/tags/mysql/</loc>
+    <lastmod>2023-09-19T11:35:24+08:00</lastmod>
   </url><url>
     <loc>https://arturiamu.github.io/post/mysql-replication-2/</loc>
     <lastmod>2023-09-19T11:35:24+08:00</lastmod>
@@ -112,24 +151,6 @@
   </url><url>
     <loc>https://arturiamu.github.io/tags/seo/</loc>
     <lastmod>2023-08-09T16:17:15+08:00</lastmod>
-  </url><url>
-    <loc>https://arturiamu.github.io/archives/this-site/</loc>
-    <lastmod>2023-08-09T16:17:15+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://arturiamu.github.io/en/archives/%E6%9C%AC%E7%AB%99/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://arturiamu.github.io/ja/archives/%E6%9C%AC%E7%AB%99/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://arturiamu.github.io/archives/this-site/"
-                />
   </url><url>
     <loc>https://arturiamu.github.io/post/blog-seo/</loc>
     <lastmod>2023-08-09T16:17:15+08:00</lastmod>
@@ -207,24 +228,6 @@
                 rel="alternate"
                 hreflang="zh-cn"
                 href="https://arturiamu.github.io/about/"
-                />
-  </url><url>
-    <loc>https://arturiamu.github.io/tags/bug/</loc>
-    <lastmod>2023-06-18T13:14:35+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://arturiamu.github.io/en/tags/bug/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://arturiamu.github.io/ja/tags/bug/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://arturiamu.github.io/tags/bug/"
                 />
   </url><url>
     <loc>https://arturiamu.github.io/post/blog-bug-log/</loc>
