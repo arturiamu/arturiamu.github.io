@@ -1,0 +1,1664 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='详细介绍MySQL复制相关的内容，包括基本概念、复制原理、如何配置不同类型的复制(传统复制)等'>
+<meta name="keywords" content="木林彪, arturiamu, 博客, 木林彪的个人博客, MySQL, MySQL复制, gtid"><title>深入MySQL复制(二)：基于GTID复制 </title>
+
+<link rel='canonical' href='https://arturiamu.github.io/post/mysql-replication-2/'>
+
+<link rel="stylesheet" href="/scss/style.min.80ee0b693f5c9a750f34abb1d31cc9170cdc83e7e5592be7d8200bb0634e955f.css"><meta property='og:title' content='深入MySQL复制(二)：基于GTID复制 '>
+<meta property='og:description' content='详细介绍MySQL复制相关的内容，包括基本概念、复制原理、如何配置不同类型的复制(传统复制)等'>
+<meta property='og:url' content='https://arturiamu.github.io/post/mysql-replication-2/'>
+<meta property='og:site_name' content='木林彪的个人博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='MySQL' /><meta property='article:tag' content='GTID' /><meta property='article:published_time' content='2023-09-19T11:35:24&#43;08:00'/><meta property='article:modified_time' content='2023-09-19T11:35:24&#43;08:00'/>
+<meta name="twitter:site" content="@ArturiaMu">
+    <meta name="twitter:creator" content="@ArturiaMu"><meta name="twitter:title" content="深入MySQL复制(二)：基于GTID复制 ">
+<meta name="twitter:description" content="详细介绍MySQL复制相关的内容，包括基本概念、复制原理、如何配置不同类型的复制(传统复制)等">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JJG6TYWNYX"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-JJG6TYWNYX', { 'anonymize_ip': false });
+}
+</script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar1_hu67b097db30250ef6a2ed6dd217c7d0a7_22735_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">❤️</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">木林彪的个人博客</a></h1>
+            <h2 class="site-description">~Coding my life~</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/arturiamu'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:arturiamumu@gmail.com'
+                        target="_blank"
+                        title="Gmail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-gmail" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+    <path d="M16 20h3a1 1 0 0 0 1 -1v-14a1 1 0 0 0 -1 -1h-3v16z" />
+    <path d="M5 20h3v-16h-3a1 1 0 0 0 -1 1v14a1 1 0 0 0 1 1z" />
+    <path d="M16 4l-4 4l-4 -4" />
+    <path d="M4 6.5l8 7.5l8 -7.5" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/arturiamu'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/message/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M8 9h8" />
+  <path d="M8 13h6" />
+  <path d="M9 18h-3a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-3l-3 3l-3 -3z" />
+</svg>
+
+
+
+                
+                <span>留言</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://arturiamu.github.io/" selected>中文</option>
+                        
+                            <option value="https://arturiamu.github.io/en/" >English</option>
+                        
+                            <option value="https://arturiamu.github.io/ja/" >日本</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#gtid基本概念">gtid基本概念</a></li>
+    <li><a href="#gtid的生命周期">gtid的生命周期</a></li>
+    <li><a href="#基于gtid复制的好处">基于gtid复制的好处</a></li>
+    <li><a href="#配置一主一从的gtid复制">配置一主一从的gtid复制</a></li>
+    <li><a href="#添加新的slave到gtid复制结构中">添加新的slave到gtid复制结构中</a></li>
+    <li><a href="#gtid复制相关的状态信息和变量">GTID复制相关的状态信息和变量</a>
+      <ol>
+        <li><a href="#show-slave-status中和gtid复制相关的状态行"><code>show slave status</code>中和gtid复制相关的状态行</a></li>
+        <li><a href="#binlog中关于gtid的信息">binlog中关于gtid的信息</a></li>
+        <li><a href="#一些重要的变量">一些重要的变量</a></li>
+        <li><a href="#mysqlgtid_executed表">mysql.gtid_executed表</a></li>
+      </ol>
+    </li>
+    <li><a href="#一张图说明gtid复制">一张图说明GTID复制</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">标签云</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/python/" class="font_size_3">
+                python
+            </a>
+        
+            <a href="/tags/mysql/" class="font_size_2">
+                MySQL
+            </a>
+        
+            <a href="/tags/blog/" class="font_size_1">
+                blog
+            </a>
+        
+            <a href="/tags/bug/" class="font_size_1">
+                bug
+            </a>
+        
+            <a href="/tags/gin/" class="font_size_1">
+                gin
+            </a>
+        
+            <a href="/tags/git/" class="font_size_1">
+                git
+            </a>
+        
+            <a href="/tags/golang/" class="font_size_1">
+                golang
+            </a>
+        
+            <a href="/tags/gtid/" class="font_size_1">
+                GTID
+            </a>
+        
+            <a href="/tags/java/" class="font_size_1">
+                java
+            </a>
+        
+            <a href="/tags/seo/" class="font_size_1">
+                seo
+            </a>
+        
+    </div>
+</section>
+            
+        
+        <div style="height: 30%;width: 30%">
+            <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=4gAmsOskyL921TwxZGdrq3NbkFu-hJm8dDfoHJsn25Q"></script>
+        </div>
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/archives/database/" style="background-color: #2a9d8f; color: #fff;">
+                数据库
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/mysql-replication-2/">深入MySQL复制(二)：基于GTID复制 </a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            详细介绍MySQL复制相关的内容，包括基本概念、复制原理、如何配置不同类型的复制(传统复制)等
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2023-09-19 11:35:24 CST</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 16 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p><strong>本文转载自 <a class="link" href="https://www.cnblogs.com/f-ck-need-u/p/9164823.html"  target="_blank" rel="noopener"
+    >深入MySQL复制(二)</a></strong></p>
+<p>相比传统的MySQL复制，gtid复制无论是配置还是维护都要轻松的多。本文对gtid复制稍作介绍。</p>
+<p>MySQL基于GTID复制官方手册：<a class="link" href="https://dev.mysql.com/doc/refman/5.7/en/replication-gtids.html"  target="_blank" rel="noopener"
+    >https://dev.mysql.com/doc/refman/5.7/en/replication-gtids.html</a></p>
+<h2 id="gtid基本概念">gtid基本概念</h2>
+<p>传统的基于binlog position复制的方式有个严重的缺点：如果slave连接master时指定的binlog文件错误或者position错误，会造成遗漏或者重复，很多时候前后数据是有依赖性的，这样就会出错而导致数据不一致。</p>
+<p>从MYSQL5.6开始，mysql开始支持GTID复制。GTID的全称是global transaction id，表示的是全局事务ID。GTID的分配方式为<code>uuid:trans_id</code>，其中：</p>
+<ul>
+<li><code>uuid</code>是每个mysql服务器都唯一的，记录在<code>$datadir/auto.cnf</code>中。如果复制结构中，任意两台服务器uuid重复的话(比如直接冷备份时，auto.conf中的内容是一致的)，在启动复制功能的时候会报错。这时可以删除auto.conf文件再重启mysqld。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mysql&gt; show variables like <span class="s2">&#34;%uuid%&#34;</span><span class="p">;</span>       
+</span></span><span class="line"><span class="cl">+---------------+--------------------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Variable_name <span class="p">|</span> Value                                <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+---------------+--------------------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> server_uuid   <span class="p">|</span> a126fcb6-3706-11e8-b1d5-000c294ebf0d <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+---------------+--------------------------------------+
+</span></span><span class="line"><span class="cl"><span class="m">1</span> row in <span class="nb">set</span> <span class="o">(</span>0.00 sec<span class="o">)</span>
+</span></span><span class="line"><span class="cl">　
+</span></span><span class="line"><span class="cl">mysql&gt; <span class="se">\!</span> cat /data/auto.cnf
+</span></span><span class="line"><span class="cl"><span class="o">[</span>auto<span class="o">]</span>
+</span></span><span class="line"><span class="cl">server-uuid<span class="o">=</span>a126fcb6-3706-11e8-b1d5-000c294ebf0d
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>trans_id</code>是事务ID，可以唯一标记某MySQL服务器上执行的某个事务。事务号从1开始，每提交一个事务，事务号加1。</li>
+</ul>
+<p>例如&quot;gtid_executed 5ad9cb8e-2092-11e7-ac95-000c29bf823d:1-6&quot;，表示该server_uuid上执行了从1到6的事务。</p>
+<h2 id="gtid的生命周期">gtid的生命周期</h2>
+<p><strong>gtid的生命周期对于配置和维护基于gtid的复制至关重要。</strong> 所以，请尽可能理解以下几个过程。</p>
+<p>gtid在master和slave上是一直<strong>持久化保存</strong>(即使删除了日志，也会记录到Previous_GTID中)的。它在master和slave上的生命周期如下：</p>
+<p>1、客户端发送DDL/DML给master上，master首先对此事务生成一个唯一的gtid，假如为<code>uuid_xxx:1</code>，然后立即执行该事务中的操作。</p>
+<p>注意，主从复制的情况下，sync-binlog基本上都会设置为1，这表示在每次提交事务时将缓存中的binlog刷盘。所以，在事务提交前，gtid以及事务相关操作的信息都在缓存中，提交后它们才写入到binlog file中，然后才会被dump线程dump出去。</p>
+<p>换句话说，<strong>只有提交了的事务，gtid和对应的事务操作才会记录到binlog文件中。记录的格式是先记录gtid，紧跟着再记录事务相关的操作。</strong></p>
+<p>2、当binlog传送到relay log中后，slave上的SQL线程首先读取该gtid，并设置变量 gtid_next 的值为该gtid，表示下一个要操作的事务是该gtid。 gtid_next 是<strong>基于会话的，不同会话的gtid_next不同。</strong></p>
+<p>3、随后slave检测该gtid在自己的binlog中是否存在。如果存在，则放弃此gtid事务；如果不存在，则将此gtid写入到自己的binlog中，然后立刻执行该事务，并在自己的binlog中记录该事务相关的操作。</p>
+<p>注意，<strong>slave上replay的时候，gtid不是提交后才写到自己的binlog file的，而是判断gtid不存在后立即写入binlog file。</strong></p>
+<p>通过这种在执行事务前先检查并写gtid到binlog的机制，不仅可以保证当前会话在此之前没有执行过该事务，还能保证没有其他会话读取了该gtid却没有提交。因为如果其他会话读取了该gtid会立即写入到binlog(不管是否已经开始执行事务)，所以当前会话总能读取到binlog中的该gtid，于是当前会话就会放弃该事务。总之，一个gtid事务是决不允许多次执行、多个会话并行执行的。</p>
+<p>4、slave在重放relay log中的事务时，不会自己生成gtid，所以所有的slave(无论是何种方式的一主一从或一主多从复制架构)通过重放relay log中事务获取的gtid都来源于master，并永久保存在slave上。</p>
+<h2 id="基于gtid复制的好处">基于gtid复制的好处</h2>
+<p>从上面可以看出，gtid复制的优点大致有：</p>
+<ol>
+<li><strong>保证同一个事务在某slave上绝对只执行一次，没有执行过的gtid事务总是会被执行。</strong></li>
+<li><strong>不用像传统复制那样保证binlog的坐标准确，因为根本不需要binlog以及坐标。</strong></li>
+<li><strong>故障转移到新的master的时候很方便，简化了很多任务。</strong></li>
+<li><strong>很容易判断master和slave的数据是否一致。只要master上提交的事务在slave上也提交了，那么一定是一致的。</strong></li>
+</ol>
+<p>当然，MySQL提供了选项可以控制跳过某些gtid事务，防止slave第一次启动复制时执行master上的所有事务而导致耗时过久。</p>
+<p>虽然对于row-based和statement-based的格式都能进行gtid复制，但建议采用row-based格式。</p>
+<h2 id="配置一主一从的gtid复制">配置一主一从的gtid复制</h2>
+<p>环境：</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>主机IP</th>
+<th>OS版本</th>
+<th>MySQL版本</th>
+<th>角色（master/slave)</th>
+<th>数据状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.100.21</td>
+<td>centos 7</td>
+<td>MySQL 5.7.22</td>
+<td>master_gtid</td>
+<td>全新实例</td>
+</tr>
+<tr>
+<td>192.168.100.22</td>
+<td>centos 7</td>
+<td>MySQL 5.7.22</td>
+<td>slave1_gtid</td>
+<td>全新实例</td>
+</tr>
+</tbody>
+</table></div>
+<p>因为是用作master和slave的mysql实例都是全新环境，所以这里简单配置一下即可。</p>
+<p>master的配置文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[mysqld]</span>
+</span></span><span class="line"><span class="cl"><span class="na">datadir</span><span class="o">=</span><span class="s">/data</span>
+</span></span><span class="line"><span class="cl"><span class="na">socket</span><span class="o">=</span><span class="s">/data/mysql.sock</span>
+</span></span><span class="line"><span class="cl"><span class="na">log-bin</span><span class="o">=</span><span class="s">/data/master-bin      # 必须项</span>
+</span></span><span class="line"><span class="cl"><span class="na">sync-binlog</span><span class="o">=</span><span class="s">1                 # 建议项</span>
+</span></span><span class="line"><span class="cl"><span class="na">binlog_format</span><span class="o">=</span><span class="s">row             # 建议项</span>
+</span></span><span class="line"><span class="cl"><span class="na">server-id</span><span class="o">=</span><span class="s">100                 # 必须项</span>
+</span></span><span class="line"><span class="cl"><span class="na">log-error</span><span class="o">=</span><span class="s">/data/error.log</span>
+</span></span><span class="line"><span class="cl"><span class="na">pid-file</span><span class="o">=</span><span class="s">/data/mysqld.pid</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="na">enforce_gtid_consistency</span><span class="o">=</span><span class="s">on   # gtid复制需要加上的必须项</span>
+</span></span><span class="line"><span class="cl"><span class="na">gtid_mode</span><span class="o">=</span><span class="s">on                  # gtid复制需要加上的必须项</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>关于后面的两项，是gtid复制所必须开启的项，这里指定它开启就行了，它们的意义以及更多gtid相关的选项见后文解释。</p>
+<p>slave的配置文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[mysqld]</span>
+</span></span><span class="line"><span class="cl"><span class="na">datadir</span><span class="o">=</span><span class="s">/data</span>
+</span></span><span class="line"><span class="cl"><span class="na">socket</span><span class="o">=</span><span class="s">/data/mysql.sock</span>
+</span></span><span class="line"><span class="cl"><span class="na">log-bin</span><span class="o">=</span><span class="s">/data/master-slave-bin    # mysql 5.6必须项，mysql 5.7非必须项</span>
+</span></span><span class="line"><span class="cl"><span class="na">sync-binlog</span><span class="o">=</span><span class="s">1                     # 建议项</span>
+</span></span><span class="line"><span class="cl"><span class="na">binlog_format</span><span class="o">=</span><span class="s">row                 # 建议项</span>
+</span></span><span class="line"><span class="cl"><span class="na">relay-log</span><span class="o">=</span><span class="s">/data/slave-bin         # 必须项</span>
+</span></span><span class="line"><span class="cl"><span class="na">server-id</span><span class="o">=</span><span class="s">110                     # 必须项</span>
+</span></span><span class="line"><span class="cl"><span class="na">log-error</span><span class="o">=</span><span class="s">/data/error.log</span>
+</span></span><span class="line"><span class="cl"><span class="na">pid-file</span><span class="o">=</span><span class="s">/data/mysqld.pid</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="na">enforce_gtid_consistency</span><span class="o">=</span><span class="s">on       # 必须项</span>
+</span></span><span class="line"><span class="cl"><span class="na">gtid_mode</span><span class="o">=</span><span class="s">on                      # 必须项</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我的环境是mysql 5.7，如果是mysql 5.6，那么在上面两个配置文件中需要加上<code>log-slave-updates</code>选项。</p>
+<p>重启master和slave后，在master上创建一个用于复制的用户<code>repl</code>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># master上执行</span>
+</span></span><span class="line"><span class="cl">mysql&gt; grant replication slave on *.* to repl@<span class="s1">&#39;192.168.100.%&#39;</span> identified by <span class="s1">&#39;P@ssword1!&#39;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>因为master上的binlog没有删除过，所以在slave上直接<code>change master to</code>配置连接参数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># slave上执行</span>
+</span></span><span class="line"><span class="cl">mysql&gt; change master to 
+</span></span><span class="line"><span class="cl">        <span class="nv">master_host</span><span class="o">=</span><span class="s1">&#39;192.168.100.21&#39;</span>,
+</span></span><span class="line"><span class="cl">        <span class="nv">master_port</span><span class="o">=</span>3306,
+</span></span><span class="line"><span class="cl">        <span class="nv">master_auto_position</span><span class="o">=</span>1<span class="p">;</span>    <span class="c1"># gtid复制必须设置此项</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>因为是MySQL 5.7，没有在<code>change master to</code>语句中加入user和password项，而是在<code>start slave</code>语句中使用，否则会警告。</p>
+<p>现在启动slave上的两个复制线程。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># slave上执行</span>
+</span></span><span class="line"><span class="cl">mysql&gt; start slave <span class="nv">user</span><span class="o">=</span><span class="s1">&#39;repl&#39;</span> <span class="nv">password</span><span class="o">=</span><span class="s1">&#39;P@ssword1!&#39;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看io线程和sql线程是否正常。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># slave上执行，为了排版，缩减了一些无关紧要的字段</span>
+</span></span><span class="line"><span class="cl">mysql&gt; show processlist<span class="p">;</span>
+</span></span><span class="line"><span class="cl">+----+-------------+---------+--------------------------------------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Id <span class="p">|</span> User        <span class="p">|</span> Command <span class="p">|</span> State                                                  <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+----+-------------+---------+--------------------------------------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span>  <span class="m">9</span> <span class="p">|</span> root        <span class="p">|</span> Query   <span class="p">|</span> starting                                               <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> <span class="m">10</span> <span class="p">|</span> system user <span class="p">|</span> Connect <span class="p">|</span> Waiting <span class="k">for</span> master to send event                       <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> <span class="m">11</span> <span class="p">|</span> system user <span class="p">|</span> Connect <span class="p">|</span> Slave has <span class="nb">read</span> all relay log<span class="p">;</span> waiting <span class="k">for</span> more updates <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+----+-------------+---------+--------------------------------------------------------+
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后验证gtid复制是否生效。</p>
+<p>在master上插入一些数据。这里使用<a class="link" href="https://arturiamu.github.io/post/mysql-replication-1"  target="_blank" rel="noopener"
+    >上一篇文章</a>中使用的存储过程<code>proc_num1</code>和<code>proc_num2</code>分别向数值辅助表<code>backup.num_isam</code>和<code>backup.num_innodb</code>中插入一些数据，该存储过程的代码见：<a class="link" href="https://www.cnblogs.com/f-ck-need-u/p/9155003.html#blognum"  target="_blank" rel="noopener"
+    >https://www.cnblogs.com/f-ck-need-u/p/9155003.html#blognum</a>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 向MyISAM数值辅助表backup.num_isam插入100W行数据</span>
+</span></span><span class="line"><span class="cl">call proc_num1<span class="o">(</span>1000000<span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 向InnoDB数值辅助表backup.num_innodb插入100W行数据</span>
+</span></span><span class="line"><span class="cl">call proc_num2<span class="o">(</span>1000000<span class="o">)</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在slave上查看slave的状态，以下是同步结束后的状态信息。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># slave上执行：</span>
+</span></span><span class="line"><span class="cl">mysql&gt; show slave status<span class="se">\G</span>
+</span></span><span class="line"><span class="cl">*************************** 1. row ***************************
+</span></span><span class="line"><span class="cl">               Slave_IO_State: Waiting <span class="k">for</span> master to send event
+</span></span><span class="line"><span class="cl">                  Master_Host: 192.168.100.21
+</span></span><span class="line"><span class="cl">                  Master_User: repl
+</span></span><span class="line"><span class="cl">                  Master_Port: <span class="m">3306</span>
+</span></span><span class="line"><span class="cl">                Connect_Retry: <span class="m">60</span>
+</span></span><span class="line"><span class="cl">              Master_Log_File: master-bin.000004
+</span></span><span class="line"><span class="cl">          Read_Master_Log_Pos: <span class="m">10057867</span>
+</span></span><span class="line"><span class="cl">               Relay_Log_File: slave-bin.000003
+</span></span><span class="line"><span class="cl">                Relay_Log_Pos: <span class="m">457</span>
+</span></span><span class="line"><span class="cl">        Relay_Master_Log_File: master-bin.000004
+</span></span><span class="line"><span class="cl">             Slave_IO_Running: Yes
+</span></span><span class="line"><span class="cl">            Slave_SQL_Running: Yes
+</span></span><span class="line"><span class="cl">              Replicate_Do_DB: 
+</span></span><span class="line"><span class="cl">          Replicate_Ignore_DB: 
+</span></span><span class="line"><span class="cl">           Replicate_Do_Table: 
+</span></span><span class="line"><span class="cl">       Replicate_Ignore_Table: 
+</span></span><span class="line"><span class="cl">      Replicate_Wild_Do_Table: 
+</span></span><span class="line"><span class="cl">  Replicate_Wild_Ignore_Table: 
+</span></span><span class="line"><span class="cl">                   Last_Errno: <span class="m">0</span>
+</span></span><span class="line"><span class="cl">                   Last_Error: 
+</span></span><span class="line"><span class="cl">                 Skip_Counter: <span class="m">0</span>
+</span></span><span class="line"><span class="cl">          Exec_Master_Log_Pos: <span class="m">10057867</span>
+</span></span><span class="line"><span class="cl">              Relay_Log_Space: <span class="m">10058586</span>
+</span></span><span class="line"><span class="cl">              Until_Condition: None
+</span></span><span class="line"><span class="cl">               Until_Log_File: 
+</span></span><span class="line"><span class="cl">                Until_Log_Pos: <span class="m">0</span>
+</span></span><span class="line"><span class="cl">           Master_SSL_Allowed: No
+</span></span><span class="line"><span class="cl">           Master_SSL_CA_File: 
+</span></span><span class="line"><span class="cl">           Master_SSL_CA_Path: 
+</span></span><span class="line"><span class="cl">              Master_SSL_Cert: 
+</span></span><span class="line"><span class="cl">            Master_SSL_Cipher: 
+</span></span><span class="line"><span class="cl">               Master_SSL_Key: 
+</span></span><span class="line"><span class="cl">        Seconds_Behind_Master: <span class="m">0</span>
+</span></span><span class="line"><span class="cl">Master_SSL_Verify_Server_Cert: No
+</span></span><span class="line"><span class="cl">                Last_IO_Errno: <span class="m">0</span>
+</span></span><span class="line"><span class="cl">                Last_IO_Error: 
+</span></span><span class="line"><span class="cl">               Last_SQL_Errno: <span class="m">0</span>
+</span></span><span class="line"><span class="cl">               Last_SQL_Error: 
+</span></span><span class="line"><span class="cl">  Replicate_Ignore_Server_Ids: 
+</span></span><span class="line"><span class="cl">             Master_Server_Id: <span class="m">100</span>
+</span></span><span class="line"><span class="cl">                  Master_UUID: a659234f-6aea-11e8-a361-000c29ed4cf4
+</span></span><span class="line"><span class="cl">             Master_Info_File: /data/master.info
+</span></span><span class="line"><span class="cl">                    SQL_Delay: <span class="m">0</span>
+</span></span><span class="line"><span class="cl">          SQL_Remaining_Delay: NULL
+</span></span><span class="line"><span class="cl">      Slave_SQL_Running_State: Slave has <span class="nb">read</span> all relay log<span class="p">;</span> waiting <span class="k">for</span> more updates
+</span></span><span class="line"><span class="cl">           Master_Retry_Count: <span class="m">86400</span>
+</span></span><span class="line"><span class="cl">                  Master_Bind: 
+</span></span><span class="line"><span class="cl">      Last_IO_Error_Timestamp: 
+</span></span><span class="line"><span class="cl">     Last_SQL_Error_Timestamp: 
+</span></span><span class="line"><span class="cl">               Master_SSL_Crl: 
+</span></span><span class="line"><span class="cl">           Master_SSL_Crlpath: 
+</span></span><span class="line"><span class="cl">           Retrieved_Gtid_Set: a659234f-6aea-11e8-a361-000c29ed4cf4:1-54
+</span></span><span class="line"><span class="cl">            Executed_Gtid_Set: a659234f-6aea-11e8-a361-000c29ed4cf4:1-54
+</span></span><span class="line"><span class="cl">                Auto_Position: <span class="m">1</span>
+</span></span><span class="line"><span class="cl">         Replicate_Rewrite_DB: 
+</span></span><span class="line"><span class="cl">                 Channel_Name: 
+</span></span><span class="line"><span class="cl">           Master_TLS_Version:
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="添加新的slave到gtid复制结构中">添加新的slave到gtid复制结构中</h2>
+<p>GTID复制是基于事务ID的，确切地说是binlog中的GTID，所以事务ID对GTID复制来说是命脉。</p>
+<p>当master没有删除过任何binlog时，可以随意地向复制结构中添加新的slave，因为slave会复制所有的binlog到自己relay log中并replay。这样的操作尽管可能速度不佳，但胜在操作极其简便。</p>
+<p>当master删除过一部分binlog后，在向复制结构中添加新的slave时，必须先获取到master binlog中当前已记录的第一个gtid之前的所有数据，然后恢复到slave上。只有slave上具有了这部分基准数据，才能保证和master的数据一致性。</p>
+<p>而在实际环境中，往往会定期删除一部分binlog。所以，为了配置更通用的gtid复制环境，这里把前文的master的binlog给purge掉一部分。</p>
+<p>目前master上的binlog使用情况如下，不难发现绝大多数操作都集中在<code>master-bin.000004</code>这个binlog中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@xuexi ~<span class="o">]</span><span class="c1"># ls -l /data/*bin*</span>
+</span></span><span class="line"><span class="cl">-rw-r----- <span class="m">1</span> mysql mysql      <span class="m">177</span> Jun  <span class="m">8</span> 15:07 /data/master-bin.000001
+</span></span><span class="line"><span class="cl">-rw-r----- <span class="m">1</span> mysql mysql      <span class="m">727</span> Jun  <span class="m">8</span> 15:42 /data/master-bin.000002
+</span></span><span class="line"><span class="cl">-rw-r----- <span class="m">1</span> mysql mysql      <span class="m">177</span> Jun  <span class="m">9</span> 09:50 /data/master-bin.000003
+</span></span><span class="line"><span class="cl">-rw-r----- <span class="m">1</span> mysql mysql <span class="m">10057867</span> Jun  <span class="m">9</span> 10:17 /data/master-bin.000004
+</span></span><span class="line"><span class="cl">-rw-r----- <span class="m">1</span> mysql mysql       <span class="m">96</span> Jun  <span class="m">9</span> 09:50 /data/master-bin.index
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>purge已有的binlog。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mysql&gt; flush logs<span class="p">;</span>
+</span></span><span class="line"><span class="cl">mysql&gt; purge master logs to <span class="s1">&#39;master-bin.000005&#39;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@xuexi ~<span class="o">]</span><span class="c1"># cat /data/master-bin.index </span>
+</span></span><span class="line"><span class="cl">/data/master-bin.000005
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>但无论master是否purge过binlog，配置基于gtid的复制都极其方便，而且方法众多(只要理解了GTID的生命周期，可以随意折腾，基本上都能很轻松地维护好)，这是它&quot;迷人&quot;的优点。</p>
+<p>现在的测试环境是这样的：</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>主机IP</th>
+<th>OS版本</th>
+<th>MySQL版本</th>
+<th>角色（master/slave)</th>
+<th>数据状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192.168.100.21</td>
+<td>centos 7</td>
+<td>MySQL 5.7.22</td>
+<td>master_gtid</td>
+<td>已purge过binlog</td>
+</tr>
+<tr>
+<td>192.168.100.22</td>
+<td>centos 7</td>
+<td>MySQL 5.7.22</td>
+<td>slave1_gtid</td>
+<td>已同步</td>
+</tr>
+<tr>
+<td>192.168.100.23</td>
+<td>centos 7</td>
+<td>MySQL 5.7.22</td>
+<td>slave2_gtid</td>
+<td>全新实例</td>
+</tr>
+</tbody>
+</table></div>
+<p>其中slave2的配置文件和slave1的配置文件完全相同：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ini" data-lang="ini"><span class="line"><span class="cl"><span class="k">[mysqld]</span>
+</span></span><span class="line"><span class="cl"><span class="na">datadir</span><span class="o">=</span><span class="s">/data</span>
+</span></span><span class="line"><span class="cl"><span class="na">socket</span><span class="o">=</span><span class="s">/data/mysql.sock</span>
+</span></span><span class="line"><span class="cl"><span class="na">log-bin</span><span class="o">=</span><span class="s">/data/master-slave-bin    # 必须项</span>
+</span></span><span class="line"><span class="cl"><span class="na">sync-binlog</span><span class="o">=</span><span class="s">1                     # 建议项</span>
+</span></span><span class="line"><span class="cl"><span class="na">binlog_format</span><span class="o">=</span><span class="s">row                 # 建议项</span>
+</span></span><span class="line"><span class="cl"><span class="na">relay-log</span><span class="o">=</span><span class="s">/data/slave-bin         # 必须项</span>
+</span></span><span class="line"><span class="cl"><span class="na">server-id</span><span class="o">=</span><span class="s">110                     # 必须项</span>
+</span></span><span class="line"><span class="cl"><span class="na">log-error</span><span class="o">=</span><span class="s">/data/error.log</span>
+</span></span><span class="line"><span class="cl"><span class="na">pid-file</span><span class="o">=</span><span class="s">/data/mysqld.pid</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="na">enforce_gtid_consistency</span><span class="o">=</span><span class="s">on       # 必须项</span>
+</span></span><span class="line"><span class="cl"><span class="na">gtid_mode</span><span class="o">=</span><span class="s">on                      # 必须项</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>1、备份master。</strong></p>
+<p>我选择的是xtrabackup的innobackupex工具，因为它速度快，操作简单，而且在线备份也比较安全。如果不知道xtrabackup备份的使用方法，见另一篇文章：<a class="link" href="https://www.cnblogs.com/f-ck-need-u/p/9018716.html"  target="_blank" rel="noopener"
+    >xtrabackup用法和原理详述</a>。当然，你也可以采用mysqldump和冷备份的方式，因为gtid复制的特性，这些备份方式也都很安全。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># master上执行，备份所有数据：</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@xuexi ~<span class="o">]</span><span class="c1"># mkdir /backdir   # 备份目录</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@xuexi ~<span class="o">]</span><span class="c1"># innobackupex -uroot -pP@ssword1! -S /data/mysql.sock /backdir/  # 准备数据</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@xuexi ~<span class="o">]</span><span class="c1"># innobackupex --apply-log /backdir/2018-06-09_20-02-24/   # 应用数据</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@xuexi ~<span class="o">]</span><span class="c1"># scp -pr /backdir/2018-06-09_20-02-24/ 192.168.100.23:/tmp</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>2.将备份恢复到slave2。</strong></p>
+<p>在slave2上执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@xuexi ~<span class="o">]</span><span class="c1"># systemctl stop mysqld</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@xuexi ~<span class="o">]</span><span class="c1"># rm -rf /data/*    # 恢复前必须先清空数据目录</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@xuexi ~<span class="o">]</span><span class="c1"># innobackupex --copy-back /tmp/2018-06-09_20-02-24/  # 恢复备份数据</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@xuexi ~<span class="o">]</span><span class="c1"># chown -R mysql.mysql /data       </span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@xuexi ~<span class="o">]</span><span class="c1"># systemctl start mysqld</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>3、设置gtid_purged，连接master，开启复制功能。</strong></p>
+<p>由于xtrabackup备份数据集却不备份binlog，所以必须先获取此次备份结束时的最后一个事务ID，并在slave上明确指定跳过这些事务，否则slave会再次从master上复制这些binlog并执行，导致数据重复执行。</p>
+<p>可以从slave2数据目录中的<code>xtrabackup_info</code>文件中获取。如果不是xtrabackup备份的，那么可以直接从master的<code>show global variables like &quot;gtid_executed&quot;</code>;中获取，它表示master中已执行过的事务。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@xuexi ~<span class="o">]</span><span class="c1"># cat /data/xtrabackup_info </span>
+</span></span><span class="line"><span class="cl"><span class="nv">uuid</span> <span class="o">=</span> fc3de8c1-6bdc-11e8-832d-000c29ed4cf4
+</span></span><span class="line"><span class="cl"><span class="nv">name</span> <span class="o">=</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">tool_name</span> <span class="o">=</span> innobackupex
+</span></span><span class="line"><span class="cl"><span class="nv">tool_command</span> <span class="o">=</span> -uroot -pP@ssword1! -S /data/mysql.sock /backdir/
+</span></span><span class="line"><span class="cl"><span class="nv">tool_version</span> <span class="o">=</span> 2.4.11
+</span></span><span class="line"><span class="cl"><span class="nv">ibbackup_version</span> <span class="o">=</span> 2.4.11
+</span></span><span class="line"><span class="cl"><span class="nv">server_version</span> <span class="o">=</span> 5.7.22-log
+</span></span><span class="line"><span class="cl"><span class="nv">start_time</span> <span class="o">=</span> 2018-06-09 20:02:28
+</span></span><span class="line"><span class="cl"><span class="nv">end_time</span> <span class="o">=</span> 2018-06-09 20:02:30
+</span></span><span class="line"><span class="cl"><span class="nv">lock_time</span> <span class="o">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="nv">binlog_pos</span> <span class="o">=</span> filename <span class="s1">&#39;master-bin.000005&#39;</span>, position <span class="s1">&#39;194&#39;</span>, GTID of the last change <span class="s1">&#39;a659234f-6aea-11e8-a361-000c29ed4cf4:1-54&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">innodb_from_lsn</span> <span class="o">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="nv">innodb_to_lsn</span> <span class="o">=</span> <span class="m">51235233</span>
+</span></span><span class="line"><span class="cl"><span class="nv">partial</span> <span class="o">=</span> N
+</span></span><span class="line"><span class="cl"><span class="nv">incremental</span> <span class="o">=</span> N
+</span></span><span class="line"><span class="cl"><span class="nv">format</span> <span class="o">=</span> file
+</span></span><span class="line"><span class="cl"><span class="nv">compact</span> <span class="o">=</span> N
+</span></span><span class="line"><span class="cl"><span class="nv">compressed</span> <span class="o">=</span> N
+</span></span><span class="line"><span class="cl"><span class="nv">encrypted</span> <span class="o">=</span> N
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中<code>binlog_pos</code>中的GTID对应的就是已备份的数据对应的事务。换句话说，这里的gtid集合1-54表示这54个事务不需要进行复制。</p>
+<p>或者在master上直接查看executed的值，注意不是gtid_purged的值，master上的gtid_purged表示的是曾经删除掉的binlog。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mysql&gt; show global variables like <span class="s1">&#39;%gtid%&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">+----------------------------------+-------------------------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Variable_name                    <span class="p">|</span> Value                                     <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+----------------------------------+-------------------------------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> binlog_gtid_simple_recovery      <span class="p">|</span> ON                                        <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> enforce_gtid_consistency         <span class="p">|</span> ON                                        <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> gtid_executed                    <span class="p">|</span> a659234f-6aea-11e8-a361-000c29ed4cf4:1-54 <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> gtid_executed_compression_period <span class="p">|</span> <span class="m">1000</span>                                      <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> gtid_mode                        <span class="p">|</span> ON                                        <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> gtid_owned                       <span class="p">|</span>                                           <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> gtid_purged                      <span class="p">|</span> a659234f-6aea-11e8-a361-000c29ed4cf4:1-54 <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> session_track_gtids              <span class="p">|</span> OFF                                       <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+----------------------------------+-------------------------------------------+
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以在启动slave线程 之前使用<code>gtid_purged</code>变量来指定需要跳过的gtid集合。但因为要设置gtid_purged必须保证全局变量gtid_executed为空，所以先在slave上执行<code>reset master</code>(注意，不是reset slave)，再设置gtid_purged。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># slave2上执行：</span>
+</span></span><span class="line"><span class="cl">mysql&gt; reset master<span class="p">;</span>
+</span></span><span class="line"><span class="cl">mysql&gt; <span class="nb">set</span> @@global.gtid_purged<span class="o">=</span><span class="s1">&#39;a659234f-6aea-11e8-a361-000c29ed4cf4:1-54&#39;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>设置好gtid_purged之后，就可以开启复制线程了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mysql&gt; change master to 
+</span></span><span class="line"><span class="cl">            <span class="nv">master_host</span><span class="o">=</span><span class="s1">&#39;192.168.100.21&#39;</span>,
+</span></span><span class="line"><span class="cl">            <span class="nv">master_port</span><span class="o">=</span>3306,
+</span></span><span class="line"><span class="cl">            <span class="nv">master_auto_position</span><span class="o">=</span>1<span class="p">;</span>
+</span></span><span class="line"><span class="cl">mysql&gt; start slave <span class="nv">user</span><span class="o">=</span><span class="s1">&#39;repl&#39;</span> <span class="nv">password</span><span class="o">=</span><span class="s1">&#39;P@ssword1!&#39;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看slave的状态，看是否正确启动了复制功能。如果没错，再在master上修改一部分数据，检查是否同步到slave1和slave2。</p>
+<p><strong>4、回到master，purge掉已同步的binlog。</strong></p>
+<p>当slave指定gtid_purged并实现了同步之后，为了下次重启mysqld实例不用再次设置gtid_purged(甚至可能会在启动的时候自动开启复制线程)，所以应该去master上将已经同步的binlog给purged掉。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># master上执行：</span>
+</span></span><span class="line"><span class="cl">mysql&gt; flush logs<span class="p">;</span>    <span class="c1"># flush之后滚动到新的日志master-bin.000006</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 在确保所有slave都复制完000006之前的所有事务后，purge掉旧日志</span>
+</span></span><span class="line"><span class="cl">mysql&gt; purge master logs to <span class="s2">&#34;master-bin.000006&#34;</span><span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="gtid复制相关的状态信息和变量">GTID复制相关的状态信息和变量</h2>
+<h3 id="show-slave-status中和gtid复制相关的状态行"><code>show slave status</code>中和gtid复制相关的状态行</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Retrieved_Gtid_Set: a659234f-6aea-11e8-a361-000c29ed4cf4:1-54
+</span></span><span class="line"><span class="cl"> Executed_Gtid_Set: a659234f-6aea-11e8-a361-000c29ed4cf4:1-54
+</span></span><span class="line"><span class="cl">     Auto_Position: <span class="m">1</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中：</p>
+<ul>
+<li><code>Retrieved_Gtid_Set</code>：在开启了gtid复制(即gtid_mode=on)时，slave在启动io线程的时候会检查自己的relay log，并从中检索出gtid集合。也就是说，这代表的是slave已经从master中复制了哪些事务过来。检索出来的gtid不会再请求master发送过来。</li>
+<li><code>Executed_Gtid_Set</code>：在开启了gtid复制(即gtid_mode=on)时，它表示已经向自己的binlog中写入了哪些gtid集合。注意，这个值是根据一些状态信息计算出来的，并非binlog中能看到的那些。举个特殊一点的例子，可能slave的binlog还是空的，但这里已经显示一些已执行gtid集合了。</li>
+<li><code>Auto_Position</code>：开启gtid时是否自动获取binlog坐标。1表示开启，这是gtid复制的默认值。</li>
+</ul>
+<h3 id="binlog中关于gtid的信息">binlog中关于gtid的信息</h3>
+<p>例如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@xuexi ~<span class="o">]</span><span class="c1"># mysqlbinlog /data/master-bin.000007</span>
+</span></span><span class="line"><span class="cl">/*!50530 SET @@SESSION.PSEUDO_SLAVE_MODE<span class="o">=</span>1*/<span class="p">;</span>
+</span></span><span class="line"><span class="cl">/*!50003 SET @OLD_COMPLETION_TYPE<span class="o">=</span>@@COMPLETION_TYPE,COMPLETION_TYPE<span class="o">=</span>0*/<span class="p">;</span>
+</span></span><span class="line"><span class="cl">DELIMITER /*!*/<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># at 4</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#180610  1:34:08 server id 100  end_log_pos 123 CRC32 0x4a6e9510        Start: binlog v 4, server v 5.7.22-log created 180610  1:34:08</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Warning: this binlog is either in use or was not closed properly.</span>
+</span></span><span class="line"><span class="cl">BINLOG <span class="s1">&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">kA8cWw9kAAAAdwAAAHsAAAABAAQANS43LjIyLWxvZwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+</span></span></span><span class="line"><span class="cl"><span class="s1">AAAAAAAAAAAAAAAAAAAAAAAAEzgNAAgAEgAEBAQEEgAAXwAEGggAAAAICAgCAAAACgoKKioAEjQA
+</span></span></span><span class="line"><span class="cl"><span class="s1">ARCVbko=
+</span></span></span><span class="line"><span class="cl"><span class="s1">&#39;</span>/*!*/<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># at 123</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#180610  1:34:08 server id 100  end_log_pos 194 CRC32 0x0f6ba409        Previous-GTIDs</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># a659234f-6aea-11e8-a361-000c29ed4cf4:1-57         #### 注意行1</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># at 194</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#180610  2:06:31 server id 100  end_log_pos 259 CRC32 0xfef9194e        GTID    last_committed=0        sequence_number=1       rbr_only=no  #### 注意行2</span>
+</span></span><span class="line"><span class="cl">SET @@SESSION.GTID_NEXT<span class="o">=</span> <span class="s1">&#39;a659234f-6aea-11e8-a361-000c29ed4cf4:58&#39;</span>/*!*/<span class="p">;</span>   <span class="c1">#### 注意行3</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># at 259</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#180610  2:06:31 server id 100  end_log_pos 359 CRC32 0x5a561d94        Query   thread_id=2     exec_time=0     error_code=0</span>
+</span></span><span class="line"><span class="cl">use <span class="sb">`</span>backup<span class="sb">`</span>/*!*/<span class="p">;</span>
+</span></span><span class="line"><span class="cl">SET <span class="nv">TIMESTAMP</span><span class="o">=</span>1528567591/*!*/<span class="p">;</span>
+</span></span><span class="line"><span class="cl">SET @@session.pseudo_thread_id<span class="o">=</span>2/*!*/<span class="p">;</span>
+</span></span><span class="line"><span class="cl">SET @@session.foreign_key_checks<span class="o">=</span>1, @@session.sql_auto_is_null<span class="o">=</span>0, @@session.unique_checks<span class="o">=</span>1, @@session.autocommit<span class="o">=</span>1/*!*/<span class="p">;</span>
+</span></span><span class="line"><span class="cl">SET @@session.sql_mode<span class="o">=</span>1436549152/*!*/<span class="p">;</span>
+</span></span><span class="line"><span class="cl">SET @@session.auto_increment_increment<span class="o">=</span>1, @@session.auto_increment_offset<span class="o">=</span>1/*!*/<span class="p">;</span>
+</span></span><span class="line"><span class="cl">/*!<span class="se">\C</span> utf8 *//*!*/<span class="p">;</span>
+</span></span><span class="line"><span class="cl">SET @@session.character_set_client<span class="o">=</span>33,@@session.collation_connection<span class="o">=</span>33,@@session.collation_server<span class="o">=</span>8/*!*/<span class="p">;</span>
+</span></span><span class="line"><span class="cl">SET @@session.lc_time_names<span class="o">=</span>0/*!*/<span class="p">;</span>
+</span></span><span class="line"><span class="cl">SET @@session.collation_database<span class="o">=</span>DEFAULT/*!*/<span class="p">;</span>
+</span></span><span class="line"><span class="cl">create table t1<span class="o">(</span>n int<span class="o">)</span>
+</span></span><span class="line"><span class="cl">/*!*/<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># at 359</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#180610  2:09:36 server id 100  end_log_pos 424 CRC32 0x82564e69        GTID    last_committed=1        sequence_number=2       rbr_only=no     #### 注意行4</span>
+</span></span><span class="line"><span class="cl">SET @@SESSION.GTID_NEXT<span class="o">=</span> <span class="s1">&#39;a659234f-6aea-11e8-a361-000c29ed4cf4:59&#39;</span>/*!*/<span class="p">;</span>  <span class="c1">#### 注意行5</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># at 424</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#180610  2:09:36 server id 100  end_log_pos 524 CRC32 0xbc21683a        Query   thread_id=2     exec_time=0     error_code=0</span>
+</span></span><span class="line"><span class="cl">SET <span class="nv">TIMESTAMP</span><span class="o">=</span>1528567776/*!*/<span class="p">;</span>
+</span></span><span class="line"><span class="cl">create table t2<span class="o">(</span>n int<span class="o">)</span>
+</span></span><span class="line"><span class="cl">/*!*/<span class="p">;</span>
+</span></span><span class="line"><span class="cl">SET @@SESSION.GTID_NEXT<span class="o">=</span> <span class="s1">&#39;AUTOMATIC&#39;</span> /* added by mysqlbinlog */ /*!*/<span class="p">;</span>   <span class="c1">#### 注意行6</span>
+</span></span><span class="line"><span class="cl">DELIMITER <span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># End of log file</span>
+</span></span><span class="line"><span class="cl">/*!50003 SET <span class="nv">COMPLETION_TYPE</span><span class="o">=</span>@OLD_COMPLETION_TYPE*/<span class="p">;</span>
+</span></span><span class="line"><span class="cl">/*!50530 SET @@SESSION.PSEUDO_SLAVE_MODE<span class="o">=</span>0*/<span class="p">;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中：</p>
+<ul>
+<li>&ldquo;注意行1&quot;中<code>Previous-GTIDs</code>代表的gtid集合是曾经的gtid，换句话说是被purge掉的事务。</li>
+<li>&ldquo;注意行2&quot;和&quot;注意行4&quot;是两个事务的gtid信息。它们写在每个事务的前面。</li>
+<li>&ldquo;注意行3&quot;和&quot;注意行5&quot;设置了GTID_NEXT的值，表示读取到了该事务后，那么必须要执行的是稍后列出的这个事务。</li>
+<li>&ldquo;注意行6&quot;是在所有事务执行结束时设置的，表示自动获取gtid的值。它对复制是隐身的(也就是说不会dump线程不会将它dump出去)，该行的结尾也说了，这一行是mysqlbinlog添加的。</li>
+</ul>
+<h3 id="一些重要的变量">一些重要的变量</h3>
+<ul>
+<li><code>gtid_mode</code>：是否开启gtid复制模式。只允许on/off类的布尔值，不允许其他类型(如1/0)的布尔值，实际上这个变量是枚举类型的。要设置 gtid_mode=on ，必须同时设置 enforce_gtid_consistency 开。在MySQL 5.6中，还必须开启 log_slave_updates ，即使是master也要开启。</li>
+<li><code>enforce_gtid_consistency</code>：强制要求只允许复制事务安全的事务。 gtid_mode=on 时必须显式设置该项，如果不给定值，则默认为on。应该尽量将该选项放在 gtid_mode 的前面，减少启动mysqld时的检查。
+<ul>
+<li>不能在事务内部创建和删除临时表。只能在事务外部进行，且autocommit需要设置为1。</li>
+<li>不能执行 create table &hellip; select 语句。该语句除了创建一张新表并填充一些数据，其他什么事也没干。</li>
+<li>不能在事务内既更新事务表又更新非事务表。</li>
+</ul>
+</li>
+<li><code>gtid_executed</code>：已经执行过的GTID。 reset master 会清空该项的全局变量值。</li>
+<li><code>gtid_purged</code>：已经purge掉的gtid。要设置该项，必须先保证 gtid_executed 已经为空，这意味着也一定会同时设置该项为空。在slave上设置该项时，表示稍后启动io线程和SQL线程都跳过这些gtid，slave上设置时应该让此项的gtid集合等于master上 gtid_executed 的值。</li>
+<li><code>gtid_next</code>：表示下一个要执行的gtid事务。</li>
+</ul>
+<p>需要注意，master和slave上都有<code>gtid_executed</code>和<code>gtid_purged</code>，它们代表的意义有时候是不同的。</p>
+<p>还有一些变量，可能用到的不会多。如有需要，可翻官方手册。</p>
+<h3 id="mysqlgtid_executed表">mysql.gtid_executed表</h3>
+<p>MySQL 5.7中添加了一张记录已执行gtid的表<code>mysql.gtid_executed</code>，所以slave上的binlog不是必须开启的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mysql&gt; <span class="k">select</span> * from mysql.gtid_executed<span class="p">;</span>
+</span></span><span class="line"><span class="cl">+--------------------------------------+----------------+--------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> source_uuid                          <span class="p">|</span> interval_start <span class="p">|</span> interval_end <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+--------------------------------------+----------------+--------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> a659234f-6aea-11e8-a361-000c29ed4cf4 <span class="p">|</span>              <span class="m">1</span> <span class="p">|</span>           <span class="m">57</span> <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> a659234f-6aea-11e8-a361-000c29ed4cf4 <span class="p">|</span>             <span class="m">58</span> <span class="p">|</span>           <span class="m">58</span> <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> a659234f-6aea-11e8-a361-000c29ed4cf4 <span class="p">|</span>             <span class="m">59</span> <span class="p">|</span>           <span class="m">59</span> <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+--------------------------------------+----------------+--------------+
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="一张图说明gtid复制">一张图说明GTID复制</h2>
+<p>在前面第6节中，使用了xtrabackup备份的方式提供gtid复制的基准数据。其中涉及到一些gtid检查、设置的操作。通过这些操作，大概可以感受的到gtid复制的几个概念。</p>
+<p>用一张图来说明：</p>
+<p><img src="/post/mysql-replication-2/img.png"
+	width="768"
+	height="403"
+	srcset="/post/mysql-replication-2/img_hu20ac94f973d28962f2c3700317b44c63_43246_480x0_resize_box_3.png 480w, /post/mysql-replication-2/img_hu20ac94f973d28962f2c3700317b44c63_43246_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="190"
+		data-flex-basis="457px"
+	
+></p>
+<p>假如当前master的gtid为A3，已经purge掉的gtid为&quot;1&ndash;&gt;A1&rdquo;，备份到slave上的数据为1-A2部分。</p>
+<p>如果<code>A1 = 0</code>，表示master的binlog没有被Purge过。slave可以直接开启gtid复制，但这样可能速度较慢，因为slave要复制所有binlog。也可以将master数据备份到slave上，然后设置 gtid_purged 跳过备份结束时的gtid，这样速度较快。</p>
+<p>如果<code>A1 != 0</code>，表示master上的binlog中删除了一部分gtid。此时slave上必须先从master处恢复purge掉的那部分日志对应的数据。上图中备份结束时的GTID为A2。然后slave开启复制，唯一需要考虑的是&quot;是否需要设置 gtid_purged 跳过一部分gtid以避免重复执行&rdquo;。</p>
+<p>备份数据到slave上，方式可以是mysqldump、冷备份、xtrabackup备份都行。由于gtid复制的特性，所需要的操作都很少，也很简单，前提是理解了&quot;gtid的生命周期&rdquo;。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/mysql/">MySQL</a>
+        
+            <a href="/tags/gtid/">GTID</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/mysql-replication-1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">深入MySQL复制(一)</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/mysql-cluster/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">MySQL主从同步集群搭建</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "5b878f724ec8e67e08f4",
+        clientSecret: "9723d7c9b9644be68bf47cbdd6412bc895653369",
+        repo: "arturiamu.github.io",
+        owner: "arturiamu",
+        admin: ["arturiamu"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 木林彪的个人博客
+    </section>
+
+    <section class="count_info">
+        <div>
+            本博客已稳定运行
+            <span id="ds" class="running-days"></span>
+            天
+            <span id="hs" class="running-days"></span>
+            小时
+            <span id="ms" class="running-days"></span>
+            分钟
+        </div>
+        <div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            共发表 15 篇文章 · 总计 42.25 k 字
+        </div>
+        <div>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+        </div>
+    </section>
+    
+    <section class="powerby" style="margin-top: 7px">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.18.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+<script>
+    let s1 = '2023-6-18'; 
+    s1 = new Date(s1.replace(/-/g, "/"));
+    let s2 = new Date();
+    let timeDifference = s2.getTime() - s1.getTime();
+
+    let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+    document.getElementById('ds').innerHTML = days;
+    document.getElementById('hs').innerHTML = hours;
+    document.getElementById('ms').innerHTML = minutes;
+
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
