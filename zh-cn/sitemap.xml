@@ -100,12 +100,12 @@
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://arturiamu.github.io/en/archives/%E6%9C%AC%E7%AB%99/"
+                href="https://arturiamu.github.io/en/archives/this-site/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="https://arturiamu.github.io/ja/archives/%E6%9C%AC%E7%AB%99/"
+                href="https://arturiamu.github.io/ja/archives/this-site/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -124,6 +124,21 @@
   </url><url>
     <loc>https://arturiamu.github.io/archives/database/</loc>
     <lastmod>2023-09-19T11:35:24+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://arturiamu.github.io/en/archives/database/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://arturiamu.github.io/ja/archives/database/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://arturiamu.github.io/archives/database/"
+                />
   </url><url>
     <loc>https://arturiamu.github.io/post/mysql-replication-1/</loc>
     <lastmod>2023-09-18T14:51:23+08:00</lastmod>
@@ -178,6 +193,21 @@
   </url><url>
     <loc>https://arturiamu.github.io/archives/lq-cup/</loc>
     <lastmod>2023-06-23T14:21:55+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://arturiamu.github.io/en/archives/lq-cup/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://arturiamu.github.io/ja/archives/lq-cup/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://arturiamu.github.io/archives/lq-cup/"
+                />
   </url><url>
     <loc>https://arturiamu.github.io/post/lq-py-grammar/</loc>
     <lastmod>2023-06-23T14:21:55+08:00</lastmod>
@@ -354,5 +384,20 @@
                 />
   </url><url>
     <loc>https://arturiamu.github.io/archives/cloud-native/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://arturiamu.github.io/en/archives/cloud-native/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://arturiamu.github.io/ja/archives/cloud-native/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://arturiamu.github.io/archives/cloud-native/"
+                />
   </url>
 </urlset>

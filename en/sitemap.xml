@@ -146,7 +146,7 @@
                 href="https://arturiamu.github.io/en/tags/"
                 />
   </url><url>
-    <loc>https://arturiamu.github.io/en/archives/%E6%9C%AC%E7%AB%99/</loc>
+    <loc>https://arturiamu.github.io/en/archives/this-site/</loc>
     <lastmod>2023-06-18T13:14:35+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
@@ -156,12 +156,12 @@
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="https://arturiamu.github.io/ja/archives/%E6%9C%AC%E7%AB%99/"
+                href="https://arturiamu.github.io/ja/archives/this-site/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://arturiamu.github.io/en/archives/%E6%9C%AC%E7%AB%99/"
+                href="https://arturiamu.github.io/en/archives/this-site/"
                 />
   </url><url>
     <loc>https://arturiamu.github.io/en/tags/blog/</loc>
@@ -216,6 +216,57 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://arturiamu.github.io/en/archives/"
+                />
+  </url><url>
+    <loc>https://arturiamu.github.io/en/archives/cloud-native/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://arturiamu.github.io/archives/cloud-native/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://arturiamu.github.io/ja/archives/cloud-native/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://arturiamu.github.io/en/archives/cloud-native/"
+                />
+  </url><url>
+    <loc>https://arturiamu.github.io/en/archives/database/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://arturiamu.github.io/archives/database/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://arturiamu.github.io/ja/archives/database/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://arturiamu.github.io/en/archives/database/"
+                />
+  </url><url>
+    <loc>https://arturiamu.github.io/en/archives/lq-cup/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://arturiamu.github.io/archives/lq-cup/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://arturiamu.github.io/ja/archives/lq-cup/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://arturiamu.github.io/en/archives/lq-cup/"
                 />
   </url><url>
     <loc>https://arturiamu.github.io/en/links/</loc>

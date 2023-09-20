@@ -7,12 +7,36 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <lastBuildDate>Sun, 18 Jun 2023 13:14:35 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/en/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>本站</title>
-        <link>https://arturiamu.github.io/en/archives/%E6%9C%AC%E7%AB%99/</link>
+        <title>this site</title>
+        <link>https://arturiamu.github.io/en/archives/this-site/</link>
         <pubDate>Sun, 18 Jun 2023 13:14:35 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/en/archives/%E6%9C%AC%E7%AB%99/</guid>
-        <description></description>
+        <guid>https://arturiamu.github.io/en/archives/this-site/</guid>
+        <description>&lt;img src="https://arturiamu.github.io/en/archives/this-site/c-this.png" alt="Featured image of post this site" /&gt;</description>
+        </item>
+        <item>
+        <title>cloud native</title>
+        <link>https://arturiamu.github.io/en/archives/cloud-native/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://arturiamu.github.io/en/archives/cloud-native/</guid>
+        <description>&lt;img src="https://arturiamu.github.io/en/archives/cloud-native/cn.png" alt="Featured image of post cloud native" /&gt;</description>
+        </item>
+        <item>
+        <title>database</title>
+        <link>https://arturiamu.github.io/en/archives/database/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://arturiamu.github.io/en/archives/database/</guid>
+        <description>&lt;img src="https://arturiamu.github.io/en/archives/database/db.png" alt="Featured image of post database" /&gt;</description>
+        </item>
+        <item>
+        <title>lanqiao cup</title>
+        <link>https://arturiamu.github.io/en/archives/lq-cup/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://arturiamu.github.io/en/archives/lq-cup/</guid>
+        <description>&lt;img src="https://arturiamu.github.io/en/archives/lq-cup/c-lq.png" alt="Featured image of post lanqiao cup" /&gt;</description>
         </item>
         
     </channel>
