@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://arturiamu.github.io/</loc>
-    <lastmod>2023-09-27T14:10:12+08:00</lastmod>
+    <lastmod>2023-09-27T15:52:59+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -21,10 +21,13 @@
                 />
   </url><url>
     <loc>https://arturiamu.github.io/tags/bash/</loc>
-    <lastmod>2023-09-27T14:10:12+08:00</lastmod>
+    <lastmod>2023-09-27T15:52:59+08:00</lastmod>
+  </url><url>
+    <loc>https://arturiamu.github.io/post/shell-bash-var/</loc>
+    <lastmod>2023-09-27T15:52:59+08:00</lastmod>
   </url><url>
     <loc>https://arturiamu.github.io/categories/</loc>
-    <lastmod>2023-09-27T14:10:12+08:00</lastmod>
+    <lastmod>2023-09-27T15:52:59+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -42,10 +45,10 @@
                 />
   </url><url>
     <loc>https://arturiamu.github.io/tags/linux/</loc>
-    <lastmod>2023-09-27T14:10:12+08:00</lastmod>
+    <lastmod>2023-09-27T15:52:59+08:00</lastmod>
   </url><url>
     <loc>https://arturiamu.github.io/post/</loc>
-    <lastmod>2023-09-27T14:10:12+08:00</lastmod>
+    <lastmod>2023-09-27T15:52:59+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -63,7 +66,7 @@
                 />
   </url><url>
     <loc>https://arturiamu.github.io/archives/shell/</loc>
-    <lastmod>2023-09-27T14:10:12+08:00</lastmod>
+    <lastmod>2023-09-27T15:52:59+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -80,11 +83,8 @@
                 href="https://arturiamu.github.io/archives/shell/"
                 />
   </url><url>
-    <loc>https://arturiamu.github.io/post/shell-basic-knowledge/</loc>
-    <lastmod>2023-09-27T14:10:12+08:00</lastmod>
-  </url><url>
     <loc>https://arturiamu.github.io/tags/</loc>
-    <lastmod>2023-09-27T14:10:12+08:00</lastmod>
+    <lastmod>2023-09-27T15:52:59+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -100,6 +100,9 @@
                 hreflang="zh-cn"
                 href="https://arturiamu.github.io/tags/"
                 />
+  </url><url>
+    <loc>https://arturiamu.github.io/post/shell-basic-knowledge/</loc>
+    <lastmod>2023-09-27T14:10:12+08:00</lastmod>
   </url><url>
     <loc>https://arturiamu.github.io/tags/golang/</loc>
     <lastmod>2023-09-26T19:45:10+08:00</lastmod>
