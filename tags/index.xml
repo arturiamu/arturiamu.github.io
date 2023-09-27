@@ -6,7 +6,23 @@
         <description>Recent content in Tags on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Tue, 26 Sep 2023 19:45:10 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 27 Sep 2023 14:10:12 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>bash</title>
+        <link>https://arturiamu.github.io/tags/bash/</link>
+        <pubDate>Wed, 27 Sep 2023 14:10:12 +0800</pubDate>
+        
+        <guid>https://arturiamu.github.io/tags/bash/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>linux</title>
+        <link>https://arturiamu.github.io/tags/linux/</link>
+        <pubDate>Wed, 27 Sep 2023 14:10:12 +0800</pubDate>
+        
+        <guid>https://arturiamu.github.io/tags/linux/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>golang</title>
         <link>https://arturiamu.github.io/tags/golang/</link>
         <pubDate>Tue, 26 Sep 2023 19:45:10 +0800</pubDate>

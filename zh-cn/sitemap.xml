@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://arturiamu.github.io/</loc>
-    <lastmod>2023-09-26T19:45:10+08:00</lastmod>
+    <lastmod>2023-09-27T14:10:12+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -20,14 +20,32 @@
                 href="https://arturiamu.github.io/"
                 />
   </url><url>
-    <loc>https://arturiamu.github.io/tags/golang/</loc>
-    <lastmod>2023-09-26T19:45:10+08:00</lastmod>
+    <loc>https://arturiamu.github.io/tags/bash/</loc>
+    <lastmod>2023-09-27T14:10:12+08:00</lastmod>
   </url><url>
-    <loc>https://arturiamu.github.io/post/go-for-loop/</loc>
-    <lastmod>2023-09-26T19:45:10+08:00</lastmod>
+    <loc>https://arturiamu.github.io/categories/</loc>
+    <lastmod>2023-09-27T14:10:12+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://arturiamu.github.io/en/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://arturiamu.github.io/ja/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://arturiamu.github.io/categories/"
+                />
+  </url><url>
+    <loc>https://arturiamu.github.io/tags/linux/</loc>
+    <lastmod>2023-09-27T14:10:12+08:00</lastmod>
   </url><url>
     <loc>https://arturiamu.github.io/post/</loc>
-    <lastmod>2023-09-26T19:45:10+08:00</lastmod>
+    <lastmod>2023-09-27T14:10:12+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -44,8 +62,29 @@
                 href="https://arturiamu.github.io/post/"
                 />
   </url><url>
+    <loc>https://arturiamu.github.io/archives/shell/</loc>
+    <lastmod>2023-09-27T14:10:12+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://arturiamu.github.io/en/archives/shell/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://arturiamu.github.io/ja/archives/shell/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://arturiamu.github.io/archives/shell/"
+                />
+  </url><url>
+    <loc>https://arturiamu.github.io/post/shell-basic-knowledge/</loc>
+    <lastmod>2023-09-27T14:10:12+08:00</lastmod>
+  </url><url>
     <loc>https://arturiamu.github.io/tags/</loc>
-    <lastmod>2023-09-26T19:45:10+08:00</lastmod>
+    <lastmod>2023-09-27T14:10:12+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -61,6 +100,12 @@
                 hreflang="zh-cn"
                 href="https://arturiamu.github.io/tags/"
                 />
+  </url><url>
+    <loc>https://arturiamu.github.io/tags/golang/</loc>
+    <lastmod>2023-09-26T19:45:10+08:00</lastmod>
+  </url><url>
+    <loc>https://arturiamu.github.io/post/go-for-loop/</loc>
+    <lastmod>2023-09-26T19:45:10+08:00</lastmod>
   </url><url>
     <loc>https://arturiamu.github.io/tags/bug/</loc>
     <lastmod>2023-09-19T15:51:30+08:00</lastmod>
@@ -78,24 +123,6 @@
                 rel="alternate"
                 hreflang="zh-cn"
                 href="https://arturiamu.github.io/tags/bug/"
-                />
-  </url><url>
-    <loc>https://arturiamu.github.io/categories/</loc>
-    <lastmod>2023-09-19T15:51:30+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://arturiamu.github.io/en/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://arturiamu.github.io/ja/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://arturiamu.github.io/categories/"
                 />
   </url><url>
     <loc>https://arturiamu.github.io/post/stack-beautify/</loc>
