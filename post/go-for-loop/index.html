@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='mysql主从同步原理、集群搭建教程'>
-<meta name="keywords" content="木林彪, arturiamu, 博客, 木林彪的个人博客, MySQL, MySQL主从同步, MySQL集群搭建, MySQL主从集群"><title>MySQL主从同步集群搭建</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='golang for循环常见的问题、解决方案'>
+<meta name="keywords" content="木林彪, arturiamu, 博客, 木林彪的个人博客, golang, go, for循环, golang for循环"><title>golang for循环的坑</title>
 
-<link rel='canonical' href='https://arturiamu.github.io/post/mysql-cluster/'>
+<link rel='canonical' href='https://arturiamu.github.io/post/go-for-loop/'>
 
-<link rel="stylesheet" href="/scss/style.min.08957a40240c7cb71ed422a6e840c672e3bbe364b80f83211970e07caa9c66f3.css"><meta property='og:title' content='MySQL主从同步集群搭建'>
-<meta property='og:description' content='mysql主从同步原理、集群搭建教程'>
-<meta property='og:url' content='https://arturiamu.github.io/post/mysql-cluster/'>
+<link rel="stylesheet" href="/scss/style.min.08957a40240c7cb71ed422a6e840c672e3bbe364b80f83211970e07caa9c66f3.css"><meta property='og:title' content='golang for循环的坑'>
+<meta property='og:description' content='golang for循环常见的问题、解决方案'>
+<meta property='og:url' content='https://arturiamu.github.io/post/go-for-loop/'>
 <meta property='og:site_name' content='木林彪的个人博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-07-21T16:48:07&#43;08:00'/><meta property='article:modified_time' content='2023-07-21T16:48:07&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='golang' /><meta property='article:published_time' content='2023-09-26T19:45:10&#43;08:00'/><meta property='article:modified_time' content='2023-09-26T19:45:10&#43;08:00'/>
 <meta name="twitter:site" content="@ArturiaMu">
-    <meta name="twitter:creator" content="@ArturiaMu"><meta name="twitter:title" content="MySQL主从同步集群搭建">
-<meta name="twitter:description" content="mysql主从同步原理、集群搭建教程">
+    <meta name="twitter:creator" content="@ArturiaMu"><meta name="twitter:title" content="golang for循环的坑">
+<meta name="twitter:description" content="golang for循环常见的问题、解决方案">
     <link rel="shortcut icon" href="/favicon.ico" />
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JJG6TYWNYX"></script>
@@ -359,12 +359,22 @@ if (!doNotTrack) {
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#为什么需要搭建集群">为什么需要搭建集群</a></li>
-    <li><a href="#主从同步原理">主从同步原理</a></li>
-    <li><a href="#集群搭建流程">集群搭建流程</a>
+    <li><a href="#遍历修改">遍历修改</a>
       <ol>
-        <li><a href="#master-配置">master 配置</a></li>
-        <li><a href="#slave配置">slave配置</a></li>
+        <li><a href="#原因">原因</a></li>
+        <li><a href="#解决方案">解决方案</a></li>
+      </ol>
+    </li>
+    <li><a href="#地址问题">地址问题</a>
+      <ol>
+        <li><a href="#原因-1">原因</a></li>
+        <li><a href="#解决方法">解决方法</a></li>
+      </ol>
+    </li>
+    <li><a href="#变量快照">变量快照</a>
+      <ol>
+        <li><a href="#方案一">方案一</a></li>
+        <li><a href="#方案二">方案二</a></li>
       </ol>
     </li>
   </ol>
@@ -448,21 +458,17 @@ if (!doNotTrack) {
     
     <header class="article-category">
         
-            <a href="/archives/database/" >
-                数据库
-            </a>
-        
     </header>
     
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/post/mysql-cluster/">MySQL主从同步集群搭建</a>
+            <a href="/post/go-for-loop/">golang for循环的坑</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            mysql主从同步原理、集群搭建教程
+            golang for循环常见的问题、解决方案
         </h3>
         
     </div>
@@ -483,7 +489,7 @@ if (!doNotTrack) {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2023-07-21 16:48:07 CST</time>
+                <time class="article-time--published">2023-09-26 19:45:10 CST</time>
             </div>
         
 
@@ -498,7 +504,7 @@ if (!doNotTrack) {
 
 
                 <time class="article-time--reading">
-                    阅读时长: 3 分钟
+                    阅读时长: 2 分钟
                 </time>
             </div>
         
@@ -513,107 +519,8 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <h2 id="为什么需要搭建集群">为什么需要搭建集群</h2>
-<p>搭建主从同步集群可以实现MySQL数据库的高可用、可扩展和读写分离，提升系统的性能和稳定性。这在对数据库的可靠性、
-并发读写能力和扩展性有较高要求的业务场景中尤为重要。</p>
-<h2 id="主从同步原理">主从同步原理</h2>
-<p>主数据库（Master）： 主数据库是数据变更的源头。它接收来自应用程序的写操作（INSERT、UPDATE、DELETE等），
-并记录这些操作在二进制日志（Binary Log）中， 这个过程叫做二进制日志事件 binary log events。</p>
-<p>从数据库（Slave）： 从数据库是主数据库的复制目标。它连接到主数据库，并通过读取主数据库的二进制日志来获取数据变更信息，
-然后在从数据库上重现这些操作，从而保持与主数据库的数据一致性。改过程具体分为以下2个步骤：</p>
-<ul>
-<li>slave 将binary log events 拷贝到它的中继日志（relay_log）。</li>
-<li>slave重做中继日志中的事件，将改变应用到自己的数据库中，mysql复制时异步的且串行化的</li>
-</ul>
-<h2 id="集群搭建流程">集群搭建流程</h2>
-<p>安装MySQL：在主库和从库上都安装MySQL数据库服务器。确保主库和从库的MySQL版本相同或兼容</p>
-<h3 id="master-配置">master 配置</h3>
-<p>1、打开主库的二进制日志功能。修改主机的配置文件（通常是my.cnf或my.ini），启用二进制日志，设置服务器ID。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">......
-</span></span><span class="line"><span class="cl">log-bin <span class="o">=</span> master-bin <span class="c1"># 打开bin log日志文件，必须</span>
-</span></span><span class="line"><span class="cl">server-id <span class="o">=</span> <span class="m">1</span> <span class="c1"># 指定master服务id,必须 只要保证集群中唯一即可</span>
-</span></span><span class="line"><span class="cl">......
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>2、启动主库MySQL服务，登陆root用户后创建主从复制用户slave并授权。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 登录</span>
-</span></span><span class="line"><span class="cl">mysql -u root -p
-</span></span><span class="line"><span class="cl"><span class="c1"># 创建用户 slave，注意这里的ip是从库服务器的ip</span>
-</span></span><span class="line"><span class="cl">CREATE USER <span class="s1">&#39;slave&#39;</span>@<span class="s1">&#39;ip&#39;</span> IDENTIFIED WITH mysql_native_password BY <span class="s1">&#39;123456&#39;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 给主从复制账号授权</span>
-</span></span><span class="line"><span class="cl">grant replication slave on *.* to <span class="s1">&#39;slave&#39;</span>@<span class="s1">&#39;ip&#39;</span><span class="p">;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>3、重启主库的mysql服务，登录root查看配置是否生效</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 重启服务</span>
-</span></span><span class="line"><span class="cl">service mysqld restart
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 登录root</span>
-</span></span><span class="line"><span class="cl">mysql -u root -p
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 查看配置</span>
-</span></span><span class="line"><span class="cl">show master status<span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 出现如下内容说明配置成功</span>
-</span></span><span class="line"><span class="cl">+---------------+----------+--------------+------------------+-------------------+
-</span></span><span class="line"><span class="cl"><span class="p">|</span> File          <span class="p">|</span> Position <span class="p">|</span> Binlog_Do_DB <span class="p">|</span> Binlog_Ignore_DB <span class="p">|</span> Executed_Gtid_Set <span class="p">|</span>
-</span></span><span class="line"><span class="cl">+---------------+----------+--------------+------------------+-------------------+
-</span></span><span class="line"><span class="cl"><span class="p">|</span> binlog.000001 <span class="p">|</span>     <span class="m">2463</span> <span class="p">|</span>              <span class="p">|</span>                  <span class="p">|</span>                   <span class="p">|</span>
-</span></span><span class="line"><span class="cl">+---------------+----------+--------------+------------------+-------------------+
-</span></span><span class="line"><span class="cl"><span class="m">1</span> row in <span class="nb">set</span> <span class="o">(</span>0.01 sec<span class="o">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="slave配置">slave配置</h3>
-<p>1、修改从库的配置文件，设置服务器ID，启用从库功能.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">......
-</span></span><span class="line"><span class="cl">server-id <span class="o">=</span> <span class="m">2</span> <span class="c1">#只要保证集群中唯一即可</span>
-</span></span><span class="line"><span class="cl">......
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>2、重启服务并配置主从同步</p>
+    <h2 id="遍历修改">遍历修改</h2>
+<p>这是初学者最容易犯的问题，当我们试图修改切片中的数据时，直接使用<code>for range</code>遍历数据并修改</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -634,26 +541,313 @@ if (!doNotTrack) {
 </span><span class="lnt">16
 </span><span class="lnt">17
 </span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 重启服务</span>
-</span></span><span class="line"><span class="cl">service mysqld restart
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 登录</span>
-</span></span><span class="line"><span class="cl">mysql -u root -p
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 关闭从库</span>
-</span></span><span class="line"><span class="cl">stop slave<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Test</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ID</span>   <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Name</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 设置同步，注意这里是主库ip，master_log_file和master_log_pos是配置master第3步中 show master status 命令查出的值</span>
-</span></span><span class="line"><span class="cl">change master to <span class="nv">master_host</span><span class="o">=</span><span class="s1">&#39;ip&#39;</span>,master_user<span class="o">=</span><span class="s1">&#39;slave&#39;</span>,master_password<span class="o">=</span><span class="s1">&#39;123456&#39;</span>,master_log_file<span class="o">=</span><span class="s1">&#39;mysql-bin.000001&#39;</span>,master_log_pos<span class="o">=</span>2463<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TestForLoop</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 开启从库</span>
-</span></span><span class="line"><span class="cl">start slave<span class="p">;</span> 
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">tests</span> <span class="p">=</span> <span class="p">[]</span><span class="nx">Test</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span><span class="nx">ID</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">Name</span><span class="p">:</span> <span class="s">&#34;0&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span><span class="nx">ID</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">Name</span><span class="p">:</span> <span class="s">&#34;0&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span><span class="nx">ID</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">Name</span><span class="p">:</span> <span class="s">&#34;0&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 检查服务器状态</span>
-</span></span><span class="line"><span class="cl">show slave status <span class="se">\G</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 看到Replica has read all relay log; waiting for more updates基本说明配置成功了，已经开始了主从复制。</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">test</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">tests</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">test</span><span class="p">.</span><span class="nx">Name</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">test</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">tests</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>以上代码输出结果为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">{</span><span class="m">0</span> 0<span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="m">1</span> 0<span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="m">2</span> 0<span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="原因">原因</h3>
+<p><code>for i, test := range tests</code>语句中的<code>test</code>是一个新定义的变量，对他的修改并不会影响到切片中原变量的值</p>
+<h3 id="解决方案">解决方案</h3>
+<p>使用for i遍历切片：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Test</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ID</span>   <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Name</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TestForLoop</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">tests</span> <span class="p">=</span> <span class="p">[]</span><span class="nx">Test</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span><span class="nx">ID</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">Name</span><span class="p">:</span> <span class="s">&#34;0&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span><span class="nx">ID</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">Name</span><span class="p">:</span> <span class="s">&#34;0&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span><span class="nx">ID</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">Name</span><span class="p">:</span> <span class="s">&#34;0&#34;</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="nx">tests</span><span class="p">);</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">tests</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">Name</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;%d&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">test</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">tests</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">test</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="地址问题">地址问题</h2>
+<p>先看代码，该代码定义了一个src切片和一个dist切片，遍历src切片并将遍历到的值地址添加到dist切片内，遍历dist切片并输出</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TestForLoop</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">src</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">dist</span> <span class="p">[]</span><span class="o">*</span><span class="kt">int</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">src</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">dist</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">dist</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">dist</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="o">*</span><span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>输出</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">/Users/mulinbiao/Library/Caches/JetBrains/IntelliJIdea2023.1/tmp/GoLand/___go_build_code
+</span></span><span class="line"><span class="cl"><span class="m">4</span>
+</span></span><span class="line"><span class="cl"><span class="m">4</span>
+</span></span><span class="line"><span class="cl"><span class="m">4</span>
+</span></span><span class="line"><span class="cl"><span class="m">4</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="原因-1">原因</h3>
+<p>在golang的for循环中，循环内部创建的函数变量都是共享同一块内存地址，for循环总是使用同一块内存去接收循环中的的value变量的值。不管循环多少次，value的内存地址都是相同的。</p>
+<h3 id="解决方法">解决方法</h3>
+<p>定义临时变量tmp，将v的值赋给tmp，问题就解决了。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TestForLoop</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">src</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">dist</span> <span class="p">[]</span><span class="o">*</span><span class="kt">int</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">src</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">tmp</span><span class="o">:=</span><span class="nx">v</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">dist</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">dist</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">tmp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">dist</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="o">*</span><span class="nx">v</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="变量快照">变量快照</h2>
+<p>先看代码，该代码期望使用协程输出ints切片的值，但实际情况并不是。这个例子里，3个goroutine共享同一个变量i，最后输出的结果大概率是输出3 3 3。</p>
+<p>要解决这个问题，主要有2个解决方案。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TestForLoop</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ints</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">ints</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}()</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="方案一">方案一</h3>
+<p>把循环变量i作为goroutine函数的一个参数，编译器在执行go func(i int)时，就会解析到i的值，确保每个goroutine可以拿到自己想要的值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TestForLoop</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ints</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">ints</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">go</span> <span class="kd">func</span><span class="p">(</span><span class="nx">i</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}(</span><span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="方案二">方案二</h3>
+<p>创建一个新的变量，用于goroutine。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">package</span> <span class="nx">main</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TestForLoop</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ints</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">ints</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">i</span> <span class="o">:=</span> <span class="nx">i</span>
+</span></span><span class="line"><span class="cl">		<span class="k">go</span> <span class="kd">func</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%v\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}()</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -662,6 +856,12 @@ if (!doNotTrack) {
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/golang/">golang</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">
@@ -709,41 +909,6 @@ if (!doNotTrack) {
     
 
     
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">相关文章</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="">
-    <a href="/post/mysql-replication-2/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">深入MySQL复制(二)：基于GTID复制 </h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/post/mysql-replication-1/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">深入MySQL复制(一)</h2>
-        </div>
-    </a>
-</article>
-
-            
-        </div>
-    </div>
-</aside>
 
      
     
