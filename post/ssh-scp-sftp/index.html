@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='springboot 普通类中使用注解注入mapper'>
-<meta name="keywords" content="木林彪, arturiamu, 博客, 木林彪的个人博客, spring, spring boot, mapper注入, @PostConstruct, java"><title>springboot 普通类自动注入mapper</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='ssh、scp、ftp、sftp命令使用方法'>
+<meta name="keywords" content="木林彪, arturiamu, 博客, 木林彪的个人博客, ssh, scp, ftp, sftp"><title>ssh、scp、ftp、sftp命令详解</title>
 
-<link rel='canonical' href='https://arturiamu.github.io/post/spring-boot-reject-mapper/'>
+<link rel='canonical' href='https://arturiamu.github.io/post/ssh-scp-sftp/'>
 
-<link rel="stylesheet" href="/scss/style.min.5e3814b8c20dd362819d8f0b1c0554df211090883babaeea35913b6b16121b26.css"><meta property='og:title' content='springboot 普通类自动注入mapper'>
-<meta property='og:description' content='springboot 普通类中使用注解注入mapper'>
-<meta property='og:url' content='https://arturiamu.github.io/post/spring-boot-reject-mapper/'>
+<link rel="stylesheet" href="/scss/style.min.5e3814b8c20dd362819d8f0b1c0554df211090883babaeea35913b6b16121b26.css"><meta property='og:title' content='ssh、scp、ftp、sftp命令详解'>
+<meta property='og:description' content='ssh、scp、ftp、sftp命令使用方法'>
+<meta property='og:url' content='https://arturiamu.github.io/post/ssh-scp-sftp/'>
 <meta property='og:site_name' content='木林彪的个人博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='java' /><meta property='article:tag' content='springboot' /><meta property='article:published_time' content='2023-06-23T16:28:51&#43;08:00'/><meta property='article:modified_time' content='2023-06-23T16:28:51&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='linux' /><meta property='article:published_time' content='2023-09-28T16:05:04&#43;08:00'/><meta property='article:modified_time' content='2023-09-28T16:05:04&#43;08:00'/>
 <meta name="twitter:site" content="@ArturiaMu">
-    <meta name="twitter:creator" content="@ArturiaMu"><meta name="twitter:title" content="springboot 普通类自动注入mapper">
-<meta name="twitter:description" content="springboot 普通类中使用注解注入mapper">
+    <meta name="twitter:creator" content="@ArturiaMu"><meta name="twitter:title" content="ssh、scp、ftp、sftp命令详解">
+<meta name="twitter:description" content="ssh、scp、ftp、sftp命令使用方法">
     <link rel="shortcut icon" href="/favicon.ico" />
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JJG6TYWNYX"></script>
@@ -359,7 +359,26 @@ if (!doNotTrack) {
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#解决方法">解决方法</a></li>
+    <li><a href="#ssh">ssh</a>
+      <ol>
+        <li><a href="#使用方法">使用方法</a></li>
+      </ol>
+    </li>
+    <li><a href="#scp">scp</a>
+      <ol>
+        <li><a href="#使用方法-1">使用方法</a></li>
+      </ol>
+    </li>
+    <li><a href="#ftp">ftp</a>
+      <ol>
+        <li><a href="#使用方法-2">使用方法</a></li>
+      </ol>
+    </li>
+    <li><a href="#sftp">sftp</a>
+      <ol>
+        <li><a href="#使用方法-3">使用方法</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -442,12 +461,12 @@ if (!doNotTrack) {
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/post/spring-boot-reject-mapper/">springboot 普通类自动注入mapper</a>
+            <a href="/post/ssh-scp-sftp/">ssh、scp、ftp、sftp命令详解</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            springboot 普通类中使用注解注入mapper
+            ssh、scp、ftp、sftp命令使用方法
         </h3>
         
     </div>
@@ -468,7 +487,7 @@ if (!doNotTrack) {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2023-06-23 16:28:51 CST</time>
+                <time class="article-time--published">2023-09-28 16:05:04 CST</time>
             </div>
         
 
@@ -483,7 +502,7 @@ if (!doNotTrack) {
 
 
                 <time class="article-time--reading">
-                    阅读时长: 1 分钟
+                    阅读时长: 2 分钟
                 </time>
             </div>
         
@@ -498,10 +517,10 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <p><strong>本文从作者CSDN <a class="link" href="https://blog.csdn.net/qq_43353586/article/details/125187441"  target="_blank" rel="noopener"
-    >springboot 普通类自动注入mapper</a> 同步</strong></p>
-<h2 id="解决方法">解决方法</h2>
-<p>普通类使用@Component注解修饰，添加本类型静态属性、所需mapper属性，添加init方法，用@PostConstruct注解修饰，方法内初始化以上2个属性：</p>
+    <h2 id="ssh">ssh</h2>
+<p>SSH（Secure Shell）是一种网络协议，用于在不安全的网络上安全地进行远程登录和执行命令。SSH提供了加密的连接，以防止敏感信息（如密码）被窃听。</p>
+<p>SSH包括二个部分，服务端的SSHD（Secure Shell Daemon）和SSH客户端。我们通常所说的用SSH登录到某某主机，指的是用SSH客户端远程登录到某台主机（该主机运行了SSHD服务端程序）。</p>
+<h3 id="使用方法">使用方法</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -514,35 +533,137 @@ if (!doNotTrack) {
 </span><span class="lnt"> 8
 </span><span class="lnt"> 9
 </span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Component</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">VideoPool</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">VideoPool</span> <span class="n">that</span><span class="o">;</span>  <span class="c1">// 本类型静态属性
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Resource</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">VideoMapper</span> <span class="n">videoMapper</span><span class="o">;</span>  <span class="c1">// 所需要mapper
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    
-</span></span><span class="line"><span class="cl">    <span class="nd">@PostConstruct</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">that</span> <span class="o">=</span> <span class="k">this</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">        <span class="n">that</span><span class="o">.</span><span class="na">videoMapper</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">videoMapper</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ssh <span class="o">[</span>选项<span class="o">]</span> <span class="o">[</span>用户名@<span class="o">]</span>主机名 <span class="o">[</span>命令<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 选项：常见的选项包括-p（指定端口号）、-i（指定私钥文件）等。</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 用户名：远程主机上的用户名。 </span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 主机名：远程主机的IP地址或域名。</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 命令：可选参数，用于在登录后执行特定的命令。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ssh root@192.168.0.1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># -p 指定端口</span>
+</span></span><span class="line"><span class="cl">ssh -p <span class="m">2222</span> user@example.com
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>在类中需要使用mapper时，用that(本类型静态属性）.mapper：</p>
+</div><h2 id="scp">scp</h2>
+<p>SCP（Secure Copy）是基于SSH协议的文件传输工具，用于在本地和远程主机之间安全地复制文件。</p>
+<h3 id="使用方法-1">使用方法</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span> <span class="n">itemList</span> <span class="o">=</span> <span class="n">that</span><span class="o">.</span><span class="na">itemMapper</span><span class="o">.</span><span class="na">getAll</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">scp <span class="o">[</span>选项<span class="o">]</span> <span class="o">[</span>源文件<span class="o">]</span> <span class="o">[</span>目标路径<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 选项：-v 显示进度，-C 启用压缩功能，-P 指定端口</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># -4 强行使用 IPV4 地址，-6 强行使用 IPV6 地址，-r 递归复制整个目录</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 从远程服务器下载文件</span>
+</span></span><span class="line"><span class="cl">scp 服务器地址:服务器文件路径 本地保存路径
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 上传文件到远程服务器</span>
+</span></span><span class="line"><span class="cl">scp 本地文件地址 服务器地址:/远程保存路径
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="ftp">ftp</h2>
+<p>FTP（File Transfer Protocol）是一种用于在网络上传输文件的标准协议。它使用明文传输，不提供加密功能。</p>
+<h3 id="使用方法-2">使用方法</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ftp <span class="o">[</span>选项<span class="o">]</span> <span class="o">[</span>主机名<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 选项：常见选项包括-p（指定端口号）、-u（指定用户名）等。</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 主机名：远程主机的IP地址或域名。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ftp example.com
+</span></span><span class="line"><span class="cl">ftp -p <span class="m">2222</span> user@example.com
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="sftp">sftp</h2>
+<p>SFTP（SSH File Transfer Protocol）是基于SSH协议的安全文件传输协议，提供了加密和身份验证功能。</p>
+<h3 id="使用方法-3">使用方法</h3>
+<p>登录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sftp <span class="o">[</span>选项<span class="o">]</span> <span class="o">[</span>用户名@<span class="o">]</span>主机名
+</span></span><span class="line"><span class="cl"><span class="c1"># 选项：常见选项包括-P（指定端口号）、-i（指定私钥文件）等。</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 用户名：远程主机上的用户名。</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 主机名：远程主机的IP地址或域名。</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>登录到远程主机后，可以如下运行交互式的 sFTP 命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sftp&gt; ls            <span class="c1">#list directory </span>
+</span></span><span class="line"><span class="cl">sftp&gt; <span class="nb">pwd</span>           <span class="c1">#print working directory on remote host</span>
+</span></span><span class="line"><span class="cl">sftp&gt; lpwd          <span class="c1">#print working directory on local host</span>
+</span></span><span class="line"><span class="cl">sftp&gt; mkdir uploads     <span class="c1">#create a new directory</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上传文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># put [本地文件的地址] [服务器上文件存储的位置]</span>
+</span></span><span class="line"><span class="cl">sftp&gt; put text.md
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># put -r 将整个目录上传到服务器，但是，如果目录名称不存在于服务器中，会报错。</span>
+</span></span><span class="line"><span class="cl">sftp&gt; put -r  dirname
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用-p参数保留修改时间、访问时间以及被传输的文件的模式</span>
+</span></span><span class="line"><span class="cl">sftp&gt; put -pr dirname
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>下载文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># get [服务器上文件存储的位置] [本地要存储的位置]</span>
+</span></span><span class="line"><span class="cl">sftp&gt; get filename
+</span></span><span class="line"><span class="cl"><span class="c1"># get -r 将整个目录下载到本地</span>
+</span></span><span class="line"><span class="cl">sftp&gt; get -r dirname
 </span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -553,9 +674,7 @@ if (!doNotTrack) {
     
     <section class="article-tags">
         
-            <a href="/tags/java/">java</a>
-        
-            <a href="/tags/springboot/">springboot</a>
+            <a href="/tags/linux/">linux</a>
         
     </section>
 
