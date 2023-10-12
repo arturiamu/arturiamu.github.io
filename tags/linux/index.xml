@@ -8,10 +8,10 @@
         <language>zh-cn</language>
         <lastBuildDate>Thu, 28 Sep 2023 16:05:04 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>ssh、scp、ftp、sftp命令详解</title>
-        <link>https://arturiamu.github.io/post/ssh-scp-sftp/</link>
+        <link>https://arturiamu.github.io/post/ssh-scp-ftp-sftp/</link>
         <pubDate>Thu, 28 Sep 2023 16:05:04 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/ssh-scp-sftp/</guid>
+        <guid>https://arturiamu.github.io/post/ssh-scp-ftp-sftp/</guid>
         <description>&lt;h2 id=&#34;ssh&#34;&gt;ssh&lt;/h2&gt;
 &lt;p&gt;SSH（Secure Shell）是一种网络协议，用于在不安全的网络上安全地进行远程登录和执行命令。SSH提供了加密的连接，以防止敏感信息（如密码）被窃听。&lt;/p&gt;
 &lt;p&gt;SSH包括二个部分，服务端的SSHD（Secure Shell Daemon）和SSH客户端。我们通常所说的用SSH登录到某某主机，指的是用SSH客户端远程登录到某台主机（该主机运行了SSHD服务端程序）。&lt;/p&gt;

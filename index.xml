@@ -6,12 +6,63 @@
         <description>Recent content on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Thu, 28 Sep 2023 16:05:04 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 12 Oct 2023 19:38:23 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>mysql general_log</title>
+        <link>https://arturiamu.github.io/post/mysql-general-log/</link>
+        <pubDate>Thu, 12 Oct 2023 19:38:23 +0800</pubDate>
+        
+        <guid>https://arturiamu.github.io/post/mysql-general-log/</guid>
+        <description>&lt;h2 id=&#34;关于mysql-general_log&#34;&gt;关于mysql general_log&lt;/h2&gt;
+&lt;p&gt;MySQL General Log（一般日志）是MySQL数据库的一种日志记录功能，用于记录数据库服务器上发生的所有操作。它可以记录包括连接、查询、事务等在内的所有操作。&lt;/p&gt;
+&lt;p&gt;General Log记录的内容包括：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;客户端连接和断开连接的信息，包括连接的用户、IP地址、端口等。&lt;/li&gt;
+&lt;li&gt;执行的SQL查询语句，包括SELECT、INSERT、UPDATE、DELETE等。&lt;/li&gt;
+&lt;li&gt;事务的开始和提交信息。&lt;/li&gt;
+&lt;li&gt;错误和警告信息。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;General Log的作用是用于调试和审计。通过查看General Log，您可以了解数据库服务器上发生的所有操作，包括哪些查询被执行、哪些连接被建立和断开、是否发生了错误等。这对于调试应用程序问题、分析慢查询、检查数据库安全性等非常有用。&lt;/p&gt;
+&lt;p&gt;但是需要注意的是，启用General Log会对数据库服务器的性能产生一定的影响，因为它会记录大量的操作信息。因此，在生产环境中，一般不建议一直启用General Log，而是根据需要进行临时开启或者只记录特定的操作。&lt;/p&gt;
+&lt;h2 id=&#34;使用方法&#34;&gt;使用方法&lt;/h2&gt;
+&lt;h3 id=&#34;在数据库启动前开启&#34;&gt;在数据库启动前开启&lt;/h3&gt;
+&lt;p&gt;在启动mysqld服务时指定相应参数&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# --general_log 开启或关闭日志&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# --log_output=[FILE,TABLE,NONE] 指定日志输出类型&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# --general_log_file=file_name 指定日志输出位置&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/usr/local/mysql/bin/mysqld --general_log&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;on --log_output&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;FILE&amp;#39;&lt;/span&gt; --general_log_file&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/data/mysql/log_output/slt.log&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h3 id=&#34;在数据库运行时开启&#34;&gt;在数据库运行时开启&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; global &lt;span class=&#34;nv&#34;&gt;general_log_file&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/data/mysql/log_output/slt.log&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 指定日志输出位置 &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;SET GLOBAL &lt;span class=&#34;nv&#34;&gt;log_output&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;FILE&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;# 指定日志输出类型&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; global &lt;span class=&#34;nv&#34;&gt;general_log&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;on&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;# 开启日志&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 此外，可以通过设置sql_log_off的值为ON或OFF来禁用或启用当前连接的General query log。&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        <item>
         <title>ssh、scp、ftp、sftp命令详解</title>
-        <link>https://arturiamu.github.io/post/ssh-scp-sftp/</link>
+        <link>https://arturiamu.github.io/post/ssh-scp-ftp-sftp/</link>
         <pubDate>Thu, 28 Sep 2023 16:05:04 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/ssh-scp-sftp/</guid>
+        <guid>https://arturiamu.github.io/post/ssh-scp-ftp-sftp/</guid>
         <description>&lt;h2 id=&#34;ssh&#34;&gt;ssh&lt;/h2&gt;
 &lt;p&gt;SSH（Secure Shell）是一种网络协议，用于在不安全的网络上安全地进行远程登录和执行命令。SSH提供了加密的连接，以防止敏感信息（如密码）被窃听。&lt;/p&gt;
 &lt;p&gt;SSH包括二个部分，服务端的SSHD（Secure Shell Daemon）和SSH客户端。我们通常所说的用SSH登录到某某主机，指的是用SSH客户端远程登录到某台主机（该主机运行了SSHD服务端程序）。&lt;/p&gt;
