@@ -1,0 +1,2053 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='docker安装、部署、简单使用'>
+<meta name="keywords" content="木林彪, arturiamu, 博客, 木林彪的个人博客, docker, docker容器, docker镜像, docker基础, 容器"><title>一文搞懂docker容器基础：docker镜像管理，docker容器管理</title>
+
+<link rel='canonical' href='https://arturiamu.github.io/post/docker-container-base/'>
+
+<link rel="stylesheet" href="/scss/style.min.5e3814b8c20dd362819d8f0b1c0554df211090883babaeea35913b6b16121b26.css"><meta property='og:title' content='一文搞懂docker容器基础：docker镜像管理，docker容器管理'>
+<meta property='og:description' content='docker安装、部署、简单使用'>
+<meta property='og:url' content='https://arturiamu.github.io/post/docker-container-base/'>
+<meta property='og:site_name' content='木林彪的个人博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='docker' /><meta property='article:published_time' content='2023-10-27T10:49:41&#43;08:00'/><meta property='article:modified_time' content='2023-10-27T10:49:41&#43;08:00'/>
+<meta name="twitter:site" content="@ArturiaMu">
+    <meta name="twitter:creator" content="@ArturiaMu"><meta name="twitter:title" content="一文搞懂docker容器基础：docker镜像管理，docker容器管理">
+<meta name="twitter:description" content="docker安装、部署、简单使用">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JJG6TYWNYX"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-JJG6TYWNYX', { 'anonymize_ip': false });
+}
+</script>
+<style>
+    :root {
+         
+        --sys-font-family: "HarmonyOS_Sans_SC_Medium", Georgia, -apple-system, 'Nimbus Roman No9 L', 'PingFang SC', 'Hiragino Sans GB', 'Noto Serif SC', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'ST Heiti', sans-serif;
+        --code-font-family: "JetBrainsMono Regular", Menlo, Monaco, Consolas, "Courier New";
+        --article-font-family: "HarmonyOS_Sans_SC_Medium", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://img.shimoko.com/fonts/font.css";
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar1_hu67b097db30250ef6a2ed6dd217c7d0a7_22735_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">❤️</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">木林彪的个人博客</a></h1>
+            <h2 class="site-description">~Coding my life~</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/arturiamu'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:arturiamumu@gmail.com'
+                        target="_blank"
+                        title="Gmail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-gmail" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+    <path d="M16 20h3a1 1 0 0 0 1 -1v-14a1 1 0 0 0 -1 -1h-3v16z" />
+    <path d="M5 20h3v-16h-3a1 1 0 0 0 -1 1v14a1 1 0 0 0 1 1z" />
+    <path d="M16 4l-4 4l-4 -4" />
+    <path d="M4 6.5l8 7.5l8 -7.5" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/message/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M8 9h8" />
+  <path d="M8 13h6" />
+  <path d="M9 18h-3a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-3l-3 3l-3 -3z" />
+</svg>
+
+
+
+                
+                <span>留言</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://arturiamu.github.io/" selected>中文</option>
+                        
+                            <option value="https://arturiamu.github.io/en/" >English</option>
+                        
+                            <option value="https://arturiamu.github.io/ja/" >日本</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#系统环境">系统环境</a></li>
+    <li><a href="#docker">docker</a>
+      <ol>
+        <li><a href="#docker-概述">Docker 概述</a></li>
+        <li><a href="#docker-平台">Docker 平台</a></li>
+        <li><a href="#我可以使用-docker-做什么">我可以使用 Docker 做什么？</a>
+          <ol>
+            <li><a href="#快速一致地交付您的应用程序">快速、一致地交付您的应用程序</a></li>
+            <li><a href="#响应式部署和扩展">响应式部署和扩展</a></li>
+            <li><a href="#在相同硬件上运行更多工作负载">在相同硬件上运行更多工作负载</a></li>
+          </ol>
+        </li>
+        <li><a href="#docker-架构">Docker 架构</a>
+          <ol>
+            <li><a href="#the-docker-daemondocker-守护进程">The Docker daemon(Docker 守护进程)</a></li>
+            <li><a href="#the-docker-clientdocker-客户端">The Docker client(Docker 客户端)</a></li>
+            <li><a href="#docker-desktopdocker-桌面">Docker Desktop(Docker 桌面)</a></li>
+            <li><a href="#docker-registriesdocker-镜像仓库">Docker registries(Docker 镜像仓库)</a></li>
+            <li><a href="#docker-objectsdocker-对象">Docker objects(Docker 对象)</a></li>
+            <li><a href="#images镜像">Images(镜像)</a></li>
+            <li><a href="#containers容器">Containers(容器)</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#docker的安装部署">docker的安装部署</a>
+      <ol>
+        <li><a href="#安装docker">安装docker</a></li>
+        <li><a href="#配置阿里云docker镜像加速器">配置阿里云docker镜像加速器</a></li>
+      </ol>
+    </li>
+    <li><a href="#docker的管理">docker的管理</a>
+      <ol>
+        <li><a href="#docker镜像的管理">docker镜像的管理</a></li>
+        <li><a href="#docker容器的管理">docker容器的管理</a>
+          <ol>
+            <li><a href="#docker容器管理命令">docker容器管理命令</a></li>
+            <li><a href="#容器管理示例">容器管理示例</a></li>
+            <li><a href="#运行nginx容器示例容器端口映射">运行nginx容器示例，容器端口映射</a></li>
+            <li><a href="#运行mysql容器示例练习容器基本操作">运行mysql容器示例，练习容器基本操作</a></li>
+            <li><a href="#容器数据卷volumes容器目录映射">容器数据卷volumes(容器目录映射)</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">标签云</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/linux/" class="font_size_4">
+                linux
+            </a>
+        
+            <a href="/tags/bash/" class="font_size_3">
+                bash
+            </a>
+        
+            <a href="/tags/mysql/" class="font_size_3">
+                mysql
+            </a>
+        
+            <a href="/tags/python/" class="font_size_3">
+                python
+            </a>
+        
+            <a href="/tags/bug/" class="font_size_2">
+                bug
+            </a>
+        
+            <a href="/tags/golang/" class="font_size_2">
+                golang
+            </a>
+        
+            <a href="/tags/blog/" class="font_size_1">
+                blog
+            </a>
+        
+            <a href="/tags/docker/" class="font_size_1">
+                docker
+            </a>
+        
+            <a href="/tags/gin/" class="font_size_1">
+                gin
+            </a>
+        
+            <a href="/tags/git/" class="font_size_1">
+                git
+            </a>
+        
+    </div>
+</section>
+            
+        
+        <div style="height: 30%;width: 30%">
+            <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=4gAmsOskyL921TwxZGdrq3NbkFu-hJm8dDfoHJsn25Q"></script>
+        </div>
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/archives/container/" >
+                容器
+            </a>
+        
+            <a href="/archives/cloud-native/" >
+                云原生
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/docker-container-base/">一文搞懂docker容器基础：docker镜像管理，docker容器管理</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            docker安装、部署、简单使用
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2023-10-27 10:49:41 CST</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 14 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p><strong>本文转载自 <a class="link" href="https://www.cnblogs.com/renshengdezheli/p/16628311.html"  target="_blank" rel="noopener"
+    >一文搞懂docker容器基础：docker镜像管理，docker容器管理</a></strong></p>
+<h2 id="系统环境">系统环境</h2>
+<p><img src="/post/docker-container-base/img.png"
+	width="516"
+	height="126"
+	srcset="/post/docker-container-base/img_hue5161b68d2a54c394eedafd581a46de0_12624_480x0_resize_box_3.png 480w, /post/docker-container-base/img_hue5161b68d2a54c394eedafd581a46de0_12624_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="img.png"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="409"
+		data-flex-basis="982px"
+	
+></p>
+<h2 id="docker">docker</h2>
+<h3 id="docker-概述">Docker 概述</h3>
+<p>Docker 是一个用于开发、发布和运行应用程序的开放平台。Docker 使您能够将应用程序与基础架构分离，以便您可以快速交付软件。
+使用 Docker，您可以像管理应用程序一样管理基础设施。通过利用 Docker 快速交付、测试和部署代码的方法，您可以显著减少编写代码和在生产环境中运行之间的延迟。</p>
+<h3 id="docker-平台">Docker 平台</h3>
+<p>Docker 提供了在称为容器的松散隔离环境中打包和运行应用程序的能力。隔离和安全性允许您在给定主机上同时运行多个容器。
+容器是轻量级的，包含运行应用程序所需的一切，因此您无需依赖主机上当前安装的内容。您可以在工作时轻松共享容器，并确保与您共享的每个人都获得以相同方式工作的同一个容器。</p>
+<p>Docker 提供工具和平台来管理容器的生命周期：</p>
+<ul>
+<li>使用容器开发您的应用程序及其支持组件。</li>
+<li>容器成为分发和测试应用程序的单元。</li>
+<li>准备就绪后，将应用程序部署到生产环境中，作为容器或编排的服务。无论您的生产环境是本地数据中心、云提供商还是两者的混合，这都是一样的。</li>
+</ul>
+<h3 id="我可以使用-docker-做什么">我可以使用 Docker 做什么？</h3>
+<h4 id="快速一致地交付您的应用程序">快速、一致地交付您的应用程序</h4>
+<p>Docker 通过允许开发人员使用提供应用程序和服务的本地容器在标准化环境中工作来简化开发生命周期。容器非常适合持续集成和持续交付 (CI/CD) 工作流程。</p>
+<p>考虑以下示例场景：</p>
+<ul>
+<li>您的开发人员在本地编写代码并使用 Docker 容器与同事分享他们的工作。</li>
+<li>他们使用 Docker 将他们的应用程序推送到测试环境中并执行自动化和手动测试。</li>
+<li>当开发者发现bug时，可以在开发环境中修复，重新部署到测试环境中进行测试和验证。</li>
+<li>测试完成后，将修复程序提供给客户就像将更新的映像推送到生产环境一样简单。</li>
+</ul>
+<h4 id="响应式部署和扩展">响应式部署和扩展</h4>
+<p>Docker 基于容器的平台允许高度可移植的工作负载。Docker 容器可以在开发人员的本地笔记本电脑、数据中心的物理或虚拟机、云提供商或混合环境中运行。</p>
+<p>Docker 的可移植性和轻量级特性还使得动态管理工作负载、根据业务需求近乎实时地扩展或拆除应用程序和服务变得容易。</p>
+<h4 id="在相同硬件上运行更多工作负载">在相同硬件上运行更多工作负载</h4>
+<p>Docker 是轻量级和快速的。它为基于管理程序的虚拟机提供了一种可行且经济高效的替代方案，因此您可以使用更多计算容量来实现业务目标。
+Docker 非常适合高密度环境以及需要用更少资源完成更多工作的中小型部署。</p>
+<h3 id="docker-架构">Docker 架构</h3>
+<p>Docker 使用客户端-服务器架构。Docker客户端与 Docker守护进程对话，后者负责构建、运行和分发 Docker 容器的繁重工作。
+Docker 客户端和守护程序可以 在同一系统上运行，或者您可以将 Docker 客户端连接到远程 Docker 守护程序。
+Docker 客户端和守护程序使用 REST API，通过 UNIX 套接字或网络接口进行通信。
+另一个 Docker 客户端是 Docker Compose，它允许您使用由一组容器组成的应用程序。</p>
+<p><img src="/post/docker-container-base/img_1.png"
+	width="804"
+	height="439"
+	srcset="/post/docker-container-base/img_1_hu7f2b2d87753f5e5a3526eafbe16af29e_71289_480x0_resize_box_3.png 480w, /post/docker-container-base/img_1_hu7f2b2d87753f5e5a3526eafbe16af29e_71289_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="img_1.png"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="183"
+		data-flex-basis="439px"
+	
+></p>
+<h4 id="the-docker-daemondocker-守护进程">The Docker daemon(Docker 守护进程)</h4>
+<p>Docker 守护程序 ( dockerd) 侦听 Docker API 请求并管理 Docker 对象，例如镜像、容器、网络和卷。守护进程还可以与其他守护进程通信以管理 Docker 服务。</p>
+<h4 id="the-docker-clientdocker-客户端">The Docker client(Docker 客户端)</h4>
+<p>Docker 客户端 ( docker) 是许多 Docker 用户与 Docker 交互的主要方式。当您使用诸如docker run之类的命令时，客户端会将这些命令发送到dockerd执行它们。
+该docker命令使用 Docker API。Docker 客户端可以与多个守护进程通信。</p>
+<h4 id="docker-desktopdocker-桌面">Docker Desktop(Docker 桌面)</h4>
+<p>Docker Desktop 是一个易于安装的应用程序，适用于您的 Mac、Windows 或 Linux 环境，使您能够构建和共享容器化应用程序和微服务。
+Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker)、Docker Compose、Docker Content Trust、Kubernetes 和 Credential Helper</p>
+<h4 id="docker-registriesdocker-镜像仓库">Docker registries(Docker 镜像仓库)</h4>
+<p>Docker镜像仓库存储 Docker 镜像。Docker Hub 是一个任何人都可以使用的公共镜像仓库，并且 Docker 默认配置为在 Docker Hub 上查找镜像。您甚至可以运行自己的私有镜像仓库。</p>
+<p>当您使用docker pull或者docker run命令时，将从您配置的镜像仓库中拉取所需的镜像。当您使用该docker push命令时，您的镜像会被推送到您配置的镜像仓库中。</p>
+<h4 id="docker-objectsdocker-对象">Docker objects(Docker 对象)</h4>
+<p>当您使用 Docker 时，您正在创建和使用镜像、容器、网络、卷、插件和其他对象。</p>
+<h4 id="images镜像">Images(镜像)</h4>
+<p>镜像是一个只读模板，其中包含创建 Docker 容器的说明。通常，一个镜像基于另一个镜像，并带有一些额外的自定义。
+例如，您可以基于该镜像构建一个镜像ubuntu ，但安装 Apache Web 服务器和您的应用程序，以及使您的应用程序运行所需的配置详细信息。</p>
+<p>您可以创建自己的镜像，也可以只使用其他人创建并在镜像仓库中发布的镜像。要构建您自己的镜像，您需要使用简单的语法创建一个Dockerfile ，
+用于定义创建和运行镜像所需的步骤。Dockerfile 中的每条指令都会在镜像中创建一个层。当您更改 Dockerfile 并重建镜像时，仅重建那些已更改的层。
+与其他虚拟化技术相比，这是使镜像如此轻量、小巧和快速的部分原因。</p>
+<p>运行容器时，它使用隔离的文件系统。此自定义文件系统由容器镜像提供。由于镜像包含容器的文件系统，
+它必须包含运行应用程序所需的一切（所有依赖项、配置、脚本、二进制文件等）。镜像还包含容器的其他配置，例如环境变量、要运行的默认命令、和其他元数据。</p>
+<h4 id="containers容器">Containers(容器)</h4>
+<p>容器是镜像的可运行实例。您可以使用 Docker API 或 CLI 创建、启动、停止、移动或删除容器。您可以将容器连接到一个或多个网络，将存储附加到它，甚至可以根据其当前状态创建新镜像。</p>
+<p>默认情况下，一个容器与其他容器及其主机的隔离相对较好。您可以控制容器的网络、存储或其他底层子系统与其他容器或主机的隔离程度。</p>
+<p>容器由其镜像以及您在创建或启动它时提供给它的任何配置选项定义。当容器被移除时，任何未存储在持久存储中的状态更改都会消失。</p>
+<p>容器是您机器上的沙盒进程，与主机上的所有其他进程隔离。这种隔离利用了内核命名空间和 cgroups，这些特性在 Linux 中已经存在了很长时间。Docker 致力于使这些功能变得平易近人且易于使用。总而言之，一个容器：</p>
+<ul>
+<li>是镜像的可运行实例。您可以使用 DockerAPI 或 CLI 创建、启动、停止、移动或删除容器。</li>
+<li>可以在本地机器、虚拟机上运行或部署到云端。</li>
+<li>是可移植的（可以在任何操作系统上运行）。</li>
+<li>与其他容器隔离并运行自己的软件、二进制文件和配置。</li>
+</ul>
+<h2 id="docker的安装部署">docker的安装部署</h2>
+<h3 id="安装docker">安装docker</h3>
+<p>1.安装docker</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8scloude1 ~<span class="o">]</span><span class="c1"># yum -y install docker-ce</span>
+</span></span><span class="line"><span class="cl">已加载插件：fastestmirror
+</span></span><span class="line"><span class="cl">base                                                                                                                                           <span class="p">|</span> 3.6 kB  00:00:00     
+</span></span><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl">已安装:
+</span></span><span class="line"><span class="cl">  docker-ce.x86_64 3:20.10.12-3.el7                                                                                                                                   
+</span></span><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl">完毕！
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>2.设置docker开机自启动并现在启动docker</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8scloude1 ~<span class="o">]</span><span class="c1"># systemctl enable docker --now</span>
+</span></span><span class="line"><span class="cl">Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8scloude1 ~<span class="o">]</span><span class="c1"># systemctl status docker</span>
+</span></span><span class="line"><span class="cl">● docker.service - Docker Application Container Engine
+</span></span><span class="line"><span class="cl">   Loaded: loaded <span class="o">(</span>/usr/lib/systemd/system/docker.service<span class="p">;</span> enabled<span class="p">;</span> vendor preset: disabled<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   Active: active <span class="o">(</span>running<span class="o">)</span> since 六 2022-01-08 22:10:38 CST<span class="p">;</span> 18s ago
+</span></span><span class="line"><span class="cl">     Docs: https://docs.docker.com
+</span></span><span class="line"><span class="cl"> Main PID: <span class="m">1377</span> <span class="o">(</span>dockerd<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   Memory: 30.8M
+</span></span><span class="line"><span class="cl">   CGroup: /system.slice/docker.service
+</span></span><span class="line"><span class="cl">           └─1377 /usr/bin/dockerd -H fd:// --containerd<span class="o">=</span>/run/containerd/containerd.sock
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>3.查看docker版本</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8scloude1 ~<span class="o">]</span><span class="c1"># docker --version</span>
+</span></span><span class="line"><span class="cl">Docker version 20.10.12, build e91ed57
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>4.docker info : 显示 Docker 系统信息，包括镜像和容器数等等</p>
+<h3 id="配置阿里云docker镜像加速器">配置阿里云docker镜像加速器</h3>
+<p>1.配置docker镜像加速器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8scloude1 ~<span class="o">]</span><span class="c1"># cat &gt; /etc/docker/daemon.json &lt;&lt;EOF</span>
+</span></span><span class="line"><span class="cl">&gt; <span class="o">{</span>
+</span></span><span class="line"><span class="cl">&gt; <span class="s2">&#34;registry-mirrors&#34;</span>: <span class="o">[</span><span class="s2">&#34;https://frz7i079.mirror.aliyuncs.com&#34;</span><span class="o">]</span> 
+</span></span><span class="line"><span class="cl">&gt; <span class="o">}</span>
+</span></span><span class="line"><span class="cl">&gt; EOF
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8scloude1 ~<span class="o">]</span><span class="c1"># cat /etc/docker/daemon.json</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl"><span class="s2">&#34;registry-mirrors&#34;</span>: <span class="o">[</span><span class="s2">&#34;https://frz7i079.mirror.aliyuncs.com&#34;</span><span class="o">]</span> 
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>2.重启docker</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8scloude1 ~<span class="o">]</span><span class="c1"># systemctl restart docker</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8scloude1 ~<span class="o">]</span><span class="c1"># systemctl status docker</span>
+</span></span><span class="line"><span class="cl">● docker.service - Docker Application Container Engine
+</span></span><span class="line"><span class="cl">   Loaded: loaded <span class="o">(</span>/usr/lib/systemd/system/docker.service<span class="p">;</span> enabled<span class="p">;</span> vendor preset: disabled<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   Active: active <span class="o">(</span>running<span class="o">)</span> since 六 2022-01-08 22:17:45 CST<span class="p">;</span> 8s ago
+</span></span><span class="line"><span class="cl">     Docs: https://docs.docker.com
+</span></span><span class="line"><span class="cl"> Main PID: <span class="m">1529</span> <span class="o">(</span>dockerd<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   Memory: 32.4M
+</span></span><span class="line"><span class="cl">   CGroup: /system.slice/docker.service
+</span></span><span class="line"><span class="cl">           └─1529 /usr/bin/dockerd -H fd:// --containerd<span class="o">=</span>/run/containerd/containerd.sock
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="docker的管理">docker的管理</h2>
+<h3 id="docker镜像的管理">docker镜像的管理</h3>
+<p>1.docker镜像命名规范</p>
+<p>给镜像打标签(tag)时需要注意命名的规范，一般为:系统名称+系统版本+服务名+服务版本:代码版本如:centos7.6-nginx-1.47:2.0。</p>
+<p>2.docker镜像管理命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#搜索镜像：docker search 镜像</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#拉取镜像：docker pull [选项] [Docker Registey 地址[:端口号]/] 镜像名[:标签]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#在镜像列表中，可能会存在一种特殊的镜像，该镜像既没有仓库名/镜像名称，也没有标签/版本号，这两个位置均显示&lt;none&gt;，这种镜像通常被称为虚悬镜像，一般来说，虚悬镜像已经失去了存在的价值，是可以随意删除的，使用下面的命令删除：docker image prune</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#给镜像打标签:docker tag 镜像 </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#删除本地镜像：docker rmi 镜像 </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#导出镜像为tar包：docker save 镜像名 &gt; filename.tar </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#导入镜像：docker load -i filename.tar </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#把容器导出为镜像tar包： docker export 容器名 &gt; filename.tar </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#导入镜像tar包： cat filename.tar | docker import - 镜像名 </span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>列出镜像：docker images</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker images</span>
+</span></span><span class="line"><span class="cl">REPOSITORY                                                        TAG        IMAGE ID       CREATED         SIZE
+</span></span><span class="line"><span class="cl">hub.c.163.com/library/centos                                      latest     328edcd84f1b   <span class="m">4</span> years ago     193MB
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看指定镜像的创建历史：docker history xxxx &ndash;no-trunc 可以显示完整的内容</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker history hub.c.163.com/library/centos</span>
+</span></span><span class="line"><span class="cl">IMAGE          CREATED       CREATED BY                                      SIZE      COMMENT
+</span></span><span class="line"><span class="cl">328edcd84f1b   <span class="m">4</span> years ago   /bin/sh -c <span class="c1">#(nop)  CMD [&#34;/bin/bash&#34;]            0B        </span>
+</span></span><span class="line"><span class="cl">&lt;missing&gt;      <span class="m">4</span> years ago   /bin/sh -c <span class="c1">#(nop)  LABEL name=CentOS Base Im…   0B        </span>
+</span></span><span class="line"><span class="cl">&lt;missing&gt;      <span class="m">4</span> years ago   /bin/sh -c <span class="c1">#(nop) ADD file:63492ba809361c51e…   193MB     </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker history hub.c.163.com/library/centos --no-trunc</span>
+</span></span><span class="line"><span class="cl">IMAGE                                                                     CREATED       CREATED BY                                                                                          SIZE      COMMENT
+</span></span><span class="line"><span class="cl">sha256:328edcd84f1bbf868bc88e4ae37afe421ef19be71890f59b4b2d8ba48414b84d   <span class="m">4</span> years ago   /bin/sh -c <span class="c1">#(nop)  CMD [&#34;/bin/bash&#34;]                                                                0B        </span>
+</span></span><span class="line"><span class="cl">&lt;missing&gt;                                                                 <span class="m">4</span> years ago   /bin/sh -c <span class="c1">#(nop)  LABEL name=CentOS Base Image vendor=CentOS license=GPLv2 build-date=20170801     0B        </span>
+</span></span><span class="line"><span class="cl">&lt;missing&gt;                                                                 <span class="m">4</span> years ago   /bin/sh -c <span class="c1">#(nop) ADD file:63492ba809361c51e75605d70390b549ff1187076b6d00485a1a0bb175daa40e in /    193MB     </span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="docker容器的管理">docker容器的管理</h3>
+<h4 id="docker容器管理命令">docker容器管理命令</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#运行容器:docker run 镜像</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#删除容器：docker rm 容器名</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#显示容器:docker ps</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#列出指定容器的端口映射：docker port 容器名</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@etcd2 ~<span class="o">]</span><span class="c1"># docker port harbor-log</span>
+</span></span><span class="line"><span class="cl">10514/tcp -&gt; 127.0.0.1:1514
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#在运行的容器中执行命令：docker exec xxxx 命令 </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#启动容器：docker start xxxx </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#停止容器：docker stop xxxxx </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#重启容器：docker restart xxxxx </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#杀掉一个运行中的容器：docker kill 容器名</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#进入运行中的容器(连接到正在运行中的容器使用exit退出后容器自动关闭，不推荐使用)：docker attach CONTAINER</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#查看容器中运行的进程信息：docker top xxxxx </span>
+</span></span><span class="line"><span class="cl"><span class="c1">#查看所有容器运行的进程：for i in  `docker ps |grep Up|awk &#39;{print $1}&#39;`;do echo \ &amp;&amp;docker top $i; done</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#获取容器的日志：docker logs -f node </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#获取容器的详细信息：docker inspect 容器名</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#容器与主机之间的数据拷贝:</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#从容器里复制数据到主机：docker cp CONTAINER:SRC_PATH DEST_PATH</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#从主机里复制数据到容器：docker cp SRC_PATH| CONTAINER:DEST_PATH</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@etcd2 ~<span class="o">]</span><span class="c1"># docker cp /opt/ 7c677fb67522:/home</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>运行容器：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#运行容器:docker run 镜像</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#docker run 镜像 ---最简单的一个容器 </span>
+</span></span><span class="line"><span class="cl"><span class="c1">#docker run -it --rm hub.c.163.com/library/centos /bin/bash </span>
+</span></span><span class="line"><span class="cl"><span class="c1">#docker run -dit -h node --name=c1 镜像名 命令 </span>
+</span></span><span class="line"><span class="cl"><span class="c1">#docker run -dit --restart=always 镜像名 命令 </span>
+</span></span><span class="line"><span class="cl"><span class="c1">#docker run -dit --restart=always -e 变量1=值1 -e 变量2=值2 镜像</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">常见参数
+</span></span><span class="line"><span class="cl">-a stdin: 指定标准输入输出内容类型，可选 STDIN/STDOUT/STDERR 三项；
+</span></span><span class="line"><span class="cl">-d: 后台运行容器，并返回容器ID；
+</span></span><span class="line"><span class="cl">-i: 以交互模式运行容器，通常与 -t 同时使用；
+</span></span><span class="line"><span class="cl">-P: 随机端口映射，容器内部端口随机映射到主机的端口
+</span></span><span class="line"><span class="cl">-p: 指定端口映射，格式为：主机<span class="o">(</span>宿主<span class="o">)</span>端口:容器端口
+</span></span><span class="line"><span class="cl">-t: 为容器重新分配一个伪输入终端，通常与 -i 同时使用；
+</span></span><span class="line"><span class="cl">--name<span class="o">=</span><span class="s2">&#34;nginx-lb&#34;</span>: 为容器指定一个名称；
+</span></span><span class="line"><span class="cl">--dns 8.8.8.8: 指定容器使用的DNS服务器，默认和宿主一致；
+</span></span><span class="line"><span class="cl">--dns-search example.com: 指定容器DNS搜索域名，默认和宿主一致；
+</span></span><span class="line"><span class="cl">-h <span class="s2">&#34;mars&#34;</span>: 指定容器的hostname；
+</span></span><span class="line"><span class="cl">-e <span class="nv">username</span><span class="o">=</span><span class="s2">&#34;ritchie&#34;</span>: 设置环境变量；
+</span></span><span class="line"><span class="cl">--env-file<span class="o">=[]</span>: 从指定文件读入环境变量；
+</span></span><span class="line"><span class="cl">--cpuset<span class="o">=</span><span class="s2">&#34;0-2&#34;</span> or --cpuset<span class="o">=</span><span class="s2">&#34;0,1,2&#34;</span>: 绑定容器到指定CPU运行；
+</span></span><span class="line"><span class="cl">-m :设置容器使用内存最大值；
+</span></span><span class="line"><span class="cl">--net<span class="o">=</span><span class="s2">&#34;bridge&#34;</span>: 指定容器的网络连接类型，支持 bridge/host/none/container: 四种类型；
+</span></span><span class="line"><span class="cl">--link<span class="o">=[]</span>: 添加链接到另一个容器；
+</span></span><span class="line"><span class="cl">--expose<span class="o">=[]</span>: 开放一个端口或一组端口；
+</span></span><span class="line"><span class="cl">--volume , -v: 绑定一个卷
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="容器管理示例">容器管理示例</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#运行一个容器并进入到里面</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -it --restart=always --name=centos hub.c.163.com/library/centos:latest</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@3c6f6cc36259 /<span class="o">]</span><span class="c1"># ps | grep bash</span>
+</span></span><span class="line"><span class="cl">     <span class="m">1</span> pts/0    00:00:00 bash
+</span></span><span class="line"><span class="cl">     
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@3c6f6cc36259 /<span class="o">]</span><span class="c1"># cat /etc/redhat-release </span>
+</span></span><span class="line"><span class="cl">CentOS Linux release 7.3.1611 <span class="o">(</span>Core<span class="o">)</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#退出容器 </span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@3c6f6cc36259 /<span class="o">]</span><span class="c1"># exit</span>
+</span></span><span class="line"><span class="cl"><span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#退出之后，查看发现容器进程还在</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker ps </span>
+</span></span><span class="line"><span class="cl">CONTAINER ID   IMAGE                                                 COMMAND                  CREATED              STATUS          PORTS     NAMES
+</span></span><span class="line"><span class="cl">3c6f6cc36259   hub.c.163.com/library/centos:latest                   <span class="s2">&#34;/bin/bash&#34;</span>              About a minute ago   Up <span class="m">3</span> seconds              centos
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#再次进入容器</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker attach centos</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@3c6f6cc36259 /<span class="o">]</span><span class="c1"># </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#删除容器，-f强制删除</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker rm -f centos</span>
+</span></span><span class="line"><span class="cl">centos
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker ps </span>
+</span></span><span class="line"><span class="cl">CONTAINER ID   IMAGE                                                 COMMAND                  CREATED          STATUS          PORTS     NAMES
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#运行一个容器但是不进入到里面，-d dettach</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -dit --restart=always --name=centos hub.c.163.com/library/centos:latest</span>
+</span></span><span class="line"><span class="cl">0f683a6c33868fee306b26b9d84fbf1ddbe1522f5c6d49944324ec57e1eb5990
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker ps</span>
+</span></span><span class="line"><span class="cl">CONTAINER ID   IMAGE                                                 COMMAND                  CREATED          STATUS          PORTS     NAMES
+</span></span><span class="line"><span class="cl">0f683a6c3386   hub.c.163.com/library/centos:latest                   <span class="s2">&#34;/bin/bash&#34;</span>              <span class="m">8</span> seconds ago    Up <span class="m">6</span> seconds              centos
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#运行容器，运行命令：sleep 100</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -dit --restart=always --name=centos hub.c.163.com/library/centos:latest sleep 100</span>
+</span></span><span class="line"><span class="cl">ae064dd568d9b489329d8c6e7f7c0795fb40efec1f4424a9137ce1f076946502
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#进入容器什么也做不了，因为没有/bin/bash接待你</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker attach centos</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="运行nginx容器示例容器端口映射">运行nginx容器示例，容器端口映射</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#运行nginx容器，容器端口为80,物理机端口随机生成</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -dit --name=web --restart=always -p 80 hub.c.163.com/library/nginx:latest </span>
+</span></span><span class="line"><span class="cl">bee79324ce9bfbef6bfaf7bdf671ff74007e12e2ffac5e0662fb8522442e275f
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#物理机端口为49153</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker ps | grep web</span>
+</span></span><span class="line"><span class="cl">bee79324ce9b   hub.c.163.com/library/nginx:latest                    <span class="s2">&#34;nginx -g &#39;daemon of…&#34;</span>   <span class="m">39</span> seconds ago      Up <span class="m">37</span> seconds      0.0.0.0:49153-&gt;80/tcp, :::49153-&gt;80/tcp   web
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#访问nginx</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># curl 192.168.110.137:49153</span>
+</span></span><span class="line"><span class="cl">&lt;!DOCTYPE html&gt;
+</span></span><span class="line"><span class="cl">&lt;html&gt;
+</span></span><span class="line"><span class="cl">&lt;head&gt;
+</span></span><span class="line"><span class="cl">&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+</span></span><span class="line"><span class="cl">&lt;style&gt;
+</span></span><span class="line"><span class="cl">    body <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        width: 35em<span class="p">;</span>
+</span></span><span class="line"><span class="cl">        margin: <span class="m">0</span> auto<span class="p">;</span>
+</span></span><span class="line"><span class="cl">        font-family: Tahoma, Verdana, Arial, sans-serif<span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">&lt;/style&gt;
+</span></span><span class="line"><span class="cl">&lt;/head&gt;
+</span></span><span class="line"><span class="cl">&lt;body&gt;
+</span></span><span class="line"><span class="cl">&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+</span></span><span class="line"><span class="cl">working. Further configuration is required.&lt;/p&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;p&gt;For online documentation and support please refer to
+</span></span><span class="line"><span class="cl">&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.org/&#34;</span>&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+</span></span><span class="line"><span class="cl">Commercial support is available at
+</span></span><span class="line"><span class="cl">&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.com/&#34;</span>&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;p&gt;&lt;em&gt;Thank you <span class="k">for</span> using nginx.&lt;/em&gt;&lt;/p&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;
+</span></span><span class="line"><span class="cl">&lt;/html&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#-p 80:80表示物理机端口：容器端口</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -dit --name=web --restart=always -p 80:80 hub.c.163.com/library/nginx:latest</span>
+</span></span><span class="line"><span class="cl">c027df65a8894f1b82cd38bc15a016a6b5b2c9e3ba36487a7692363fce9ee91b
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker ps | grep web</span>
+</span></span><span class="line"><span class="cl">c027df65a889   hub.c.163.com/library/nginx:latest                    <span class="s2">&#34;nginx -g &#39;daemon of…&#34;</span>   <span class="m">7</span> seconds ago       Up <span class="m">3</span> seconds       0.0.0.0:80-&gt;80/tcp, :::80-&gt;80/tcp   web
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#执行容器变量，-e指定容器的变量</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -dit --restart=always --name=centos -e xx=12 -e yy=13 hub.c.163.com/library/centos:latest</span>
+</span></span><span class="line"><span class="cl">8b9c2042ffe2e7bc1e7b263128b8fe903b9b3fa403030c23024b0a8c055b0b3c
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker attach centos</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@8b9c2042ffe2 /<span class="o">]</span><span class="c1"># echo $xx</span>
+</span></span><span class="line"><span class="cl"><span class="m">12</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@8b9c2042ffe2 /<span class="o">]</span><span class="c1"># echo $yy</span>
+</span></span><span class="line"><span class="cl"><span class="m">13</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@8b9exit
+</span></span><span class="line"><span class="cl"><span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#--rm创建临时容器</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -it --rm --name=test -e xx=12 -e yy=13 hub.c.163.com/library/centos:latest</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@328ca3ac967f /<span class="o">]</span><span class="c1"># echo $xx</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="m">12</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@328ca3ac967f /<span class="o">]</span><span class="c1"># exit</span>
+</span></span><span class="line"><span class="cl"><span class="nb">exit</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="运行mysql容器示例练习容器基本操作">运行mysql容器示例，练习容器基本操作</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#拉取mysql镜像</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker pull hub.c.163.com/library/mysql:latest</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker images</span>
+</span></span><span class="line"><span class="cl">REPOSITORY                                                        TAG        IMAGE ID       CREATED         SIZE
+</span></span><span class="line"><span class="cl">hub.c.163.com/library/mysql                                       latest     9e64176cd8a2   <span class="m">4</span> years ago     407MB
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -dit --restart=always --name=db hub.c.163.com/library/mysql</span>
+</span></span><span class="line"><span class="cl">a0d580fc15c6487b2d639c92c0024ad6125af649067fee55eebcd8f9fa58bdb8
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#发现mysql容器的状态是Restarting</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker ps </span>
+</span></span><span class="line"><span class="cl">CONTAINER ID   IMAGE                                                 COMMAND                  CREATED         STATUS                         PORTS     NAMES
+</span></span><span class="line"><span class="cl">a0d580fc15c6   hub.c.163.com/library/mysql                           <span class="s2">&#34;docker-entrypoint.s…&#34;</span>   <span class="m">8</span> seconds ago   Restarting <span class="o">(</span>1<span class="o">)</span> <span class="m">2</span> seconds ago             db
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#查看mysql容器的日志，发现是没有指定mysql的密码</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker logs db</span>
+</span></span><span class="line"><span class="cl">error: database is uninitialized and password option is not specified 
+</span></span><span class="line"><span class="cl">  You need to specify one of MYSQL_ROOT_PASSWORD, MYSQL_ALLOW_EMPTY_PASSWORD and MYSQL_RANDOM_ROOT_PASSWORD
+</span></span><span class="line"><span class="cl">error: database is uninitialized and password option is not specified 
+</span></span><span class="line"><span class="cl">  You need to specify one of MYSQL_ROOT_PASSWORD, MYSQL_ALLOW_EMPTY_PASSWORD and MYSQL_RANDOM_ROOT_PASSWORD
+</span></span><span class="line"><span class="cl">error: database is uninitialized and password option is not specified 
+</span></span><span class="line"><span class="cl">  You need to specify one of MYSQL_ROOT_PASSWORD, MYSQL_ALLOW_EMPTY_PASSWORD and MYSQL_RANDOM_ROOT_PASSWORD
+</span></span><span class="line"><span class="cl">error: database is uninitialized and password option is not specified 
+</span></span><span class="line"><span class="cl">  You need to specify one of MYSQL_ROOT_PASSWORD, MYSQL_ALLOW_EMPTY_PASSWORD and MYSQL_RANDOM_ROOT_PASSWORD
+</span></span><span class="line"><span class="cl">error: database is uninitialized and password option is not specified 
+</span></span><span class="line"><span class="cl">  You need to specify one of MYSQL_ROOT_PASSWORD, MYSQL_ALLOW_EMPTY_PASSWORD and MYSQL_RANDOM_ROOT_PASSWORD
+</span></span><span class="line"><span class="cl">error: database is uninitialized and password option is not specified 
+</span></span><span class="line"><span class="cl">  You need to specify one of MYSQL_ROOT_PASSWORD, MYSQL_ALLOW_EMPTY_PASSWORD and MYSQL_RANDOM_ROOT_PASSWORD
+</span></span><span class="line"><span class="cl">error: database is uninitialized and password option is not specified 
+</span></span><span class="line"><span class="cl">  You need to specify one of MYSQL_ROOT_PASSWORD, MYSQL_ALLOW_EMPTY_PASSWORD and MYSQL_RANDOM_ROOT_PASSWORD
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker rm -f db</span>
+</span></span><span class="line"><span class="cl">db
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -dit --restart=always --name=db -e MYSQL_ROOT_PASSWORD=qwerty hub.c.163.com/library/mysql</span>
+</span></span><span class="line"><span class="cl">01d83d13eb32e25c72cd39290ab12d5f69b994cec3e48dd9c8608e719cd2181c
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker ps | grep hub.c.163.com/library/mysql</span>
+</span></span><span class="line"><span class="cl">01d83d13eb32   hub.c.163.com/library/mysql                           <span class="s2">&#34;docker-entrypoint.s…&#34;</span>   <span class="m">19</span> seconds ago   Up <span class="m">15</span> seconds   3306/tcp   db
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#查看容器里运行的进程</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker top db</span>
+</span></span><span class="line"><span class="cl">UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+</span></span><span class="line"><span class="cl">polkitd             <span class="m">93764</span>               <span class="m">93742</span>               <span class="m">7</span>                   16:40               pts/0               00:00:02            mysqld
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#因为运行的是mysqld进程，没有bash进程，所以attach进不去</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker attach db</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#在容器外面执行shell命令</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker exec db ip a</span>
+</span></span><span class="line"><span class="cl">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1</span>
+</span></span><span class="line"><span class="cl">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+</span></span><span class="line"><span class="cl">    inet 127.0.0.1/8 scope host lo
+</span></span><span class="line"><span class="cl">       valid_lft forever preferred_lft forever
+</span></span><span class="line"><span class="cl">2: tunl0@NONE: &lt;NOARP&gt; mtu <span class="m">1480</span> qdisc noop state DOWN group default qlen <span class="m">1</span>
+</span></span><span class="line"><span class="cl">    link/ipip 0.0.0.0 brd 0.0.0.0
+</span></span><span class="line"><span class="cl">62: eth0@if63: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc noqueue state UP group default 
+</span></span><span class="line"><span class="cl">    link/ether 02:42:ac:11:00:04 brd ff:ff:ff:ff:ff:ff
+</span></span><span class="line"><span class="cl">    inet 172.17.0.4/16 brd 172.17.255.255 scope global eth0
+</span></span><span class="line"><span class="cl">       valid_lft forever preferred_lft forever
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#可以自带bash，进入容器</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker exec -it db /bin/bash</span>
+</span></span><span class="line"><span class="cl">root@01d83d13eb32:/# 
+</span></span><span class="line"><span class="cl">root@01d83d13eb32:/# <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl"><span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#停止/启动/重启容器</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker stop db</span>
+</span></span><span class="line"><span class="cl">db
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker start db</span>
+</span></span><span class="line"><span class="cl">db
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker restart db</span>
+</span></span><span class="line"><span class="cl">db
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker exec db ls /tmp</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#复制文件</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker cp /etc/docker/daemon.json db:/tmp</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker exec db ls /tmp</span>
+</span></span><span class="line"><span class="cl">daemon.json
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker cp db:/tmp/daemon.json ./</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># ls daemon.json </span>
+</span></span><span class="line"><span class="cl">daemon.json
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#查看容器日志</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker logs -f db  </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#查看容器的属性(容器详细信息)</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker inspect db</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>
+</span></span><span class="line"><span class="cl">    <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Id&#34;</span>: <span class="s2">&#34;01d83d13eb32e25c72cd39290ab12d5f69b994cec3e48dd9c8608e719cd2181c&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Created&#34;</span>: <span class="s2">&#34;2021-12-28T08:40:56.781434728Z&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Path&#34;</span>: <span class="s2">&#34;docker-entrypoint.sh&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Args&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;mysqld&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">]</span>,
+</span></span><span class="line"><span class="cl">       ......
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;DriverOpts&#34;</span>: null
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#查看容器IP地址</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker inspect db | grep IPAddress</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;SecondaryIPAddresses&#34;</span>: null,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;IPAddress&#34;</span>: <span class="s2">&#34;172.17.0.4&#34;</span>,
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;IPAddress&#34;</span>: <span class="s2">&#34;172.17.0.4&#34;</span>, 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="容器数据卷volumes容器目录映射">容器数据卷volumes(容器目录映射)</h4>
+<p>数据卷是保存由 Docker 容器生成和使用的数据的首选机制。虽然绑定挂载依赖于主机的目录结构和操作系统，但数据卷完全由 Docker 管理。 与绑定挂载相比，数据卷有几个优点：</p>
+<ul>
+<li>数据卷比绑定挂载更容易备份或迁移。</li>
+<li>您可以使用 Docker CLI 命令或 Docker API 管理数据卷。</li>
+<li>数据卷适用于 Linux 和 Windows 容器。</li>
+<li>数据卷可以在多个容器之间更安全地共享。</li>
+<li>数据卷驱动程序允许您将数据卷存储在远程主机或云提供商上，以加密数据卷的内容或添加其他功能。</li>
+<li>新数据卷的内容可以由容器预先填充。</li>
+<li>Docker Desktop 上的数据卷比来自 Mac 和 Windows 主机的绑定挂载具有更高的性能。</li>
+</ul>
+<p>此外，与在容器的可写层中持久化数据相比，数据卷通常是更好的选择，因为数据卷不会增加使用它的容器的大小，并且数据卷的内容存在于给定容器的生命周期之外。</p>
+<p><img src="/post/docker-container-base/img_2.png"
+	width="666"
+	height="339"
+	srcset="/post/docker-container-base/img_2_hu02f789f1970add11a36f19ad69606987_41463_480x0_resize_box_3.png 480w, /post/docker-container-base/img_2_hu02f789f1970add11a36f19ad69606987_41463_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="img_2.png"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="196"
+		data-flex-basis="471px"
+	
+></p>
+<p>如果您的容器生成非持久状态数据，请考虑使用 tmpfs 挂载以避免将数据永久存储在任何地方，并通过避免写入容器的可写层来提高容器的性能。</p>
+<p>数据卷挂载可以使用-v 参数或者 &ndash;mount参数，本文使用-v参数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#挂载数据卷：-v 本地目录：容器目录 -v /centos-test:/tmp   </span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -it --restart=always --name=centos-test -v /centos-test:/tmp hub.c.163.com/library/centos:latest </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@38702e15b0d4 /<span class="o">]</span><span class="c1"># ls /tmp/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@38702e15b0d4 /<span class="o">]</span><span class="c1"># touch /tmp/aa.txt</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@38702e15b0d4 /<span class="o">]</span><span class="c1"># ls /tmp/   </span>
+</span></span><span class="line"><span class="cl">aa.txt  bb.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@38702e15b0d4 /<span class="o">]</span><span class="c1"># exit           </span>
+</span></span><span class="line"><span class="cl"><span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker inspect centos-test</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>
+</span></span><span class="line"><span class="cl">    <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Id&#34;</span>: <span class="s2">&#34;38702e15b0d49e1b7dcd8ddaa0e98dc050c520e323e6fe45ce773072e8bd2d9b&#34;</span>,
+</span></span><span class="line"><span class="cl">        ......
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Mounts&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">            <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;Type&#34;</span>: <span class="s2">&#34;bind&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;Source&#34;</span>: <span class="s2">&#34;/centos-test&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;Destination&#34;</span>: <span class="s2">&#34;/tmp&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;Mode&#34;</span>: <span class="s2">&#34;&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;RW&#34;</span>: true,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;Propagation&#34;</span>: <span class="s2">&#34;rprivate&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">]</span>,
+</span></span><span class="line"><span class="cl">       ......
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker rm -f centos-test</span>
+</span></span><span class="line"><span class="cl">centos-test
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#-v /centos-test:/tmp:ro容器目录只读挂载</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -it --restart=always --name=centos-test -v /centos-test:/tmp:ro hub.c.163.com/library/centos:latest </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@0c2793968ab4 /<span class="o">]</span><span class="c1"># touch /tmp/cc.txt</span>
+</span></span><span class="line"><span class="cl">touch: cannot touch <span class="s1">&#39;/tmp/cc.txt&#39;</span>: Read-only file system
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@0c2793968ab4 /<span class="o">]</span><span class="c1"># exit</span>
+</span></span><span class="line"><span class="cl"><span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#另外一种挂载数据卷的方法：</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker volume create v1</span>
+</span></span><span class="line"><span class="cl">v1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker volume list</span>
+</span></span><span class="line"><span class="cl">DRIVER    VOLUME NAME
+</span></span><span class="line"><span class="cl"><span class="nb">local</span>     3512441fd63342a92e4642d4332c2e8c9603b4b536b45173bb77802d1f3db52f
+</span></span><span class="line"><span class="cl"><span class="nb">local</span>     e58e312c1517081a8508838d8fcda74b895ac034d53740af478c6a18b6552f34
+</span></span><span class="line"><span class="cl"><span class="nb">local</span>     f80a9bd35412905392fad18903053e122e3d3066239751e0ceca6a5b5fb8884e
+</span></span><span class="line"><span class="cl"><span class="nb">local</span>     v1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker volume inspect v1</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>
+</span></span><span class="line"><span class="cl">    <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;CreatedAt&#34;</span>: <span class="s2">&#34;2021-12-28T21:57:33+08:00&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Driver&#34;</span>: <span class="s2">&#34;local&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Labels&#34;</span>: <span class="o">{}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Mountpoint&#34;</span>: <span class="s2">&#34;/var/lib/docker/volumes/v1/_data&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Name&#34;</span>: <span class="s2">&#34;v1&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Options&#34;</span>: <span class="o">{}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Scope&#34;</span>: <span class="s2">&#34;local&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -it --restart=always --name=centos-test1 -v v1:/opt:ro hub.c.163.com/library/centos:latest </span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@4f48281dfc07 /<span class="o">]</span><span class="c1"># ls /opt/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@4f48281dfc07 /<span class="o">]</span><span class="c1"># exit</span>
+</span></span><span class="line"><span class="cl"><span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -dit --restart=always --name=db -e MYSQL_ROOT_PASSWORD=qwerty hub.c.163.com/library/mysql</span>
+</span></span><span class="line"><span class="cl">eedcd260e5758013bde97205bea0a3c7c4c04bfab8dce308bc41b1b6cac262f4
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker inspect db | grep -i ipaddr</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;SecondaryIPAddresses&#34;</span>: null,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;IPAddress&#34;</span>: <span class="s2">&#34;172.17.0.6&#34;</span>,
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;IPAddress&#34;</span>: <span class="s2">&#34;172.17.0.6&#34;</span>,
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># mysql -uroot -pqwerty -h 172.17.0.6</span>
+</span></span><span class="line"><span class="cl">MySQL <span class="o">[(</span>none<span class="o">)]</span>&gt; show databases<span class="p">;</span>
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Database           <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> information_schema <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> mysql              <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> performance_schema <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> sys                <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl"><span class="m">4</span> rows in <span class="nb">set</span> <span class="o">(</span>0.00 sec<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">MySQL <span class="o">[(</span>none<span class="o">)]</span>&gt; <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">Bye
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker rm -f db</span>
+</span></span><span class="line"><span class="cl">db
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -dit --restart=always --name=db -e MYSQL_ROOT_PASSWORD=qwerty -v /mysqldir:/var/lib/mysql hub.c.163.com/library/mysql</span>
+</span></span><span class="line"><span class="cl">09973a94e99861fd5f19e63bf3947d95a3e14fd0de40c1aa0af605af1fad3ab7
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># ls /mysqldir/</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/docker/">docker</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span> 转载需要保留原始链接，未经明确许可，禁止商业使用。  <a class="link" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"  target="_blank" rel="noopener"
+    >CC BY-NC-SA 4.0</a></span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "5b878f724ec8e67e08f4",
+        clientSecret: "9723d7c9b9644be68bf47cbdd6412bc895653369",
+        repo: "arturiamu.github.io",
+        owner: "arturiamu",
+        admin: ["arturiamu"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 木林彪的个人博客
+    </section>
+
+    <section class="count_info">
+        <div>
+            本博客已稳定运行
+            <span id="ds" class="running-days"></span>
+            天
+            <span id="hs" class="running-days"></span>
+            小时
+            <span id="ms" class="running-days"></span>
+            分钟
+        </div>
+        <div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            共发表 23 篇文章 · 总计 63.51 k 字
+        </div>
+        <div>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+        </div>
+    </section>
+    
+    <section class="powerby" style="margin-top: 7px">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.18.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+<script>
+    let s1 = '2023-6-18'; 
+    s1 = new Date(s1.replace(/-/g, "/"));
+    let s2 = new Date();
+    let timeDifference = s2.getTime() - s1.getTime();
+
+    let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+    document.getElementById('ds').innerHTML = days;
+    document.getElementById('hs').innerHTML = hours;
+    document.getElementById('ms').innerHTML = minutes;
+
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>
+    (function(u, c) {
+        var d = document, t = 'script', o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function(e) { c(e); }); }
+        s.parentNode.insertBefore(o, s);
+    })('//cdn.bootcss.com/pangu/4.0.7/pangu.min.js', function() {
+        pangu.spacingPage();
+    });
+</script>
+
+
+<script
+        src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/ribbon.min.js"
+        integrity="sha384-UEK8ZiP3VgFNP8KnKMKDmd4pAUAOJ59Y2Jo3ED2Z5qKQf6HLHovMxq7Beb9CLPUe"
+        crossorigin="anonymous"
+        size="300"
+        alpha="0.6"
+        zindex="-1"
+        defer
+></script>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script><script>
+    (function(){var w=window;if(w.ChannelIO){return w.console.error("ChannelIO script included twice.");}var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(args){ch.q.push(args);};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return;}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x);}}if(document.readyState==="complete"){l();}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l);}})();
+
+    ChannelIO('boot', {
+        "pluginKey": "6145a739-ffa9-4356-8e35-875010c793ef"
+    });
+</script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
