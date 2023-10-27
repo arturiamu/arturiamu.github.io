@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='docker网络类型、常用命令、创建不同的网络'>
+<meta name="keywords" content="木林彪, arturiamu, 博客, 木林彪的个人博客, docker, docker 网络, docker网络管理, docker基础"><title>docker网络管理</title>
+
+<link rel='canonical' href='https://arturiamu.github.io/post/docker-network-management/'>
+
+<link rel="stylesheet" href="/scss/style.min.5e3814b8c20dd362819d8f0b1c0554df211090883babaeea35913b6b16121b26.css"><meta property='og:title' content='docker网络管理'>
+<meta property='og:description' content='docker网络类型、常用命令、创建不同的网络'>
+<meta property='og:url' content='https://arturiamu.github.io/post/docker-network-management/'>
+<meta property='og:site_name' content='木林彪的个人博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='docker' /><meta property='article:published_time' content='2023-10-27T14:14:04&#43;08:00'/><meta property='article:modified_time' content='2023-10-27T14:14:04&#43;08:00'/>
+<meta name="twitter:site" content="@ArturiaMu">
+    <meta name="twitter:creator" content="@ArturiaMu"><meta name="twitter:title" content="docker网络管理">
+<meta name="twitter:description" content="docker网络类型、常用命令、创建不同的网络">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JJG6TYWNYX"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-JJG6TYWNYX', { 'anonymize_ip': false });
+}
+</script>
+<style>
+    :root {
+         
+        --sys-font-family: "HarmonyOS_Sans_SC_Medium", Georgia, -apple-system, 'Nimbus Roman No9 L', 'PingFang SC', 'Hiragino Sans GB', 'Noto Serif SC', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'ST Heiti', sans-serif;
+        --code-font-family: "JetBrainsMono Regular", Menlo, Monaco, Consolas, "Courier New";
+        --article-font-family: "HarmonyOS_Sans_SC_Medium", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://img.shimoko.com/fonts/font.css";
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar1_hu67b097db30250ef6a2ed6dd217c7d0a7_22735_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">❤️</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">木林彪的个人博客</a></h1>
+            <h2 class="site-description">~Coding my life~</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/arturiamu'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:arturiamumu@gmail.com'
+                        target="_blank"
+                        title="Gmail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-gmail" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+    <path d="M16 20h3a1 1 0 0 0 1 -1v-14a1 1 0 0 0 -1 -1h-3v16z" />
+    <path d="M5 20h3v-16h-3a1 1 0 0 0 -1 1v14a1 1 0 0 0 1 1z" />
+    <path d="M16 4l-4 4l-4 -4" />
+    <path d="M4 6.5l8 7.5l8 -7.5" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/message/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M8 9h8" />
+  <path d="M8 13h6" />
+  <path d="M9 18h-3a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-3l-3 3l-3 -3z" />
+</svg>
+
+
+
+                
+                <span>留言</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://arturiamu.github.io/" selected>中文</option>
+                        
+                            <option value="https://arturiamu.github.io/en/" >English</option>
+                        
+                            <option value="https://arturiamu.github.io/ja/" >日本</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#系统环境">系统环境</a></li>
+    <li><a href="#docker网络">docker网络</a>
+      <ol>
+        <li><a href="#docker-网络概述">Docker 网络概述</a></li>
+        <li><a href="#docker-网络类型">docker 网络类型</a></li>
+      </ol>
+    </li>
+    <li><a href="#docker网络管理常用命令">docker网络管理常用命令</a></li>
+    <li><a href="#使用docker创建不同的网络类型">使用docker创建不同的网络类型</a>
+      <ol>
+        <li><a href="#创建一个bridge桥接网络并使用">创建一个bridge桥接网络并使用</a></li>
+        <li><a href="#busybox容器使用host网络">busybox容器使用host网络</a></li>
+        <li><a href="#nginx容器使用host网络">nginx容器使用host网络</a></li>
+        <li><a href="#busybox容器使用none网络">busybox容器使用none网络</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">标签云</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/linux/" class="font_size_4">
+                linux
+            </a>
+        
+            <a href="/tags/bash/" class="font_size_3">
+                bash
+            </a>
+        
+            <a href="/tags/mysql/" class="font_size_3">
+                mysql
+            </a>
+        
+            <a href="/tags/python/" class="font_size_3">
+                python
+            </a>
+        
+            <a href="/tags/bug/" class="font_size_2">
+                bug
+            </a>
+        
+            <a href="/tags/docker/" class="font_size_2">
+                docker
+            </a>
+        
+            <a href="/tags/golang/" class="font_size_2">
+                golang
+            </a>
+        
+            <a href="/tags/blog/" class="font_size_1">
+                blog
+            </a>
+        
+            <a href="/tags/gin/" class="font_size_1">
+                gin
+            </a>
+        
+            <a href="/tags/git/" class="font_size_1">
+                git
+            </a>
+        
+    </div>
+</section>
+            
+        
+        <div style="height: 30%;width: 30%">
+            <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=4gAmsOskyL921TwxZGdrq3NbkFu-hJm8dDfoHJsn25Q"></script>
+        </div>
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/archives/container/" >
+                容器
+            </a>
+        
+            <a href="/archives/cloud-native/" >
+                云原生
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/docker-network-management/">docker网络管理</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            docker网络类型、常用命令、创建不同的网络
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2023-10-27 14:14:04 CST</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 5 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p><strong>本文转载自 <a class="link" href="https://www.cnblogs.com/renshengdezheli/p/16639858.html"  target="_blank" rel="noopener"
+    >docker网络管理</a></strong></p>
+<h2 id="系统环境">系统环境</h2>
+<p><img src="/post/docker-network-management/img.png"
+	width="546"
+	height="132"
+	srcset="/post/docker-network-management/img_hu5ebb22d7df048770c268a03f6a9fd022_9179_480x0_resize_box_3.png 480w, /post/docker-network-management/img_hu5ebb22d7df048770c268a03f6a9fd022_9179_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="img.png"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="413"
+		data-flex-basis="992px"
+	
+></p>
+<h2 id="docker网络">docker网络</h2>
+<h3 id="docker-网络概述">Docker 网络概述</h3>
+<p>Docker 容器和服务如此强大的原因之一是您可以将它们连接在一起，或者将它们连接到非 Docker 工作负载。
+Docker 容器和服务甚至不需要知道它们部署在 Docker 上，或者它们的对等点是否也是 Docker 工作负载。
+无论您的 Docker 主机运行 Linux、Windows 还是两者的混合，您都可以使用 Docker 以与平台无关的方式管理它们。</p>
+<h3 id="docker-网络类型">docker 网络类型</h3>
+<p>Docker 的网络子系统是可插拔的，使用驱动程序。默认情况下存在几个驱动程序，并提供核心网络功能：</p>
+<ul>
+<li>
+<p>bridge：默认网络驱动程序。如果您未指定驱动程序，则这是您正在创建的网络类型。当您的应用程序在需要通信的独立容器中运行时，通常会使用桥接网络。</p>
+</li>
+<li>
+<p>host：对于独立容器，去掉容器与 Docker 主机之间的网络隔离，直接使用主机的网络。</p>
+</li>
+<li>
+<p>overlay: Overlay 网络将多个 Docker 守护进程连接在一起，使 swarm 服务能够相互通信。您还可以使用覆盖网络来促进 swarm 服务和独立容器之间的通信，或者不同 Docker 守护程序上的两个独立容器之间的通信。这种策略消除了在这些容器之间进行操作系统级路由的需要。</p>
+</li>
+<li>
+<p>ipvlan：IPvlan 网络使用户可以完全控制 IPv4 和 IPv6 寻址。VLAN 驱动程序建立在此之上，为对底层网络集成感兴趣的用户提供了对第 2 层 VLAN 标记甚至 IPvlan L3 路由的完全控制。</p>
+</li>
+<li>
+<p>macvlan：Macvlan 网络允许您将 MAC 地址分配给容器，使其在您的网络上显示为物理设备。Docker 守护进程通过它们的 MAC 地址将流量路由到容器。macvlan 在处理期望直接连接到物理网络而不是通过 Docker 主机的网络堆栈路由的遗留应用程序时，使用驱动程序有时是最佳选择。</p>
+</li>
+<li>
+<p>none：对于这个容器，禁用所有网络。通常与自定义网络驱动程序一起使用。none不适用于 swarm 服务。请参阅 禁用容器网络。</p>
+</li>
+<li>
+<p>网络插件：您可以通过 Docker 安装和使用第三方网络插件。这些插件可从 Docker Hub 或第三方供应商处获得。</p>
+</li>
+</ul>
+<p>网络驱动总结：</p>
+<ul>
+<li>当您需要多个容器在同一个 Docker 主机上进行通信时，用户定义的桥接网络是最佳选择。</li>
+<li>当网络堆栈不应该与 Docker 主机隔离时，主机网络是最好的，但您希望容器的其他方面被隔离。</li>
+<li>当您需要在不同 Docker 主机上运行的容器进行通信时，或者当多个应用程序使用 swarm 服务一起工作时，覆盖网络是最佳选择。</li>
+<li>当您从 VM 设置迁移或需要容器看起来像网络上的物理主机时，Macvlan 网络是最佳选择，每个主机都有唯一的 MAC 地址。</li>
+<li>第三方网络插件允许您将 Docker 与专门的网络堆栈集成。</li>
+</ul>
+<h2 id="docker网络管理常用命令">docker网络管理常用命令</h2>
+<p>docker network connect 将某个容器连接到一个docker网络</p>
+<p>docker network create 创建一个docker局域网络</p>
+<p>docker network disconnect 将某个容器退出某个局域网络</p>
+<p>docker network inspect 显示某个局域网络信息</p>
+<p>docker network ls 显示所有docker局域网络</p>
+<p>docker network prune 删除所有未引用的docker局域网络</p>
+<p>docker network rm 删除docker网络</p>
+<p>查看docker支持的网络</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker network list</span>
+</span></span><span class="line"><span class="cl">NETWORK ID     NAME      DRIVER    SCOPE
+</span></span><span class="line"><span class="cl">7e5d5c751c19   bridge    bridge    <span class="nb">local</span>
+</span></span><span class="line"><span class="cl">d6114fdf8604   host      host      <span class="nb">local</span>
+</span></span><span class="line"><span class="cl">d37b373ceadd   none      null      <span class="nb">local</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看bridge（桥接）网络的属性</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker network inspect bridge</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>
+</span></span><span class="line"><span class="cl">    <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Name&#34;</span>: <span class="s2">&#34;bridge&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Id&#34;</span>: <span class="s2">&#34;7e5d5c751c19179bd28704782956624fb6e1e51bbf1dec148a6a2857361c999f&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Created&#34;</span>: <span class="s2">&#34;2021-12-28T14:43:30.751950569+08:00&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Scope&#34;</span>: <span class="s2">&#34;local&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Driver&#34;</span>: <span class="s2">&#34;bridge&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;EnableIPv6&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;IPAM&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Driver&#34;</span>: <span class="s2">&#34;default&#34;</span>,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Options&#34;</span>: null,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Config&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">                <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;Subnet&#34;</span>: <span class="s2">&#34;172.17.0.0/16&#34;</span>,
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;Gateway&#34;</span>: <span class="s2">&#34;172.17.0.1&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="o">]</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Internal&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Attachable&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Ingress&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ConfigFrom&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Network&#34;</span>: <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ConfigOnly&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Containers&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;1edbf56b01ee2f851bfb3dce9e955df18077e889c5254a8ac1dc24c4c343e5c5&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;Name&#34;</span>: <span class="s2">&#34;redhat7.2&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;EndpointID&#34;</span>: <span class="s2">&#34;138e81107ffaca48a84d46c99a379245d02f031884567a214111f21833914a4e&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;MacAddress&#34;</span>: <span class="s2">&#34;02:42:ac:11:00:03&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;IPv4Address&#34;</span>: <span class="s2">&#34;172.17.0.3/16&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;IPv6Address&#34;</span>: <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;c2d01513585bca0ceb67841e8307119e51ab9d6001cca76c147cc0f7ec441c63&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;Name&#34;</span>: <span class="s2">&#34;redhat&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;EndpointID&#34;</span>: <span class="s2">&#34;9f0368fb571e73565af237a2d259f513063f83a7c18611b23ec4f11fe64e7bd5&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;MacAddress&#34;</span>: <span class="s2">&#34;02:42:ac:11:00:02&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;IPv4Address&#34;</span>: <span class="s2">&#34;172.17.0.2/16&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;IPv6Address&#34;</span>: <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Options&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;com.docker.network.bridge.default_bridge&#34;</span>: <span class="s2">&#34;true&#34;</span>,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;com.docker.network.bridge.enable_icc&#34;</span>: <span class="s2">&#34;true&#34;</span>,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;com.docker.network.bridge.enable_ip_masquerade&#34;</span>: <span class="s2">&#34;true&#34;</span>,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;com.docker.network.bridge.host_binding_ipv4&#34;</span>: <span class="s2">&#34;0.0.0.0&#34;</span>,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;com.docker.network.bridge.name&#34;</span>: <span class="s2">&#34;docker0&#34;</span>,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;com.docker.network.driver.mtu&#34;</span>: <span class="s2">&#34;1500&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Labels&#34;</span>: <span class="o">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="使用docker创建不同的网络类型">使用docker创建不同的网络类型</h2>
+<h3 id="创建一个bridge桥接网络并使用">创建一个bridge桥接网络并使用</h3>
+<p>创建一张网卡brnet：类型为bridge，子网IP为：172.28.0.0/16</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker network create --driver=bridge --subnet=172.28.0.0/16 brnet</span>
+</span></span><span class="line"><span class="cl">50007eb84ee90f225233b873bfc395a0f0da680bd22b8ac1d45add39d45f527b
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看brnet网卡属性</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker network inspect brnet</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>
+</span></span><span class="line"><span class="cl">    <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Name&#34;</span>: <span class="s2">&#34;brnet&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Id&#34;</span>: <span class="s2">&#34;50007eb84ee90f225233b873bfc395a0f0da680bd22b8ac1d45add39d45f527b&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Created&#34;</span>: <span class="s2">&#34;2021-12-29T15:53:20.641824413+08:00&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Scope&#34;</span>: <span class="s2">&#34;local&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Driver&#34;</span>: <span class="s2">&#34;bridge&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;EnableIPv6&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;IPAM&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Driver&#34;</span>: <span class="s2">&#34;default&#34;</span>,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Options&#34;</span>: <span class="o">{}</span>,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Config&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">                <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;Subnet&#34;</span>: <span class="s2">&#34;172.28.0.0/16&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="o">]</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Internal&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Attachable&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Ingress&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ConfigFrom&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Network&#34;</span>: <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ConfigOnly&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Containers&#34;</span>: <span class="o">{}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Options&#34;</span>: <span class="o">{}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Labels&#34;</span>: <span class="o">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看docker网络，发现多了brnet</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker network list</span>
+</span></span><span class="line"><span class="cl">NETWORK ID     NAME      DRIVER    SCOPE
+</span></span><span class="line"><span class="cl">7e5d5c751c19   bridge    bridge    <span class="nb">local</span>
+</span></span><span class="line"><span class="cl">50007eb84ee9   brnet     bridge    <span class="nb">local</span>
+</span></span><span class="line"><span class="cl">d6114fdf8604   host      host      <span class="nb">local</span>
+</span></span><span class="line"><span class="cl">d37b373ceadd   none      null      <span class="nb">local</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用centos镜像创建一个容器centos7，网卡绑定为brnet</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -dit --restart=always --name=centos7 --network=brnet hub.c.163.com/library/centos:latest</span>
+</span></span><span class="line"><span class="cl">2de5574af1c392524a9476bd76e96e90a0035a789e02f102a47e464ea53ac502
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#centos7容器的地址为：172.28.0.2</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker inspect centos7 | grep -i ipaddress</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;SecondaryIPAddresses&#34;</span>: null,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;IPAddress&#34;</span>: <span class="s2">&#34;&#34;</span>,
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;IPAddress&#34;</span>: <span class="s2">&#34;172.28.0.2&#34;</span>,
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看brnet网络的属性</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker network inspect brnet</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>
+</span></span><span class="line"><span class="cl">    <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Name&#34;</span>: <span class="s2">&#34;brnet&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Id&#34;</span>: <span class="s2">&#34;50007eb84ee90f225233b873bfc395a0f0da680bd22b8ac1d45add39d45f527b&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Created&#34;</span>: <span class="s2">&#34;2021-12-29T15:53:20.641824413+08:00&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Scope&#34;</span>: <span class="s2">&#34;local&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Driver&#34;</span>: <span class="s2">&#34;bridge&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;EnableIPv6&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;IPAM&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Driver&#34;</span>: <span class="s2">&#34;default&#34;</span>,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Options&#34;</span>: <span class="o">{}</span>,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Config&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">                <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;Subnet&#34;</span>: <span class="s2">&#34;172.28.0.0/16&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="o">]</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Internal&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Attachable&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Ingress&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ConfigFrom&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Network&#34;</span>: <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ConfigOnly&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Containers&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;2de5574af1c392524a9476bd76e96e90a0035a789e02f102a47e464ea53ac502&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;Name&#34;</span>: <span class="s2">&#34;centos7&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;EndpointID&#34;</span>: <span class="s2">&#34;27a8ff58525ec91f956a4f2aa0bdeaf2c042080efc3b2f443d0f2f8fd34084b9&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;MacAddress&#34;</span>: <span class="s2">&#34;02:42:ac:1c:00:02&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;IPv4Address&#34;</span>: <span class="s2">&#34;172.28.0.2/16&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;IPv6Address&#34;</span>: <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Options&#34;</span>: <span class="o">{}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Labels&#34;</span>: <span class="o">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="busybox容器使用host网络">busybox容器使用host网络</h3>
+<p>拉取busybox镜像</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker pull hub.c.163.com/library/busybox:latest</span>
+</span></span><span class="line"><span class="cl">latest: Pulling from library/busybox
+</span></span><span class="line"><span class="cl">aab39f0bc16d: Pull <span class="nb">complete</span> 
+</span></span><span class="line"><span class="cl">Digest: sha256:662af1d642674367b721645652de96f9c147417c2efb708eee4e9b7212697762
+</span></span><span class="line"><span class="cl">Status: Downloaded newer image <span class="k">for</span> hub.c.163.com/library/busybox:latest
+</span></span><span class="line"><span class="cl">hub.c.163.com/library/busybox:latest
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>创建一个busybox容器，网络类型为host类型</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -dit --restart=always --name=busybox --network=host hub.c.163.com/library/busybox:latest</span>
+</span></span><span class="line"><span class="cl">0a02f83b685c2bf120f9b6de5be9f0c3fe3fb5730134b00995aaa8cc849613e3
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>进入busybox容器，发现容器里的网络就是物理机的网络</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker attach busybox</span>
+</span></span><span class="line"><span class="cl">/ <span class="c1"># ifconfig </span>
+</span></span><span class="line"><span class="cl">br-50007eb84ee9 Link encap:Ethernet  HWaddr 02:42:1E:A8:31:1C  
+</span></span><span class="line"><span class="cl">          inet addr:172.28.0.1  Bcast:172.28.255.255  Mask:255.255.0.0
+</span></span><span class="line"><span class="cl">          inet6 addr: fe80::42:1eff:fea8:311c/64 Scope:Link
+</span></span><span class="line"><span class="cl">          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+</span></span><span class="line"><span class="cl">          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+</span></span><span class="line"><span class="cl">          TX packets:5 errors:0 dropped:0 overruns:0 carrier:0
+</span></span><span class="line"><span class="cl">          collisions:0 txqueuelen:0 
+</span></span><span class="line"><span class="cl">          RX bytes:0 <span class="o">(</span>0.0 B<span class="o">)</span>  TX bytes:438 <span class="o">(</span>438.0 B<span class="o">)</span>
+</span></span><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ens32     Link encap:Ethernet  HWaddr 00:0C:29:BF:50:D8  
+</span></span><span class="line"><span class="cl">          inet addr:192.168.110.137  Bcast:192.168.110.255  Mask:255.255.255.0
+</span></span><span class="line"><span class="cl">          inet6 addr: fe80::20c:29ff:febf:50d8/64 Scope:Link
+</span></span><span class="line"><span class="cl">          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+</span></span><span class="line"><span class="cl">          RX packets:604560 errors:0 dropped:0 overruns:0 frame:0
+</span></span><span class="line"><span class="cl">          TX packets:424501 errors:0 dropped:0 overruns:0 carrier:0
+</span></span><span class="line"><span class="cl">          collisions:0 txqueuelen:1000 
+</span></span><span class="line"><span class="cl">          RX bytes:460937108 <span class="o">(</span>439.5 MiB<span class="o">)</span>  TX bytes:212554025 <span class="o">(</span>202.7 MiB<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">lo        Link encap:Local Loopback  
+</span></span><span class="line"><span class="cl">          inet addr:127.0.0.1  Mask:255.0.0.0
+</span></span><span class="line"><span class="cl">          inet6 addr: ::1/128 Scope:Host
+</span></span><span class="line"><span class="cl">          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+</span></span><span class="line"><span class="cl">          RX packets:7464831 errors:0 dropped:0 overruns:0 frame:0
+</span></span><span class="line"><span class="cl">          TX packets:7464831 errors:0 dropped:0 overruns:0 carrier:0
+</span></span><span class="line"><span class="cl">          collisions:0 txqueuelen:1 
+</span></span><span class="line"><span class="cl">          RX bytes:1397878730 <span class="o">(</span>1.3 GiB<span class="o">)</span>  TX bytes:1397878730 <span class="o">(</span>1.3 GiB<span class="o">)</span>
+</span></span><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/ <span class="c1"># exit</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># </span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看host网络属性</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker network inspect host</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>
+</span></span><span class="line"><span class="cl">    <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Name&#34;</span>: <span class="s2">&#34;host&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Id&#34;</span>: <span class="s2">&#34;d6114fdf860416d813aa5b250fb03b6be128dd90ad873a08179c6138ba15dee6&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Created&#34;</span>: <span class="s2">&#34;2021-06-30T17:50:40.360664894+08:00&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Scope&#34;</span>: <span class="s2">&#34;local&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Driver&#34;</span>: <span class="s2">&#34;host&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;EnableIPv6&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;IPAM&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Driver&#34;</span>: <span class="s2">&#34;default&#34;</span>,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Options&#34;</span>: null,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Config&#34;</span>: <span class="o">[]</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Internal&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Attachable&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Ingress&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ConfigFrom&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Network&#34;</span>: <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ConfigOnly&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Containers&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;0a02f83b685c2bf120f9b6de5be9f0c3fe3fb5730134b00995aaa8cc849613e3&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;Name&#34;</span>: <span class="s2">&#34;busybox&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;EndpointID&#34;</span>: <span class="s2">&#34;864e7899e2bae367c7fbc60d423c09efe84da7afe43004e783785589ff40588f&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;MacAddress&#34;</span>: <span class="s2">&#34;&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;IPv4Address&#34;</span>: <span class="s2">&#34;&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;IPv6Address&#34;</span>: <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;6eb6f15dfc84b118f9da5d6294c857c169378dc2668f660ebb3a769cbabab7f3&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;Name&#34;</span>: <span class="s2">&#34;k8s_POD_etcd-k8smaster_kube-system_1dcb59df47c677756cdf25f28d920325_16&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;EndpointID&#34;</span>: <span class="s2">&#34;f8bb0f0e910e8fc1888087270946f659bbb85c3391ded29c706644134f02ad8f&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;MacAddress&#34;</span>: <span class="s2">&#34;&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;IPv4Address&#34;</span>: <span class="s2">&#34;&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;IPv6Address&#34;</span>: <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">            .......
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;fc4069583b9570defd3e486e7eb56d241561f926cc1ce79fde8db43770038d99&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;Name&#34;</span>: <span class="s2">&#34;k8s_POD_kube-proxy-7sxwx_kube-system_8e5ffc39-9f10-4fd0-ac80-61779b806d6a_16&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;EndpointID&#34;</span>: <span class="s2">&#34;85f62759a1916873b333aadfb8b7a6aa782f3245a966ed2da448287a70eda18f&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;MacAddress&#34;</span>: <span class="s2">&#34;&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;IPv4Address&#34;</span>: <span class="s2">&#34;&#34;</span>,
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;IPv6Address&#34;</span>: <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Options&#34;</span>: <span class="o">{}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Labels&#34;</span>: <span class="o">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="nginx容器使用host网络">nginx容器使用host网络</h3>
+<p>nginx容器的网络类型为host</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -dit --restart=always --name=nginx --network=host hub.c.163.com/library/nginx:latest</span>
+</span></span><span class="line"><span class="cl">2972a5284ef43036f6eaf288ee6c2bb361f24ab99368ceda877077e6d9b8334b
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>直接访问物理机的ip即可访问容器里的nginx</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># curl 192.168.110.137</span>
+</span></span><span class="line"><span class="cl">&lt;!DOCTYPE html&gt;
+</span></span><span class="line"><span class="cl">&lt;html&gt;
+</span></span><span class="line"><span class="cl">&lt;head&gt;
+</span></span><span class="line"><span class="cl">&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+</span></span><span class="line"><span class="cl">&lt;style&gt;
+</span></span><span class="line"><span class="cl">    body <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        width: 35em<span class="p">;</span>
+</span></span><span class="line"><span class="cl">        margin: <span class="m">0</span> auto<span class="p">;</span>
+</span></span><span class="line"><span class="cl">        font-family: Tahoma, Verdana, Arial, sans-serif<span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">&lt;/style&gt;
+</span></span><span class="line"><span class="cl">&lt;/head&gt;
+</span></span><span class="line"><span class="cl">&lt;body&gt;
+</span></span><span class="line"><span class="cl">&lt;h1&gt;Welcome to nginx!&lt;/h1&gt;
+</span></span><span class="line"><span class="cl">&lt;p&gt;If you see this page, the nginx web server is successfully installed and
+</span></span><span class="line"><span class="cl">working. Further configuration is required.&lt;/p&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;p&gt;For online documentation and support please refer to
+</span></span><span class="line"><span class="cl">&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.org/&#34;</span>&gt;nginx.org&lt;/a&gt;.&lt;br/&gt;
+</span></span><span class="line"><span class="cl">Commercial support is available at
+</span></span><span class="line"><span class="cl">&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;http://nginx.com/&#34;</span>&gt;nginx.com&lt;/a&gt;.&lt;/p&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;p&gt;&lt;em&gt;Thank you <span class="k">for</span> using nginx.&lt;/em&gt;&lt;/p&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;
+</span></span><span class="line"><span class="cl">&lt;/html&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="busybox容器使用none网络">busybox容器使用none网络</h3>
+<p>none类型的网络一般用来做测试，none类型创建的容器，里面的的网络只有127.0.0.1</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -it --restart=always --name=busybox-test --network=none hub.c.163.com/library/busybox:latest</span>
+</span></span><span class="line"><span class="cl">/ <span class="c1"># ifconfig </span>
+</span></span><span class="line"><span class="cl">lo        Link encap:Local Loopback  
+</span></span><span class="line"><span class="cl">          inet addr:127.0.0.1  Mask:255.0.0.0
+</span></span><span class="line"><span class="cl">          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+</span></span><span class="line"><span class="cl">          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+</span></span><span class="line"><span class="cl">          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+</span></span><span class="line"><span class="cl">          collisions:0 txqueuelen:1 
+</span></span><span class="line"><span class="cl">          RX bytes:0 <span class="o">(</span>0.0 B<span class="o">)</span>  TX bytes:0 <span class="o">(</span>0.0 B<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/ <span class="c1"># exit</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/docker/">docker</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span> 转载需要保留原始链接，未经明确许可，禁止商业使用。  <a class="link" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"  target="_blank" rel="noopener"
+    >CC BY-NC-SA 4.0</a></span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/docker-container-base/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">一文搞懂docker容器基础：docker镜像管理，docker容器管理</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "5b878f724ec8e67e08f4",
+        clientSecret: "9723d7c9b9644be68bf47cbdd6412bc895653369",
+        repo: "arturiamu.github.io",
+        owner: "arturiamu",
+        admin: ["arturiamu"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 木林彪的个人博客
+    </section>
+
+    <section class="count_info">
+        <div>
+            本博客已稳定运行
+            <span id="ds" class="running-days"></span>
+            天
+            <span id="hs" class="running-days"></span>
+            小时
+            <span id="ms" class="running-days"></span>
+            分钟
+        </div>
+        <div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            共发表 24 篇文章 · 总计 65.98 k 字
+        </div>
+        <div>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+        </div>
+    </section>
+    
+    <section class="powerby" style="margin-top: 7px">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.18.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+<script>
+    let s1 = '2023-6-18'; 
+    s1 = new Date(s1.replace(/-/g, "/"));
+    let s2 = new Date();
+    let timeDifference = s2.getTime() - s1.getTime();
+
+    let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+    document.getElementById('ds').innerHTML = days;
+    document.getElementById('hs').innerHTML = hours;
+    document.getElementById('ms').innerHTML = minutes;
+
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>
+    (function(u, c) {
+        var d = document, t = 'script', o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function(e) { c(e); }); }
+        s.parentNode.insertBefore(o, s);
+    })('//cdn.bootcss.com/pangu/4.0.7/pangu.min.js', function() {
+        pangu.spacingPage();
+    });
+</script>
+
+
+<script
+        src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/ribbon.min.js"
+        integrity="sha384-UEK8ZiP3VgFNP8KnKMKDmd4pAUAOJ59Y2Jo3ED2Z5qKQf6HLHovMxq7Beb9CLPUe"
+        crossorigin="anonymous"
+        size="300"
+        alpha="0.6"
+        zindex="-1"
+        defer
+></script>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script><script>
+    (function(){var w=window;if(w.ChannelIO){return w.console.error("ChannelIO script included twice.");}var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(args){ch.q.push(args);};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return;}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x);}}if(document.readyState==="complete"){l();}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l);}})();
+
+    ChannelIO('boot', {
+        "pluginKey": "6145a739-ffa9-4356-8e35-875010c793ef"
+    });
+</script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
