@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='springboot 普通类中使用注解注入mapper'>
-<meta name="keywords" content="木林彪, arturiamu, 博客, 木林彪的个人博客, spring, spring boot, mapper注入, @PostConstruct, java"><title>springboot 普通类自动注入mapper</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='docker容器互联的原理、方式'>
+<meta name="keywords" content="木林彪, arturiamu, 博客, 木林彪的个人博客, docker, docker容器, docker镜像, docker基础, docker容器互联"><title>docker --link容器互联</title>
 
-<link rel='canonical' href='https://arturiamu.github.io/post/spring-boot-reject-mapper/'>
+<link rel='canonical' href='https://arturiamu.github.io/post/docker-container-link/'>
 
-<link rel="stylesheet" href="/scss/style.min.5e3814b8c20dd362819d8f0b1c0554df211090883babaeea35913b6b16121b26.css"><meta property='og:title' content='springboot 普通类自动注入mapper'>
-<meta property='og:description' content='springboot 普通类中使用注解注入mapper'>
-<meta property='og:url' content='https://arturiamu.github.io/post/spring-boot-reject-mapper/'>
+<link rel="stylesheet" href="/scss/style.min.5e3814b8c20dd362819d8f0b1c0554df211090883babaeea35913b6b16121b26.css"><meta property='og:title' content='docker --link容器互联'>
+<meta property='og:description' content='docker容器互联的原理、方式'>
+<meta property='og:url' content='https://arturiamu.github.io/post/docker-container-link/'>
 <meta property='og:site_name' content='木林彪的个人博客'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='java' /><meta property='article:tag' content='springboot' /><meta property='article:published_time' content='2023-06-23T16:28:51&#43;08:00'/><meta property='article:modified_time' content='2023-06-23T16:28:51&#43;08:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='docker' /><meta property='article:published_time' content='2023-10-31T11:14:05&#43;08:00'/><meta property='article:modified_time' content='2023-10-31T11:14:05&#43;08:00'/>
 <meta name="twitter:site" content="@ArturiaMu">
-    <meta name="twitter:creator" content="@ArturiaMu"><meta name="twitter:title" content="springboot 普通类自动注入mapper">
-<meta name="twitter:description" content="springboot 普通类中使用注解注入mapper">
+    <meta name="twitter:creator" content="@ArturiaMu"><meta name="twitter:title" content="docker --link容器互联">
+<meta name="twitter:description" content="docker容器互联的原理、方式">
     <link rel="shortcut icon" href="/favicon.ico" />
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JJG6TYWNYX"></script>
@@ -359,7 +359,20 @@ if (!doNotTrack) {
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#解决方法">解决方法</a></li>
+    <li><a href="#系统环境">系统环境</a></li>
+    <li><a href="#docker容器互联概述">docker容器互联概述</a>
+      <ol>
+        <li><a href="#docker容器互联的三种方式">docker容器互联的三种方式</a></li>
+        <li><a href="#docker---link使用注意事项">docker &ndash;link使用注意事项</a></li>
+        <li><a href="#docker---link原理">docker &ndash;link原理</a></li>
+      </ol>
+    </li>
+    <li><a href="#docker容器互联">docker容器互联</a>
+      <ol>
+        <li><a href="#通过容器ip地址进行通信">通过容器IP地址进行通信</a></li>
+        <li><a href="#通过--link-参数进行通信">通过&ndash;link 参数进行通信</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -439,15 +452,31 @@ if (!doNotTrack) {
 
     <div class="article-details">
     
+    <header class="article-category">
+        
+            <a href="/archives/container/" >
+                容器
+            </a>
+        
+            <a href="/archives/cloud-native/" >
+                云原生
+            </a>
+        
+            <a href="/archives/transshipment/" >
+                转载
+            </a>
+        
+    </header>
+    
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/post/spring-boot-reject-mapper/">springboot 普通类自动注入mapper</a>
+            <a href="/post/docker-container-link/">docker --link容器互联</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            springboot 普通类中使用注解注入mapper
+            docker容器互联的原理、方式
         </h3>
         
     </div>
@@ -468,7 +497,7 @@ if (!doNotTrack) {
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">2023-06-23 16:28:51 CST</time>
+                <time class="article-time--published">2023-10-31 11:14:05 CST</time>
             </div>
         
 
@@ -483,7 +512,7 @@ if (!doNotTrack) {
 
 
                 <time class="article-time--reading">
-                    阅读时长: 1 分钟
+                    阅读时长: 3 分钟
                 </time>
             </div>
         
@@ -498,10 +527,125 @@ if (!doNotTrack) {
     <section class="article-content">
     
     
-    <p><strong>本文从作者CSDN <a class="link" href="https://blog.csdn.net/qq_43353586/article/details/125187441"  target="_blank" rel="noopener"
-    >springboot 普通类自动注入mapper</a> 同步</strong></p>
-<h2 id="解决方法">解决方法</h2>
-<p>普通类使用@Component注解修饰，添加本类型静态属性、所需mapper属性，添加init方法，用@PostConstruct注解修饰，方法内初始化以上2个属性：</p>
+    <p><strong>本文转载自 <a class="link" href="https://www.cnblogs.com/renshengdezheli/p/16640281.html"  target="_blank" rel="noopener"
+    >docker &ndash;link容器互联</a></strong></p>
+<h2 id="系统环境">系统环境</h2>
+<p><img src="/post/docker-container-link/img.png"
+	width="536"
+	height="130"
+	srcset="/post/docker-container-link/img_hu224845a28689b51dbcf071b7e2655079_9126_480x0_resize_box_3.png 480w, /post/docker-container-link/img_hu224845a28689b51dbcf071b7e2655079_9126_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="img.png"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="412"
+		data-flex-basis="989px"
+	
+></p>
+<h2 id="docker容器互联概述">docker容器互联概述</h2>
+<h3 id="docker容器互联的三种方式">docker容器互联的三种方式</h3>
+<p>同一个宿主机上的多个docker容器之间如果想进行通信有三种方式：</p>
+<ol>
+<li>通过使用容器的ip地址来通信【这样会导致ip地址的硬编码，不方便迁移，并且容器重启后ip地址会改变，除非使用固定的ip】</li>
+<li>通过宿主机的ip加上容器暴露出的端口号来通信【这样的通信方式比较单一，只能依靠监听在暴露出的端口的进程来进行有限的通信】</li>
+<li>通过docker的link机制可以通过一个name来和另一个容器通信，link机制方便了容器去发现其它的容器并且可以安全的传递一些连接信息给其它的容器。</li>
+</ol>
+<h3 id="docker---link使用注意事项">docker &ndash;link使用注意事项</h3>
+<p>使用docker &ndash;link需要注意以下几点：</p>
+<ol>
+<li>使用link选项建立的容器所链接的主机需要在运行状态</li>
+<li>使用link选项建立的容器运行时需要所链接的容器也必须是运行状态</li>
+<li>使用link选项链接的主机ip不需要固定，因为每次新建容器都会检查所链接容器的ip，在/etc/hosts里生成新的alias 名称对应的ip</li>
+</ol>
+<h3 id="docker---link原理">docker &ndash;link原理</h3>
+<p>docker &ndash;link 使用了link机制后，可以通过指定的名字来和目标容器通信，这其实是通过给/etc/hosts中加入名称和IP的解析关系来实现的。</p>
+<h2 id="docker容器互联">docker容器互联</h2>
+<h3 id="通过容器ip地址进行通信">通过容器IP地址进行通信</h3>
+<p>创建一个MySQL容器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -dit --restart=always --name=mysql5 -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 hub.c.163.com/library/mysql:latest </span>
+</span></span><span class="line"><span class="cl">03982d14608971f6af6783ad0eb6611516c8b19e449dc05e899a802cabfe99f0
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看MySQL容器IP</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker inspect mysql5 | grep -i ipaddr</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;SecondaryIPAddresses&#34;</span>: null,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;IPAddress&#34;</span>: <span class="s2">&#34;172.17.0.4&#34;</span>,
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;IPAddress&#34;</span>: <span class="s2">&#34;172.17.0.4&#34;</span>,
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>创建一个centos容器，并测试容器的连通性</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#ping MySQL容器IP，可以看到成功ping通</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -it --restart=always --name=centos7 hub.c.163.com/library/centos:latest ping 172.17.0.4</span>
+</span></span><span class="line"><span class="cl">PING 172.17.0.4 <span class="o">(</span>172.17.0.4<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
+</span></span><span class="line"><span class="cl"><span class="m">64</span> bytes from 172.17.0.4: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.168 ms
+</span></span><span class="line"><span class="cl"><span class="m">64</span> bytes from 172.17.0.4: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.064 ms
+</span></span><span class="line"><span class="cl"><span class="m">64</span> bytes from 172.17.0.4: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">3</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.063 ms
+</span></span><span class="line"><span class="cl"><span class="m">64</span> bytes from 172.17.0.4: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">4</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.185 ms
+</span></span><span class="line"><span class="cl">^C
+</span></span><span class="line"><span class="cl">--- 172.17.0.4 ping statistics ---
+</span></span><span class="line"><span class="cl"><span class="m">4</span> packets transmitted, <span class="m">4</span> received, 0% packet loss, <span class="nb">time</span> 2999ms
+</span></span><span class="line"><span class="cl">rtt min/avg/max/mdev <span class="o">=</span> 0.063/0.120/0.185/0.056 ms
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="通过--link-参数进行通信">通过&ndash;link 参数进行通信</h3>
+<p>注意：docker 默认是允许容器互联互通的，可以通过-icc=false 关闭互通。一旦关闭了互通，只能通过-link name:alias 命令连接指定容器</p>
+<p>创建centos容器，使用&ndash;link mysql5:mysql 链接mysql5容器，并给mysql5容器起别名为mysql，直接ping mysql，可以看到成功ping通</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker run -it --restart=always --name=c7 --link mysql5:mysql hub.c.163.com/library/centos:latest ping mysql</span>
+</span></span><span class="line"><span class="cl">PING mysql <span class="o">(</span>172.17.0.4<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
+</span></span><span class="line"><span class="cl"><span class="m">64</span> bytes from mysql <span class="o">(</span>172.17.0.4<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.099 ms
+</span></span><span class="line"><span class="cl"><span class="m">64</span> bytes from mysql <span class="o">(</span>172.17.0.4<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.086 ms
+</span></span><span class="line"><span class="cl"><span class="m">64</span> bytes from mysql <span class="o">(</span>172.17.0.4<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">3</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.126 ms
+</span></span><span class="line"><span class="cl">^C
+</span></span><span class="line"><span class="cl">--- mysql ping statistics ---
+</span></span><span class="line"><span class="cl"><span class="m">3</span> packets transmitted, <span class="m">3</span> received, 0% packet loss, <span class="nb">time</span> 1999ms
+</span></span><span class="line"><span class="cl">rtt min/avg/max/mdev <span class="o">=</span> 0.086/0.103/0.126/0.020 ms
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>进入容器ping mysql</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -516,33 +660,105 @@ if (!doNotTrack) {
 </span><span class="lnt">10
 </span><span class="lnt">11
 </span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Component</span>
-</span></span><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">VideoPool</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="kd">static</span> <span class="n">VideoPool</span> <span class="n">that</span><span class="o">;</span>  <span class="c1">// 本类型静态属性
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nd">@Resource</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">VideoMapper</span> <span class="n">videoMapper</span><span class="o">;</span>  <span class="c1">// 所需要mapper
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    
-</span></span><span class="line"><span class="cl">    <span class="nd">@PostConstruct</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">that</span> <span class="o">=</span> <span class="k">this</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">        <span class="n">that</span><span class="o">.</span><span class="na">videoMapper</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">videoMapper</span><span class="o">;</span>
-</span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># docker exec -it c7 /bin/bash</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@0eea8b40d874 /<span class="o">]</span><span class="c1"># ping mysql</span>
+</span></span><span class="line"><span class="cl">PING mysql <span class="o">(</span>172.17.0.4<span class="o">)</span> 56<span class="o">(</span>84<span class="o">)</span> bytes of data.
+</span></span><span class="line"><span class="cl"><span class="m">64</span> bytes from mysql <span class="o">(</span>172.17.0.4<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.108 ms
+</span></span><span class="line"><span class="cl"><span class="m">64</span> bytes from mysql <span class="o">(</span>172.17.0.4<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.107 ms
+</span></span><span class="line"><span class="cl"><span class="m">64</span> bytes from mysql <span class="o">(</span>172.17.0.4<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">3</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.064 ms
+</span></span><span class="line"><span class="cl"><span class="m">64</span> bytes from mysql <span class="o">(</span>172.17.0.4<span class="o">)</span>: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">4</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span>0.080 ms
+</span></span><span class="line"><span class="cl">^C
+</span></span><span class="line"><span class="cl">--- mysql ping statistics ---
+</span></span><span class="line"><span class="cl"><span class="m">4</span> packets transmitted, <span class="m">4</span> received, 0% packet loss, <span class="nb">time</span> 2999ms
+</span></span><span class="line"><span class="cl">rtt min/avg/max/mdev <span class="o">=</span> 0.064/0.089/0.108/0.021 ms
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#没有MySQL客户端</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@0eea8b40d874 /<span class="o">]</span><span class="c1"># mysql -uroot -p123456 -h 172.17.0.4</span>
+</span></span><span class="line"><span class="cl">bash: mysql: <span class="nb">command</span> not found
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#安装MySQL客户端，mariadb客户端和MySQL客户端通用</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@0eea8b40d874 /<span class="o">]</span><span class="c1"># yum -y install mariadb</span>
+</span></span><span class="line"><span class="cl">Loaded plugins: fastestmirror, ovl
+</span></span><span class="line"><span class="cl">.....
+</span></span><span class="line"><span class="cl">Installed:
+</span></span><span class="line"><span class="cl">  mariadb.x86_64 1:5.5.68-1.el7                                                                                                                                                                                  
+</span></span><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl">Complete!
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>在类中需要使用mapper时，用that(本类型静态属性）.mapper：</p>
+</div><p>在centos7容器里连接mysql</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span> <span class="n">itemList</span> <span class="o">=</span> <span class="n">that</span><span class="o">.</span><span class="na">itemMapper</span><span class="o">.</span><span class="na">getAll</span><span class="o">();</span>
-</span></span><span class="line"><span class="cl"><span class="o">}</span>
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@0eea8b40d874 /<span class="o">]</span><span class="c1"># mysql -uroot -p123456 -h 172.17.0.4</span>
+</span></span><span class="line"><span class="cl">Welcome to the MariaDB monitor.  Commands end with <span class="p">;</span> or <span class="se">\g</span>.
+</span></span><span class="line"><span class="cl">Your MySQL connection id is <span class="m">3</span>
+</span></span><span class="line"><span class="cl">Server version: 5.7.18 MySQL Community Server <span class="o">(</span>GPL<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Copyright <span class="o">(</span>c<span class="o">)</span> 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Type <span class="s1">&#39;help;&#39;</span> or <span class="s1">&#39;\h&#39;</span> <span class="k">for</span> help. Type <span class="s1">&#39;\c&#39;</span> to clear the current input statement.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">MySQL <span class="o">[(</span>none<span class="o">)]</span>&gt; show databases<span class="p">;</span>
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Database           <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> information_schema <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> mysql              <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> performance_schema <span class="p">|</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> sys                <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl"><span class="m">4</span> rows in <span class="nb">set</span> <span class="o">(</span>0.00 sec<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">MySQL <span class="o">[(</span>none<span class="o">)]</span>&gt; <span class="nb">exit</span>
+</span></span><span class="line"><span class="cl">Bye
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@0eea8b40d874 /<span class="o">]</span><span class="c1"># </span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@0eea8b40d874 /<span class="o">]</span><span class="c1"># exit</span>
+</span></span><span class="line"><span class="cl"><span class="nb">exit</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@k8smaster ~<span class="o">]</span><span class="c1"># </span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div>
@@ -553,9 +769,7 @@ if (!doNotTrack) {
     
     <section class="article-tags">
         
-            <a href="/tags/java/">java</a>
-        
-            <a href="/tags/springboot/">springboot</a>
+            <a href="/tags/docker/">docker</a>
         
     </section>
 
@@ -606,6 +820,80 @@ if (!doNotTrack) {
     
 
     
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/docker-network-management/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">docker网络管理</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/docker-container-base/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">一文搞懂docker容器基础：docker镜像管理，docker容器管理</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/shell-operation/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">shell 运算</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/shell-bash-var/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Bash 变量</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/shell-basic-knowledge/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">shell脚本基础入门</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
 
      
     
