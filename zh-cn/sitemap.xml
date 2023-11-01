@@ -116,22 +116,22 @@
                 href="https://arturiamu.github.io/archives/cloud-native/"
                 />
   </url><url>
-    <loc>https://arturiamu.github.io/archives/transshipment/</loc>
+    <loc>https://arturiamu.github.io/archives/repost/</loc>
     <lastmod>2023-10-31T11:14:05+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://arturiamu.github.io/en/archives/transshipment/"
+                href="https://arturiamu.github.io/en/archives/repost/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="https://arturiamu.github.io/ja/archives/transshipment/"
+                href="https://arturiamu.github.io/ja/archives/repost/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://arturiamu.github.io/archives/transshipment/"
+                href="https://arturiamu.github.io/archives/repost/"
                 />
   </url><url>
     <loc>https://arturiamu.github.io/post/docker-network-management/</loc>
