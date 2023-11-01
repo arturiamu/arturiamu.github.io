@@ -7,44 +7,52 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
         <lastBuildDate>Sun, 18 Jun 2023 13:14:35 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/en/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>this site</title>
+        <title>Original</title>
+        <link>https://arturiamu.github.io/en/archives/original/</link>
+        <pubDate>Sun, 18 Jun 2023 13:14:35 +0800</pubDate>
+        
+        <guid>https://arturiamu.github.io/en/archives/original/</guid>
+        <description>&lt;img src="https://arturiamu.github.io/en/archives/original/img.png" alt="Featured image of post Original" /&gt;</description>
+        </item>
+        <item>
+        <title>This-Site</title>
         <link>https://arturiamu.github.io/en/archives/this-site/</link>
         <pubDate>Sun, 18 Jun 2023 13:14:35 +0800</pubDate>
         
         <guid>https://arturiamu.github.io/en/archives/this-site/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/en/archives/this-site/c-this.png" alt="Featured image of post this site" /&gt;</description>
+        <description>&lt;img src="https://arturiamu.github.io/en/archives/this-site/c-this.png" alt="Featured image of post This-Site" /&gt;</description>
         </item>
         <item>
-        <title>cloud native</title>
+        <title>Cloud-Native</title>
         <link>https://arturiamu.github.io/en/archives/cloud-native/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://arturiamu.github.io/en/archives/cloud-native/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/en/archives/cloud-native/cn.png" alt="Featured image of post cloud native" /&gt;</description>
+        <description>&lt;img src="https://arturiamu.github.io/en/archives/cloud-native/cn.png" alt="Featured image of post Cloud-Native" /&gt;</description>
         </item>
         <item>
-        <title>container</title>
+        <title>Container</title>
         <link>https://arturiamu.github.io/en/archives/container/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://arturiamu.github.io/en/archives/container/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/en/archives/container/img.png" alt="Featured image of post container" /&gt;</description>
+        <description>&lt;img src="https://arturiamu.github.io/en/archives/container/img.png" alt="Featured image of post Container" /&gt;</description>
         </item>
         <item>
-        <title>database</title>
+        <title>Database</title>
         <link>https://arturiamu.github.io/en/archives/database/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://arturiamu.github.io/en/archives/database/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/en/archives/database/db.png" alt="Featured image of post database" /&gt;</description>
+        <description>&lt;img src="https://arturiamu.github.io/en/archives/database/db.png" alt="Featured image of post Database" /&gt;</description>
         </item>
         <item>
-        <title>lanqiao cup</title>
+        <title>LanQiao cup</title>
         <link>https://arturiamu.github.io/en/archives/lq-cup/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://arturiamu.github.io/en/archives/lq-cup/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/en/archives/lq-cup/c-lq.png" alt="Featured image of post lanqiao cup" /&gt;</description>
+        <description>&lt;img src="https://arturiamu.github.io/en/archives/lq-cup/c-lq.png" alt="Featured image of post LanQiao cup" /&gt;</description>
         </item>
         <item>
         <title>shell</title>

@@ -128,22 +128,22 @@
                 href="https://arturiamu.github.io/ja/tags/"
                 />
   </url><url>
-    <loc>https://arturiamu.github.io/ja/post/blog-bug-log/</loc>
+    <loc>https://arturiamu.github.io/ja/archives/original/</loc>
     <lastmod>2023-06-18T13:14:35+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://arturiamu.github.io/post/blog-bug-log/"
+                href="https://arturiamu.github.io/archives/original/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://arturiamu.github.io/en/post/blog-bug-log/"
+                href="https://arturiamu.github.io/en/archives/original/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="https://arturiamu.github.io/ja/post/blog-bug-log/"
+                href="https://arturiamu.github.io/ja/archives/original/"
                 />
   </url><url>
     <loc>https://arturiamu.github.io/ja/archives/this-site/</loc>
@@ -162,6 +162,24 @@
                 rel="alternate"
                 hreflang="ja"
                 href="https://arturiamu.github.io/ja/archives/this-site/"
+                />
+  </url><url>
+    <loc>https://arturiamu.github.io/ja/post/blog-bug-log/</loc>
+    <lastmod>2023-06-18T13:14:35+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://arturiamu.github.io/post/blog-bug-log/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://arturiamu.github.io/en/post/blog-bug-log/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://arturiamu.github.io/ja/post/blog-bug-log/"
                 />
   </url><url>
     <loc>https://arturiamu.github.io/ja/tags/blog/</loc>
@@ -218,23 +236,6 @@
                 href="https://arturiamu.github.io/ja/archives/"
                 />
   </url><url>
-    <loc>https://arturiamu.github.io/ja/archives/shell/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://arturiamu.github.io/archives/shell/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://arturiamu.github.io/en/archives/shell/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://arturiamu.github.io/ja/archives/shell/"
-                />
-  </url><url>
     <loc>https://arturiamu.github.io/ja/archives/database/</loc>
     <xhtml:link
                 rel="alternate"
@@ -284,6 +285,23 @@
                 rel="alternate"
                 hreflang="ja"
                 href="https://arturiamu.github.io/ja/archives/container/"
+                />
+  </url><url>
+    <loc>https://arturiamu.github.io/ja/archives/shell/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://arturiamu.github.io/archives/shell/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://arturiamu.github.io/en/archives/shell/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://arturiamu.github.io/ja/archives/shell/"
                 />
   </url><url>
     <loc>https://arturiamu.github.io/ja/archives/lq-cup/</loc>

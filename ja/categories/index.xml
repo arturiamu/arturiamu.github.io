@@ -7,20 +7,20 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
         <lastBuildDate>Sun, 18 Jun 2023 13:14:35 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/ja/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>当ウェブサイト</title>
+        <title>げんそう</title>
+        <link>https://arturiamu.github.io/ja/archives/original/</link>
+        <pubDate>Sun, 18 Jun 2023 13:14:35 +0800</pubDate>
+        
+        <guid>https://arturiamu.github.io/ja/archives/original/</guid>
+        <description>&lt;img src="https://arturiamu.github.io/ja/archives/original/img.png" alt="Featured image of post げんそう" /&gt;</description>
+        </item>
+        <item>
+        <title>このウェブサイト</title>
         <link>https://arturiamu.github.io/ja/archives/this-site/</link>
         <pubDate>Sun, 18 Jun 2023 13:14:35 +0800</pubDate>
         
         <guid>https://arturiamu.github.io/ja/archives/this-site/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/ja/archives/this-site/c-this.png" alt="Featured image of post 当ウェブサイト" /&gt;</description>
-        </item>
-        <item>
-        <title>shell</title>
-        <link>https://arturiamu.github.io/ja/archives/shell/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://arturiamu.github.io/ja/archives/shell/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/ja/archives/shell/img.png" alt="Featured image of post shell" /&gt;</description>
+        <description>&lt;img src="https://arturiamu.github.io/ja/archives/this-site/c-this.png" alt="Featured image of post このウェブサイト" /&gt;</description>
         </item>
         <item>
         <title>データベース</title>
@@ -47,6 +47,14 @@
         <description>&lt;img src="https://arturiamu.github.io/ja/archives/container/img.png" alt="Featured image of post コンテナ" /&gt;</description>
         </item>
         <item>
+        <title>シェル</title>
+        <link>https://arturiamu.github.io/ja/archives/shell/</link>
+        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        
+        <guid>https://arturiamu.github.io/ja/archives/shell/</guid>
+        <description>&lt;img src="https://arturiamu.github.io/ja/archives/shell/img.png" alt="Featured image of post シェル" /&gt;</description>
+        </item>
+        <item>
         <title>ブルーブリッジカップ</title>
         <link>https://arturiamu.github.io/ja/archives/lq-cup/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -55,12 +63,12 @@
         <description>&lt;img src="https://arturiamu.github.io/ja/archives/lq-cup/c-lq.png" alt="Featured image of post ブルーブリッジカップ" /&gt;</description>
         </item>
         <item>
-        <title>積み替え</title>
+        <title>転載</title>
         <link>https://arturiamu.github.io/ja/archives/transshipment/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
         <guid>https://arturiamu.github.io/ja/archives/transshipment/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/ja/archives/transshipment/img.png" alt="Featured image of post 積み替え" /&gt;</description>
+        <description>&lt;img src="https://arturiamu.github.io/ja/archives/transshipment/img.png" alt="Featured image of post 転載" /&gt;</description>
         </item>
         
     </channel>

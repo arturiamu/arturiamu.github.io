@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>cloud native on arturiamu&#39;s blog</title>
+        <title>Cloud-Native on arturiamu&#39;s blog</title>
         <link>https://arturiamu.github.io/en/archives/cloud-native/</link>
-        <description>Recent content in cloud native on arturiamu&#39;s blog</description>
+        <description>Recent content in Cloud-Native on arturiamu&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language><atom:link href="https://arturiamu.github.io/en/archives/cloud-native/index.xml" rel="self" type="application/rss+xml" />
     </channel>
