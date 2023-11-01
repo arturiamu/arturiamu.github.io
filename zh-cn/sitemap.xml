@@ -191,23 +191,26 @@
     <loc>https://arturiamu.github.io/tags/bash/</loc>
     <lastmod>2023-09-28T15:27:00+08:00</lastmod>
   </url><url>
-    <loc>https://arturiamu.github.io/archives/shell/</loc>
+    <loc>https://arturiamu.github.io/archives/linux/</loc>
     <lastmod>2023-09-28T15:27:00+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://arturiamu.github.io/en/archives/shell/"
+                href="https://arturiamu.github.io/en/archives/linux/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="https://arturiamu.github.io/ja/archives/shell/"
+                href="https://arturiamu.github.io/ja/archives/linux/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://arturiamu.github.io/archives/shell/"
+                href="https://arturiamu.github.io/archives/linux/"
                 />
+  </url><url>
+    <loc>https://arturiamu.github.io/tags/shell/</loc>
+    <lastmod>2023-09-28T15:27:00+08:00</lastmod>
   </url><url>
     <loc>https://arturiamu.github.io/post/shell-operation/</loc>
     <lastmod>2023-09-28T15:27:00+08:00</lastmod>
