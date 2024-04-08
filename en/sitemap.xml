@@ -236,6 +236,23 @@
                 href="https://arturiamu.github.io/en/archives/"
                 />
   </url><url>
+    <loc>https://arturiamu.github.io/en/archives/blockchain/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://arturiamu.github.io/archives/blockchain/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://arturiamu.github.io/ja/archives/blockchain/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://arturiamu.github.io/en/archives/blockchain/"
+                />
+  </url><url>
     <loc>https://arturiamu.github.io/en/archives/cloud-native/</loc>
     <xhtml:link
                 rel="alternate"

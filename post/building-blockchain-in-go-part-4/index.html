@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='使用golang构建简单的区块链'>
+<meta name="keywords" content="木林彪, arturiamu, 博客, 木林彪的个人博客, golang, go, blockchain, Bitcoin, Ethereum"><title>在Go中构建区块链-4-交易-1</title>
+
+<link rel='canonical' href='https://arturiamu.github.io/post/building-blockchain-in-go-part-4/'>
+
+<link rel="stylesheet" href="/scss/style.min.5e3814b8c20dd362819d8f0b1c0554df211090883babaeea35913b6b16121b26.css"><meta property='og:title' content='在Go中构建区块链-4-交易-1'>
+<meta property='og:description' content='使用golang构建简单的区块链'>
+<meta property='og:url' content='https://arturiamu.github.io/post/building-blockchain-in-go-part-4/'>
+<meta property='og:site_name' content='木林彪的个人博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Bitcoin' /><meta property='article:tag' content='Ethereum' /><meta property='article:published_time' content='2023-12-13T10:54:23&#43;08:00'/><meta property='article:modified_time' content='2023-12-13T10:54:23&#43;08:00'/>
+<meta name="twitter:site" content="@ArturiaMu">
+    <meta name="twitter:creator" content="@ArturiaMu"><meta name="twitter:title" content="在Go中构建区块链-4-交易-1">
+<meta name="twitter:description" content="使用golang构建简单的区块链">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JJG6TYWNYX"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-JJG6TYWNYX', { 'anonymize_ip': false });
+}
+</script>
+<style>
+    :root {
+         
+        --sys-font-family: "HarmonyOS_Sans_SC_Medium", Georgia, -apple-system, 'Nimbus Roman No9 L', 'PingFang SC', 'Hiragino Sans GB', 'Noto Serif SC', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'ST Heiti', sans-serif;
+        --code-font-family: "JetBrainsMono Regular", Menlo, Monaco, Consolas, "Courier New";
+        --article-font-family: "HarmonyOS_Sans_SC_Medium", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://img.shimoko.com/fonts/font.css";
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar1_hu67b097db30250ef6a2ed6dd217c7d0a7_22735_300x0_resize_q75_box.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">❤️</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">木林彪的个人博客</a></h1>
+            <h2 class="site-description">~Coding my life~</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/arturiamu'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:arturiamumu@gmail.com'
+                        target="_blank"
+                        title="Gmail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-gmail" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+    <path d="M16 20h3a1 1 0 0 0 1 -1v-14a1 1 0 0 0 -1 -1h-3v16z" />
+    <path d="M5 20h3v-16h-3a1 1 0 0 0 -1 1v14a1 1 0 0 0 1 1z" />
+    <path d="M16 4l-4 4l-4 -4" />
+    <path d="M4 6.5l8 7.5l8 -7.5" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/message/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M8 9h8" />
+  <path d="M8 13h6" />
+  <path d="M9 18h-3a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-3l-3 3l-3 -3z" />
+</svg>
+
+
+
+                
+                <span>留言</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://arturiamu.github.io/" selected>中文</option>
+                        
+                            <option value="https://arturiamu.github.io/en/" >English</option>
+                        
+                            <option value="https://arturiamu.github.io/ja/" >日本</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#相较于传统支付">相较于传统支付</a></li>
+    <li><a href="#比特币交易">比特币交易</a></li>
+    <li><a href="#交易输出">交易输出</a></li>
+    <li><a href="#交易输入">交易输入</a></li>
+    <li><a href="#先有鸡还是先有蛋">先有鸡还是先有蛋</a></li>
+    <li><a href="#在区块链中存储交易">在区块链中存储交易</a></li>
+    <li><a href="#工作量证明">工作量证明</a></li>
+    <li><a href="#未花费的交易输出">未花费的交易输出</a></li>
+    <li><a href="#发送币">发送币</a></li>
+    <li><a href="#结论">结论</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">标签云</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/bitcoin/" class="font_size_4">
+                Bitcoin
+            </a>
+        
+            <a href="/tags/ethereum/" class="font_size_4">
+                Ethereum
+            </a>
+        
+            <a href="/tags/bash/" class="font_size_3">
+                bash
+            </a>
+        
+            <a href="/tags/docker/" class="font_size_3">
+                docker
+            </a>
+        
+            <a href="/tags/mysql/" class="font_size_3">
+                mysql
+            </a>
+        
+            <a href="/tags/python/" class="font_size_3">
+                python
+            </a>
+        
+            <a href="/tags/shell/" class="font_size_3">
+                shell
+            </a>
+        
+            <a href="/tags/bug/" class="font_size_2">
+                bug
+            </a>
+        
+            <a href="/tags/golang/" class="font_size_2">
+                golang
+            </a>
+        
+            <a href="/tags/blog/" class="font_size_1">
+                blog
+            </a>
+        
+    </div>
+</section>
+            
+        
+        <div style="height: 30%;width: 30%">
+            <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=4gAmsOskyL921TwxZGdrq3NbkFu-hJm8dDfoHJsn25Q"></script>
+        </div>
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/archives/blockchain/" >
+                区块链
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/building-blockchain-in-go-part-4/">在Go中构建区块链-4-交易-1</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            使用golang构建简单的区块链
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2023-12-13 10:54:23 CST</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 10 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p><strong>本文译自 <a class="link" href="https://jeiwan.net/posts/building-blockchain-in-go-part-4/"  target="_blank" rel="noopener"
+    >Building Blockchain in Go. Part 4: Transactions 1</a></strong></p>
+<h2 id="简介">简介</h2>
+<p>交易是比特币的核心，区块链的唯一目的是以安全可靠的方式存储交易，因此在创建交易后没有人可以修改它们。 今天我们开始实施交易。 但因为这是一个相当大的主题，所以我将其分为两部分：在这一部分中，我们将实现交易的一般机制，在第二部分中我们将讨论细节。</p>
+<p>另外，由于代码更改很大，因此在这里描述所有更改是没有意义的。 您可以在<a class="link" href="https://github.com/Jeiwan/blockchain_go/compare/part_3...part_4#files_bucket"  target="_blank" rel="noopener"
+    >这里</a>看到所有更改。</p>
+<h2 id="相较于传统支付">相较于传统支付</h2>
+<p>如果您曾经开发过 Web 应用程序，为了实现付款，您可能会在数据库中创建这些表：帐户和交易。 帐户将存储有关用户的信息，包括他们的个人信息和余额，而交易将存储有关从一个帐户转移到另一个帐户的资金的信息。 在比特币中，支付是以完全不同的方式实现的。 在这里：</p>
+<ol>
+<li>没有账户。</li>
+<li>没有余额。</li>
+<li>没有地址。</li>
+<li>没有币。</li>
+<li>没有发送者和接收者。</li>
+</ol>
+<p>由于区块链是一个公共且开放的数据库，我们不想存储有关钱包所有者的敏感信息。 币不收集在帐户中。 交易不会将资金从一个地址转移到另一个地址。 没有保存帐户余额的字段或属性。 只有交易。 那么交易里面有什么？</p>
+<h2 id="比特币交易">比特币交易</h2>
+<p>交易是输入和输出的组合：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Transaction</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ID</span>   <span class="p">[]</span><span class="kt">byte</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Vin</span>  <span class="p">[]</span><span class="nx">TXInput</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Vout</span> <span class="p">[]</span><span class="nx">TXOutput</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>新交易的输入引用先前交易的输出（不过有一个例外，我们将在稍后讨论）。 输出是实际存储币的地方。 下图展示了交易的互连：</p>
+<p><img src="/post/building-blockchain-in-go-part-4/img.png"
+	width="733"
+	height="379"
+	srcset="/post/building-blockchain-in-go-part-4/img_hu5300d82964836e3e836fb72e491b530a_81076_480x0_resize_box_3.png 480w, /post/building-blockchain-in-go-part-4/img_hu5300d82964836e3e836fb72e491b530a_81076_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="img.png"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="193"
+		data-flex-basis="464px"
+	
+></p>
+<p>请注意：</p>
+<ol>
+<li>有些输出未链接到输入。</li>
+<li>在一笔交易中，输入可以引用多个交易的输出。</li>
+<li>输入必须引用输出。</li>
+</ol>
+<p>在整篇文章中，我们将使用“钱”、“币”、“花费”、“发送”、“账户”等词语。但比特币中没有这样的概念。 交易只是用脚本锁定值，该脚本只能由锁定它们的人解锁。</p>
+<h2 id="交易输出">交易输出</h2>
+<p>让我们首先从输出开始：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">TXOutput</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Value</span>        <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ScriptPubKey</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>实际上，它是存储“币”的输出（注意上面的值字段）。 存储意味着用一个数学迷题锁定它们，该谜题存储在 ScriptPubKey 中。 在内部，比特币使用一种称为 Script 的脚本语言，用于定义输出锁定和解锁逻辑。 该语言非常原始（这是有意为之，以避免可能的黑客攻击和误用），但我们不会详细讨论它。 您可以在<a class="link" href="https://en.bitcoin.it/wiki/Script"  target="_blank" rel="noopener"
+    >这里</a>找到它的详细解释。</p>
+<blockquote>
+<p>在比特币中，value字段存储的是satoshis的数量，而不是BTC的数量。 聪是比特币的一亿分之一（0.00000001 BTC），因此这是比特币中最小的货币单位（如美分）。</p>
+</blockquote>
+<p>由于我们没有实现地址，因此我们现在将避免整个脚本相关逻辑。 ScriptPubKey 将存储任意字符串（用户定义的钱包地址）。</p>
+<blockquote>
+<p>顺便说一句，拥有这样的脚本语言意味着比特币也可以用作智能合约平台。</p>
+</blockquote>
+<p>关于输出的一个重要的事情是它们是不可分割的，这意味着您不能引用其值的一部分。 当新交易中引用输出时，它会作为一个整体被使用。 如果其值大于所需值，则会生成更改并将其发送回发送者。 这类似于现实世界的情况，例如，您用 5 美元的钞票购买 1 美元的商品，然后找回 4 美元。</p>
+<h2 id="交易输入">交易输入</h2>
+<p>这是输入：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">TXInput</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Txid</span>      <span class="p">[]</span><span class="kt">byte</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Vout</span>      <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">ScriptSig</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如前所述，输入引用先前的输出：Txid 存储该交易的 ID，Vout 存储交易中输出的索引。 ScriptSig 是一个脚本，提供在输出的 ScriptPubKey 中使用的数据。 如果数据正确，则可以解锁输出，并且其值可以用于生成新的输出； 如果不正确，则无法在输入中引用输出。 这是保证用户不能花费属于其他人的币的机制。</p>
+<p>同样，由于我们还没有实现地址，ScriptSig 将仅存储任意用户定义的钱包地址。 我们将在下一篇文章中实现公钥和签名检查。</p>
+<p>让我们总结一下。 输出是存储“币”的地方。 每个输出都带有一个解锁脚本，它决定了解锁输出的逻辑。 每笔新交易必须至少有一个输入和输出。 输入引用先前交易的输出，并提供在输出的解锁脚本中使用的数据（ScriptSig 字段）来解锁它并使用其值创建新的输出。</p>
+<p>但先有什么：输入还是输出？</p>
+<h2 id="先有鸡还是先有蛋">先有鸡还是先有蛋</h2>
+<p>在比特币中，先有蛋，后有鸡。 输入-引用-输出逻辑是经典的“先有鸡还是先有蛋”的情况：输入产生输出，输出使输入成为可能。 在比特币中，输出先于输入。</p>
+<p>当矿工开始挖掘一个区块时，它会向其中添加一个 coinbase 交易。 coinbase 交易是一种特殊类型的交易，不需要先前存在的输出。 它凭空创造输出（即“币”）。 有蛋无鸡。 这是矿工开采新区块所获得的奖励。</p>
+<p>如您所知，区块链的开头有创世块。 正是这个区块生成了区块链中的第一个输出。 并且不需要先前的输出，因为没有先前的交易，也没有这样的输出。</p>
+<p>让我们创建一个 coinbase 交易：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">NewCoinbaseTX</span><span class="p">(</span><span class="nx">to</span><span class="p">,</span> <span class="nx">data</span> <span class="kt">string</span><span class="p">)</span> <span class="o">*</span><span class="nx">Transaction</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">data</span> <span class="o">==</span> <span class="s">&#34;&#34;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">data</span> <span class="p">=</span> <span class="nx">fmt</span><span class="p">.</span><span class="nf">Sprintf</span><span class="p">(</span><span class="s">&#34;Reward to &#39;%s&#39;&#34;</span><span class="p">,</span> <span class="nx">to</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">txin</span> <span class="o">:=</span> <span class="nx">TXInput</span><span class="p">{[]</span><span class="kt">byte</span><span class="p">{},</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="nx">data</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">txout</span> <span class="o">:=</span> <span class="nx">TXOutput</span><span class="p">{</span><span class="nx">subsidy</span><span class="p">,</span> <span class="nx">to</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">tx</span> <span class="o">:=</span> <span class="nx">Transaction</span><span class="p">{</span><span class="kc">nil</span><span class="p">,</span> <span class="p">[]</span><span class="nx">TXInput</span><span class="p">{</span><span class="nx">txin</span><span class="p">},</span> <span class="p">[]</span><span class="nx">TXOutput</span><span class="p">{</span><span class="nx">txout</span><span class="p">}}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">tx</span><span class="p">.</span><span class="nf">SetID</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="o">&amp;</span><span class="nx">tx</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>一笔 coinbase 交易只有一个输入。在我们的实现中，它的 Txid 为空，Vout 等于 -1。此外，coinbase 交易不会在 ScriptSig 中存储脚本。相反，任意数据都存储在那里。</p>
+<blockquote>
+<p>在比特币中，第一笔 Coinbase 交易包含以下消息：“泰晤士报 2009 年 1 月 3 日财政大臣即将对银行进行第二次救助”。<a class="link" href="https://www.blockchain.com/explorer/transactions/btc/4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b?show_adv=true"  target="_blank" rel="noopener"
+    >你可以自己看看</a>。</p>
+</blockquote>
+<p>补贴是奖励的金额。 在比特币中，这个数字不存储在任何地方，仅根据区块总数计算：区块数量除以210000。挖掘创世区块产生50 BTC，每210000个区块奖励减半。 在我们的实现中，我们将把奖励存储为常量（至少现在是这样😉）。</p>
+<h2 id="在区块链中存储交易">在区块链中存储交易</h2>
+<p>从现在开始，每个区块必须存储至少一笔交易，并且不再可能在没有交易的情况下挖掘区块。这意味着我们应该删除块的数据字段并存储交易：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">type</span> <span class="nx">Block</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Timestamp</span>     <span class="kt">int64</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Transactions</span>  <span class="p">[]</span><span class="o">*</span><span class="nx">Transaction</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">PrevBlockHash</span> <span class="p">[]</span><span class="kt">byte</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Hash</span>          <span class="p">[]</span><span class="kt">byte</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">Nonce</span>         <span class="kt">int</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>NewBlock 和 NewGenesisBlock 也必须相应更改：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">NewBlock</span><span class="p">(</span><span class="nx">transactions</span> <span class="p">[]</span><span class="o">*</span><span class="nx">Transaction</span><span class="p">,</span> <span class="nx">prevBlockHash</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">)</span> <span class="o">*</span><span class="nx">Block</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">block</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Block</span><span class="p">{</span><span class="nx">time</span><span class="p">.</span><span class="nf">Now</span><span class="p">().</span><span class="nf">Unix</span><span class="p">(),</span> <span class="nx">transactions</span><span class="p">,</span> <span class="nx">prevBlockHash</span><span class="p">,</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">{},</span> <span class="mi">0</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">NewGenesisBlock</span><span class="p">(</span><span class="nx">coinbase</span> <span class="o">*</span><span class="nx">Transaction</span><span class="p">)</span> <span class="o">*</span><span class="nx">Block</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nf">NewBlock</span><span class="p">([]</span><span class="o">*</span><span class="nx">Transaction</span><span class="p">{</span><span class="nx">coinbase</span><span class="p">},</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">{})</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>接下来要改变的是创建一个新的区块链：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">CreateBlockchain</span><span class="p">(</span><span class="nx">address</span> <span class="kt">string</span><span class="p">)</span> <span class="o">*</span><span class="nx">Blockchain</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="o">...</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">err</span> <span class="p">=</span> <span class="nx">db</span><span class="p">.</span><span class="nf">Update</span><span class="p">(</span><span class="kd">func</span><span class="p">(</span><span class="nx">tx</span> <span class="o">*</span><span class="nx">bolt</span><span class="p">.</span><span class="nx">Tx</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">cbtx</span> <span class="o">:=</span> <span class="nf">NewCoinbaseTX</span><span class="p">(</span><span class="nx">address</span><span class="p">,</span> <span class="nx">genesisCoinbaseData</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">genesis</span> <span class="o">:=</span> <span class="nf">NewGenesisBlock</span><span class="p">(</span><span class="nx">cbtx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="nx">b</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">tx</span><span class="p">.</span><span class="nf">CreateBucket</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">blocksBucket</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">err</span> <span class="p">=</span> <span class="nx">b</span><span class="p">.</span><span class="nf">Put</span><span class="p">(</span><span class="nx">genesis</span><span class="p">.</span><span class="nx">Hash</span><span class="p">,</span> <span class="nx">genesis</span><span class="p">.</span><span class="nf">Serialize</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">		<span class="o">...</span>
+</span></span><span class="line"><span class="cl">	<span class="p">})</span>
+</span></span><span class="line"><span class="cl">	<span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>现在，该函数采用一个地址，该地址将获得挖掘创世块的奖励。</p>
+<h2 id="工作量证明">工作量证明</h2>
+<p>工作量证明算法必须考虑存储在区块中的交易，以保证区块链作为交易存储的一致性和可靠性。所以现在我们必须修改 ProofOfWork.prepareData 方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">pow</span> <span class="o">*</span><span class="nx">ProofOfWork</span><span class="p">)</span> <span class="nf">prepareData</span><span class="p">(</span><span class="nx">nonce</span> <span class="kt">int</span><span class="p">)</span> <span class="p">[]</span><span class="kt">byte</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">data</span> <span class="o">:=</span> <span class="nx">bytes</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">		<span class="p">[][]</span><span class="kt">byte</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">pow</span><span class="p">.</span><span class="nx">block</span><span class="p">.</span><span class="nx">PrevBlockHash</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">pow</span><span class="p">.</span><span class="nx">block</span><span class="p">.</span><span class="nf">HashTransactions</span><span class="p">(),</span> <span class="c1">// This line was changed
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="nf">IntToHex</span><span class="p">(</span><span class="nx">pow</span><span class="p">.</span><span class="nx">block</span><span class="p">.</span><span class="nx">Timestamp</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">			<span class="nf">IntToHex</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="nx">targetBits</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">			<span class="nf">IntToHex</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="nx">nonce</span><span class="p">)),</span>
+</span></span><span class="line"><span class="cl">		<span class="p">},</span>
+</span></span><span class="line"><span class="cl">		<span class="p">[]</span><span class="kt">byte</span><span class="p">{},</span>
+</span></span><span class="line"><span class="cl">	<span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">data</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们现在使用 pow.block.HashTransactions() 代替 pow.block.Data，它是：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">b</span> <span class="o">*</span><span class="nx">Block</span><span class="p">)</span> <span class="nf">HashTransactions</span><span class="p">()</span> <span class="p">[]</span><span class="kt">byte</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">txHashes</span> <span class="p">[][]</span><span class="kt">byte</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">txHash</span> <span class="p">[</span><span class="mi">32</span><span class="p">]</span><span class="kt">byte</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">tx</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">b</span><span class="p">.</span><span class="nx">Transactions</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">txHashes</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">txHashes</span><span class="p">,</span> <span class="nx">tx</span><span class="p">.</span><span class="nx">ID</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">txHash</span> <span class="p">=</span> <span class="nx">sha256</span><span class="p">.</span><span class="nf">Sum256</span><span class="p">(</span><span class="nx">bytes</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span><span class="nx">txHashes</span><span class="p">,</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">{}))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">txHash</span><span class="p">[:]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>同样，我们使用哈希作为提供唯一数据表示的机制。 我们希望块中的所有交易都由单个哈希值唯一标识。 为了实现这一点，我们获取每个交易的哈希值，将它们连接起来，并获得连接组合的哈希值。</p>
+<blockquote>
+<p>比特币使用了一种更复杂的技术：它将块中包含的所有交易表示为 <a class="link" href="https://en.wikipedia.org/wiki/Merkle_tree"  target="_blank" rel="noopener"
+    >Merkle 树</a>，并在工作量证明系统中使用树的根哈希。 这种方法允许快速检查一个块是否包含特定交易，仅具有根哈希而无需下载所有交易。</p>
+</blockquote>
+<p>让我们检查一下到目前为止一切是否正确：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="err">$</span> <span class="nx">blockchain_go</span> <span class="nx">createblockchain</span> <span class="o">-</span><span class="nx">address</span> <span class="nx">Ivan</span>
+</span></span><span class="line"><span class="cl"><span class="mo">000000</span><span class="mi">93450837</span><span class="nx">f8b52b78c25f8163bb6137caf43ff4d9a01d1b731fa8ddcc8a</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Done</span><span class="p">!</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>好的！我们收到了第一笔挖矿奖励。但我们如何查看余额呢？</p>
+<h2 id="未花费的交易输出">未花费的交易输出</h2>
+<p>我们需要找到所有未花费的交易输出（UTXO）。 未花费意味着这些输出没有在任何输入中引用。 在上图中，这些是：</p>
+<ol>
+<li>tx0，输出1；</li>
+<li>tx1，输出0；</li>
+<li>tx3，输出0；</li>
+<li>tx4，输出0。</li>
+</ol>
+<p>当然，当我们检查余额时，我们不需要全部，而只需要那些可以用我们拥有的密钥解锁的（目前我们没有实现密钥，将使用用户定义的地址代替）。 首先，我们定义输入和输出的锁定/解锁方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">in</span> <span class="o">*</span><span class="nx">TXInput</span><span class="p">)</span> <span class="nf">CanUnlockOutputWith</span><span class="p">(</span><span class="nx">unlockingData</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">in</span><span class="p">.</span><span class="nx">ScriptSig</span> <span class="o">==</span> <span class="nx">unlockingData</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">out</span> <span class="o">*</span><span class="nx">TXOutput</span><span class="p">)</span> <span class="nf">CanBeUnlockedWith</span><span class="p">(</span><span class="nx">unlockingData</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">out</span><span class="p">.</span><span class="nx">ScriptPubKey</span> <span class="o">==</span> <span class="nx">unlockingData</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里我们只是将脚本字段与unlockingData进行比较。在我们实现基于私钥的地址之后，这些部分将在以后的文章中得到改进。</p>
+<p>下一步 - 查找包含未使用输出的交易 - 非常困难：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">bc</span> <span class="o">*</span><span class="nx">Blockchain</span><span class="p">)</span> <span class="nf">FindUnspentTransactions</span><span class="p">(</span><span class="nx">address</span> <span class="kt">string</span><span class="p">)</span> <span class="p">[]</span><span class="nx">Transaction</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">unspentTXs</span> <span class="p">[]</span><span class="nx">Transaction</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">spentTXOs</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">bci</span> <span class="o">:=</span> <span class="nx">bc</span><span class="p">.</span><span class="nf">Iterator</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">block</span> <span class="o">:=</span> <span class="nx">bci</span><span class="p">.</span><span class="nf">Next</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">tx</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">block</span><span class="p">.</span><span class="nx">Transactions</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">txID</span> <span class="o">:=</span> <span class="nx">hex</span><span class="p">.</span><span class="nf">EncodeToString</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">ID</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">Outputs</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">      <span class="k">for</span> <span class="nx">outIdx</span><span class="p">,</span> <span class="nx">out</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">tx</span><span class="p">.</span><span class="nx">Vout</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Was the output spent?
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="nx">spentTXOs</span><span class="p">[</span><span class="nx">txID</span><span class="p">]</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">spentOut</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">spentTXOs</span><span class="p">[</span><span class="nx">txID</span><span class="p">]</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">spentOut</span> <span class="o">==</span> <span class="nx">outIdx</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="k">continue</span> <span class="nx">Outputs</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">out</span><span class="p">.</span><span class="nf">CanBeUnlockedWith</span><span class="p">(</span><span class="nx">address</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">unspentTXs</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">unspentTXs</span><span class="p">,</span> <span class="o">*</span><span class="nx">tx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="nx">tx</span><span class="p">.</span><span class="nf">IsCoinbase</span><span class="p">()</span> <span class="o">==</span> <span class="kc">false</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">in</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">tx</span><span class="p">.</span><span class="nx">Vin</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="k">if</span> <span class="nx">in</span><span class="p">.</span><span class="nf">CanUnlockOutputWith</span><span class="p">(</span><span class="nx">address</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">inTxID</span> <span class="o">:=</span> <span class="nx">hex</span><span class="p">.</span><span class="nf">EncodeToString</span><span class="p">(</span><span class="nx">in</span><span class="p">.</span><span class="nx">Txid</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">spentTXOs</span><span class="p">[</span><span class="nx">inTxID</span><span class="p">]</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">spentTXOs</span><span class="p">[</span><span class="nx">inTxID</span><span class="p">],</span> <span class="nx">in</span><span class="p">.</span><span class="nx">Vout</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nx">block</span><span class="p">.</span><span class="nx">PrevBlockHash</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">break</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="nx">unspentTXs</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>由于交易存储在区块中，因此我们必须检查区块链中的每个区块。我们从输出开始：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">out</span><span class="p">.</span><span class="nf">CanBeUnlockedWith</span><span class="p">(</span><span class="nx">address</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">unspentTXs</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">unspentTXs</span><span class="p">,</span> <span class="nx">tx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果输出被我们正在搜索未使用交易输出的同一地址锁定，那么这就是我们想要的输出。但在获取之前，我们需要检查输入中是否已经引用了输出：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">spentTXOs</span><span class="p">[</span><span class="nx">txID</span><span class="p">]</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">spentOut</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">spentTXOs</span><span class="p">[</span><span class="nx">txID</span><span class="p">]</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">spentOut</span> <span class="o">==</span> <span class="nx">outIdx</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">continue</span> <span class="nx">Outputs</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>我们跳过输入中引用的那些（它们的值已移至其他输出，因此我们无法对它们进行计数）。 检查输出后，我们收集所有可以解锁使用所提供的地址锁定的输出的输入（这不适用于 coinbase 交易，因为它们不解锁输出）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">tx</span><span class="p">.</span><span class="nf">IsCoinbase</span><span class="p">()</span> <span class="o">==</span> <span class="kc">false</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">in</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">tx</span><span class="p">.</span><span class="nx">Vin</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">in</span><span class="p">.</span><span class="nf">CanUnlockOutputWith</span><span class="p">(</span><span class="nx">address</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">inTxID</span> <span class="o">:=</span> <span class="nx">hex</span><span class="p">.</span><span class="nf">EncodeToString</span><span class="p">(</span><span class="nx">in</span><span class="p">.</span><span class="nx">Txid</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">spentTXOs</span><span class="p">[</span><span class="nx">inTxID</span><span class="p">]</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">spentTXOs</span><span class="p">[</span><span class="nx">inTxID</span><span class="p">],</span> <span class="nx">in</span><span class="p">.</span><span class="nx">Vout</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>该函数返回包含未花费输出的交易列表。为了计算余额，我们还需要一个函数来接受交易并仅返回输出：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">bc</span> <span class="o">*</span><span class="nx">Blockchain</span><span class="p">)</span> <span class="nf">FindUTXO</span><span class="p">(</span><span class="nx">address</span> <span class="kt">string</span><span class="p">)</span> <span class="p">[]</span><span class="nx">TXOutput</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">       <span class="kd">var</span> <span class="nx">UTXOs</span> <span class="p">[]</span><span class="nx">TXOutput</span>
+</span></span><span class="line"><span class="cl">       <span class="nx">unspentTransactions</span> <span class="o">:=</span> <span class="nx">bc</span><span class="p">.</span><span class="nf">FindUnspentTransactions</span><span class="p">(</span><span class="nx">address</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">       <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">tx</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">unspentTransactions</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">               <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">out</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">tx</span><span class="p">.</span><span class="nx">Vout</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                       <span class="k">if</span> <span class="nx">out</span><span class="p">.</span><span class="nf">CanBeUnlockedWith</span><span class="p">(</span><span class="nx">address</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                               <span class="nx">UTXOs</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">UTXOs</span><span class="p">,</span> <span class="nx">out</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                       <span class="p">}</span>
+</span></span><span class="line"><span class="cl">               <span class="p">}</span>
+</span></span><span class="line"><span class="cl">       <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">       <span class="k">return</span> <span class="nx">UTXOs</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>就是这样！现在我们可以实现 getbalance 命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">cli</span> <span class="o">*</span><span class="nx">CLI</span><span class="p">)</span> <span class="nf">getBalance</span><span class="p">(</span><span class="nx">address</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">bc</span> <span class="o">:=</span> <span class="nf">NewBlockchain</span><span class="p">(</span><span class="nx">address</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defer</span> <span class="nx">bc</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">balance</span> <span class="o">:=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">UTXOs</span> <span class="o">:=</span> <span class="nx">bc</span><span class="p">.</span><span class="nf">FindUTXO</span><span class="p">(</span><span class="nx">address</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">out</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">UTXOs</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">balance</span> <span class="o">+=</span> <span class="nx">out</span><span class="p">.</span><span class="nx">Value</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Balance of &#39;%s&#39;: %d\n&#34;</span><span class="p">,</span> <span class="nx">address</span><span class="p">,</span> <span class="nx">balance</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>账户余额是该账户地址锁定的所有未花费交易输出值的总和。</p>
+<p>让我们在挖掘创世块后检查一下我们的余额：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ blockchain_go getbalance -address Ivan
+</span></span><span class="line"><span class="cl">Balance of <span class="s1">&#39;Ivan&#39;</span>: <span class="m">10</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这是我们的第一笔钱！</p>
+<h2 id="发送币">发送币</h2>
+<p>现在，我们想发送一些币给其他人。 为此，我们需要创建一个新交易，将其放入一个区块中，然后挖掘该区块。 到目前为止，我们只实现了coinbase交易（这是一种特殊类型的交易），现在我们需要一个通用交易：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">NewUTXOTransaction</span><span class="p">(</span><span class="nx">from</span><span class="p">,</span> <span class="nx">to</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">amount</span> <span class="kt">int</span><span class="p">,</span> <span class="nx">bc</span> <span class="o">*</span><span class="nx">Blockchain</span><span class="p">)</span> <span class="o">*</span><span class="nx">Transaction</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">inputs</span> <span class="p">[]</span><span class="nx">TXInput</span>
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">outputs</span> <span class="p">[]</span><span class="nx">TXOutput</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">acc</span><span class="p">,</span> <span class="nx">validOutputs</span> <span class="o">:=</span> <span class="nx">bc</span><span class="p">.</span><span class="nf">FindSpendableOutputs</span><span class="p">(</span><span class="nx">from</span><span class="p">,</span> <span class="nx">amount</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">acc</span> <span class="p">&lt;</span> <span class="nx">amount</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">log</span><span class="p">.</span><span class="nf">Panic</span><span class="p">(</span><span class="s">&#34;ERROR: Not enough funds&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Build a list of inputs
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">for</span> <span class="nx">txid</span><span class="p">,</span> <span class="nx">outs</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">validOutputs</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">txID</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">hex</span><span class="p">.</span><span class="nf">DecodeString</span><span class="p">(</span><span class="nx">txid</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">out</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">outs</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">input</span> <span class="o">:=</span> <span class="nx">TXInput</span><span class="p">{</span><span class="nx">txID</span><span class="p">,</span> <span class="nx">out</span><span class="p">,</span> <span class="nx">from</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">inputs</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">inputs</span><span class="p">,</span> <span class="nx">input</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Build a list of outputs
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">outputs</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">outputs</span><span class="p">,</span> <span class="nx">TXOutput</span><span class="p">{</span><span class="nx">amount</span><span class="p">,</span> <span class="nx">to</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">acc</span> <span class="p">&gt;</span> <span class="nx">amount</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">outputs</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">outputs</span><span class="p">,</span> <span class="nx">TXOutput</span><span class="p">{</span><span class="nx">acc</span> <span class="o">-</span> <span class="nx">amount</span><span class="p">,</span> <span class="nx">from</span><span class="p">})</span> <span class="c1">// a change
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">tx</span> <span class="o">:=</span> <span class="nx">Transaction</span><span class="p">{</span><span class="kc">nil</span><span class="p">,</span> <span class="nx">inputs</span><span class="p">,</span> <span class="nx">outputs</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">tx</span><span class="p">.</span><span class="nf">SetID</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="o">&amp;</span><span class="nx">tx</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在创建新的输出之前，我们首先必须找到所有未使用的输出并确保它们存储足够的价值。 这就是 FindSpendableOutputs 方法的作用。 之后，为每个找到的输出创建引用它的输入。 接下来，我们创建两个输出：</p>
+<ol>
+<li>一个与接收者地址锁定的。 这是实际将币转移到其他地址。</li>
+<li>与发件人地址锁定的一种。 这是一个改变。 仅当未花费的输出所具有的价值高于新交易所需的价值时，才会创建它。 请记住：输出是不可分割的。</li>
+</ol>
+<p><code>FindSpendableOutputs</code> 方法基于我们之前定义的</p>
+<p><code>FindUnspentTransactions</code> 方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">bc</span> <span class="o">*</span><span class="nx">Blockchain</span><span class="p">)</span> <span class="nf">FindSpendableOutputs</span><span class="p">(</span><span class="nx">address</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">amount</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span> <span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">unspentOutputs</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">int</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">unspentTXs</span> <span class="o">:=</span> <span class="nx">bc</span><span class="p">.</span><span class="nf">FindUnspentTransactions</span><span class="p">(</span><span class="nx">address</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">accumulated</span> <span class="o">:=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">Work</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">tx</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">unspentTXs</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">txID</span> <span class="o">:=</span> <span class="nx">hex</span><span class="p">.</span><span class="nf">EncodeToString</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">ID</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="k">for</span> <span class="nx">outIdx</span><span class="p">,</span> <span class="nx">out</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">tx</span><span class="p">.</span><span class="nx">Vout</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="nx">out</span><span class="p">.</span><span class="nf">CanBeUnlockedWith</span><span class="p">(</span><span class="nx">address</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">accumulated</span> <span class="p">&lt;</span> <span class="nx">amount</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">accumulated</span> <span class="o">+=</span> <span class="nx">out</span><span class="p">.</span><span class="nx">Value</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">unspentOutputs</span><span class="p">[</span><span class="nx">txID</span><span class="p">]</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">unspentOutputs</span><span class="p">[</span><span class="nx">txID</span><span class="p">],</span> <span class="nx">outIdx</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">				<span class="k">if</span> <span class="nx">accumulated</span> <span class="o">&gt;=</span> <span class="nx">amount</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">					<span class="k">break</span> <span class="nx">Work</span>
+</span></span><span class="line"><span class="cl">				<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nx">accumulated</span><span class="p">,</span> <span class="nx">unspentOutputs</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>该方法迭代所有未花费的交易并累积它们的值。 当累计值大于或等于我们要转移的金额时，它会停止并返回按交易 ID 分组的累计值和输出索引。 我们不想拿的比我们花的多。</p>
+<p>现在我们可以修改Blockchain.MineBlock方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">bc</span> <span class="o">*</span><span class="nx">Blockchain</span><span class="p">)</span> <span class="nf">MineBlock</span><span class="p">(</span><span class="nx">transactions</span> <span class="p">[]</span><span class="o">*</span><span class="nx">Transaction</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="o">...</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">newBlock</span> <span class="o">:=</span> <span class="nf">NewBlock</span><span class="p">(</span><span class="nx">transactions</span><span class="p">,</span> <span class="nx">lastHash</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后，我们来实现发送命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="p">(</span><span class="nx">cli</span> <span class="o">*</span><span class="nx">CLI</span><span class="p">)</span> <span class="nf">send</span><span class="p">(</span><span class="nx">from</span><span class="p">,</span> <span class="nx">to</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">amount</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">bc</span> <span class="o">:=</span> <span class="nf">NewBlockchain</span><span class="p">(</span><span class="nx">from</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">defer</span> <span class="nx">bc</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="nx">tx</span> <span class="o">:=</span> <span class="nf">NewUTXOTransaction</span><span class="p">(</span><span class="nx">from</span><span class="p">,</span> <span class="nx">to</span><span class="p">,</span> <span class="nx">amount</span><span class="p">,</span> <span class="nx">bc</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">bc</span><span class="p">.</span><span class="nf">MineBlock</span><span class="p">([]</span><span class="o">*</span><span class="nx">Transaction</span><span class="p">{</span><span class="nx">tx</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Success!&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>发送币意味着创建交易并通过挖掘区块将其添加到区块链中。 但比特币并不会立即做到这一点（就像我们一样）。 相反，它将所有新交易放入内存池（或mempool）中，当矿工准备好挖掘一个块时，它会从mempool中取出所有交易并创建一个候选块。 仅当包含交易的区块被开采并添加到区块链时，交易才会被确认。</p>
+<p>让我们检查一下发送币是否有效：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ blockchain_go send -from Ivan -to Pedro -amount <span class="m">6</span>
+</span></span><span class="line"><span class="cl">00000001b56d60f86f72ab2a59fadb197d767b97d4873732be505e0a65cc1e37
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Success!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ blockchain_go getbalance -address Ivan
+</span></span><span class="line"><span class="cl">Balance of <span class="s1">&#39;Ivan&#39;</span>: <span class="m">4</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ blockchain_go getbalance -address Pedro
+</span></span><span class="line"><span class="cl">Balance of <span class="s1">&#39;Pedro&#39;</span>: <span class="m">6</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>好的！现在，让我们创建更多交易并确保从多个输出发送工作正常：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ blockchain_go send -from Pedro -to Helen -amount <span class="m">2</span>
+</span></span><span class="line"><span class="cl">00000099938725eb2c7730844b3cd40209d46bce2c2af9d87c2b7611fe9d5bdf
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Success!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ blockchain_go send -from Ivan -to Helen -amount <span class="m">2</span>
+</span></span><span class="line"><span class="cl">000000a2edf94334b1d94f98d22d7e4c973261660397dc7340464f7959a7a9aa
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Success!
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>现在，海伦的币被锁定在两个输出中：一个来自佩德罗，一个来自伊万。让我们将它们发送给其他人：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ blockchain_go send -from Helen -to Rachel -amount <span class="m">3</span>
+</span></span><span class="line"><span class="cl">000000c58136cffa669e767b8f881d16e2ede3974d71df43058baaf8c069f1a0
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Success!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ blockchain_go getbalance -address Ivan
+</span></span><span class="line"><span class="cl">Balance of <span class="s1">&#39;Ivan&#39;</span>: <span class="m">2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ blockchain_go getbalance -address Pedro
+</span></span><span class="line"><span class="cl">Balance of <span class="s1">&#39;Pedro&#39;</span>: <span class="m">4</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ blockchain_go getbalance -address Helen
+</span></span><span class="line"><span class="cl">Balance of <span class="s1">&#39;Helen&#39;</span>: <span class="m">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ blockchain_go getbalance -address Rachel
+</span></span><span class="line"><span class="cl">Balance of <span class="s1">&#39;Rachel&#39;</span>: <span class="m">3</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>看起来不错！现在我们来测试一下失败情况：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ blockchain_go send -from Pedro -to Ivan -amount <span class="m">5</span>
+</span></span><span class="line"><span class="cl">panic: ERROR: Not enough funds
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ blockchain_go getbalance -address Pedro
+</span></span><span class="line"><span class="cl">Balance of <span class="s1">&#39;Pedro&#39;</span>: <span class="m">4</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ blockchain_go getbalance -address Ivan
+</span></span><span class="line"><span class="cl">Balance of <span class="s1">&#39;Ivan&#39;</span>: <span class="m">2</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="结论">结论</h2>
+<p>唷！ 这并不容易，但我们现在有交易了！ 尽管如此，类似比特币的加密货币缺少一些关键特征：</p>
+<ol>
+<li>地址。 我们还没有真正的、基于私钥的地址。</li>
+<li>奖励。 开采区块绝对不赚钱！</li>
+<li>UTXO 设置。 获得平衡需要扫描整个区块链，当区块数量很多时，这可能需要很长时间。 此外，如果我们想验证以后的交易，可能会花费很多时间。 UTXO集合旨在解决这些问题并使交易操作变得快速。</li>
+<li>内存池。 这是交易在打包到区块之前存储的地方。 在我们当前的实现中，一个区块只包含一个交易，这是相当低效的。</li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/bitcoin/">Bitcoin</a>
+        
+            <a href="/tags/ethereum/">Ethereum</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span> 转载需要保留原始链接，未经明确许可，禁止商业使用。  <a class="link" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"  target="_blank" rel="noopener"
+    >CC BY-NC-SA 4.0</a></span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/building-blockchain-in-go-part-3/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">在Go中构建区块链-3-持久性和CLI</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/building-blockchain-in-go-part-2/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">在Go中构建区块链-2-工作量证明PoW</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/building-blockchain-in-go-part-1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">在Go中构建区块链-1-基本原型</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "5b878f724ec8e67e08f4",
+        clientSecret: "9723d7c9b9644be68bf47cbdd6412bc895653369",
+        repo: "arturiamu.github.io",
+        owner: "arturiamu",
+        admin: ["arturiamu"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2023 - 
+        
+        2024 木林彪的个人博客
+    </section>
+
+    <section class="count_info">
+        <div>
+            本博客已稳定运行
+            <span id="ds" class="running-days"></span>
+            天
+            <span id="hs" class="running-days"></span>
+            小时
+            <span id="ms" class="running-days"></span>
+            分钟
+        </div>
+        <div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            共发表 29 篇文章 · 总计 81.38 k 字
+        </div>
+        <div>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+        </div>
+    </section>
+    
+    <section class="powerby" style="margin-top: 7px">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.18.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+<script>
+    let s1 = '2023-6-18'; 
+    s1 = new Date(s1.replace(/-/g, "/"));
+    let s2 = new Date();
+    let timeDifference = s2.getTime() - s1.getTime();
+
+    let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+    document.getElementById('ds').innerHTML = days;
+    document.getElementById('hs').innerHTML = hours;
+    document.getElementById('ms').innerHTML = minutes;
+
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>
+    (function(u, c) {
+        var d = document, t = 'script', o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function(e) { c(e); }); }
+        s.parentNode.insertBefore(o, s);
+    })('//cdn.bootcss.com/pangu/4.0.7/pangu.min.js', function() {
+        pangu.spacingPage();
+    });
+</script>
+
+
+<script
+        src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/ribbon.min.js"
+        integrity="sha384-UEK8ZiP3VgFNP8KnKMKDmd4pAUAOJ59Y2Jo3ED2Z5qKQf6HLHovMxq7Beb9CLPUe"
+        crossorigin="anonymous"
+        size="300"
+        alpha="0.6"
+        zindex="-1"
+        defer
+></script>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script><script>
+    (function(){var w=window;if(w.ChannelIO){return w.console.error("ChannelIO script included twice.");}var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(args){ch.q.push(args);};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return;}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x);}}if(document.readyState==="complete"){l();}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l);}})();
+
+    ChannelIO('boot', {
+        "pluginKey": "6145a739-ffa9-4356-8e35-875010c793ef"
+    });
+</script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
