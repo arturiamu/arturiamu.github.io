@@ -94,6 +94,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;添加好后到域名服务商处添加 CNAME 解析即可&lt;/p&gt;
+&lt;h2 id=&#34;百度&#34;&gt;百度&lt;/h2&gt;
+&lt;p&gt;在 &lt;a class=&#34;link&#34; href=&#34;https://ziyuan.baidu.com/site/siteadd#/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;百度搜索资源平台&lt;/a&gt; 添加个人网站就行。这里注意选择 https 协议，因为 zeit 默认都是 https 了。&lt;/p&gt;
+&lt;p&gt;网站验证我采用的是文件验证，下载验证文件放在你博客本地 repo 的 source 目录下，部署到 GitHub，当然也会及时更新到 zeit。然后完成验证就好了，试一下链接诊断，看能不能正常抓取，失败的话，看看抓取的 ip 地址是不是还是之前的缓存，等待一段时间重新抓取下，时间取决于 dns 的 ttl。&lt;/p&gt;
 </description>
         </item>
         <item>
