@@ -6,7 +6,23 @@
         <description>Recent content in Categories on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Wed, 13 Dec 2023 10:54:23 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 08 Apr 2024 18:20:39 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>本站</title>
+        <link>https://arturiamu.github.io/archives/this-site/</link>
+        <pubDate>Mon, 08 Apr 2024 18:20:39 +0800</pubDate>
+        
+        <guid>https://arturiamu.github.io/archives/this-site/</guid>
+        <description>&lt;img src="https://arturiamu.github.io/archives/this-site/c-this.png" alt="Featured image of post 本站" /&gt;</description>
+        </item>
+        <item>
+        <title>原创</title>
+        <link>https://arturiamu.github.io/archives/original/</link>
+        <pubDate>Mon, 08 Apr 2024 18:20:39 +0800</pubDate>
+        
+        <guid>https://arturiamu.github.io/archives/original/</guid>
+        <description>&lt;img src="https://arturiamu.github.io/archives/original/img.png" alt="Featured image of post 原创" /&gt;</description>
+        </item>
+        <item>
         <title>区块链</title>
         <link>https://arturiamu.github.io/archives/blockchain/</link>
         <pubDate>Wed, 13 Dec 2023 10:54:23 +0800</pubDate>
@@ -47,28 +63,12 @@
         <description>&lt;img src="https://arturiamu.github.io/archives/database/db.png" alt="Featured image of post 数据库" /&gt;</description>
         </item>
         <item>
-        <title>原创</title>
-        <link>https://arturiamu.github.io/archives/original/</link>
-        <pubDate>Thu, 12 Oct 2023 19:38:23 +0800</pubDate>
-        
-        <guid>https://arturiamu.github.io/archives/original/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/archives/original/img.png" alt="Featured image of post 原创" /&gt;</description>
-        </item>
-        <item>
         <title>Linux</title>
         <link>https://arturiamu.github.io/archives/linux/</link>
         <pubDate>Thu, 28 Sep 2023 15:27:00 +0800</pubDate>
         
         <guid>https://arturiamu.github.io/archives/linux/</guid>
         <description>&lt;img src="https://arturiamu.github.io/archives/linux/img.png" alt="Featured image of post Linux" /&gt;</description>
-        </item>
-        <item>
-        <title>本站</title>
-        <link>https://arturiamu.github.io/archives/this-site/</link>
-        <pubDate>Tue, 19 Sep 2023 15:51:30 +0800</pubDate>
-        
-        <guid>https://arturiamu.github.io/archives/this-site/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/archives/this-site/c-this.png" alt="Featured image of post 本站" /&gt;</description>
         </item>
         <item>
         <title>蓝桥杯</title>

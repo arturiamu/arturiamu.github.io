@@ -6,7 +6,97 @@
         <description>Recent content on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Wed, 13 Dec 2023 10:54:23 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 08 Apr 2024 18:20:39 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>如何使用 zeit.co 让百度收录 GitHub Pages 博客</title>
+        <link>https://arturiamu.github.io/post/baidu-include-github-pages-blog/</link>
+        <pubDate>Mon, 08 Apr 2024 18:20:39 +0800</pubDate>
+        
+        <guid>https://arturiamu.github.io/post/baidu-include-github-pages-blog/</guid>
+        <description>&lt;p&gt;很多程序员都会在 GitHub Pages 上搭建自己的个人博客用于分享和交流技术，对于个人博客，没有被搜索引擎收录的话，别人基本是是看不到的，再好的技术文无法被分享也是白搭。&lt;/p&gt;
+&lt;p&gt;基于 GitHub Pages 的个人博客， Google 收录非常及时全面。然而，到目前为止，GitHub 还是拒绝百度爬虫的访问，直接返回 403。
+官方给出原因是，百度爬虫爬得太狠，影响了 Github Pages 服务的正常使用。这就导致了，但凡在 Github Pages 搭建的个人博客，都无法被百度收录。&lt;/p&gt;
+&lt;h2 id=&#34;注册登录&#34;&gt;注册登录&lt;/h2&gt;
+&lt;p&gt;打开 &lt;a class=&#34;link&#34; href=&#34;https://vercel.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://vercel.com/&lt;/a&gt;，点击右上角的 &lt;code&gt;Log In&lt;/code&gt;, 使用 GitHub 账号登录。授予 zeit repo 的 read 权限&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img.png&#34;
+	width=&#34;1435&#34;
+	height=&#34;713&#34;
+	srcset=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_hub5260ede1b136cb804c12f33ab26e496_891081_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_hub5260ede1b136cb804c12f33ab26e496_891081_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;201&#34;
+		data-flex-basis=&#34;483px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_1.png&#34;
+	width=&#34;1401&#34;
+	height=&#34;633&#34;
+	srcset=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_1_hu5f5a394a2a70a4e98757d18ad285a318_44427_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_1_hu5f5a394a2a70a4e98757d18ad285a318_44427_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_1.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;221&#34;
+		data-flex-basis=&#34;531px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;部署项目&#34;&gt;部署项目&lt;/h2&gt;
+&lt;p&gt;导入 GitHub 博客 repo&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_2.png&#34;
+	width=&#34;1319&#34;
+	height=&#34;547&#34;
+	srcset=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_2_hu297510d3d7686f82fef509230f0fffa9_106776_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_2_hu297510d3d7686f82fef509230f0fffa9_106776_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_2.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;241&#34;
+		data-flex-basis=&#34;578px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;等待部署成功&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_3.png&#34;
+	width=&#34;1300&#34;
+	height=&#34;585&#34;
+	srcset=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_3_huc22dd3694e767bde340959895e5c9666_103400_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_3_huc22dd3694e767bde340959895e5c9666_103400_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_3.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;222&#34;
+		data-flex-basis=&#34;533px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;配置域名&#34;&gt;配置域名&lt;/h2&gt;
+&lt;p&gt;点击 &lt;code&gt;Domains&lt;/code&gt; 进入域名配置页面,添加域名&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_4.png&#34;
+	width=&#34;1324&#34;
+	height=&#34;636&#34;
+	srcset=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_4_hubfaa798bb354bf9b700d4efabb33eca6_85190_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_4_hubfaa798bb354bf9b700d4efabb33eca6_85190_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_4.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;208&#34;
+		data-flex-basis=&#34;499px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;添加好后到域名服务商处添加 CNAME 解析即可&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>在Go中构建区块链-4-交易-1</title>
         <link>https://arturiamu.github.io/post/building-blockchain-in-go-part-4/</link>
         <pubDate>Wed, 13 Dec 2023 10:54:23 +0800</pubDate>
