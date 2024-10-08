@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Bitcoin on 木林彪的个人博客</title>
-        <link>https://arturiamu.github.io/tags/bitcoin/</link>
+        <link>http://localhost:1313/tags/bitcoin/</link>
         <description>Recent content in Bitcoin on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Wed, 13 Dec 2023 10:54:23 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/tags/bitcoin/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 13 Dec 2023 10:54:23 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/bitcoin/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>在Go中构建区块链-4-交易-1</title>
-        <link>https://arturiamu.github.io/post/building-blockchain-in-go-part-4/</link>
+        <link>http://localhost:1313/post/building-blockchain-in-go-part-4/</link>
         <pubDate>Wed, 13 Dec 2023 10:54:23 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/building-blockchain-in-go-part-4/</guid>
+        <guid>http://localhost:1313/post/building-blockchain-in-go-part-4/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文译自 &lt;a class=&#34;link&#34; href=&#34;https://jeiwan.net/posts/building-blockchain-in-go-part-4/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Building Blockchain in Go. Part 4: Transactions 1&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
@@ -47,10 +47,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;新交易的输入引用先前交易的输出（不过有一个例外，我们将在稍后讨论）。 输出是实际存储币的地方。 下图展示了交易的互连：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-4/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/building-blockchain-in-go-part-4/img.png&#34;
 	width=&#34;733&#34;
 	height=&#34;379&#34;
-	srcset=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-4/img_hu5300d82964836e3e836fb72e491b530a_81076_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/building-blockchain-in-go-part-4/img_hu5300d82964836e3e836fb72e491b530a_81076_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/building-blockchain-in-go-part-4/img_hu6626888304719209869.png 480w, http://localhost:1313/post/building-blockchain-in-go-part-4/img_hu8346980300724258309.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -880,10 +880,10 @@
         </item>
         <item>
         <title>在Go中构建区块链-3-持久性和CLI</title>
-        <link>https://arturiamu.github.io/post/building-blockchain-in-go-part-3/</link>
+        <link>http://localhost:1313/post/building-blockchain-in-go-part-3/</link>
         <pubDate>Tue, 12 Dec 2023 19:41:34 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/building-blockchain-in-go-part-3/</guid>
+        <guid>http://localhost:1313/post/building-blockchain-in-go-part-3/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文译自 &lt;a class=&#34;link&#34; href=&#34;https://jeiwan.net/posts/building-blockchain-in-go-part-3/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Building Blockchain in Go. Part 3: Persistence and CLI&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
@@ -1621,10 +1621,10 @@
         </item>
         <item>
         <title>在Go中构建区块链-2-工作量证明PoW</title>
-        <link>https://arturiamu.github.io/post/building-blockchain-in-go-part-2/</link>
+        <link>http://localhost:1313/post/building-blockchain-in-go-part-2/</link>
         <pubDate>Tue, 12 Dec 2023 18:05:25 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/building-blockchain-in-go-part-2/</guid>
+        <guid>http://localhost:1313/post/building-blockchain-in-go-part-2/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文译自 &lt;a class=&#34;link&#34; href=&#34;https://jeiwan.net/posts/building-blockchain-in-go-part-2/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Building Blockchain in Go. Part 2: Proof-of-Work&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
@@ -1642,10 +1642,10 @@
 &lt;li&gt;特定的数据只能有一个哈希值，且哈希是唯一的。&lt;/li&gt;
 &lt;li&gt;即使在输入数据中更改一个字节，也会导致完全不同的哈希值。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/building-blockchain-in-go-part-2/img.png&#34;
 	width=&#34;644&#34;
 	height=&#34;378&#34;
-	srcset=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img_hud38599be28c83f4b0971e96de4730bf6_58978_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img_hud38599be28c83f4b0971e96de4730bf6_58978_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/building-blockchain-in-go-part-2/img_hu13575587024991562157.png 480w, http://localhost:1313/post/building-blockchain-in-go-part-2/img_hu947241284237942891.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -1674,10 +1674,10 @@
 &lt;p&gt;因此，这是一种穷举算法：更改计数器，计算新的哈希，检查它，增加计数器，计算哈希，依此类推。这就是为什么它在计算上是昂贵的原因。&lt;/p&gt;
 &lt;p&gt;现在让我们更详细地看看哈希必须满足的要求。在原始的Hashcash实现中，要求是“哈希的前20位必须为零”。在比特币中，由于设计上每10分钟必须生成一个区块，因此要求会随时间调整，尽管计算能力随着时间的推移增加，越来越多的矿工加入网络。&lt;/p&gt;
 &lt;p&gt;为了演示这个算法，我使用了前面例子中的数据(“I like donuts”)并找到了一个以3个零字节开头的哈希值：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img_1.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/building-blockchain-in-go-part-2/img_1.png&#34;
 	width=&#34;709&#34;
 	height=&#34;378&#34;
-	srcset=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img_1_hu4a3bb591780e95d187f1e21962ebf03b_63631_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img_1_hu4a3bb591780e95d187f1e21962ebf03b_63631_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/building-blockchain-in-go-part-2/img_1_hu5453884875901605272.png 480w, http://localhost:1313/post/building-blockchain-in-go-part-2/img_1_hu244883897646684136.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_1.png&#34;
@@ -2014,10 +2014,10 @@
         </item>
         <item>
         <title>在Go中构建区块链-1-基本原型</title>
-        <link>https://arturiamu.github.io/post/building-blockchain-in-go-part-1/</link>
+        <link>http://localhost:1313/post/building-blockchain-in-go-part-1/</link>
         <pubDate>Tue, 12 Dec 2023 15:27:07 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/building-blockchain-in-go-part-1/</guid>
+        <guid>http://localhost:1313/post/building-blockchain-in-go-part-1/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文译自 &lt;a class=&#34;link&#34; href=&#34;https://jeiwan.net/posts/building-blockchain-in-go-part-1/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Building Blockchain in Go. Part 1: Basic Prototype&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;

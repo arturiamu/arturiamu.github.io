@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>arturiamu&#39;s blog</title>
-        <link>https://arturiamu.github.io/en/</link>
+        <link>http://localhost:1313/en/</link>
         <description>Recent content on arturiamu&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Wed, 21 Jun 2023 10:35:25 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/en/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 21 Jun 2023 10:35:25 +0800</lastBuildDate><atom:link href="http://localhost:1313/en/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>About</title>
-        <link>https://arturiamu.github.io/en/about/</link>
+        <link>http://localhost:1313/en/about/</link>
         <pubDate>Wed, 21 Jun 2023 10:35:25 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/en/about/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/en/about/a.png" alt="Featured image of post About" /&gt;&lt;h2 id=&#34;about-the-author&#34;&gt;About the author&lt;/h2&gt;
+        <guid>http://localhost:1313/en/about/</guid>
+        <description>&lt;img src="http://localhost:1313/about/a.png" alt="Featured image of post About" /&gt;&lt;h2 id=&#34;about-the-author&#34;&gt;About the author&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;arturiamu 木林彪&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Undergraduate student majoring in software engineering,Kunming University of Science and Technology&lt;/p&gt;
 &lt;p&gt;IT practitioners&lt;/p&gt;
@@ -25,38 +25,45 @@
 &lt;/ul&gt;
 &lt;h3 id=&#34;work-experience&#34;&gt;Work experience&lt;/h3&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;time&lt;/th&gt;
-&lt;th&gt;company&lt;/th&gt;
-&lt;th&gt;position&lt;/th&gt;
-&lt;th&gt;technology stack&lt;/th&gt;
-&lt;th&gt;remark&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;2022.08-2022.12&lt;/td&gt;
-&lt;td&gt;bilibili(shanghai)&lt;/td&gt;
-&lt;td&gt;test development&lt;/td&gt;
-&lt;td&gt;golang,vue,mysql&lt;/td&gt;
-&lt;td&gt;intern&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;2023.02-2023.06&lt;/td&gt;
-&lt;td&gt;qiniu(shanghai)&lt;/td&gt;
-&lt;td&gt;backend development&lt;/td&gt;
-&lt;td&gt;golang,kubernetes,kubevirt&lt;/td&gt;
-&lt;td&gt;intern&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;2023.07-Until now&lt;/td&gt;
-&lt;td&gt;zhihu(beijing)&lt;/td&gt;
-&lt;td&gt;backend development&lt;/td&gt;
-&lt;td&gt;golang,kubernetes,TiDB&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;time&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;company&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;position&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;technology stack&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;remark&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;2022.08-2022.12&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;bilibili(shanghai)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;test development&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;golang,vue,mysql&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;intern&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;2023.02-2023.06&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;qiniu(shanghai)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;backend development&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;golang,kubernetes,kubevirt&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;intern&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;2023.07-2024.8&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;zhihu(beijing)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;backend development&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;golang,kubernetes,TiDB&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;2024.09-Until now&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;baidu(beijing)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;バックエンド開発&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;golang,php,Search Technology&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h3 id=&#34;contact-information&#34;&gt;Contact information&lt;/h3&gt;
 &lt;p&gt;mail&lt;/p&gt;
@@ -102,10 +109,10 @@
         </item>
         <item>
         <title>Blog bug log</title>
-        <link>https://arturiamu.github.io/en/post/blog-bug-log/</link>
+        <link>http://localhost:1313/en/post/blog-bug-log/</link>
         <pubDate>Sun, 18 Jun 2023 13:14:35 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/en/post/blog-bug-log/</guid>
+        <guid>http://localhost:1313/en/post/blog-bug-log/</guid>
         <description>&lt;h2 id=&#34;bug-log&#34;&gt;bug log&lt;/h2&gt;
 &lt;h3 id=&#34;2023-06-20-163034&#34;&gt;2023-06-20 16:30:34&lt;/h3&gt;
 &lt;h4 id=&#34;bug-description&#34;&gt;bug description&lt;/h4&gt;
@@ -126,10 +133,10 @@
         </item>
         <item>
         <title>Blog description</title>
-        <link>https://arturiamu.github.io/en/post/blog-description/</link>
+        <link>http://localhost:1313/en/post/blog-description/</link>
         <pubDate>Sun, 18 Jun 2023 12:25:48 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/en/post/blog-description/</guid>
+        <guid>http://localhost:1313/en/post/blog-description/</guid>
         <description>&lt;h2 id=&#34;prelude&#34;&gt;Prelude&lt;/h2&gt;
 &lt;p&gt;I wanted to start my own blog a long time age,bug I was always busy(lazy).
 Taking advantage of the gap between graduation,I finally decided to take the time to start realizing it.
@@ -171,35 +178,35 @@ For example,other rights such as publicity,privacy,or moral rights may limit how
         </item>
         <item>
         <title>Archives</title>
-        <link>https://arturiamu.github.io/en/archives/</link>
+        <link>http://localhost:1313/en/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://arturiamu.github.io/en/archives/</guid>
+        <guid>http://localhost:1313/en/archives/</guid>
         <description></description>
         </item>
         <item>
         <title>Links</title>
-        <link>https://arturiamu.github.io/en/links/</link>
+        <link>http://localhost:1313/en/links/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://arturiamu.github.io/en/links/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/en/links/l.png" alt="Featured image of post Links" /&gt;</description>
+        <guid>http://localhost:1313/en/links/</guid>
+        <description>&lt;img src="http://localhost:1313/links/l.png" alt="Featured image of post Links" /&gt;</description>
         </item>
         <item>
         <title>Message</title>
-        <link>https://arturiamu.github.io/en/message/</link>
+        <link>http://localhost:1313/en/message/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://arturiamu.github.io/en/message/</guid>
+        <guid>http://localhost:1313/en/message/</guid>
         <description>&lt;h2 id=&#34;speak-freely&#34;&gt;speak freely&lt;/h2&gt;
 </description>
         </item>
         <item>
         <title>Search</title>
-        <link>https://arturiamu.github.io/en/search/</link>
+        <link>http://localhost:1313/en/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://arturiamu.github.io/en/search/</guid>
+        <guid>http://localhost:1313/en/search/</guid>
         <description></description>
         </item>
         

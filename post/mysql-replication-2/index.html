@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='详细介绍MySQL复制相关的内容，包括基本概念、复制原理、如何配置不同类型的复制(传统复制)等'>
 <meta name="keywords" content="木林彪, arturiamu, 博客, 木林彪的个人博客, MySQL, MySQL复制, gtid"><title>深入MySQL复制(二)：基于GTID复制 </title>
 
-<link rel='canonical' href='https://arturiamu.github.io/post/mysql-replication-2/'>
+<link rel='canonical' href='http://localhost:1313/post/mysql-replication-2/'>
 
 <link rel="stylesheet" href="/scss/style.min.5e3814b8c20dd362819d8f0b1c0554df211090883babaeea35913b6b16121b26.css"><meta property='og:title' content='深入MySQL复制(二)：基于GTID复制 '>
 <meta property='og:description' content='详细介绍MySQL复制相关的内容，包括基本概念、复制原理、如何配置不同类型的复制(传统复制)等'>
-<meta property='og:url' content='https://arturiamu.github.io/post/mysql-replication-2/'>
+<meta property='og:url' content='http://localhost:1313/post/mysql-replication-2/'>
 <meta property='og:site_name' content='木林彪的个人博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='MySQL' /><meta property='article:tag' content='GTID' /><meta property='article:published_time' content='2023-09-19T11:35:24&#43;08:00'/><meta property='article:modified_time' content='2023-09-19T11:35:24&#43;08:00'/>
 <meta name="twitter:site" content="@ArturiaMu">
@@ -16,17 +16,20 @@
 <meta name="twitter:description" content="详细介绍MySQL复制相关的内容，包括基本概念、复制原理、如何配置不同类型的复制(传统复制)等">
     <link rel="shortcut icon" href="/favicon.ico" />
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JJG6TYWNYX"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-JJG6TYWNYX', { 'anonymize_ip': false });
-}
-</script>
-<style>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-JJG6TYWNYX"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JJG6TYWNYX');
+        }
+      </script><style>
     :root {
          
         --sys-font-family: "HarmonyOS_Sans_SC_Medium", Georgia, -apple-system, 'Nimbus Roman No9 L', 'PingFang SC', 'Hiragino Sans GB', 'Noto Serif SC', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'ST Heiti', sans-serif;
@@ -88,7 +91,7 @@ if (!doNotTrack) {
                     
                     
                         
-                        <img src="/img/avatar1_hu67b097db30250ef6a2ed6dd217c7d0a7_22735_300x0_resize_q75_box.jpg" width="300"
+                        <img src="/img/avatar1_hu16021438302843842317.jpg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -302,11 +305,11 @@ if (!doNotTrack) {
 
                     <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
                         
-                            <option value="https://arturiamu.github.io/" selected>中文</option>
+                            <option value="http://localhost:1313/" selected>中文</option>
                         
-                            <option value="https://arturiamu.github.io/en/" >English</option>
+                            <option value="http://localhost:1313/en/" >English</option>
                         
-                            <option value="https://arturiamu.github.io/ja/" >日本</option>
+                            <option value="http://localhost:1313/ja/" >日本</option>
                         
                     </select>
                 </li>
@@ -405,35 +408,35 @@ if (!doNotTrack) {
             </a>
         
             <a href="/tags/bash/" class="font_size_3">
-                bash
+                Bash
             </a>
         
             <a href="/tags/docker/" class="font_size_3">
-                docker
+                Docker
             </a>
         
             <a href="/tags/mysql/" class="font_size_3">
-                mysql
+                MySQL
             </a>
         
             <a href="/tags/python/" class="font_size_3">
-                python
+                Python
             </a>
         
             <a href="/tags/shell/" class="font_size_3">
-                shell
+                Shell
             </a>
         
             <a href="/tags/bug/" class="font_size_2">
-                bug
+                Bug
             </a>
         
             <a href="/tags/golang/" class="font_size_2">
-                golang
+                Golang
             </a>
         
             <a href="/tags/blog/" class="font_size_1">
-                blog
+                Blog
             </a>
         
     </div>
@@ -590,31 +593,31 @@ if (!doNotTrack) {
 <h2 id="配置一主一从的gtid复制">配置一主一从的gtid复制</h2>
 <p>环境：</p>
 <div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>主机IP</th>
-<th>OS版本</th>
-<th>MySQL版本</th>
-<th>角色（master/slave)</th>
-<th>数据状态</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>192.168.100.21</td>
-<td>centos 7</td>
-<td>MySQL 5.7.22</td>
-<td>master_gtid</td>
-<td>全新实例</td>
-</tr>
-<tr>
-<td>192.168.100.22</td>
-<td>centos 7</td>
-<td>MySQL 5.7.22</td>
-<td>slave1_gtid</td>
-<td>全新实例</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">主机IP</th>
+          <th style="text-align: left">OS版本</th>
+          <th style="text-align: left">MySQL版本</th>
+          <th style="text-align: left">角色（master/slave)</th>
+          <th style="text-align: left">数据状态</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">192.168.100.21</td>
+          <td style="text-align: left">centos 7</td>
+          <td style="text-align: left">MySQL 5.7.22</td>
+          <td style="text-align: left">master_gtid</td>
+          <td style="text-align: left">全新实例</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">192.168.100.22</td>
+          <td style="text-align: left">centos 7</td>
+          <td style="text-align: left">MySQL 5.7.22</td>
+          <td style="text-align: left">slave1_gtid</td>
+          <td style="text-align: left">全新实例</td>
+      </tr>
+  </tbody>
 </table></div>
 <p>因为是用作master和slave的mysql实例都是全新环境，所以这里简单配置一下即可。</p>
 <p>master的配置文件：</p>
@@ -943,38 +946,38 @@ if (!doNotTrack) {
 </div><p>但无论master是否purge过binlog，配置基于gtid的复制都极其方便，而且方法众多(只要理解了GTID的生命周期，可以随意折腾，基本上都能很轻松地维护好)，这是它&quot;迷人&quot;的优点。</p>
 <p>现在的测试环境是这样的：</p>
 <div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>主机IP</th>
-<th>OS版本</th>
-<th>MySQL版本</th>
-<th>角色（master/slave)</th>
-<th>数据状态</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>192.168.100.21</td>
-<td>centos 7</td>
-<td>MySQL 5.7.22</td>
-<td>master_gtid</td>
-<td>已purge过binlog</td>
-</tr>
-<tr>
-<td>192.168.100.22</td>
-<td>centos 7</td>
-<td>MySQL 5.7.22</td>
-<td>slave1_gtid</td>
-<td>已同步</td>
-</tr>
-<tr>
-<td>192.168.100.23</td>
-<td>centos 7</td>
-<td>MySQL 5.7.22</td>
-<td>slave2_gtid</td>
-<td>全新实例</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">主机IP</th>
+          <th style="text-align: left">OS版本</th>
+          <th style="text-align: left">MySQL版本</th>
+          <th style="text-align: left">角色（master/slave)</th>
+          <th style="text-align: left">数据状态</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">192.168.100.21</td>
+          <td style="text-align: left">centos 7</td>
+          <td style="text-align: left">MySQL 5.7.22</td>
+          <td style="text-align: left">master_gtid</td>
+          <td style="text-align: left">已purge过binlog</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">192.168.100.22</td>
+          <td style="text-align: left">centos 7</td>
+          <td style="text-align: left">MySQL 5.7.22</td>
+          <td style="text-align: left">slave1_gtid</td>
+          <td style="text-align: left">已同步</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">192.168.100.23</td>
+          <td style="text-align: left">centos 7</td>
+          <td style="text-align: left">MySQL 5.7.22</td>
+          <td style="text-align: left">slave2_gtid</td>
+          <td style="text-align: left">全新实例</td>
+      </tr>
+  </tbody>
 </table></div>
 <p>其中slave2的配置文件和slave1的配置文件完全相同：</p>
 <div class="highlight"><div class="chroma">
@@ -1349,7 +1352,7 @@ if (!doNotTrack) {
 <p><img src="/post/mysql-replication-2/img.png"
 	width="768"
 	height="403"
-	srcset="/post/mysql-replication-2/img_hu20ac94f973d28962f2c3700317b44c63_43246_480x0_resize_box_3.png 480w, /post/mysql-replication-2/img_hu20ac94f973d28962f2c3700317b44c63_43246_1024x0_resize_box_3.png 1024w"
+	srcset="/post/mysql-replication-2/img_hu12625731804346384137.png 480w, /post/mysql-replication-2/img_hu8622994966449973709.png 1024w"
 	loading="lazy"
 	
 	
@@ -1370,7 +1373,7 @@ if (!doNotTrack) {
     
     <section class="article-tags">
         
-            <a href="/tags/mysql/">mysql</a>
+            <a href="/tags/mysql/">MySQL</a>
         
             <a href="/tags/gtid/">GTID</a>
         
@@ -1444,6 +1447,19 @@ if (!doNotTrack) {
             
                 
 <article class="">
+    <a href="/post/about-repost/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">关于转载</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/post/docker-container-link/">
         
         
@@ -1476,19 +1492,6 @@ if (!doNotTrack) {
 
         <div class="article-details">
             <h2 class="article-title">一文搞懂docker容器基础：docker镜像管理，docker容器管理</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/post/mysql-general-log/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">mysql general_log</h2>
         </div>
     </a>
 </article>
@@ -1626,7 +1629,9 @@ if (!doNotTrack) {
             
             
             
-            共发表 30 篇文章 · 总计 81.85 k 字
+            
+            
+            共发表 31 篇文章 · 总计 81.87 k 字
         </div>
         <div>
             <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>

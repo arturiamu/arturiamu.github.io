@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head><meta charset='utf-8'>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='docker网络类型、常用命令、创建不同的网络'>
 <meta name="keywords" content="木林彪, arturiamu, 博客, 木林彪的个人博客, docker, docker 网络, docker网络管理, docker基础"><title>docker网络管理</title>
 
-<link rel='canonical' href='https://arturiamu.github.io/post/docker-network-management/'>
+<link rel='canonical' href='http://localhost:1313/post/docker-network-management/'>
 
 <link rel="stylesheet" href="/scss/style.min.5e3814b8c20dd362819d8f0b1c0554df211090883babaeea35913b6b16121b26.css"><meta property='og:title' content='docker网络管理'>
 <meta property='og:description' content='docker网络类型、常用命令、创建不同的网络'>
-<meta property='og:url' content='https://arturiamu.github.io/post/docker-network-management/'>
+<meta property='og:url' content='http://localhost:1313/post/docker-network-management/'>
 <meta property='og:site_name' content='木林彪的个人博客'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='docker' /><meta property='article:published_time' content='2023-10-27T14:14:04&#43;08:00'/><meta property='article:modified_time' content='2023-10-27T14:14:04&#43;08:00'/>
 <meta name="twitter:site" content="@ArturiaMu">
@@ -16,17 +16,20 @@
 <meta name="twitter:description" content="docker网络类型、常用命令、创建不同的网络">
     <link rel="shortcut icon" href="/favicon.ico" />
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JJG6TYWNYX"></script>
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'G-JJG6TYWNYX', { 'anonymize_ip': false });
-}
-</script>
-<style>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-JJG6TYWNYX"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JJG6TYWNYX');
+        }
+      </script><style>
     :root {
          
         --sys-font-family: "HarmonyOS_Sans_SC_Medium", Georgia, -apple-system, 'Nimbus Roman No9 L', 'PingFang SC', 'Hiragino Sans GB', 'Noto Serif SC', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'ST Heiti', sans-serif;
@@ -88,7 +91,7 @@ if (!doNotTrack) {
                     
                     
                         
-                        <img src="/img/avatar1_hu67b097db30250ef6a2ed6dd217c7d0a7_22735_300x0_resize_q75_box.jpg" width="300"
+                        <img src="/img/avatar1_hu16021438302843842317.jpg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -302,11 +305,11 @@ if (!doNotTrack) {
 
                     <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
                         
-                            <option value="https://arturiamu.github.io/" selected>中文</option>
+                            <option value="http://localhost:1313/" selected>中文</option>
                         
-                            <option value="https://arturiamu.github.io/en/" >English</option>
+                            <option value="http://localhost:1313/en/" >English</option>
                         
-                            <option value="https://arturiamu.github.io/ja/" >日本</option>
+                            <option value="http://localhost:1313/ja/" >日本</option>
                         
                     </select>
                 </li>
@@ -407,35 +410,35 @@ if (!doNotTrack) {
             </a>
         
             <a href="/tags/bash/" class="font_size_3">
-                bash
+                Bash
             </a>
         
             <a href="/tags/docker/" class="font_size_3">
-                docker
+                Docker
             </a>
         
             <a href="/tags/mysql/" class="font_size_3">
-                mysql
+                MySQL
             </a>
         
             <a href="/tags/python/" class="font_size_3">
-                python
+                Python
             </a>
         
             <a href="/tags/shell/" class="font_size_3">
-                shell
+                Shell
             </a>
         
             <a href="/tags/bug/" class="font_size_2">
-                bug
+                Bug
             </a>
         
             <a href="/tags/golang/" class="font_size_2">
-                golang
+                Golang
             </a>
         
             <a href="/tags/blog/" class="font_size_1">
-                blog
+                Blog
             </a>
         
     </div>
@@ -535,7 +538,7 @@ if (!doNotTrack) {
 <p><img src="/post/docker-network-management/img.png"
 	width="546"
 	height="132"
-	srcset="/post/docker-network-management/img_hu5ebb22d7df048770c268a03f6a9fd022_9179_480x0_resize_box_3.png 480w, /post/docker-network-management/img_hu5ebb22d7df048770c268a03f6a9fd022_9179_1024x0_resize_box_3.png 1024w"
+	srcset="/post/docker-network-management/img_hu252343801546511763.png 480w, /post/docker-network-management/img_hu13166330529017943316.png 1024w"
 	loading="lazy"
 	
 		alt="img.png"
@@ -1245,7 +1248,7 @@ Docker 容器和服务甚至不需要知道它们部署在 Docker 上，或者�
     
     <section class="article-tags">
         
-            <a href="/tags/docker/">docker</a>
+            <a href="/tags/docker/">Docker</a>
         
     </section>
 
@@ -1330,6 +1333,19 @@ Docker 容器和服务甚至不需要知道它们部署在 Docker 上，或者�
             
                 
 <article class="">
+    <a href="/post/about-repost/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">关于转载</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/post/shell-operation/">
         
         
@@ -1349,19 +1365,6 @@ Docker 容器和服务甚至不需要知道它们部署在 Docker 上，或者�
 
         <div class="article-details">
             <h2 class="article-title">Bash 变量</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/post/shell-basic-knowledge/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">shell脚本基础入门</h2>
         </div>
     </a>
 </article>
@@ -1499,7 +1502,9 @@ Docker 容器和服务甚至不需要知道它们部署在 Docker 上，或者�
             
             
             
-            共发表 30 篇文章 · 总计 81.85 k 字
+            
+            
+            共发表 31 篇文章 · 总计 81.87 k 字
         </div>
         <div>
             <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>

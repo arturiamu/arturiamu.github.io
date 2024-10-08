@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>git on 木林彪的个人博客</title>
-        <link>https://arturiamu.github.io/tags/git/</link>
-        <description>Recent content in git on 木林彪的个人博客</description>
+        <title>Git on 木林彪的个人博客</title>
+        <link>http://localhost:1313/tags/git/</link>
+        <description>Recent content in Git on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Fri, 15 Sep 2023 13:47:01 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 15 Sep 2023 13:47:01 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/git/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>gitlab贡献记录同步到github</title>
-        <link>https://arturiamu.github.io/post/gitlab2github/</link>
+        <link>http://localhost:1313/post/gitlab2github/</link>
         <pubDate>Fri, 15 Sep 2023 13:47:01 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/gitlab2github/</guid>
+        <guid>http://localhost:1313/post/gitlab2github/</guid>
         <description>&lt;p&gt;由于公司使用自己的git服务进行代码管理，导致很长时间我的github都没有贡献记录，现在让我们来试试将gitlab的贡献记录导出并提交到github。&lt;/p&gt;
 &lt;p&gt;这里我使用&lt;code&gt;import-gitlab-commits&lt;/code&gt;工具来操作，import-gitlab-commits是一个用golang编写的工具，可以非常简单的将gitlab贡献记录导出&lt;/p&gt;
 &lt;h2 id=&#34;操作步骤&#34;&gt;操作步骤&lt;/h2&gt;

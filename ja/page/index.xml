@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Pages on ムー・リンビアオの個人ブログ</title>
-        <link>https://arturiamu.github.io/ja/page/</link>
+        <link>http://localhost:1313/ja/page/</link>
         <description>Recent content in Pages on ムー・リンビアオの個人ブログ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Wed, 21 Jun 2023 10:35:25 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/ja/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 21 Jun 2023 10:35:25 +0800</lastBuildDate><atom:link href="http://localhost:1313/ja/page/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>について</title>
-        <link>https://arturiamu.github.io/ja/about/</link>
+        <link>http://localhost:1313/ja/about/</link>
         <pubDate>Wed, 21 Jun 2023 10:35:25 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/ja/about/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/ja/about/a.png" alt="Featured image of post について" /&gt;&lt;h2 id=&#34;著者について&#34;&gt;著者について&lt;/h2&gt;
+        <guid>http://localhost:1313/ja/about/</guid>
+        <description>&lt;img src="http://localhost:1313/about/a.png" alt="Featured image of post について" /&gt;&lt;h2 id=&#34;著者について&#34;&gt;著者について&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;arturiamu 木林彪&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;昆明科技大学でソフトウェア工学を専攻する学部生&lt;/p&gt;
 &lt;p&gt;IT 担当者&lt;/p&gt;
@@ -25,38 +25,45 @@
 &lt;/ul&gt;
 &lt;h3 id=&#34;実務経験&#34;&gt;実務経験&lt;/h3&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;時間&lt;/th&gt;
-&lt;th&gt;会社&lt;/th&gt;
-&lt;th&gt;位置&lt;/th&gt;
-&lt;th&gt;技术栈&lt;/th&gt;
-&lt;th&gt;述べる&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;2022.08-2022.12&lt;/td&gt;
-&lt;td&gt;bilibili(shanghai)&lt;/td&gt;
-&lt;td&gt;テスト開発&lt;/td&gt;
-&lt;td&gt;golang,vue,mysql&lt;/td&gt;
-&lt;td&gt;練習&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;2023.02-2023.06&lt;/td&gt;
-&lt;td&gt;qiniu(shanghai)&lt;/td&gt;
-&lt;td&gt;バックエンド開発&lt;/td&gt;
-&lt;td&gt;golang,kubernetes,kubevirt&lt;/td&gt;
-&lt;td&gt;練習&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;2023.07-至今&lt;/td&gt;
-&lt;td&gt;zhihu(beijing)&lt;/td&gt;
-&lt;td&gt;バックエンド開発&lt;/td&gt;
-&lt;td&gt;golang,kubernetes,TiDB&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;時間&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;会社&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;位置&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;技术栈&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;述べる&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;2022.08-2022.12&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;bilibili(shanghai)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;テスト開発&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;golang,vue,mysql&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;練習&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;2023.02-2023.06&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;qiniu(shanghai)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;バックエンド開発&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;golang,kubernetes,kubevirt&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;練習&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;2023.07-2024.08&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;zhihu(beijing)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;バックエンド開発&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;golang,kubernetes,TiDB&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;2024.09-至今&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;baidu(beijing)&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;バックエンド開発&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;golang,php,検索技術&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h3 id=&#34;連絡先&#34;&gt;連絡先&lt;/h3&gt;
 &lt;p&gt;郵便&lt;/p&gt;
@@ -102,35 +109,35 @@
         </item>
         <item>
         <title>アーカイブ</title>
-        <link>https://arturiamu.github.io/ja/archives/</link>
+        <link>http://localhost:1313/ja/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://arturiamu.github.io/ja/archives/</guid>
+        <guid>http://localhost:1313/ja/archives/</guid>
         <description></description>
         </item>
         <item>
         <title>メッセージ</title>
-        <link>https://arturiamu.github.io/ja/message/</link>
+        <link>http://localhost:1313/ja/message/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://arturiamu.github.io/ja/message/</guid>
+        <guid>http://localhost:1313/ja/message/</guid>
         <description>&lt;h2 id=&#34;自由に話してください&#34;&gt;自由に話してください&lt;/h2&gt;
 </description>
         </item>
         <item>
         <title>リンク</title>
-        <link>https://arturiamu.github.io/ja/links/</link>
+        <link>http://localhost:1313/ja/links/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://arturiamu.github.io/ja/links/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/ja/links/l.png" alt="Featured image of post リンク" /&gt;</description>
+        <guid>http://localhost:1313/ja/links/</guid>
+        <description>&lt;img src="http://localhost:1313/links/l.png" alt="Featured image of post リンク" /&gt;</description>
         </item>
         <item>
         <title>検索</title>
-        <link>https://arturiamu.github.io/ja/search/</link>
+        <link>http://localhost:1313/ja/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://arturiamu.github.io/ja/search/</guid>
+        <guid>http://localhost:1313/ja/search/</guid>
         <description></description>
         </item>
         

@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>啥也不是 on 木林彪的个人博客</title>
-        <link>https://arturiamu.github.io/tags/%E5%95%A5%E4%B9%9F%E4%B8%8D%E6%98%AF/</link>
+        <link>http://localhost:1313/tags/%E5%95%A5%E4%B9%9F%E4%B8%8D%E6%98%AF/</link>
         <description>Recent content in 啥也不是 on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Wed, 16 Aug 2023 11:17:42 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/tags/%E5%95%A5%E4%B9%9F%E4%B8%8D%E6%98%AF/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 16 Aug 2023 11:17:42 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/%E5%95%A5%E4%B9%9F%E4%B8%8D%E6%98%AF/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>代码抽象艺术（bushi</title>
-        <link>https://arturiamu.github.io/post/code-abstract/</link>
+        <link>http://localhost:1313/post/code-abstract/</link>
         <pubDate>Wed, 16 Aug 2023 11:17:42 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/code-abstract/</guid>
+        <guid>http://localhost:1313/post/code-abstract/</guid>
         <description>&lt;p&gt;最近偶然刷到了B站UP主 &lt;a class=&#34;link&#34; href=&#34;https://space.bilibili.com/231911980&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Erik_Tse&lt;/a&gt; 的视频，了解到了一些&lt;strong&gt;代码抽象艺术&lt;/strong&gt;，感觉很有意思，
 所以特地开篇博客总结记录一下，欢迎大家补充~&lt;/p&gt;

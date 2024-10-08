@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>数据库 on 木林彪的个人博客</title>
-        <link>https://arturiamu.github.io/archives/database/</link>
+        <link>http://localhost:1313/archives/database/</link>
         <description>Recent content in 数据库 on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Thu, 12 Oct 2023 19:38:23 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/archives/database/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 12 Oct 2023 19:38:23 +0800</lastBuildDate><atom:link href="http://localhost:1313/archives/database/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>mysql general_log</title>
-        <link>https://arturiamu.github.io/post/mysql-general-log/</link>
+        <link>http://localhost:1313/post/mysql-general-log/</link>
         <pubDate>Thu, 12 Oct 2023 19:38:23 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/mysql-general-log/</guid>
+        <guid>http://localhost:1313/post/mysql-general-log/</guid>
         <description>&lt;h2 id=&#34;关于mysql-general_log&#34;&gt;关于mysql general_log&lt;/h2&gt;
 &lt;p&gt;MySQL General Log（一般日志）是MySQL数据库的一种日志记录功能，用于记录数据库服务器上发生的所有操作。它可以记录包括连接、查询、事务等在内的所有操作。&lt;/p&gt;
 &lt;p&gt;General Log记录的内容包括：&lt;/p&gt;
@@ -59,10 +59,10 @@
         </item>
         <item>
         <title>深入MySQL复制(二)：基于GTID复制 </title>
-        <link>https://arturiamu.github.io/post/mysql-replication-2/</link>
+        <link>http://localhost:1313/post/mysql-replication-2/</link>
         <pubDate>Tue, 19 Sep 2023 11:35:24 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/mysql-replication-2/</guid>
+        <guid>http://localhost:1313/post/mysql-replication-2/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文转载自 &lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/f-ck-need-u/p/9164823.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;深入MySQL复制(二)&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;相比传统的MySQL复制，gtid复制无论是配置还是维护都要轻松的多。本文对gtid复制稍作介绍。&lt;/p&gt;
@@ -130,31 +130,31 @@
 &lt;h2 id=&#34;配置一主一从的gtid复制&#34;&gt;配置一主一从的gtid复制&lt;/h2&gt;
 &lt;p&gt;环境：&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;主机IP&lt;/th&gt;
-&lt;th&gt;OS版本&lt;/th&gt;
-&lt;th&gt;MySQL版本&lt;/th&gt;
-&lt;th&gt;角色（master/slave)&lt;/th&gt;
-&lt;th&gt;数据状态&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;192.168.100.21&lt;/td&gt;
-&lt;td&gt;centos 7&lt;/td&gt;
-&lt;td&gt;MySQL 5.7.22&lt;/td&gt;
-&lt;td&gt;master_gtid&lt;/td&gt;
-&lt;td&gt;全新实例&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;192.168.100.22&lt;/td&gt;
-&lt;td&gt;centos 7&lt;/td&gt;
-&lt;td&gt;MySQL 5.7.22&lt;/td&gt;
-&lt;td&gt;slave1_gtid&lt;/td&gt;
-&lt;td&gt;全新实例&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;主机IP&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;OS版本&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;MySQL版本&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;角色（master/slave)&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;数据状态&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;192.168.100.21&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;centos 7&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;MySQL 5.7.22&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;master_gtid&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;全新实例&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;192.168.100.22&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;centos 7&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;MySQL 5.7.22&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;slave1_gtid&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;全新实例&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;因为是用作master和slave的mysql实例都是全新环境，所以这里简单配置一下即可。&lt;/p&gt;
 &lt;p&gt;master的配置文件：&lt;/p&gt;
@@ -483,38 +483,38 @@
 &lt;/div&gt;&lt;p&gt;但无论master是否purge过binlog，配置基于gtid的复制都极其方便，而且方法众多(只要理解了GTID的生命周期，可以随意折腾，基本上都能很轻松地维护好)，这是它&amp;quot;迷人&amp;quot;的优点。&lt;/p&gt;
 &lt;p&gt;现在的测试环境是这样的：&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;主机IP&lt;/th&gt;
-&lt;th&gt;OS版本&lt;/th&gt;
-&lt;th&gt;MySQL版本&lt;/th&gt;
-&lt;th&gt;角色（master/slave)&lt;/th&gt;
-&lt;th&gt;数据状态&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;192.168.100.21&lt;/td&gt;
-&lt;td&gt;centos 7&lt;/td&gt;
-&lt;td&gt;MySQL 5.7.22&lt;/td&gt;
-&lt;td&gt;master_gtid&lt;/td&gt;
-&lt;td&gt;已purge过binlog&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;192.168.100.22&lt;/td&gt;
-&lt;td&gt;centos 7&lt;/td&gt;
-&lt;td&gt;MySQL 5.7.22&lt;/td&gt;
-&lt;td&gt;slave1_gtid&lt;/td&gt;
-&lt;td&gt;已同步&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;192.168.100.23&lt;/td&gt;
-&lt;td&gt;centos 7&lt;/td&gt;
-&lt;td&gt;MySQL 5.7.22&lt;/td&gt;
-&lt;td&gt;slave2_gtid&lt;/td&gt;
-&lt;td&gt;全新实例&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;主机IP&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;OS版本&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;MySQL版本&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;角色（master/slave)&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;数据状态&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;192.168.100.21&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;centos 7&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;MySQL 5.7.22&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;master_gtid&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;已purge过binlog&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;192.168.100.22&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;centos 7&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;MySQL 5.7.22&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;slave1_gtid&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;已同步&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;192.168.100.23&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;centos 7&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;MySQL 5.7.22&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;slave2_gtid&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;全新实例&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;其中slave2的配置文件和slave1的配置文件完全相同：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -886,10 +886,10 @@
 &lt;/div&gt;&lt;h2 id=&#34;一张图说明gtid复制&#34;&gt;一张图说明GTID复制&lt;/h2&gt;
 &lt;p&gt;在前面第6节中，使用了xtrabackup备份的方式提供gtid复制的基准数据。其中涉及到一些gtid检查、设置的操作。通过这些操作，大概可以感受的到gtid复制的几个概念。&lt;/p&gt;
 &lt;p&gt;用一张图来说明：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-2/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-2/img.png&#34;
 	width=&#34;768&#34;
 	height=&#34;403&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-2/img_hu20ac94f973d28962f2c3700317b44c63_43246_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/mysql-replication-2/img_hu20ac94f973d28962f2c3700317b44c63_43246_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-2/img_hu12625731804346384137.png 480w, http://localhost:1313/post/mysql-replication-2/img_hu8622994966449973709.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -906,10 +906,10 @@
         </item>
         <item>
         <title>深入MySQL复制(一)</title>
-        <link>https://arturiamu.github.io/post/mysql-replication-1/</link>
+        <link>http://localhost:1313/post/mysql-replication-1/</link>
         <pubDate>Mon, 18 Sep 2023 14:51:23 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/mysql-replication-1/</guid>
+        <guid>http://localhost:1313/post/mysql-replication-1/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文转载自 &lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/f-ck-need-u/p/9155003.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;深入MySQL复制(一)&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;本文非常详细地介绍MySQL复制相关的内容，包括基本概念、复制原理、如何配置不同类型的复制(传统复制)等等&lt;/p&gt;
@@ -946,10 +946,10 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;站在slave的角度上看，过程如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_1.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_1.png&#34;
 	width=&#34;408&#34;
 	height=&#34;278&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_1_hue5e759dcb878c2c5710369accbb121f3_64663_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_1_hue5e759dcb878c2c5710369accbb121f3_64663_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_1_hu11869262119325830475.png 480w, http://localhost:1313/post/mysql-replication-1/img_1_hu17663850157439595465.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -959,10 +959,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;站在master的角度上看，过程如下(默认的异步复制模式，前提是设置了&lt;code&gt;sync_binlog=1&lt;/code&gt;，否则binlog刷盘时间由操作系统决定)：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_2.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_2.png&#34;
 	width=&#34;652&#34;
 	height=&#34;481&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_2_hu1e3b060e6bcf83cca3f89a40eaece3e6_69917_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_2_hu1e3b060e6bcf83cca3f89a40eaece3e6_69917_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_2_hu18243127769311389686.png 480w, http://localhost:1313/post/mysql-replication-1/img_2_hu5970361919460410813.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -984,10 +984,10 @@
 &lt;p&gt;复制和二进制日志息息相关，所以学习本章必须先有二进制日志的相关知识。&lt;/p&gt;
 &lt;h2 id=&#34;复制的好处&#34;&gt;复制的好处&lt;/h2&gt;
 &lt;p&gt;围绕下面的拓扑图来分析：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_3.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_3.png&#34;
 	width=&#34;507&#34;
 	height=&#34;467&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_3_hu495964904e55c678384b09e2655d2267_38770_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_3_hu495964904e55c678384b09e2655d2267_38770_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_3_hu12887528023967210404.png 480w, http://localhost:1313/post/mysql-replication-1/img_3_hu15817194951147763535.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1019,10 +1019,10 @@
 &lt;p&gt;从数据同步方式的角度考虑，MySQL支持4种不同的同步方式：同步(synchronous)、半同步(semisynchronous)、异步(asynchronous)、延迟(delayed)。所以对于复制来说，就分为同步复制、半同步复制、异步复制和延迟复制。&lt;/p&gt;
 &lt;h3 id=&#34;同步复制&#34;&gt;同步复制&lt;/h3&gt;
 &lt;p&gt;客户端发送DDL/DML语句给master，master执行完毕后还需要&lt;strong&gt;等待所有的slave都写完了relay log才认为此次DDL/DML成功，然后才会返回成功信息给客户端。&lt;/strong&gt; 同步复制的问题是master必须等待，所以延迟较大，在MySQL中不使用这种复制方式。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_4.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_4.png&#34;
 	width=&#34;519&#34;
 	height=&#34;378&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_4_hu3f02eb04ec51ceb03ef0c5c7f76dff27_37551_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_4_hu3f02eb04ec51ceb03ef0c5c7f76dff27_37551_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_4_hu380154208568120981.png 480w, http://localhost:1313/post/mysql-replication-1/img_4_hu16663403855863522396.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1034,10 +1034,10 @@
 &lt;p&gt;例如上图中描述的，只有3个slave全都写完relay log并返回ACK给master后，master才会判断此次DDL/DML成功。&lt;/p&gt;
 &lt;h3 id=&#34;半同步复制&#34;&gt;半同步复制&lt;/h3&gt;
 &lt;p&gt;客户端发送DDL/DML语句给master，master执行完毕后&lt;strong&gt;还要等待一个slave写完relay log并返回确认信息给master，master才认为此次DDL/DML语句是成功的，然后才会发送成功信息给客户端。&lt;/strong&gt; 半同步复制只需等待一个slave的回应，且等待的超时时间可以设置，超时后会自动降级为异步复制，所以在局域网内(网络延迟很小)使用半同步复制是可行的。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_5.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_5.png&#34;
 	width=&#34;521&#34;
 	height=&#34;365&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_5_hudd2a5723d95ff1472c0785fab885d469_36598_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_5_hudd2a5723d95ff1472c0785fab885d469_36598_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_5_hu3961731707630416869.png 480w, http://localhost:1313/post/mysql-replication-1/img_5_hu12200226569218011957.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1049,10 +1049,10 @@
 &lt;p&gt;例如上图中，只有第一个slave返回成功，master就判断此次DDL/DML成功，其他的slave无论复制进行到哪一个阶段都无关紧要。&lt;/p&gt;
 &lt;h3 id=&#34;异步复制&#34;&gt;异步复制&lt;/h3&gt;
 &lt;p&gt;客户端发送DDL/DML语句给master，&lt;strong&gt;master执行完毕立即返回成功信息给客户端，而不管slave是否已经开始复制。&lt;/strong&gt; 这样的复制方式导致的问题是，当master写完了binlog，而slave还没有开始复制或者复制还没完成时，&lt;strong&gt;slave上和master上的数据暂时不一致，且此时master突然宕机，slave将会丢失一部分数据。如果此时把slave提升为新的master，那么整个数据库就永久丢失这部分数据。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_6.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_6.png&#34;
 	width=&#34;515&#34;
 	height=&#34;330&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_6_hu1b8309f6ffd8173025b6c68481499655_34041_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_6_hu1b8309f6ffd8173025b6c68481499655_34041_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_6_hu8191297275643876229.png 480w, http://localhost:1313/post/mysql-replication-1/img_6_hu4005024730243533810.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1067,10 +1067,10 @@
 &lt;p&gt;此处先配置默认的异步复制模式。由于复制和binlog息息相关，如果对binlog还不熟悉，请先了解binlog。&lt;/p&gt;
 &lt;p&gt;mysql支持一主一从和一主多从。但是每个slave必须只能是一个master的从，否则从多个master接受二进制日志后重放将会导致数据混乱的问题。&lt;/p&gt;
 &lt;p&gt;以下是一主一从的结构图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_7.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_7.png&#34;
 	width=&#34;336&#34;
 	height=&#34;365&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_7_hu58609a2925e5994633016c4e69e8bb2e_17672_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_7_hu58609a2925e5994633016c4e69e8bb2e_17672_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_7_hu15661003402774780606.png 480w, http://localhost:1313/post/mysql-replication-1/img_7_hu16025301315997034200.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1093,10 +1093,10 @@
 &lt;/ol&gt;
 &lt;h3 id=&#34;一主一从&#34;&gt;一主一从&lt;/h3&gt;
 &lt;p&gt;一主一从是最简单的主从复制结构。本节实验环境如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_8.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_8.png&#34;
 	width=&#34;675&#34;
 	height=&#34;241&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_8_huc2ac1024c36693391cc8eaacf7c10867_11667_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_8_huc2ac1024c36693391cc8eaacf7c10867_11667_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_8_hu18368834406938483792.png 480w, http://localhost:1313/post/mysql-replication-1/img_8_hu15782017076608580266.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -2120,10 +2120,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
 &lt;h2 id=&#34;一主多从&#34;&gt;一主多从&lt;/h2&gt;
 &lt;p&gt;一主多从有两种情况，结构图如下。&lt;/p&gt;
 &lt;p&gt;以下是一主多从的结构图(和一主一从的配置方法完全一致)：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_9.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_9.png&#34;
 	width=&#34;564&#34;
 	height=&#34;361&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_9_huc4ee65850f1ed9ea7822a57680da05f7_27570_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_9_huc4ee65850f1ed9ea7822a57680da05f7_27570_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_9_hu15900603861050537390.png 480w, http://localhost:1313/post/mysql-replication-1/img_9_hu1270631640687088734.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -2133,10 +2133,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;以下是一主多从，但某slave是另一群MySQL实例的master：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_10.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_10.png&#34;
 	width=&#34;543&#34;
 	height=&#34;499&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_10_hu92390d13ad17bfd600cafb6ca41583c9_37805_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_10_hu92390d13ad17bfd600cafb6ca41583c9_37805_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_10_hu3467210895417616495.png 480w, http://localhost:1313/post/mysql-replication-1/img_10_hu3871802042361885534.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -2162,10 +2162,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
 &lt;p&gt;方法很简单，所以不做演示了。&lt;/p&gt;
 &lt;h3 id=&#34;配置一主多从从中有从&#34;&gt;配置一主多从(从中有从)&lt;/h3&gt;
 &lt;p&gt;此处实现的一主多从是下面这种结构：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_11.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_11.png&#34;
 	width=&#34;543&#34;
 	height=&#34;497&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_11_hu4d935159534b6bc9afe32fc700e36773_38026_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_11_hu4d935159534b6bc9afe32fc700e36773_38026_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_11_hu18049629007470215968.png 480w, http://localhost:1313/post/mysql-replication-1/img_11_hu6192969940839425929.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -2204,10 +2204,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
 &lt;/div&gt;&lt;p&gt;2、在slave上没有开启log-slave-updates和binlog选项时，重放relay log不会记录binlog。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;所以如果slave2要作为某些slave的master，那么在slave2上必须要开启&lt;code&gt;log-slave-updates&lt;/code&gt;和binlog选项。为了安全和数据一致性，在slave2上还应该启用read-only选项。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;环境如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_12.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_12.png&#34;
 	width=&#34;928&#34;
 	height=&#34;385&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_12_hua1b26a0f2028e8c2a7e249a0b206a403_28840_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_12_hua1b26a0f2028e8c2a7e249a0b206a403_28840_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_12_hu10562506591363496397.png 480w, http://localhost:1313/post/mysql-replication-1/img_12_hu6007141055665190594.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -2482,10 +2482,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;显然，多线程只有在slave上开启才有效，因为只有slave上才有SQL线程。另外，设置了该全局变量，需要重启SQL线程才生效，否则内存中还是只有一个SQL线程。&lt;/p&gt;
 &lt;p&gt;例如，初始时slave上的processlist如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_13.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_13.png&#34;
 	width=&#34;729&#34;
 	height=&#34;134&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_13_hu470b6264dd1d91f0c5c448750f2ccd10_7269_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_13_hu470b6264dd1d91f0c5c448750f2ccd10_7269_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_13_hu5530110360098006642.png 480w, http://localhost:1313/post/mysql-replication-1/img_13_hu11887848482276076528.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -2509,10 +2509,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mysql&amp;gt; show full processlist&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_14.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_14.png&#34;
 	width=&#34;770&#34;
 	height=&#34;173&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_14_hue942e247f00f22095baed0e1f57ccf1f_10974_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_14_hue942e247f00f22095baed0e1f57ccf1f_10974_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_14_hu6963249834791799818.png 480w, http://localhost:1313/post/mysql-replication-1/img_14_hu1167762303775802099.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -2680,10 +2680,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
         </item>
         <item>
         <title>MySQL主从同步集群搭建</title>
-        <link>https://arturiamu.github.io/post/mysql-cluster/</link>
+        <link>http://localhost:1313/post/mysql-cluster/</link>
         <pubDate>Fri, 21 Jul 2023 16:48:07 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/mysql-cluster/</guid>
+        <guid>http://localhost:1313/post/mysql-cluster/</guid>
         <description>&lt;h2 id=&#34;为什么需要搭建集群&#34;&gt;为什么需要搭建集群&lt;/h2&gt;
 &lt;p&gt;搭建主从同步集群可以实现MySQL数据库的高可用、可扩展和读写分离，提升系统的性能和稳定性。这在对数据库的可靠性、
 并发读写能力和扩展性有较高要求的业务场景中尤为重要。&lt;/p&gt;

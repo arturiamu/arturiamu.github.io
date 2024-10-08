@@ -2,168 +2,168 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Tags on 木林彪的个人博客</title>
-        <link>https://arturiamu.github.io/tags/</link>
+        <link>http://localhost:1313/tags/</link>
         <description>Recent content in Tags on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Wed, 13 Dec 2023 10:54:23 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 13 Dec 2023 10:54:23 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Bitcoin</title>
-        <link>https://arturiamu.github.io/tags/bitcoin/</link>
+        <link>http://localhost:1313/tags/bitcoin/</link>
         <pubDate>Wed, 13 Dec 2023 10:54:23 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/tags/bitcoin/</guid>
+        <guid>http://localhost:1313/tags/bitcoin/</guid>
         <description></description>
         </item>
         <item>
         <title>Ethereum</title>
-        <link>https://arturiamu.github.io/tags/ethereum/</link>
+        <link>http://localhost:1313/tags/ethereum/</link>
         <pubDate>Wed, 13 Dec 2023 10:54:23 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/tags/ethereum/</guid>
+        <guid>http://localhost:1313/tags/ethereum/</guid>
         <description></description>
         </item>
         <item>
-        <title>docker</title>
-        <link>https://arturiamu.github.io/tags/docker/</link>
+        <title>Docker</title>
+        <link>http://localhost:1313/tags/docker/</link>
         <pubDate>Tue, 31 Oct 2023 11:14:05 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/tags/docker/</guid>
+        <guid>http://localhost:1313/tags/docker/</guid>
         <description></description>
         </item>
         <item>
-        <title>mysql</title>
-        <link>https://arturiamu.github.io/tags/mysql/</link>
+        <title>MySQL</title>
+        <link>http://localhost:1313/tags/mysql/</link>
         <pubDate>Thu, 12 Oct 2023 19:38:23 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/tags/mysql/</guid>
+        <guid>http://localhost:1313/tags/mysql/</guid>
         <description></description>
         </item>
         <item>
-        <title>linux</title>
-        <link>https://arturiamu.github.io/tags/linux/</link>
+        <title>Linux</title>
+        <link>http://localhost:1313/tags/linux/</link>
         <pubDate>Thu, 28 Sep 2023 16:05:04 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/tags/linux/</guid>
+        <guid>http://localhost:1313/tags/linux/</guid>
         <description></description>
         </item>
         <item>
-        <title>bash</title>
-        <link>https://arturiamu.github.io/tags/bash/</link>
+        <title>Bash</title>
+        <link>http://localhost:1313/tags/bash/</link>
         <pubDate>Thu, 28 Sep 2023 15:27:00 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/tags/bash/</guid>
+        <guid>http://localhost:1313/tags/bash/</guid>
         <description></description>
         </item>
         <item>
-        <title>shell</title>
-        <link>https://arturiamu.github.io/tags/shell/</link>
+        <title>Shell</title>
+        <link>http://localhost:1313/tags/shell/</link>
         <pubDate>Thu, 28 Sep 2023 15:27:00 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/tags/shell/</guid>
+        <guid>http://localhost:1313/tags/shell/</guid>
         <description></description>
         </item>
         <item>
-        <title>golang</title>
-        <link>https://arturiamu.github.io/tags/golang/</link>
+        <title>Golang</title>
+        <link>http://localhost:1313/tags/golang/</link>
         <pubDate>Tue, 26 Sep 2023 19:45:10 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/tags/golang/</guid>
+        <guid>http://localhost:1313/tags/golang/</guid>
         <description></description>
         </item>
         <item>
-        <title>bug</title>
-        <link>https://arturiamu.github.io/tags/bug/</link>
+        <title>Bug</title>
+        <link>http://localhost:1313/tags/bug/</link>
         <pubDate>Tue, 19 Sep 2023 15:51:30 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/tags/bug/</guid>
+        <guid>http://localhost:1313/tags/bug/</guid>
         <description></description>
         </item>
         <item>
         <title>GTID</title>
-        <link>https://arturiamu.github.io/tags/gtid/</link>
+        <link>http://localhost:1313/tags/gtid/</link>
         <pubDate>Tue, 19 Sep 2023 11:35:24 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/tags/gtid/</guid>
+        <guid>http://localhost:1313/tags/gtid/</guid>
         <description></description>
         </item>
         <item>
-        <title>git</title>
-        <link>https://arturiamu.github.io/tags/git/</link>
+        <title>Git</title>
+        <link>http://localhost:1313/tags/git/</link>
         <pubDate>Fri, 15 Sep 2023 13:47:01 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/tags/git/</guid>
+        <guid>http://localhost:1313/tags/git/</guid>
         <description></description>
         </item>
         <item>
-        <title>gin</title>
-        <link>https://arturiamu.github.io/tags/gin/</link>
+        <title>Gin</title>
+        <link>http://localhost:1313/tags/gin/</link>
         <pubDate>Wed, 13 Sep 2023 22:37:12 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/tags/gin/</guid>
+        <guid>http://localhost:1313/tags/gin/</guid>
         <description></description>
         </item>
         <item>
         <title>啥也不是</title>
-        <link>https://arturiamu.github.io/tags/%E5%95%A5%E4%B9%9F%E4%B8%8D%E6%98%AF/</link>
+        <link>http://localhost:1313/tags/%E5%95%A5%E4%B9%9F%E4%B8%8D%E6%98%AF/</link>
         <pubDate>Wed, 16 Aug 2023 11:17:42 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/tags/%E5%95%A5%E4%B9%9F%E4%B8%8D%E6%98%AF/</guid>
+        <guid>http://localhost:1313/tags/%E5%95%A5%E4%B9%9F%E4%B8%8D%E6%98%AF/</guid>
         <description></description>
         </item>
         <item>
-        <title>seo</title>
-        <link>https://arturiamu.github.io/tags/seo/</link>
+        <title>Seo</title>
+        <link>http://localhost:1313/tags/seo/</link>
         <pubDate>Wed, 09 Aug 2023 16:17:15 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/tags/seo/</guid>
+        <guid>http://localhost:1313/tags/seo/</guid>
         <description></description>
         </item>
         <item>
         <title>前后端分离</title>
-        <link>https://arturiamu.github.io/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/</link>
+        <link>http://localhost:1313/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/</link>
         <pubDate>Fri, 23 Jun 2023 16:37:15 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/</guid>
+        <guid>http://localhost:1313/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/</guid>
         <description></description>
         </item>
         <item>
-        <title>java</title>
-        <link>https://arturiamu.github.io/tags/java/</link>
+        <title>Java</title>
+        <link>http://localhost:1313/tags/java/</link>
         <pubDate>Fri, 23 Jun 2023 16:28:51 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/tags/java/</guid>
+        <guid>http://localhost:1313/tags/java/</guid>
         <description></description>
         </item>
         <item>
-        <title>springboot</title>
-        <link>https://arturiamu.github.io/tags/springboot/</link>
+        <title>Springboot</title>
+        <link>http://localhost:1313/tags/springboot/</link>
         <pubDate>Fri, 23 Jun 2023 16:28:51 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/tags/springboot/</guid>
+        <guid>http://localhost:1313/tags/springboot/</guid>
         <description></description>
         </item>
         <item>
-        <title>python</title>
-        <link>https://arturiamu.github.io/tags/python/</link>
+        <title>Python</title>
+        <link>http://localhost:1313/tags/python/</link>
         <pubDate>Fri, 23 Jun 2023 14:21:55 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/tags/python/</guid>
+        <guid>http://localhost:1313/tags/python/</guid>
         <description></description>
         </item>
         <item>
         <title>算法</title>
-        <link>https://arturiamu.github.io/tags/%E7%AE%97%E6%B3%95/</link>
+        <link>http://localhost:1313/tags/%E7%AE%97%E6%B3%95/</link>
         <pubDate>Fri, 23 Jun 2023 14:08:55 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/tags/%E7%AE%97%E6%B3%95/</guid>
+        <guid>http://localhost:1313/tags/%E7%AE%97%E6%B3%95/</guid>
         <description></description>
         </item>
         <item>
-        <title>blog</title>
-        <link>https://arturiamu.github.io/tags/blog/</link>
+        <title>Blog</title>
+        <link>http://localhost:1313/tags/blog/</link>
         <pubDate>Sun, 18 Jun 2023 12:25:48 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/tags/blog/</guid>
+        <guid>http://localhost:1313/tags/blog/</guid>
         <description></description>
         </item>
         

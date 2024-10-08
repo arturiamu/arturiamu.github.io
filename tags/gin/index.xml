@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>gin on 木林彪的个人博客</title>
-        <link>https://arturiamu.github.io/tags/gin/</link>
-        <description>Recent content in gin on 木林彪的个人博客</description>
+        <title>Gin on 木林彪的个人博客</title>
+        <link>http://localhost:1313/tags/gin/</link>
+        <description>Recent content in Gin on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Wed, 13 Sep 2023 22:37:12 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/tags/gin/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 13 Sep 2023 22:37:12 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/gin/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>gin中间件统一返回结果、处理错误</title>
-        <link>https://arturiamu.github.io/post/gin-global-err/</link>
+        <link>http://localhost:1313/post/gin-global-err/</link>
         <pubDate>Wed, 13 Sep 2023 22:37:12 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/gin-global-err/</guid>
+        <guid>http://localhost:1313/post/gin-global-err/</guid>
         <description>&lt;h2 id=&#34;现状及问题&#34;&gt;现状及问题&lt;/h2&gt;
 &lt;p&gt;在golang开发中我们经常会使用gin作为web框架，gin一直以高性能和简单著称，并且有十分完善的官方文档。然而gin的错误处理却一直以来都被人吐槽，
 正常情况下我们在handler层需要根据service层返回的结果给前端相应的响应内容，如下：&lt;/p&gt;

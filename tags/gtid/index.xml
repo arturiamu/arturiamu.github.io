@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>GTID on 木林彪的个人博客</title>
-        <link>https://arturiamu.github.io/tags/gtid/</link>
+        <link>http://localhost:1313/tags/gtid/</link>
         <description>Recent content in GTID on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Tue, 19 Sep 2023 11:35:24 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/tags/gtid/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 19 Sep 2023 11:35:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/gtid/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>深入MySQL复制(二)：基于GTID复制 </title>
-        <link>https://arturiamu.github.io/post/mysql-replication-2/</link>
+        <link>http://localhost:1313/post/mysql-replication-2/</link>
         <pubDate>Tue, 19 Sep 2023 11:35:24 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/mysql-replication-2/</guid>
+        <guid>http://localhost:1313/post/mysql-replication-2/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文转载自 &lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/f-ck-need-u/p/9164823.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;深入MySQL复制(二)&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;相比传统的MySQL复制，gtid复制无论是配置还是维护都要轻松的多。本文对gtid复制稍作介绍。&lt;/p&gt;
@@ -79,31 +79,31 @@
 &lt;h2 id=&#34;配置一主一从的gtid复制&#34;&gt;配置一主一从的gtid复制&lt;/h2&gt;
 &lt;p&gt;环境：&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;主机IP&lt;/th&gt;
-&lt;th&gt;OS版本&lt;/th&gt;
-&lt;th&gt;MySQL版本&lt;/th&gt;
-&lt;th&gt;角色（master/slave)&lt;/th&gt;
-&lt;th&gt;数据状态&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;192.168.100.21&lt;/td&gt;
-&lt;td&gt;centos 7&lt;/td&gt;
-&lt;td&gt;MySQL 5.7.22&lt;/td&gt;
-&lt;td&gt;master_gtid&lt;/td&gt;
-&lt;td&gt;全新实例&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;192.168.100.22&lt;/td&gt;
-&lt;td&gt;centos 7&lt;/td&gt;
-&lt;td&gt;MySQL 5.7.22&lt;/td&gt;
-&lt;td&gt;slave1_gtid&lt;/td&gt;
-&lt;td&gt;全新实例&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;主机IP&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;OS版本&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;MySQL版本&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;角色（master/slave)&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;数据状态&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;192.168.100.21&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;centos 7&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;MySQL 5.7.22&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;master_gtid&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;全新实例&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;192.168.100.22&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;centos 7&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;MySQL 5.7.22&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;slave1_gtid&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;全新实例&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;因为是用作master和slave的mysql实例都是全新环境，所以这里简单配置一下即可。&lt;/p&gt;
 &lt;p&gt;master的配置文件：&lt;/p&gt;
@@ -432,38 +432,38 @@
 &lt;/div&gt;&lt;p&gt;但无论master是否purge过binlog，配置基于gtid的复制都极其方便，而且方法众多(只要理解了GTID的生命周期，可以随意折腾，基本上都能很轻松地维护好)，这是它&amp;quot;迷人&amp;quot;的优点。&lt;/p&gt;
 &lt;p&gt;现在的测试环境是这样的：&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;主机IP&lt;/th&gt;
-&lt;th&gt;OS版本&lt;/th&gt;
-&lt;th&gt;MySQL版本&lt;/th&gt;
-&lt;th&gt;角色（master/slave)&lt;/th&gt;
-&lt;th&gt;数据状态&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;192.168.100.21&lt;/td&gt;
-&lt;td&gt;centos 7&lt;/td&gt;
-&lt;td&gt;MySQL 5.7.22&lt;/td&gt;
-&lt;td&gt;master_gtid&lt;/td&gt;
-&lt;td&gt;已purge过binlog&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;192.168.100.22&lt;/td&gt;
-&lt;td&gt;centos 7&lt;/td&gt;
-&lt;td&gt;MySQL 5.7.22&lt;/td&gt;
-&lt;td&gt;slave1_gtid&lt;/td&gt;
-&lt;td&gt;已同步&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;192.168.100.23&lt;/td&gt;
-&lt;td&gt;centos 7&lt;/td&gt;
-&lt;td&gt;MySQL 5.7.22&lt;/td&gt;
-&lt;td&gt;slave2_gtid&lt;/td&gt;
-&lt;td&gt;全新实例&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;主机IP&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;OS版本&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;MySQL版本&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;角色（master/slave)&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;数据状态&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;192.168.100.21&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;centos 7&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;MySQL 5.7.22&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;master_gtid&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;已purge过binlog&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;192.168.100.22&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;centos 7&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;MySQL 5.7.22&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;slave1_gtid&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;已同步&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;192.168.100.23&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;centos 7&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;MySQL 5.7.22&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;slave2_gtid&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;全新实例&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;其中slave2的配置文件和slave1的配置文件完全相同：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -835,10 +835,10 @@
 &lt;/div&gt;&lt;h2 id=&#34;一张图说明gtid复制&#34;&gt;一张图说明GTID复制&lt;/h2&gt;
 &lt;p&gt;在前面第6节中，使用了xtrabackup备份的方式提供gtid复制的基准数据。其中涉及到一些gtid检查、设置的操作。通过这些操作，大概可以感受的到gtid复制的几个概念。&lt;/p&gt;
 &lt;p&gt;用一张图来说明：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-2/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-2/img.png&#34;
 	width=&#34;768&#34;
 	height=&#34;403&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-2/img_hu20ac94f973d28962f2c3700317b44c63_43246_480x0_resize_box_3.png 480w, https://arturiamu.github.io/post/mysql-replication-2/img_hu20ac94f973d28962f2c3700317b44c63_43246_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-2/img_hu12625731804346384137.png 480w, http://localhost:1313/post/mysql-replication-2/img_hu8622994966449973709.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
