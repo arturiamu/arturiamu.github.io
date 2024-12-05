@@ -2,26 +2,322 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>原创 on 木林彪的个人博客</title>
-        <link>http://localhost:1313/archives/original/</link>
+        <link>https://arturiamu.github.io/archives/original/</link>
         <description>Recent content in 原创 on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Mon, 08 Apr 2024 18:20:39 +0800</lastBuildDate><atom:link href="http://localhost:1313/archives/original/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 05 Dec 2024 16:53:18 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/archives/original/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>vscode debug golang 代码不按顺序跳转、变量不可见问题</title>
+        <link>https://arturiamu.github.io/post/vscode-go-dlv-debugging/</link>
+        <pubDate>Thu, 05 Dec 2024 16:53:18 +0800</pubDate>
+        
+        <guid>https://arturiamu.github.io/post/vscode-go-dlv-debugging/</guid>
+        <description>&lt;h2 id=&#34;问题描述&#34;&gt;问题描述&lt;/h2&gt;
+&lt;p&gt;使用 vscode 调试 golang 项目时，发现部分代码不按顺序跳转，变量不可见。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img.png&#34;
+	width=&#34;939&#34;
+	height=&#34;520&#34;
+	srcset=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_hu12823412841899850450.png 480w, https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_hu11082217339701046209.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;180&#34;
+		data-flex-basis=&#34;433px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;launch.json&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;version&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;0.2.0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;configurations&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;debug ae app&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;go&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;request&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;launch&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;mode&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;exec&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;program&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;${workspaceFolder}/ae-app-598&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;preLaunchTask&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;build.ae.app&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;task.json&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;version&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;2.0.0&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;nt&#34;&gt;&amp;#34;tasks&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;label&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;build.ae.app&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;shell&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nt&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;make generate &amp;amp;&amp;amp; make build&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;排查&#34;&gt;排查&lt;/h2&gt;
+&lt;p&gt;google 搜索相关词条后，初步定位是 &lt;code&gt;gcflags&lt;/code&gt; 参数问题，在 &lt;code&gt;launch.json&lt;/code&gt; 中添加 &lt;code&gt;&amp;quot;buildFlags&amp;quot;: &amp;quot;-gcflags=all=-N -l&amp;quot;&lt;/code&gt; 参数后问题仍然复现，且 debug 会触发 vscode 提示。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_1.png&#34;
+	width=&#34;465&#34;
+	height=&#34;122&#34;
+	srcset=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_1_hu10514659687479322052.png 480w, https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_1_hu3640094013922153093.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_1.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;381&#34;
+		data-flex-basis=&#34;914px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;提示链接 &lt;a class=&#34;link&#34; href=&#34;https://github.com/golang/vscode-go/blob/master/docs/debugging.md#debugging&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/golang/vscode-go/blob/master/docs/debugging.md#debugging&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;根据 &lt;code&gt;gcflags&lt;/code&gt; 关键词查找到相关内容&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_2.png&#34;
+	width=&#34;1191&#34;
+	height=&#34;510&#34;
+	srcset=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_2_hu13516486472677505571.png 480w, https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_2_hu7235636766040979718.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_2.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;233&#34;
+		data-flex-basis=&#34;560px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;必须使用 go build -gcflags=all=&amp;quot;-N -l&amp;quot; 构建二进制文件以禁用可能干扰调试的内联和优化。&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;解决&#34;&gt;解决&lt;/h2&gt;
+&lt;p&gt;排查makefile 文件，发现 &lt;code&gt;include&lt;/code&gt; 子文件中 &lt;code&gt;go build&lt;/code&gt; 命令没有带 &lt;code&gt;-gcflags=all=&amp;quot;-N -l&amp;quot;&lt;/code&gt; 参数。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_3.png&#34;
+	width=&#34;410&#34;
+	height=&#34;112&#34;
+	srcset=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_3_hu15158135739030628619.png 480w, https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_3_hu11336833328381004995.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_3.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;366&#34;
+		data-flex-basis=&#34;878px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;添加参数后问题解决&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_4.png&#34;
+	width=&#34;452&#34;
+	height=&#34;115&#34;
+	srcset=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_4_hu2245605904037776630.png 480w, https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_4_hu17976239659460522127.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_4.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;393&#34;
+		data-flex-basis=&#34;943px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_6.png&#34;
+	width=&#34;883&#34;
+	height=&#34;431&#34;
+	srcset=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_6_hu10667759964407103661.png 480w, https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_6_hu5655758801569612541.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_6.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;204&#34;
+		data-flex-basis=&#34;491px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;关于-buildflags&#34;&gt;关于 buildFlags&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;-gcflags=&amp;quot;all=-N -l&amp;quot;&lt;/code&gt; 是 Go 编译器的一个常见调试选项，用于控制 Go 编译器优化行为，主要目的是禁用优化和内联，从而使生成的代码更适合调试。&lt;/p&gt;
+&lt;h3 id=&#34;参数解释&#34;&gt;参数解释&lt;/h3&gt;
+&lt;h4 id=&#34;-gcflags&#34;&gt;&lt;code&gt;-gcflags&lt;/code&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;全称&lt;/strong&gt;：Go Compiler Flags&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;作用&lt;/strong&gt;：用于传递给 Go 编译器的标志，影响编译过程的行为。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;格式&lt;/strong&gt;：&lt;code&gt;-gcflags=&#39;pattern=flags&#39;&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pattern&lt;/code&gt; 指定应用这些标志的包（例如 &lt;code&gt;main&lt;/code&gt;、&lt;code&gt;./...&lt;/code&gt; 或 &lt;code&gt;all&lt;/code&gt;）。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;flags&lt;/code&gt; 是具体的编译器参数。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;all&#34;&gt;&lt;code&gt;all&lt;/code&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;作用&lt;/strong&gt;：表示这些编译标志将应用于所有包（包括标准库和项目代码）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;示例&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-gcflags=all=-N -l&lt;/code&gt;：对所有包禁用优化和内联。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-gcflags=main=-N&lt;/code&gt;：只对 &lt;code&gt;main&lt;/code&gt; 包禁用优化。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;-n&#34;&gt;&lt;code&gt;-N&lt;/code&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;作用&lt;/strong&gt;：禁用优化。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;详细说明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;在调试中，禁用优化有助于让生成的代码更接近于源代码。&lt;/li&gt;
+&lt;li&gt;优化关闭后，变量的值和执行路径更容易在调试器中被准确跟踪。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;-l&#34;&gt;&lt;code&gt;-l&lt;/code&gt;&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;作用&lt;/strong&gt;：禁用函数内联（Inlining）。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;详细说明&lt;/strong&gt;：
+&lt;ul&gt;
+&lt;li&gt;函数内联是编译器将一个函数的调用替换为该函数的代码，从而提升运行时性能。&lt;/li&gt;
+&lt;li&gt;在调试中，内联可能导致函数调用栈不准确，变量信息丢失等问题。&lt;/li&gt;
+&lt;li&gt;禁用内联可以保留函数调用栈的完整性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;综合效果&#34;&gt;综合效果&lt;/h3&gt;
+&lt;p&gt;当使用 &lt;code&gt;-gcflags=&amp;quot;all=-N -l&amp;quot;&lt;/code&gt;：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;优化禁用&lt;/strong&gt;：编译器不再优化代码，源代码与生成的机器码保持较高的一致性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;内联禁用&lt;/strong&gt;：函数的调用关系在运行时完全保留，便于调试器追踪调用栈和变量信息。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;使用场景&#34;&gt;使用场景&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;调试&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;开启调试器（如 &lt;code&gt;dlv&lt;/code&gt;）时，为了能更准确地显示变量值和调用栈。&lt;/li&gt;
+&lt;li&gt;示例：
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;go build -gcflags&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;all=-N -l&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;dlv &lt;span class=&#34;nb&#34;&gt;exec&lt;/span&gt; ./your_program
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;定位问题&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果程序行为异常且难以调试，通过禁用优化和内联来简化调试过程。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;性能分析对比&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用禁用优化的版本对比优化后的版本，分析优化对性能的影响。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;注意事项&#34;&gt;注意事项&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;性能影响&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;禁用优化和内联后，生成的代码运行速度会变慢，特别是在大规模项目中。&lt;/li&gt;
+&lt;li&gt;不建议在生产环境中使用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;限制性&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;这些标志仅对编译的包有效，对预编译的标准库（如 &lt;code&gt;fmt&lt;/code&gt;、&lt;code&gt;net&lt;/code&gt;）无效，除非重新编译标准库。&lt;/li&gt;
+&lt;li&gt;重新编译标准库：
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;go install -a -gcflags&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;all=-N -l&amp;#34;&lt;/span&gt; std
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;示例&#34;&gt;示例&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 对当前项目禁用优化和内联&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;go build -gcflags&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;all=-N -l&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 对特定包禁用优化（如 `mypkg`）&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;go build -gcflags&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;mypkg=-N -l&amp;#34;&lt;/span&gt; ./mypkg
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 使用 Makefile 构建时禁用优化&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;make build &lt;span class=&#34;nv&#34;&gt;GCFLAGS&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;all=-N -l&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description>
+        </item>
+        <item>
         <title>如何使用 zeit.co 让百度收录 GitHub Pages 博客</title>
-        <link>http://localhost:1313/post/baidu-include-github-pages-blog/</link>
+        <link>https://arturiamu.github.io/post/baidu-include-github-pages-blog/</link>
         <pubDate>Mon, 08 Apr 2024 18:20:39 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/baidu-include-github-pages-blog/</guid>
+        <guid>https://arturiamu.github.io/post/baidu-include-github-pages-blog/</guid>
         <description>&lt;p&gt;很多程序员都会在 GitHub Pages 上搭建自己的个人博客用于分享和交流技术，对于个人博客，没有被搜索引擎收录的话，别人基本是是看不到的，再好的技术文无法被分享也是白搭。&lt;/p&gt;
 &lt;p&gt;基于 GitHub Pages 的个人博客， Google 收录非常及时全面。然而，到目前为止，GitHub 还是拒绝百度爬虫的访问，直接返回 403。
 官方给出原因是，百度爬虫爬得太狠，影响了 Github Pages 服务的正常使用。这就导致了，但凡在 Github Pages 搭建的个人博客，都无法被百度收录。&lt;/p&gt;
 &lt;h2 id=&#34;注册登录&#34;&gt;注册登录&lt;/h2&gt;
 &lt;p&gt;打开 &lt;a class=&#34;link&#34; href=&#34;https://vercel.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://vercel.com/&lt;/a&gt;，点击右上角的 &lt;code&gt;Log In&lt;/code&gt;, 使用 GitHub 账号登录。授予 zeit repo 的 read 权限&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/baidu-include-github-pages-blog/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img.png&#34;
 	width=&#34;1435&#34;
 	height=&#34;713&#34;
-	srcset=&#34;http://localhost:1313/post/baidu-include-github-pages-blog/img_hu9003262548402516594.png 480w, http://localhost:1313/post/baidu-include-github-pages-blog/img_hu7978027462648419143.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_hu9003262548402516594.png 480w, https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_hu7978027462648419143.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -32,10 +328,10 @@
 		data-flex-basis=&#34;483px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/baidu-include-github-pages-blog/img_1.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_1.png&#34;
 	width=&#34;1401&#34;
 	height=&#34;633&#34;
-	srcset=&#34;http://localhost:1313/post/baidu-include-github-pages-blog/img_1_hu16122988935319937587.png 480w, http://localhost:1313/post/baidu-include-github-pages-blog/img_1_hu3917126612179863445.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_1_hu16122988935319937587.png 480w, https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_1_hu3917126612179863445.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_1.png&#34;
@@ -48,10 +344,10 @@
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;部署项目&#34;&gt;部署项目&lt;/h2&gt;
 &lt;p&gt;导入 GitHub 博客 repo&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/baidu-include-github-pages-blog/img_2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_2.png&#34;
 	width=&#34;1319&#34;
 	height=&#34;547&#34;
-	srcset=&#34;http://localhost:1313/post/baidu-include-github-pages-blog/img_2_hu10640487879445112208.png 480w, http://localhost:1313/post/baidu-include-github-pages-blog/img_2_hu17677769467132474178.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_2_hu10640487879445112208.png 480w, https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_2_hu17677769467132474178.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_2.png&#34;
@@ -63,10 +359,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;等待部署成功&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/baidu-include-github-pages-blog/img_3.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_3.png&#34;
 	width=&#34;1300&#34;
 	height=&#34;585&#34;
-	srcset=&#34;http://localhost:1313/post/baidu-include-github-pages-blog/img_3_hu3734160720079402915.png 480w, http://localhost:1313/post/baidu-include-github-pages-blog/img_3_hu12178194329238511890.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_3_hu3734160720079402915.png 480w, https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_3_hu12178194329238511890.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_3.png&#34;
@@ -79,10 +375,10 @@
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;配置域名&#34;&gt;配置域名&lt;/h2&gt;
 &lt;p&gt;点击 &lt;code&gt;Domains&lt;/code&gt; 进入域名配置页面,添加域名&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/baidu-include-github-pages-blog/img_4.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_4.png&#34;
 	width=&#34;1324&#34;
 	height=&#34;636&#34;
-	srcset=&#34;http://localhost:1313/post/baidu-include-github-pages-blog/img_4_hu14491906665516322884.png 480w, http://localhost:1313/post/baidu-include-github-pages-blog/img_4_hu12519825092347063951.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_4_hu14491906665516322884.png 480w, https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_4_hu12519825092347063951.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_4.png&#34;
@@ -102,10 +398,10 @@
         </item>
         <item>
         <title>mysql general_log</title>
-        <link>http://localhost:1313/post/mysql-general-log/</link>
+        <link>https://arturiamu.github.io/post/mysql-general-log/</link>
         <pubDate>Thu, 12 Oct 2023 19:38:23 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/mysql-general-log/</guid>
+        <guid>https://arturiamu.github.io/post/mysql-general-log/</guid>
         <description>&lt;h2 id=&#34;关于mysql-general_log&#34;&gt;关于mysql general_log&lt;/h2&gt;
 &lt;p&gt;MySQL General Log（一般日志）是MySQL数据库的一种日志记录功能，用于记录数据库服务器上发生的所有操作。它可以记录包括连接、查询、事务等在内的所有操作。&lt;/p&gt;
 &lt;p&gt;General Log记录的内容包括：&lt;/p&gt;
@@ -153,10 +449,10 @@
         </item>
         <item>
         <title>ssh、scp、ftp、sftp命令详解</title>
-        <link>http://localhost:1313/post/ssh-scp-ftp-sftp/</link>
+        <link>https://arturiamu.github.io/post/ssh-scp-ftp-sftp/</link>
         <pubDate>Thu, 28 Sep 2023 16:05:04 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/ssh-scp-ftp-sftp/</guid>
+        <guid>https://arturiamu.github.io/post/ssh-scp-ftp-sftp/</guid>
         <description>&lt;h2 id=&#34;ssh&#34;&gt;ssh&lt;/h2&gt;
 &lt;p&gt;SSH（Secure Shell）是一种网络协议，用于在不安全的网络上安全地进行远程登录和执行命令。SSH提供了加密的连接，以防止敏感信息（如密码）被窃听。&lt;/p&gt;
 &lt;p&gt;SSH包括二个部分，服务端的SSHD（Secure Shell Daemon）和SSH客户端。我们通常所说的用SSH登录到某某主机，指的是用SSH客户端远程登录到某台主机（该主机运行了SSHD服务端程序）。&lt;/p&gt;
@@ -310,10 +606,10 @@
         </item>
         <item>
         <title>golang for循环的坑</title>
-        <link>http://localhost:1313/post/go-for-loop/</link>
+        <link>https://arturiamu.github.io/post/go-for-loop/</link>
         <pubDate>Tue, 26 Sep 2023 19:45:10 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/go-for-loop/</guid>
+        <guid>https://arturiamu.github.io/post/go-for-loop/</guid>
         <description>&lt;h2 id=&#34;遍历修改&#34;&gt;遍历修改&lt;/h2&gt;
 &lt;p&gt;这是初学者最容易犯的问题，当我们试图修改切片中的数据时，直接使用&lt;code&gt;for range&lt;/code&gt;遍历数据并修改&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -649,10 +945,10 @@
         </item>
         <item>
         <title>hugo stack 主题美化</title>
-        <link>http://localhost:1313/post/stack-beautify/</link>
+        <link>https://arturiamu.github.io/post/stack-beautify/</link>
         <pubDate>Tue, 19 Sep 2023 15:51:30 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/stack-beautify/</guid>
+        <guid>https://arturiamu.github.io/post/stack-beautify/</guid>
         <description>&lt;h2 id=&#34;修改字体&#34;&gt;修改字体&lt;/h2&gt;
 &lt;p&gt;这里使用了&lt;a class=&#34;link&#34; href=&#34;https://www.shimoko.com/p/stcak-setting/#%E5%AD%97%E4%BD%93&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Shimoko&lt;/a&gt;的鸿蒙字体CDN&lt;/p&gt;
@@ -701,10 +997,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;效果对比&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/stack-beautify/img_2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img_2.png&#34;
 	width=&#34;146&#34;
 	height=&#34;334&#34;
-	srcset=&#34;http://localhost:1313/post/stack-beautify/img_2_hu9260501473807524024.png 480w, http://localhost:1313/post/stack-beautify/img_2_hu15727098611573318812.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_2_hu9260501473807524024.png 480w, https://arturiamu.github.io/post/stack-beautify/img_2_hu15727098611573318812.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -712,10 +1008,10 @@
 		data-flex-grow=&#34;43&#34;
 		data-flex-basis=&#34;104px&#34;
 	
-&gt; &lt;img src=&#34;http://localhost:1313/post/stack-beautify/img_3.png&#34;
+&gt; &lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img_3.png&#34;
 	width=&#34;145&#34;
 	height=&#34;340&#34;
-	srcset=&#34;http://localhost:1313/post/stack-beautify/img_3_hu17220670485586344382.png 480w, http://localhost:1313/post/stack-beautify/img_3_hu384025827628770624.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_3_hu17220670485586344382.png 480w, https://arturiamu.github.io/post/stack-beautify/img_3_hu384025827628770624.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -773,10 +1069,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;效果对比&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/stack-beautify/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img.png&#34;
 	width=&#34;870&#34;
 	height=&#34;509&#34;
-	srcset=&#34;http://localhost:1313/post/stack-beautify/img_hu8020039928315734236.png 480w, http://localhost:1313/post/stack-beautify/img_hu7861386442757729006.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_hu8020039928315734236.png 480w, https://arturiamu.github.io/post/stack-beautify/img_hu7861386442757729006.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -784,10 +1080,10 @@
 		data-flex-grow=&#34;170&#34;
 		data-flex-basis=&#34;410px&#34;
 	
-&gt; &lt;img src=&#34;http://localhost:1313/post/stack-beautify/img_1.png&#34;
+&gt; &lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img_1.png&#34;
 	width=&#34;849&#34;
 	height=&#34;465&#34;
-	srcset=&#34;http://localhost:1313/post/stack-beautify/img_1_hu3851487916782390217.png 480w, http://localhost:1313/post/stack-beautify/img_1_hu533313663590826237.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_1_hu3851487916782390217.png 480w, https://arturiamu.github.io/post/stack-beautify/img_1_hu533313663590826237.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1008,10 +1304,10 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;其他语言同理&lt;/p&gt;
 &lt;p&gt;效果展示&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/stack-beautify/img_4.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img_4.png&#34;
 	width=&#34;541&#34;
 	height=&#34;158&#34;
-	srcset=&#34;http://localhost:1313/post/stack-beautify/img_4_hu10705073135081473524.png 480w, http://localhost:1313/post/stack-beautify/img_4_hu1073321432962177831.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_4_hu10705073135081473524.png 480w, https://arturiamu.github.io/post/stack-beautify/img_4_hu1073321432962177831.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1019,10 +1315,10 @@
 		data-flex-grow=&#34;342&#34;
 		data-flex-basis=&#34;821px&#34;
 	
-&gt; &lt;img src=&#34;http://localhost:1313/post/stack-beautify/img_5.png&#34;
+&gt; &lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img_5.png&#34;
 	width=&#34;341&#34;
 	height=&#34;135&#34;
-	srcset=&#34;http://localhost:1313/post/stack-beautify/img_5_hu8220105518188396365.png 480w, http://localhost:1313/post/stack-beautify/img_5_hu2233274531212727437.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_5_hu8220105518188396365.png 480w, https://arturiamu.github.io/post/stack-beautify/img_5_hu2233274531212727437.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1074,10 +1370,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;效果展示&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/stack-beautify/img_6.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img_6.png&#34;
 	width=&#34;410&#34;
 	height=&#34;365&#34;
-	srcset=&#34;http://localhost:1313/post/stack-beautify/img_6_hu10876588296796887458.png 480w, http://localhost:1313/post/stack-beautify/img_6_hu3993898740980489949.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_6_hu10876588296796887458.png 480w, https://arturiamu.github.io/post/stack-beautify/img_6_hu3993898740980489949.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -1090,10 +1386,10 @@
         </item>
         <item>
         <title>gitlab贡献记录同步到github</title>
-        <link>http://localhost:1313/post/gitlab2github/</link>
+        <link>https://arturiamu.github.io/post/gitlab2github/</link>
         <pubDate>Fri, 15 Sep 2023 13:47:01 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/gitlab2github/</guid>
+        <guid>https://arturiamu.github.io/post/gitlab2github/</guid>
         <description>&lt;p&gt;由于公司使用自己的git服务进行代码管理，导致很长时间我的github都没有贡献记录，现在让我们来试试将gitlab的贡献记录导出并提交到github。&lt;/p&gt;
 &lt;p&gt;这里我使用&lt;code&gt;import-gitlab-commits&lt;/code&gt;工具来操作，import-gitlab-commits是一个用golang编写的工具，可以非常简单的将gitlab贡献记录导出&lt;/p&gt;
 &lt;h2 id=&#34;操作步骤&#34;&gt;操作步骤&lt;/h2&gt;
@@ -1144,10 +1440,10 @@
         </item>
         <item>
         <title>gin中间件统一返回结果、处理错误</title>
-        <link>http://localhost:1313/post/gin-global-err/</link>
+        <link>https://arturiamu.github.io/post/gin-global-err/</link>
         <pubDate>Wed, 13 Sep 2023 22:37:12 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/gin-global-err/</guid>
+        <guid>https://arturiamu.github.io/post/gin-global-err/</guid>
         <description>&lt;h2 id=&#34;现状及问题&#34;&gt;现状及问题&lt;/h2&gt;
 &lt;p&gt;在golang开发中我们经常会使用gin作为web框架，gin一直以高性能和简单著称，并且有十分完善的官方文档。然而gin的错误处理却一直以来都被人吐槽，
 正常情况下我们在handler层需要根据service层返回的结果给前端相应的响应内容，如下：&lt;/p&gt;
@@ -1608,10 +1904,10 @@
         </item>
         <item>
         <title>代码抽象艺术（bushi</title>
-        <link>http://localhost:1313/post/code-abstract/</link>
+        <link>https://arturiamu.github.io/post/code-abstract/</link>
         <pubDate>Wed, 16 Aug 2023 11:17:42 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/code-abstract/</guid>
+        <guid>https://arturiamu.github.io/post/code-abstract/</guid>
         <description>&lt;p&gt;最近偶然刷到了B站UP主 &lt;a class=&#34;link&#34; href=&#34;https://space.bilibili.com/231911980&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Erik_Tse&lt;/a&gt; 的视频，了解到了一些&lt;strong&gt;代码抽象艺术&lt;/strong&gt;，感觉很有意思，
 所以特地开篇博客总结记录一下，欢迎大家补充~&lt;/p&gt;
@@ -1874,10 +2170,10 @@
         </item>
         <item>
         <title>博客搜索引擎优化 SEO</title>
-        <link>http://localhost:1313/post/blog-seo/</link>
+        <link>https://arturiamu.github.io/post/blog-seo/</link>
         <pubDate>Wed, 09 Aug 2023 16:17:15 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/blog-seo/</guid>
+        <guid>https://arturiamu.github.io/post/blog-seo/</guid>
         <description>&lt;h2 id=&#34;google&#34;&gt;Google&lt;/h2&gt;
 &lt;p&gt;1、添加站点资源&lt;/p&gt;
 &lt;p&gt;打开&lt;a class=&#34;link&#34; href=&#34;https://search.google.com/search-console/sitemaps?resource_id=https%3A%2F%2Fblog.mulinbiao.com%2F&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -2420,10 +2716,10 @@
         </item>
         <item>
         <title>MySQL主从同步集群搭建</title>
-        <link>http://localhost:1313/post/mysql-cluster/</link>
+        <link>https://arturiamu.github.io/post/mysql-cluster/</link>
         <pubDate>Fri, 21 Jul 2023 16:48:07 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/mysql-cluster/</guid>
+        <guid>https://arturiamu.github.io/post/mysql-cluster/</guid>
         <description>&lt;h2 id=&#34;为什么需要搭建集群&#34;&gt;为什么需要搭建集群&lt;/h2&gt;
 &lt;p&gt;搭建主从同步集群可以实现MySQL数据库的高可用、可扩展和读写分离，提升系统的性能和稳定性。这在对数据库的可靠性、
 并发读写能力和扩展性有较高要求的业务场景中尤为重要。&lt;/p&gt;
@@ -2571,10 +2867,10 @@
         </item>
         <item>
         <title>vue axios 跨域问题</title>
-        <link>http://localhost:1313/post/vue-axios-cors/</link>
+        <link>https://arturiamu.github.io/post/vue-axios-cors/</link>
         <pubDate>Fri, 23 Jun 2023 16:37:15 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/vue-axios-cors/</guid>
+        <guid>https://arturiamu.github.io/post/vue-axios-cors/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/article/details/125134439&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;解决 vue+axios+sprigboot 前后端分离项目 跨域请求资源和获取session不一致问题&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;直接上解决方法&#34;&gt;直接上解决方法&lt;/h2&gt;
@@ -2761,10 +3057,10 @@
         </item>
         <item>
         <title>springboot 普通类自动注入mapper</title>
-        <link>http://localhost:1313/post/spring-boot-reject-mapper/</link>
+        <link>https://arturiamu.github.io/post/spring-boot-reject-mapper/</link>
         <pubDate>Fri, 23 Jun 2023 16:28:51 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/spring-boot-reject-mapper/</guid>
+        <guid>https://arturiamu.github.io/post/spring-boot-reject-mapper/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/article/details/125187441&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;springboot 普通类自动注入mapper&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;解决方法&#34;&gt;解决方法&lt;/h2&gt;
@@ -2816,10 +3112,10 @@
         </item>
         <item>
         <title>蓝桥杯 Python 语法</title>
-        <link>http://localhost:1313/post/lq-py-grammar/</link>
+        <link>https://arturiamu.github.io/post/lq-py-grammar/</link>
         <pubDate>Fri, 23 Jun 2023 14:21:55 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/lq-py-grammar/</guid>
+        <guid>https://arturiamu.github.io/post/lq-py-grammar/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
@@ -3017,10 +3313,10 @@ map函数可以直接使用列表生成来替代
         </item>
         <item>
         <title>蓝桥杯 Python B组-代码模板</title>
-        <link>http://localhost:1313/post/lq-py-code-tp/</link>
+        <link>https://arturiamu.github.io/post/lq-py-code-tp/</link>
         <pubDate>Fri, 23 Jun 2023 14:08:55 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/lq-py-code-tp/</guid>
+        <guid>https://arturiamu.github.io/post/lq-py-code-tp/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
@@ -3314,10 +3610,10 @@ map函数可以直接使用列表生成来替代
         </item>
         <item>
         <title>蓝桥杯 Python B组-Python基础</title>
-        <link>http://localhost:1313/post/lq-py-base/</link>
+        <link>https://arturiamu.github.io/post/lq-py-base/</link>
         <pubDate>Fri, 23 Jun 2023 14:05:35 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/lq-py-base/</guid>
+        <guid>https://arturiamu.github.io/post/lq-py-base/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
@@ -3667,10 +3963,10 @@ map函数可以直接使用列表生成来替代
         </item>
         <item>
         <title>蓝桥杯 Python B组-说明</title>
-        <link>http://localhost:1313/post/lq-py-b/</link>
+        <link>https://arturiamu.github.io/post/lq-py-b/</link>
         <pubDate>Fri, 23 Jun 2023 13:17:35 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/lq-py-b/</guid>
+        <guid>https://arturiamu.github.io/post/lq-py-b/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
@@ -3678,10 +3974,10 @@ map函数可以直接使用列表生成来替代
 &lt;p&gt;比赛基本上是零基础开始准备的，省赛之后因为项目比较忙，自己也是一心摆烂，直接没有准备国赛，到国赛时候写个dfs都要推半天了。其实还是有点遗憾的，当初要是好好准备一个月说不定国一就有了。&lt;/p&gt;
 &lt;p&gt;写这个文集主要是因为当初本人备赛时候基本没什么Python组的经验贴，有一些题解还需要收费，确实很不容易。（因为时间关系，这里的题解就随缘更了）&lt;/p&gt;
 &lt;p&gt;所以想把自己的经验给大家分享，希望小白可以少走一些弯路！！！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/lq-py-b/s1.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/lq-py-b/s1.jpg&#34;
 	width=&#34;2480&#34;
 	height=&#34;3508&#34;
-	srcset=&#34;http://localhost:1313/post/lq-py-b/s1_hu6601788945790401274.jpg 480w, http://localhost:1313/post/lq-py-b/s1_hu16353349185597588661.jpg 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/lq-py-b/s1_hu6601788945790401274.jpg 480w, https://arturiamu.github.io/post/lq-py-b/s1_hu16353349185597588661.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;省一&#34;
@@ -3691,10 +3987,10 @@ map函数可以直接使用列表生成来替代
 		data-flex-grow=&#34;70&#34;
 		data-flex-basis=&#34;169px&#34;
 	
-&gt; &lt;img src=&#34;http://localhost:1313/post/lq-py-b/g2.jpg&#34;
+&gt; &lt;img src=&#34;https://arturiamu.github.io/post/lq-py-b/g2.jpg&#34;
 	width=&#34;2480&#34;
 	height=&#34;3508&#34;
-	srcset=&#34;http://localhost:1313/post/lq-py-b/g2_hu8509890670221736829.jpg 480w, http://localhost:1313/post/lq-py-b/g2_hu13231110407914630495.jpg 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/lq-py-b/g2_hu8509890670221736829.jpg 480w, https://arturiamu.github.io/post/lq-py-b/g2_hu13231110407914630495.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;国二&#34;
@@ -3719,10 +4015,10 @@ map函数可以直接使用列表生成来替代
         </item>
         <item>
         <title>博客bug日志</title>
-        <link>http://localhost:1313/post/blog-bug-log/</link>
+        <link>https://arturiamu.github.io/post/blog-bug-log/</link>
         <pubDate>Sun, 18 Jun 2023 13:14:35 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/blog-bug-log/</guid>
+        <guid>https://arturiamu.github.io/post/blog-bug-log/</guid>
         <description>&lt;h2 id=&#34;bug日志&#34;&gt;bug日志&lt;/h2&gt;
 &lt;h3 id=&#34;2023-06-20-163034&#34;&gt;2023-06-20-16:30:34&lt;/h3&gt;
 &lt;h4 id=&#34;bug描述&#34;&gt;bug描述&lt;/h4&gt;
@@ -3741,10 +4037,10 @@ map函数可以直接使用列表生成来替代
         </item>
         <item>
         <title>博客说明</title>
-        <link>http://localhost:1313/post/blog-description/</link>
+        <link>https://arturiamu.github.io/post/blog-description/</link>
         <pubDate>Sun, 18 Jun 2023 12:25:48 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/blog-description/</guid>
+        <guid>https://arturiamu.github.io/post/blog-description/</guid>
         <description>&lt;h2 id=&#34;前序&#34;&gt;前序&lt;/h2&gt;
 &lt;p&gt;很早之前就很想要开个自己的博客， 但是一直都比较忙（lǎn），趁着临近毕业的空隙，才终于决定抽出时间开始实现。开这个博客的主要目的有如下两个：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;记录生活和思考&lt;/strong&gt;&lt;/p&gt;

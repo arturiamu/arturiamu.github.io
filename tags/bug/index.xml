@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Bug on 木林彪的个人博客</title>
-        <link>http://localhost:1313/tags/bug/</link>
+        <link>https://arturiamu.github.io/tags/bug/</link>
         <description>Recent content in Bug on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Tue, 19 Sep 2023 15:51:30 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/bug/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 19 Sep 2023 15:51:30 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/tags/bug/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>hugo stack 主题美化</title>
-        <link>http://localhost:1313/post/stack-beautify/</link>
+        <link>https://arturiamu.github.io/post/stack-beautify/</link>
         <pubDate>Tue, 19 Sep 2023 15:51:30 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/stack-beautify/</guid>
+        <guid>https://arturiamu.github.io/post/stack-beautify/</guid>
         <description>&lt;h2 id=&#34;修改字体&#34;&gt;修改字体&lt;/h2&gt;
 &lt;p&gt;这里使用了&lt;a class=&#34;link&#34; href=&#34;https://www.shimoko.com/p/stcak-setting/#%E5%AD%97%E4%BD%93&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Shimoko&lt;/a&gt;的鸿蒙字体CDN&lt;/p&gt;
@@ -60,10 +60,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;效果对比&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/stack-beautify/img_2.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img_2.png&#34;
 	width=&#34;146&#34;
 	height=&#34;334&#34;
-	srcset=&#34;http://localhost:1313/post/stack-beautify/img_2_hu9260501473807524024.png 480w, http://localhost:1313/post/stack-beautify/img_2_hu15727098611573318812.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_2_hu9260501473807524024.png 480w, https://arturiamu.github.io/post/stack-beautify/img_2_hu15727098611573318812.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -71,10 +71,10 @@
 		data-flex-grow=&#34;43&#34;
 		data-flex-basis=&#34;104px&#34;
 	
-&gt; &lt;img src=&#34;http://localhost:1313/post/stack-beautify/img_3.png&#34;
+&gt; &lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img_3.png&#34;
 	width=&#34;145&#34;
 	height=&#34;340&#34;
-	srcset=&#34;http://localhost:1313/post/stack-beautify/img_3_hu17220670485586344382.png 480w, http://localhost:1313/post/stack-beautify/img_3_hu384025827628770624.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_3_hu17220670485586344382.png 480w, https://arturiamu.github.io/post/stack-beautify/img_3_hu384025827628770624.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -132,10 +132,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;效果对比&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/stack-beautify/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img.png&#34;
 	width=&#34;870&#34;
 	height=&#34;509&#34;
-	srcset=&#34;http://localhost:1313/post/stack-beautify/img_hu8020039928315734236.png 480w, http://localhost:1313/post/stack-beautify/img_hu7861386442757729006.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_hu8020039928315734236.png 480w, https://arturiamu.github.io/post/stack-beautify/img_hu7861386442757729006.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -143,10 +143,10 @@
 		data-flex-grow=&#34;170&#34;
 		data-flex-basis=&#34;410px&#34;
 	
-&gt; &lt;img src=&#34;http://localhost:1313/post/stack-beautify/img_1.png&#34;
+&gt; &lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img_1.png&#34;
 	width=&#34;849&#34;
 	height=&#34;465&#34;
-	srcset=&#34;http://localhost:1313/post/stack-beautify/img_1_hu3851487916782390217.png 480w, http://localhost:1313/post/stack-beautify/img_1_hu533313663590826237.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_1_hu3851487916782390217.png 480w, https://arturiamu.github.io/post/stack-beautify/img_1_hu533313663590826237.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -367,10 +367,10 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;其他语言同理&lt;/p&gt;
 &lt;p&gt;效果展示&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/stack-beautify/img_4.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img_4.png&#34;
 	width=&#34;541&#34;
 	height=&#34;158&#34;
-	srcset=&#34;http://localhost:1313/post/stack-beautify/img_4_hu10705073135081473524.png 480w, http://localhost:1313/post/stack-beautify/img_4_hu1073321432962177831.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_4_hu10705073135081473524.png 480w, https://arturiamu.github.io/post/stack-beautify/img_4_hu1073321432962177831.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -378,10 +378,10 @@
 		data-flex-grow=&#34;342&#34;
 		data-flex-basis=&#34;821px&#34;
 	
-&gt; &lt;img src=&#34;http://localhost:1313/post/stack-beautify/img_5.png&#34;
+&gt; &lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img_5.png&#34;
 	width=&#34;341&#34;
 	height=&#34;135&#34;
-	srcset=&#34;http://localhost:1313/post/stack-beautify/img_5_hu8220105518188396365.png 480w, http://localhost:1313/post/stack-beautify/img_5_hu2233274531212727437.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_5_hu8220105518188396365.png 480w, https://arturiamu.github.io/post/stack-beautify/img_5_hu2233274531212727437.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -433,10 +433,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;效果展示&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/stack-beautify/img_6.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img_6.png&#34;
 	width=&#34;410&#34;
 	height=&#34;365&#34;
-	srcset=&#34;http://localhost:1313/post/stack-beautify/img_6_hu10876588296796887458.png 480w, http://localhost:1313/post/stack-beautify/img_6_hu3993898740980489949.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_6_hu10876588296796887458.png 480w, https://arturiamu.github.io/post/stack-beautify/img_6_hu3993898740980489949.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -449,10 +449,10 @@
         </item>
         <item>
         <title>博客bug日志</title>
-        <link>http://localhost:1313/post/blog-bug-log/</link>
+        <link>https://arturiamu.github.io/post/blog-bug-log/</link>
         <pubDate>Sun, 18 Jun 2023 13:14:35 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/blog-bug-log/</guid>
+        <guid>https://arturiamu.github.io/post/blog-bug-log/</guid>
         <description>&lt;h2 id=&#34;bug日志&#34;&gt;bug日志&lt;/h2&gt;
 &lt;h3 id=&#34;2023-06-20-163034&#34;&gt;2023-06-20-16:30:34&lt;/h3&gt;
 &lt;h4 id=&#34;bug描述&#34;&gt;bug描述&lt;/h4&gt;

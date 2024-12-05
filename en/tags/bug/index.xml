@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Bug on arturiamu&#39;s blog</title>
-        <link>http://localhost:1313/en/tags/bug/</link>
+        <link>https://arturiamu.github.io/en/tags/bug/</link>
         <description>Recent content in Bug on arturiamu&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Sun, 18 Jun 2023 13:14:35 +0800</lastBuildDate><atom:link href="http://localhost:1313/en/tags/bug/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 18 Jun 2023 13:14:35 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/en/tags/bug/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Blog bug log</title>
-        <link>http://localhost:1313/en/post/blog-bug-log/</link>
+        <link>https://arturiamu.github.io/en/post/blog-bug-log/</link>
         <pubDate>Sun, 18 Jun 2023 13:14:35 +0800</pubDate>
         
-        <guid>http://localhost:1313/en/post/blog-bug-log/</guid>
+        <guid>https://arturiamu.github.io/en/post/blog-bug-log/</guid>
         <description>&lt;h2 id=&#34;bug-log&#34;&gt;bug log&lt;/h2&gt;
 &lt;h3 id=&#34;2023-06-20-163034&#34;&gt;2023-06-20 16:30:34&lt;/h3&gt;
 &lt;h4 id=&#34;bug-description&#34;&gt;bug description&lt;/h4&gt;

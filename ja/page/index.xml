@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Pages on ムー・リンビアオの個人ブログ</title>
-        <link>http://localhost:1313/ja/page/</link>
+        <link>https://arturiamu.github.io/ja/page/</link>
         <description>Recent content in Pages on ムー・リンビアオの個人ブログ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Wed, 21 Jun 2023 10:35:25 +0800</lastBuildDate><atom:link href="http://localhost:1313/ja/page/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 21 Jun 2023 10:35:25 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/ja/page/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>について</title>
-        <link>http://localhost:1313/ja/about/</link>
+        <link>https://arturiamu.github.io/ja/about/</link>
         <pubDate>Wed, 21 Jun 2023 10:35:25 +0800</pubDate>
         
-        <guid>http://localhost:1313/ja/about/</guid>
-        <description>&lt;img src="http://localhost:1313/about/a.png" alt="Featured image of post について" /&gt;&lt;h2 id=&#34;著者について&#34;&gt;著者について&lt;/h2&gt;
+        <guid>https://arturiamu.github.io/ja/about/</guid>
+        <description>&lt;img src="https://arturiamu.github.io/about/a.png" alt="Featured image of post について" /&gt;&lt;h2 id=&#34;著者について&#34;&gt;著者について&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;arturiamu 木林彪&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;昆明科技大学でソフトウェア工学を専攻する学部生&lt;/p&gt;
 &lt;p&gt;IT 担当者&lt;/p&gt;
@@ -109,35 +109,35 @@
         </item>
         <item>
         <title>アーカイブ</title>
-        <link>http://localhost:1313/ja/archives/</link>
+        <link>https://arturiamu.github.io/ja/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/ja/archives/</guid>
+        <guid>https://arturiamu.github.io/ja/archives/</guid>
         <description></description>
         </item>
         <item>
         <title>メッセージ</title>
-        <link>http://localhost:1313/ja/message/</link>
+        <link>https://arturiamu.github.io/ja/message/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/ja/message/</guid>
+        <guid>https://arturiamu.github.io/ja/message/</guid>
         <description>&lt;h2 id=&#34;自由に話してください&#34;&gt;自由に話してください&lt;/h2&gt;
 </description>
         </item>
         <item>
         <title>リンク</title>
-        <link>http://localhost:1313/ja/links/</link>
+        <link>https://arturiamu.github.io/ja/links/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/ja/links/</guid>
-        <description>&lt;img src="http://localhost:1313/links/l.png" alt="Featured image of post リンク" /&gt;</description>
+        <guid>https://arturiamu.github.io/ja/links/</guid>
+        <description>&lt;img src="https://arturiamu.github.io/links/l.png" alt="Featured image of post リンク" /&gt;</description>
         </item>
         <item>
         <title>検索</title>
-        <link>http://localhost:1313/ja/search/</link>
+        <link>https://arturiamu.github.io/ja/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>http://localhost:1313/ja/search/</guid>
+        <guid>https://arturiamu.github.io/ja/search/</guid>
         <description></description>
         </item>
         
