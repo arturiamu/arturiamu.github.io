@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://arturiamu.github.io/post/blog-seo/'>
 
-<link rel="stylesheet" href="/scss/style.min.5e3814b8c20dd362819d8f0b1c0554df211090883babaeea35913b6b16121b26.css"><meta property='og:title' content='博客搜索引擎优化 SEO'>
+<link rel="stylesheet" href="/scss/style.min.3675979ff5878c10f7262acd791ef58708b6d69d8c5aa369aa10383c0e407426.css"><meta property='og:title' content='博客搜索引擎优化 SEO'>
 <meta property='og:description' content='使用Google Analytics、Bing Webmasters Tools和百度统计加速搜索引擎对博客网页的收录'>
 <meta property='og:url' content='https://arturiamu.github.io/post/blog-seo/'>
 <meta property='og:site_name' content='木林彪的个人博客'>
@@ -91,7 +91,7 @@
                     
                     
                         
-                        <img src="/img/avatar1_hu16021438302843842317.jpg" width="300"
+                        <img src="/img/avatar1_hu_d07cbf9157503b9a.jpg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -823,13 +823,13 @@
 </span></span><span class="line"><span class="cl">	<span class="nx">bingApi</span>   <span class="p">=</span> <span class="s">&#34;https://ssl.bing.com/webmaster/api.svc/json/SubmitUrlbatch?apikey={{your_api_key}}&#34;</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">baiduApi</span>  <span class="p">=</span> <span class="s">&#34;http://data.zz.baidu.com/urls?site={{your_site_url}}&amp;token={{your token}}&#34;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">//其他语言，看自己是否需要
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">zhFile</span> <span class="p">=</span> <span class="s">&#34;xxx/sitemap.xml&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//其他语言，看自己是否需要</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">zhFile</span> <span class="p">=</span> <span class="s">&#34;xxx/sitemap.xml&#34;</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">jaFile</span> <span class="p">=</span> <span class="s">&#34;xxx/sitemap.xml&#34;</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">enFile</span> <span class="p">=</span> <span class="s">&#34;xxx/sitemap.xml&#34;</span>
 </span></span><span class="line"><span class="cl">	
-</span></span><span class="line"><span class="cl">	<span class="c1">//简单保存提交记录，避免重复提交
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">databases</span> <span class="p">=</span> <span class="s">&#34;url.db&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//简单保存提交记录，避免重复提交</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">databases</span> <span class="p">=</span> <span class="s">&#34;url.db&#34;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="nx">siteGoogle</span> <span class="p">=</span> <span class="mi">0</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">siteBing</span>   <span class="p">=</span> <span class="mi">1</span>
@@ -858,8 +858,8 @@
 </span></span><span class="line"><span class="cl">	<span class="nf">baiduCommit</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 使用 ping 的方式请求谷歌抓取站点数据
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">googleCommit</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 使用 ping 的方式请求谷歌抓取站点数据</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">googleCommit</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">response</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="nx">googleApi</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;google commit err: &#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
@@ -873,8 +873,8 @@
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 每天10000个url，没有月配额
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">bingCommit</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 每天10000个url，没有月配额</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">bingCommit</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">urls</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nf">getUrlsFromXml</span><span class="p">(</span><span class="s">&#34;&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;bing commit err: &#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
@@ -947,10 +947,10 @@
 </span></span><span class="line"><span class="cl">		<span class="k">return</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">//request.Header.Set(&#34;User-Agent&#34;, &#34;curl/7.12.1&#34;)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//request.Header.Set(&#34;Host&#34;, &#34;data.zz.baidu.com&#34;)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">//request.Header.Set(&#34;Content-Length&#34;, &#34;83&#34;)
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">request</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nf">Set</span><span class="p">(</span><span class="s">&#34;Content-Type&#34;</span><span class="p">,</span> <span class="s">&#34;text/plain&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//request.Header.Set(&#34;User-Agent&#34;, &#34;curl/7.12.1&#34;)</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//request.Header.Set(&#34;Host&#34;, &#34;data.zz.baidu.com&#34;)</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//request.Header.Set(&#34;Content-Length&#34;, &#34;83&#34;)</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">request</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nf">Set</span><span class="p">(</span><span class="s">&#34;Content-Type&#34;</span><span class="p">,</span> <span class="s">&#34;text/plain&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="nx">client</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">Client</span><span class="p">{}</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">response</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nf">Do</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span>
@@ -975,8 +975,8 @@
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 去重
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">urlDeduplication</span><span class="p">(</span><span class="nx">us</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">site</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">urls</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 去重</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">urlDeduplication</span><span class="p">(</span><span class="nx">us</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">site</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="nx">urls</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">lst</span> <span class="p">[]</span><span class="nx">Url</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">err</span> <span class="p">=</span> <span class="nx">db</span><span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="s">&#34;site = ?&#34;</span><span class="p">,</span> <span class="nx">site</span><span class="p">).</span><span class="nf">Find</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">lst</span><span class="p">).</span><span class="nx">Error</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
@@ -1005,9 +1005,9 @@
 </span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// 由于使用blog.mulinbiao.com指向arturiamu.github.io
-</span></span></span><span class="line"><span class="cl"><span class="c1">// 百度只能提交blog.mulinbiao.com，需要做转换，看自己博客需求
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kd">func</span> <span class="nf">getUrlsFromXml</span><span class="p">(</span><span class="nx">domain</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">urls</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 由于使用blog.mulinbiao.com指向arturiamu.github.io</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 百度只能提交blog.mulinbiao.com，需要做转换，看自己博客需求</span>
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">getUrlsFromXml</span><span class="p">(</span><span class="nx">domain</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="nx">urls</span> <span class="p">[]</span><span class="kt">string</span><span class="p">,</span> <span class="nx">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">fzh</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">ReadFile</span><span class="p">(</span><span class="nx">zhFile</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;open file err: &#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
@@ -1026,8 +1026,8 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">arr</span> <span class="p">[]</span><span class="kt">string</span>
 </span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">mp</span> <span class="p">=</span> <span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">struct</span><span class="p">{})</span>
-</span></span><span class="line"><span class="cl">	<span class="c1">//使用正则表达式简单从xml中提取url，可以优化
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">r</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nf">MustCompile</span><span class="p">(</span><span class="s">`\bhttps?://\S+\b`</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">//使用正则表达式简单从xml中提取url，可以优化</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">r</span> <span class="o">:=</span> <span class="nx">regexp</span><span class="p">.</span><span class="nf">MustCompile</span><span class="p">(</span><span class="s">`\bhttps?://\S+\b`</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">arr</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">r</span><span class="p">.</span><span class="nf">FindAllString</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">fzh</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">...</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">arr</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">r</span><span class="p">.</span><span class="nf">FindAllString</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">fja</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">...</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">arr</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">r</span><span class="p">.</span><span class="nf">FindAllString</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">fen</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">...</span><span class="p">)</span>
@@ -1230,7 +1230,7 @@
         
             2023 - 
         
-        2024 木林彪的个人博客
+        2025 木林彪的个人博客
     </section>
 
     <section class="count_info">
@@ -1318,7 +1318,7 @@
             
             
             
-            共发表 31 篇文章 · 总计 82.93 k 字
+            共发表 31 篇文章 · 总计 82.92 k 字
         </div>
         <div>
             <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>

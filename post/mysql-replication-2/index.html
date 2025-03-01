@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://arturiamu.github.io/post/mysql-replication-2/'>
 
-<link rel="stylesheet" href="/scss/style.min.5e3814b8c20dd362819d8f0b1c0554df211090883babaeea35913b6b16121b26.css"><meta property='og:title' content='深入MySQL复制(二)：基于GTID复制 '>
+<link rel="stylesheet" href="/scss/style.min.3675979ff5878c10f7262acd791ef58708b6d69d8c5aa369aa10383c0e407426.css"><meta property='og:title' content='深入MySQL复制(二)：基于GTID复制 '>
 <meta property='og:description' content='详细介绍MySQL复制相关的内容，包括基本概念、复制原理、如何配置不同类型的复制(传统复制)等'>
 <meta property='og:url' content='https://arturiamu.github.io/post/mysql-replication-2/'>
 <meta property='og:site_name' content='木林彪的个人博客'>
@@ -91,7 +91,7 @@
                     
                     
                         
-                        <img src="/img/avatar1_hu16021438302843842317.jpg" width="300"
+                        <img src="/img/avatar1_hu_d07cbf9157503b9a.jpg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -595,27 +595,27 @@
 <div class="table-wrapper"><table>
   <thead>
       <tr>
-          <th style="text-align: left">主机IP</th>
-          <th style="text-align: left">OS版本</th>
-          <th style="text-align: left">MySQL版本</th>
-          <th style="text-align: left">角色（master/slave)</th>
-          <th style="text-align: left">数据状态</th>
+          <th>主机IP</th>
+          <th>OS版本</th>
+          <th>MySQL版本</th>
+          <th>角色（master/slave)</th>
+          <th>数据状态</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">192.168.100.21</td>
-          <td style="text-align: left">centos 7</td>
-          <td style="text-align: left">MySQL 5.7.22</td>
-          <td style="text-align: left">master_gtid</td>
-          <td style="text-align: left">全新实例</td>
+          <td>192.168.100.21</td>
+          <td>centos 7</td>
+          <td>MySQL 5.7.22</td>
+          <td>master_gtid</td>
+          <td>全新实例</td>
       </tr>
       <tr>
-          <td style="text-align: left">192.168.100.22</td>
-          <td style="text-align: left">centos 7</td>
-          <td style="text-align: left">MySQL 5.7.22</td>
-          <td style="text-align: left">slave1_gtid</td>
-          <td style="text-align: left">全新实例</td>
+          <td>192.168.100.22</td>
+          <td>centos 7</td>
+          <td>MySQL 5.7.22</td>
+          <td>slave1_gtid</td>
+          <td>全新实例</td>
       </tr>
   </tbody>
 </table></div>
@@ -948,34 +948,34 @@
 <div class="table-wrapper"><table>
   <thead>
       <tr>
-          <th style="text-align: left">主机IP</th>
-          <th style="text-align: left">OS版本</th>
-          <th style="text-align: left">MySQL版本</th>
-          <th style="text-align: left">角色（master/slave)</th>
-          <th style="text-align: left">数据状态</th>
+          <th>主机IP</th>
+          <th>OS版本</th>
+          <th>MySQL版本</th>
+          <th>角色（master/slave)</th>
+          <th>数据状态</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">192.168.100.21</td>
-          <td style="text-align: left">centos 7</td>
-          <td style="text-align: left">MySQL 5.7.22</td>
-          <td style="text-align: left">master_gtid</td>
-          <td style="text-align: left">已purge过binlog</td>
+          <td>192.168.100.21</td>
+          <td>centos 7</td>
+          <td>MySQL 5.7.22</td>
+          <td>master_gtid</td>
+          <td>已purge过binlog</td>
       </tr>
       <tr>
-          <td style="text-align: left">192.168.100.22</td>
-          <td style="text-align: left">centos 7</td>
-          <td style="text-align: left">MySQL 5.7.22</td>
-          <td style="text-align: left">slave1_gtid</td>
-          <td style="text-align: left">已同步</td>
+          <td>192.168.100.22</td>
+          <td>centos 7</td>
+          <td>MySQL 5.7.22</td>
+          <td>slave1_gtid</td>
+          <td>已同步</td>
       </tr>
       <tr>
-          <td style="text-align: left">192.168.100.23</td>
-          <td style="text-align: left">centos 7</td>
-          <td style="text-align: left">MySQL 5.7.22</td>
-          <td style="text-align: left">slave2_gtid</td>
-          <td style="text-align: left">全新实例</td>
+          <td>192.168.100.23</td>
+          <td>centos 7</td>
+          <td>MySQL 5.7.22</td>
+          <td>slave2_gtid</td>
+          <td>全新实例</td>
       </tr>
   </tbody>
 </table></div>
@@ -1352,7 +1352,7 @@
 <p><img src="/post/mysql-replication-2/img.png"
 	width="768"
 	height="403"
-	srcset="/post/mysql-replication-2/img_hu12625731804346384137.png 480w, /post/mysql-replication-2/img_hu8622994966449973709.png 1024w"
+	srcset="/post/mysql-replication-2/img_hu_79e0bc1fbb26e891.png 480w, /post/mysql-replication-2/img_hu_90961ee912248a5c.png 1024w"
 	loading="lazy"
 	
 	
@@ -1543,7 +1543,7 @@
         
             2023 - 
         
-        2024 木林彪的个人博客
+        2025 木林彪的个人博客
     </section>
 
     <section class="count_info">
@@ -1631,7 +1631,7 @@
             
             
             
-            共发表 31 篇文章 · 总计 82.93 k 字
+            共发表 31 篇文章 · 总计 82.92 k 字
         </div>
         <div>
             <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>

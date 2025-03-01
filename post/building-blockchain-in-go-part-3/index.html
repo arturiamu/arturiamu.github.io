@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://arturiamu.github.io/post/building-blockchain-in-go-part-3/'>
 
-<link rel="stylesheet" href="/scss/style.min.5e3814b8c20dd362819d8f0b1c0554df211090883babaeea35913b6b16121b26.css"><meta property='og:title' content='在Go中构建区块链-3-持久性和CLI'>
+<link rel="stylesheet" href="/scss/style.min.3675979ff5878c10f7262acd791ef58708b6d69d8c5aa369aa10383c0e407426.css"><meta property='og:title' content='在Go中构建区块链-3-持久性和CLI'>
 <meta property='og:description' content='使用golang构建简单的区块链'>
 <meta property='og:url' content='https://arturiamu.github.io/post/building-blockchain-in-go-part-3/'>
 <meta property='og:site_name' content='木林彪的个人博客'>
@@ -91,7 +91,7 @@
                     
                     
                         
-                        <img src="/img/avatar1_hu16021438302843842317.jpg" width="300"
+                        <img src="/img/avatar1_hu_d07cbf9157503b9a.jpg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -534,11 +534,9 @@
 </ol>
 <p>从BoltDB在GitHub上的README中：</p>
 <blockquote>
-<p>Bolt是一种纯Go键/值存储，灵感来自Howard Chu的LMDB项目。该项目的目标是为那些不需要像Postgres或MySQL这样的完整数据库服务器的项目提供一个简单、快速且可靠的数据库。</p>
-</blockquote>
+<p>Bolt是一种纯Go键/值存储，灵感来自Howard Chu的LMDB项目。该项目的目标是为那些不需要像Postgres或MySQL这样的完整数据库服务器的项目提供一个简单、快速且可靠的数据库。</p></blockquote>
 <blockquote>
-<p>由于Bolt旨在作为这样一个低级功能来使用，简单性至关重要。API 将很小，并且仅关注获取值和设置值。就是这样。</p>
-</blockquote>
+<p>由于Bolt旨在作为这样一个低级功能来使用，简单性至关重要。API 将很小，并且仅关注获取值和设置值。就是这样。</p></blockquote>
 <p>听起来完全符合我们的需求！让我们花一分钟来了解一下。</p>
 <p>BoltDB是一种键/值存储，这意味着没有像 SQL 关系型数据库管理系统（MySQL、PostgreSQL等）中的表，也没有行、列。相反，数据存储为键-值对（类似于 Golang 中的映射）。键-值对存储在桶中，桶旨在组织类似的键-值对（这类似于关系型数据库管理系统中的表）。因此，为了获取一个值，您需要知道一个桶和一个键。</p>
 <p>关于BoltDB的一件重要的事情是它没有数据类型：键和值都是字节数组。由于我们将在其中存储Go结构体（特别是Block），我们需要对它们进行序列化，即实现一种将Go结构体转换为字节数组并从字节数组还原的机制。我们将使用 encoding/gob 进行此操作，但也可以使用 JSON、XML、Protocol Buffers 等。我们使用 encoding/gob 是因为它简单且是Go标准库的一部分。</p>
@@ -1402,7 +1400,7 @@
         
             2023 - 
         
-        2024 木林彪的个人博客
+        2025 木林彪的个人博客
     </section>
 
     <section class="count_info">
@@ -1490,7 +1488,7 @@
             
             
             
-            共发表 31 篇文章 · 总计 82.93 k 字
+            共发表 31 篇文章 · 总计 82.92 k 字
         </div>
         <div>
             <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>

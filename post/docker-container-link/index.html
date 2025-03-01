@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://arturiamu.github.io/post/docker-container-link/'>
 
-<link rel="stylesheet" href="/scss/style.min.5e3814b8c20dd362819d8f0b1c0554df211090883babaeea35913b6b16121b26.css"><meta property='og:title' content='docker --link容器互联'>
+<link rel="stylesheet" href="/scss/style.min.3675979ff5878c10f7262acd791ef58708b6d69d8c5aa369aa10383c0e407426.css"><meta property='og:title' content='docker --link容器互联'>
 <meta property='og:description' content='docker容器互联的原理、方式'>
 <meta property='og:url' content='https://arturiamu.github.io/post/docker-container-link/'>
 <meta property='og:site_name' content='木林彪的个人博客'>
@@ -91,7 +91,7 @@
                     
                     
                         
-                        <img src="/img/avatar1_hu16021438302843842317.jpg" width="300"
+                        <img src="/img/avatar1_hu_d07cbf9157503b9a.jpg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -366,14 +366,14 @@
     <li><a href="#docker容器互联概述">docker容器互联概述</a>
       <ol>
         <li><a href="#docker容器互联的三种方式">docker容器互联的三种方式</a></li>
-        <li><a href="#docker---link使用注意事项">docker &ndash;link使用注意事项</a></li>
-        <li><a href="#docker---link原理">docker &ndash;link原理</a></li>
+        <li><a href="#docker-link使用注意事项">docker &ndash;link使用注意事项</a></li>
+        <li><a href="#docker-link原理">docker &ndash;link原理</a></li>
       </ol>
     </li>
     <li><a href="#docker容器互联">docker容器互联</a>
       <ol>
         <li><a href="#通过容器ip地址进行通信">通过容器IP地址进行通信</a></li>
-        <li><a href="#通过--link-参数进行通信">通过&ndash;link 参数进行通信</a></li>
+        <li><a href="#通过link-参数进行通信">通过&ndash;link 参数进行通信</a></li>
       </ol>
     </li>
   </ol>
@@ -536,7 +536,7 @@
 <p><img src="/post/docker-container-link/img.png"
 	width="536"
 	height="130"
-	srcset="/post/docker-container-link/img_hu11893628140244575956.png 480w, /post/docker-container-link/img_hu97705080241182508.png 1024w"
+	srcset="/post/docker-container-link/img_hu_515fa4e82be8df72.png 480w, /post/docker-container-link/img_hu_9df225a118fa8a7b.png 1024w"
 	loading="lazy"
 	
 		alt="img.png"
@@ -555,14 +555,14 @@
 <li>通过宿主机的ip加上容器暴露出的端口号来通信【这样的通信方式比较单一，只能依靠监听在暴露出的端口的进程来进行有限的通信】</li>
 <li>通过docker的link机制可以通过一个name来和另一个容器通信，link机制方便了容器去发现其它的容器并且可以安全的传递一些连接信息给其它的容器。</li>
 </ol>
-<h3 id="docker---link使用注意事项">docker &ndash;link使用注意事项</h3>
+<h3 id="docker-link使用注意事项">docker &ndash;link使用注意事项</h3>
 <p>使用docker &ndash;link需要注意以下几点：</p>
 <ol>
 <li>使用link选项建立的容器所链接的主机需要在运行状态</li>
 <li>使用link选项建立的容器运行时需要所链接的容器也必须是运行状态</li>
 <li>使用link选项链接的主机ip不需要固定，因为每次新建容器都会检查所链接容器的ip，在/etc/hosts里生成新的alias 名称对应的ip</li>
 </ol>
-<h3 id="docker---link原理">docker &ndash;link原理</h3>
+<h3 id="docker-link原理">docker &ndash;link原理</h3>
 <p>docker &ndash;link 使用了link机制后，可以通过指定的名字来和目标容器通信，这其实是通过给/etc/hosts中加入名称和IP的解析关系来实现的。</p>
 <h2 id="docker容器互联">docker容器互联</h2>
 <h3 id="通过容器ip地址进行通信">通过容器IP地址进行通信</h3>
@@ -621,7 +621,7 @@
 </span></span><span class="line"><span class="cl">rtt min/avg/max/mdev <span class="o">=</span> 0.063/0.120/0.185/0.056 ms
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h3 id="通过--link-参数进行通信">通过&ndash;link 参数进行通信</h3>
+</div><h3 id="通过link-参数进行通信">通过&ndash;link 参数进行通信</h3>
 <p>注意：docker 默认是允许容器互联互通的，可以通过-icc=false 关闭互通。一旦关闭了互通，只能通过-link name:alias 命令连接指定容器</p>
 <p>创建centos容器，使用&ndash;link mysql5:mysql 链接mysql5容器，并给mysql5容器起别名为mysql，直接ping mysql，可以看到成功ping通</p>
 <div class="highlight"><div class="chroma">
@@ -940,7 +940,7 @@
         
             2023 - 
         
-        2024 木林彪的个人博客
+        2025 木林彪的个人博客
     </section>
 
     <section class="count_info">
@@ -1028,7 +1028,7 @@
             
             
             
-            共发表 31 篇文章 · 总计 82.93 k 字
+            共发表 31 篇文章 · 总计 82.92 k 字
         </div>
         <div>
             <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>

@@ -18,7 +18,7 @@
 &lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/docker-container-link/img.png&#34;
 	width=&#34;536&#34;
 	height=&#34;130&#34;
-	srcset=&#34;https://arturiamu.github.io/post/docker-container-link/img_hu11893628140244575956.png 480w, https://arturiamu.github.io/post/docker-container-link/img_hu97705080241182508.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/docker-container-link/img_hu_515fa4e82be8df72.png 480w, https://arturiamu.github.io/post/docker-container-link/img_hu_9df225a118fa8a7b.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -37,14 +37,14 @@
 &lt;li&gt;通过宿主机的ip加上容器暴露出的端口号来通信【这样的通信方式比较单一，只能依靠监听在暴露出的端口的进程来进行有限的通信】&lt;/li&gt;
 &lt;li&gt;通过docker的link机制可以通过一个name来和另一个容器通信，link机制方便了容器去发现其它的容器并且可以安全的传递一些连接信息给其它的容器。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;docker---link使用注意事项&#34;&gt;docker &amp;ndash;link使用注意事项&lt;/h3&gt;
+&lt;h3 id=&#34;docker-link使用注意事项&#34;&gt;docker &amp;ndash;link使用注意事项&lt;/h3&gt;
 &lt;p&gt;使用docker &amp;ndash;link需要注意以下几点：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;使用link选项建立的容器所链接的主机需要在运行状态&lt;/li&gt;
 &lt;li&gt;使用link选项建立的容器运行时需要所链接的容器也必须是运行状态&lt;/li&gt;
 &lt;li&gt;使用link选项链接的主机ip不需要固定，因为每次新建容器都会检查所链接容器的ip，在/etc/hosts里生成新的alias 名称对应的ip&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 id=&#34;docker---link原理&#34;&gt;docker &amp;ndash;link原理&lt;/h3&gt;
+&lt;h3 id=&#34;docker-link原理&#34;&gt;docker &amp;ndash;link原理&lt;/h3&gt;
 &lt;p&gt;docker &amp;ndash;link 使用了link机制后，可以通过指定的名字来和目标容器通信，这其实是通过给/etc/hosts中加入名称和IP的解析关系来实现的。&lt;/p&gt;
 &lt;h2 id=&#34;docker容器互联&#34;&gt;docker容器互联&lt;/h2&gt;
 &lt;h3 id=&#34;通过容器ip地址进行通信&#34;&gt;通过容器IP地址进行通信&lt;/h3&gt;
@@ -103,7 +103,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rtt min/avg/max/mdev &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; 0.063/0.120/0.185/0.056 ms
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;h3 id=&#34;通过--link-参数进行通信&#34;&gt;通过&amp;ndash;link 参数进行通信&lt;/h3&gt;
+&lt;/div&gt;&lt;h3 id=&#34;通过link-参数进行通信&#34;&gt;通过&amp;ndash;link 参数进行通信&lt;/h3&gt;
 &lt;p&gt;注意：docker 默认是允许容器互联互通的，可以通过-icc=false 关闭互通。一旦关闭了互通，只能通过-link name:alias 命令连接指定容器&lt;/p&gt;
 &lt;p&gt;创建centos容器，使用&amp;ndash;link mysql5:mysql 链接mysql5容器，并给mysql5容器起别名为mysql，直接ping mysql，可以看到成功ping通&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -260,7 +260,7 @@
 &lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/docker-network-management/img.png&#34;
 	width=&#34;546&#34;
 	height=&#34;132&#34;
-	srcset=&#34;https://arturiamu.github.io/post/docker-network-management/img_hu252343801546511763.png 480w, https://arturiamu.github.io/post/docker-network-management/img_hu13166330529017943316.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/docker-network-management/img_hu_812aef768a4f6515.png 480w, https://arturiamu.github.io/post/docker-network-management/img_hu_6ea95ba4d9fd7db0.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -976,7 +976,7 @@ Docker 容器和服务甚至不需要知道它们部署在 Docker 上，或者�
 &lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/docker-container-base/img.png&#34;
 	width=&#34;516&#34;
 	height=&#34;126&#34;
-	srcset=&#34;https://arturiamu.github.io/post/docker-container-base/img_hu13146863705142811436.png 480w, https://arturiamu.github.io/post/docker-container-base/img_hu2630588811316345308.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/docker-container-base/img_hu_d59b43478e6f93e7.png 480w, https://arturiamu.github.io/post/docker-container-base/img_hu_ccaa04b65d2d39ee.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -1024,7 +1024,7 @@ Docker 客户端和守护程序使用 REST API，通过 UNIX 套接字或网络�
 &lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/docker-container-base/img_1.png&#34;
 	width=&#34;804&#34;
 	height=&#34;439&#34;
-	srcset=&#34;https://arturiamu.github.io/post/docker-container-base/img_1_hu5074513219091861876.png 480w, https://arturiamu.github.io/post/docker-container-base/img_1_hu17126731841238873605.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/docker-container-base/img_1_hu_f87f702db8214f8d.png 480w, https://arturiamu.github.io/post/docker-container-base/img_1_hu_dc40c14fed0c4aa1.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_1.png&#34;
@@ -1902,7 +1902,7 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/docker-container-base/img_2.png&#34;
 	width=&#34;666&#34;
 	height=&#34;339&#34;
-	srcset=&#34;https://arturiamu.github.io/post/docker-container-base/img_2_hu14105702584477250386.png 480w, https://arturiamu.github.io/post/docker-container-base/img_2_hu3540440775267669390.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/docker-container-base/img_2_hu_a68bc5081f54a637.png 480w, https://arturiamu.github.io/post/docker-container-base/img_2_hu_18ea0bca578945a4.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_2.png&#34;

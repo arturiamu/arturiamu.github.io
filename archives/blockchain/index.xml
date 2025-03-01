@@ -50,7 +50,7 @@
 &lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-4/img.png&#34;
 	width=&#34;733&#34;
 	height=&#34;379&#34;
-	srcset=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-4/img_hu6626888304719209869.png 480w, https://arturiamu.github.io/post/building-blockchain-in-go-part-4/img_hu8346980300724258309.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-4/img_hu_ac40bf0087599b74.png 480w, https://arturiamu.github.io/post/building-blockchain-in-go-part-4/img_hu_8a8728ea37ba6c12.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -87,12 +87,10 @@
 &lt;/div&gt;&lt;p&gt;实际上，它是存储“币”的输出（注意上面的值字段）。 存储意味着用一个数学迷题锁定它们，该谜题存储在 ScriptPubKey 中。 在内部，比特币使用一种称为 Script 的脚本语言，用于定义输出锁定和解锁逻辑。 该语言非常原始（这是有意为之，以避免可能的黑客攻击和误用），但我们不会详细讨论它。 您可以在&lt;a class=&#34;link&#34; href=&#34;https://en.bitcoin.it/wiki/Script&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;这里&lt;/a&gt;找到它的详细解释。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;在比特币中，value字段存储的是satoshis的数量，而不是BTC的数量。 聪是比特币的一亿分之一（0.00000001 BTC），因此这是比特币中最小的货币单位（如美分）。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;在比特币中，value字段存储的是satoshis的数量，而不是BTC的数量。 聪是比特币的一亿分之一（0.00000001 BTC），因此这是比特币中最小的货币单位（如美分）。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;由于我们没有实现地址，因此我们现在将避免整个脚本相关逻辑。 ScriptPubKey 将存储任意字符串（用户定义的钱包地址）。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;顺便说一句，拥有这样的脚本语言意味着比特币也可以用作智能合约平台。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;顺便说一句，拥有这样的脚本语言意味着比特币也可以用作智能合约平台。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;关于输出的一个重要的事情是它们是不可分割的，这意味着您不能引用其值的一部分。 当新交易中引用输出时，它会作为一个整体被使用。 如果其值大于所需值，则会生成更改并将其发送回发送者。 这类似于现实世界的情况，例如，您用 5 美元的钞票购买 1 美元的商品，然后找回 4 美元。&lt;/p&gt;
 &lt;h2 id=&#34;交易输入&#34;&gt;交易输入&lt;/h2&gt;
 &lt;p&gt;这是输入：&lt;/p&gt;
@@ -154,8 +152,7 @@
 &lt;/div&gt;&lt;p&gt;一笔 coinbase 交易只有一个输入。在我们的实现中，它的 Txid 为空，Vout 等于 -1。此外，coinbase 交易不会在 ScriptSig 中存储脚本。相反，任意数据都存储在那里。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;在比特币中，第一笔 Coinbase 交易包含以下消息：“泰晤士报 2009 年 1 月 3 日财政大臣即将对银行进行第二次救助”。&lt;a class=&#34;link&#34; href=&#34;https://www.blockchain.com/explorer/transactions/btc/4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b?show_adv=true&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;你可以自己看看&lt;/a&gt;。&lt;/p&gt;
-&lt;/blockquote&gt;
+    &gt;你可以自己看看&lt;/a&gt;。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;补贴是奖励的金额。 在比特币中，这个数字不存储在任何地方，仅根据区块总数计算：区块数量除以210000。挖掘创世区块产生50 BTC，每210000个区块奖励减半。 在我们的实现中，我们将把奖励存储为常量（至少现在是这样😉）。&lt;/p&gt;
 &lt;h2 id=&#34;在区块链中存储交易&#34;&gt;在区块链中存储交易&lt;/h2&gt;
 &lt;p&gt;从现在开始，每个区块必须存储至少一笔交易，并且不再可能在没有交易的情况下挖掘区块。这意味着我们应该删除块的数据字段并存储交易：&lt;/p&gt;
@@ -258,8 +255,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;nx&#34;&gt;data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;bytes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Join&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;p&#34;&gt;[][]&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;byte&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			&lt;span class=&#34;nx&#34;&gt;pow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;block&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;PrevBlockHash&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			&lt;span class=&#34;nx&#34;&gt;pow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;block&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;HashTransactions&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// This line was changed
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;			&lt;span class=&#34;nf&#34;&gt;IntToHex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;pow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;block&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Timestamp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			&lt;span class=&#34;nx&#34;&gt;pow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;block&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;HashTransactions&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// This line was changed&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			&lt;span class=&#34;nf&#34;&gt;IntToHex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;pow&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;block&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Timestamp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			&lt;span class=&#34;nf&#34;&gt;IntToHex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;int64&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;targetBits&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;			&lt;span class=&#34;nf&#34;&gt;IntToHex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;int64&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;nonce&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
@@ -302,8 +299,7 @@
 &lt;/div&gt;&lt;p&gt;同样，我们使用哈希作为提供唯一数据表示的机制。 我们希望块中的所有交易都由单个哈希值唯一标识。 为了实现这一点，我们获取每个交易的哈希值，将它们连接起来，并获得连接组合的哈希值。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;比特币使用了一种更复杂的技术：它将块中包含的所有交易表示为 &lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Merkle_tree&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Merkle 树&lt;/a&gt;，并在工作量证明系统中使用树的根哈希。 这种方法允许快速检查一个块是否包含特定交易，仅具有根哈希而无需下载所有交易。&lt;/p&gt;
-&lt;/blockquote&gt;
+    &gt;Merkle 树&lt;/a&gt;，并在工作量证明系统中使用树的根哈希。 这种方法允许快速检查一个块是否包含特定交易，仅具有根哈希而无需下载所有交易。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;让我们检查一下到目前为止一切是否正确：&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -412,8 +408,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nx&#34;&gt;Outputs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;outIdx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;out&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;range&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;tx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Vout&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;// Was the output spent?
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;spentTXOs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;txID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;c1&#34;&gt;// Was the output spent?&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;spentTXOs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;txID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;          &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;_&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;spentOut&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;range&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;spentTXOs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;txID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;spentOut&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;outIdx&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;              &lt;span class=&#34;k&#34;&gt;continue&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Outputs&lt;/span&gt;
@@ -630,8 +626,8 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;nx&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;Panic&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;ERROR: Not enough funds&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;c1&#34;&gt;// Build a list of inputs
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;txid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;outs&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;range&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;validOutputs&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;c1&#34;&gt;// Build a list of inputs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;txid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;outs&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;range&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;validOutputs&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;nx&#34;&gt;txID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;err&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;hex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;DecodeString&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;txid&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;_&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;out&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;range&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;outs&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
@@ -640,11 +636,11 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;c1&#34;&gt;// Build a list of outputs
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;nx&#34;&gt;outputs&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;outputs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;TXOutput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;amount&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;c1&#34;&gt;// Build a list of outputs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;nx&#34;&gt;outputs&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;outputs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;TXOutput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;amount&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;to&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;acc&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;amount&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;nx&#34;&gt;outputs&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;outputs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;TXOutput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;acc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;amount&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// a change
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;		&lt;span class=&#34;nx&#34;&gt;outputs&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;append&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;outputs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;TXOutput&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;acc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;amount&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// a change&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;nx&#34;&gt;tx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Transaction&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;kc&#34;&gt;nil&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;inputs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;outputs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;	&lt;span class=&#34;nx&#34;&gt;tx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;SetID&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
@@ -901,11 +897,9 @@
 &lt;/ol&gt;
 &lt;p&gt;从BoltDB在GitHub上的README中：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Bolt是一种纯Go键/值存储，灵感来自Howard Chu的LMDB项目。该项目的目标是为那些不需要像Postgres或MySQL这样的完整数据库服务器的项目提供一个简单、快速且可靠的数据库。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Bolt是一种纯Go键/值存储，灵感来自Howard Chu的LMDB项目。该项目的目标是为那些不需要像Postgres或MySQL这样的完整数据库服务器的项目提供一个简单、快速且可靠的数据库。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;由于Bolt旨在作为这样一个低级功能来使用，简单性至关重要。API 将很小，并且仅关注获取值和设置值。就是这样。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;由于Bolt旨在作为这样一个低级功能来使用，简单性至关重要。API 将很小，并且仅关注获取值和设置值。就是这样。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;听起来完全符合我们的需求！让我们花一分钟来了解一下。&lt;/p&gt;
 &lt;p&gt;BoltDB是一种键/值存储，这意味着没有像 SQL 关系型数据库管理系统（MySQL、PostgreSQL等）中的表，也没有行、列。相反，数据存储为键-值对（类似于 Golang 中的映射）。键-值对存储在桶中，桶旨在组织类似的键-值对（这类似于关系型数据库管理系统中的表）。因此，为了获取一个值，您需要知道一个桶和一个键。&lt;/p&gt;
 &lt;p&gt;关于BoltDB的一件重要的事情是它没有数据类型：键和值都是字节数组。由于我们将在其中存储Go结构体（特别是Block），我们需要对它们进行序列化，即实现一种将Go结构体转换为字节数组并从字节数组还原的机制。我们将使用 encoding/gob 进行此操作，但也可以使用 JSON、XML、Protocol Buffers 等。我们使用 encoding/gob 是因为它简单且是Go标准库的一部分。&lt;/p&gt;
@@ -1645,7 +1639,7 @@
 &lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img.png&#34;
 	width=&#34;644&#34;
 	height=&#34;378&#34;
-	srcset=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img_hu13575587024991562157.png 480w, https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img_hu947241284237942891.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img_hu_e55e4e06b6ce9fae.png 480w, https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img_hu_6e1c257c1a38ed73.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -1677,7 +1671,7 @@
 &lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img_1.png&#34;
 	width=&#34;709&#34;
 	height=&#34;378&#34;
-	srcset=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img_1_hu5453884875901605272.png 480w, https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img_1_hu244883897646684136.png 1024w&#34;
+	srcset=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img_1_hu_d34c71d44c7d7555.png 480w, https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img_1_hu_89bad53523f3a90.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_1.png&#34;

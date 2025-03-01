@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://arturiamu.github.io/post/building-blockchain-in-go-part-4/'>
 
-<link rel="stylesheet" href="/scss/style.min.5e3814b8c20dd362819d8f0b1c0554df211090883babaeea35913b6b16121b26.css"><meta property='og:title' content='在Go中构建区块链-4-交易-1'>
+<link rel="stylesheet" href="/scss/style.min.3675979ff5878c10f7262acd791ef58708b6d69d8c5aa369aa10383c0e407426.css"><meta property='og:title' content='在Go中构建区块链-4-交易-1'>
 <meta property='og:description' content='使用golang构建简单的区块链'>
 <meta property='og:url' content='https://arturiamu.github.io/post/building-blockchain-in-go-part-4/'>
 <meta property='og:site_name' content='木林彪的个人博客'>
@@ -91,7 +91,7 @@
                     
                     
                         
-                        <img src="/img/avatar1_hu16021438302843842317.jpg" width="300"
+                        <img src="/img/avatar1_hu_d07cbf9157503b9a.jpg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -557,7 +557,7 @@
 <p><img src="/post/building-blockchain-in-go-part-4/img.png"
 	width="733"
 	height="379"
-	srcset="/post/building-blockchain-in-go-part-4/img_hu6626888304719209869.png 480w, /post/building-blockchain-in-go-part-4/img_hu8346980300724258309.png 1024w"
+	srcset="/post/building-blockchain-in-go-part-4/img_hu_ac40bf0087599b74.png 480w, /post/building-blockchain-in-go-part-4/img_hu_8a8728ea37ba6c12.png 1024w"
 	loading="lazy"
 	
 		alt="img.png"
@@ -594,12 +594,10 @@
 </div><p>实际上，它是存储“币”的输出（注意上面的值字段）。 存储意味着用一个数学迷题锁定它们，该谜题存储在 ScriptPubKey 中。 在内部，比特币使用一种称为 Script 的脚本语言，用于定义输出锁定和解锁逻辑。 该语言非常原始（这是有意为之，以避免可能的黑客攻击和误用），但我们不会详细讨论它。 您可以在<a class="link" href="https://en.bitcoin.it/wiki/Script"  target="_blank" rel="noopener"
     >这里</a>找到它的详细解释。</p>
 <blockquote>
-<p>在比特币中，value字段存储的是satoshis的数量，而不是BTC的数量。 聪是比特币的一亿分之一（0.00000001 BTC），因此这是比特币中最小的货币单位（如美分）。</p>
-</blockquote>
+<p>在比特币中，value字段存储的是satoshis的数量，而不是BTC的数量。 聪是比特币的一亿分之一（0.00000001 BTC），因此这是比特币中最小的货币单位（如美分）。</p></blockquote>
 <p>由于我们没有实现地址，因此我们现在将避免整个脚本相关逻辑。 ScriptPubKey 将存储任意字符串（用户定义的钱包地址）。</p>
 <blockquote>
-<p>顺便说一句，拥有这样的脚本语言意味着比特币也可以用作智能合约平台。</p>
-</blockquote>
+<p>顺便说一句，拥有这样的脚本语言意味着比特币也可以用作智能合约平台。</p></blockquote>
 <p>关于输出的一个重要的事情是它们是不可分割的，这意味着您不能引用其值的一部分。 当新交易中引用输出时，它会作为一个整体被使用。 如果其值大于所需值，则会生成更改并将其发送回发送者。 这类似于现实世界的情况，例如，您用 5 美元的钞票购买 1 美元的商品，然后找回 4 美元。</p>
 <h2 id="交易输入">交易输入</h2>
 <p>这是输入：</p>
@@ -661,8 +659,7 @@
 </div><p>一笔 coinbase 交易只有一个输入。在我们的实现中，它的 Txid 为空，Vout 等于 -1。此外，coinbase 交易不会在 ScriptSig 中存储脚本。相反，任意数据都存储在那里。</p>
 <blockquote>
 <p>在比特币中，第一笔 Coinbase 交易包含以下消息：“泰晤士报 2009 年 1 月 3 日财政大臣即将对银行进行第二次救助”。<a class="link" href="https://www.blockchain.com/explorer/transactions/btc/4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b?show_adv=true"  target="_blank" rel="noopener"
-    >你可以自己看看</a>。</p>
-</blockquote>
+    >你可以自己看看</a>。</p></blockquote>
 <p>补贴是奖励的金额。 在比特币中，这个数字不存储在任何地方，仅根据区块总数计算：区块数量除以210000。挖掘创世区块产生50 BTC，每210000个区块奖励减半。 在我们的实现中，我们将把奖励存储为常量（至少现在是这样😉）。</p>
 <h2 id="在区块链中存储交易">在区块链中存储交易</h2>
 <p>从现在开始，每个区块必须存储至少一笔交易，并且不再可能在没有交易的情况下挖掘区块。这意味着我们应该删除块的数据字段并存储交易：</p>
@@ -765,8 +762,8 @@
 </span></span><span class="line"><span class="cl">	<span class="nx">data</span> <span class="o">:=</span> <span class="nx">bytes</span><span class="p">.</span><span class="nf">Join</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">		<span class="p">[][]</span><span class="kt">byte</span><span class="p">{</span>
 </span></span><span class="line"><span class="cl">			<span class="nx">pow</span><span class="p">.</span><span class="nx">block</span><span class="p">.</span><span class="nx">PrevBlockHash</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">			<span class="nx">pow</span><span class="p">.</span><span class="nx">block</span><span class="p">.</span><span class="nf">HashTransactions</span><span class="p">(),</span> <span class="c1">// This line was changed
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="nf">IntToHex</span><span class="p">(</span><span class="nx">pow</span><span class="p">.</span><span class="nx">block</span><span class="p">.</span><span class="nx">Timestamp</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">pow</span><span class="p">.</span><span class="nx">block</span><span class="p">.</span><span class="nf">HashTransactions</span><span class="p">(),</span> <span class="c1">// This line was changed</span>
+</span></span><span class="line"><span class="cl">			<span class="nf">IntToHex</span><span class="p">(</span><span class="nx">pow</span><span class="p">.</span><span class="nx">block</span><span class="p">.</span><span class="nx">Timestamp</span><span class="p">),</span>
 </span></span><span class="line"><span class="cl">			<span class="nf">IntToHex</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="nx">targetBits</span><span class="p">)),</span>
 </span></span><span class="line"><span class="cl">			<span class="nf">IntToHex</span><span class="p">(</span><span class="nb">int64</span><span class="p">(</span><span class="nx">nonce</span><span class="p">)),</span>
 </span></span><span class="line"><span class="cl">		<span class="p">},</span>
@@ -809,8 +806,7 @@
 </div><p>同样，我们使用哈希作为提供唯一数据表示的机制。 我们希望块中的所有交易都由单个哈希值唯一标识。 为了实现这一点，我们获取每个交易的哈希值，将它们连接起来，并获得连接组合的哈希值。</p>
 <blockquote>
 <p>比特币使用了一种更复杂的技术：它将块中包含的所有交易表示为 <a class="link" href="https://en.wikipedia.org/wiki/Merkle_tree"  target="_blank" rel="noopener"
-    >Merkle 树</a>，并在工作量证明系统中使用树的根哈希。 这种方法允许快速检查一个块是否包含特定交易，仅具有根哈希而无需下载所有交易。</p>
-</blockquote>
+    >Merkle 树</a>，并在工作量证明系统中使用树的根哈希。 这种方法允许快速检查一个块是否包含特定交易，仅具有根哈希而无需下载所有交易。</p></blockquote>
 <p>让我们检查一下到目前为止一切是否正确：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -919,8 +915,8 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="nx">Outputs</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">      <span class="k">for</span> <span class="nx">outIdx</span><span class="p">,</span> <span class="nx">out</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">tx</span><span class="p">.</span><span class="nx">Vout</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// Was the output spent?
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="nx">spentTXOs</span><span class="p">[</span><span class="nx">txID</span><span class="p">]</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// Was the output spent?</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">spentTXOs</span><span class="p">[</span><span class="nx">txID</span><span class="p">]</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">          <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">spentOut</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">spentTXOs</span><span class="p">[</span><span class="nx">txID</span><span class="p">]</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="nx">spentOut</span> <span class="o">==</span> <span class="nx">outIdx</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">              <span class="k">continue</span> <span class="nx">Outputs</span>
@@ -1137,8 +1133,8 @@
 </span></span><span class="line"><span class="cl">		<span class="nx">log</span><span class="p">.</span><span class="nf">Panic</span><span class="p">(</span><span class="s">&#34;ERROR: Not enough funds&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Build a list of inputs
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">for</span> <span class="nx">txid</span><span class="p">,</span> <span class="nx">outs</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">validOutputs</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Build a list of inputs</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">txid</span><span class="p">,</span> <span class="nx">outs</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">validOutputs</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">		<span class="nx">txID</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">hex</span><span class="p">.</span><span class="nf">DecodeString</span><span class="p">(</span><span class="nx">txid</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">		<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">out</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">outs</span> <span class="p">{</span>
@@ -1147,11 +1143,11 @@
 </span></span><span class="line"><span class="cl">		<span class="p">}</span>
 </span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">	<span class="c1">// Build a list of outputs
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nx">outputs</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">outputs</span><span class="p">,</span> <span class="nx">TXOutput</span><span class="p">{</span><span class="nx">amount</span><span class="p">,</span> <span class="nx">to</span><span class="p">})</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Build a list of outputs</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">outputs</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">outputs</span><span class="p">,</span> <span class="nx">TXOutput</span><span class="p">{</span><span class="nx">amount</span><span class="p">,</span> <span class="nx">to</span><span class="p">})</span>
 </span></span><span class="line"><span class="cl">	<span class="k">if</span> <span class="nx">acc</span> <span class="p">&gt;</span> <span class="nx">amount</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">		<span class="nx">outputs</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">outputs</span><span class="p">,</span> <span class="nx">TXOutput</span><span class="p">{</span><span class="nx">acc</span> <span class="o">-</span> <span class="nx">amount</span><span class="p">,</span> <span class="nx">from</span><span class="p">})</span> <span class="c1">// a change
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">outputs</span> <span class="p">=</span> <span class="nb">append</span><span class="p">(</span><span class="nx">outputs</span><span class="p">,</span> <span class="nx">TXOutput</span><span class="p">{</span><span class="nx">acc</span> <span class="o">-</span> <span class="nx">amount</span><span class="p">,</span> <span class="nx">from</span><span class="p">})</span> <span class="c1">// a change</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	<span class="nx">tx</span> <span class="o">:=</span> <span class="nx">Transaction</span><span class="p">{</span><span class="kc">nil</span><span class="p">,</span> <span class="nx">inputs</span><span class="p">,</span> <span class="nx">outputs</span><span class="p">}</span>
 </span></span><span class="line"><span class="cl">	<span class="nx">tx</span><span class="p">.</span><span class="nf">SetID</span><span class="p">()</span>
@@ -1535,7 +1531,7 @@
         
             2023 - 
         
-        2024 木林彪的个人博客
+        2025 木林彪的个人博客
     </section>
 
     <section class="count_info">
@@ -1623,7 +1619,7 @@
             
             
             
-            共发表 31 篇文章 · 总计 82.93 k 字
+            共发表 31 篇文章 · 总计 82.92 k 字
         </div>
         <div>
             <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
