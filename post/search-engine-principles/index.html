@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='本文将从搜索引擎的工作流程、关键技术等方面进行简单介绍，帮助读者初步了解搜索引擎的工作原理。'>
+<meta name="keywords" content="木林彪, arturiamu, 博客, 木林彪的个人博客, 搜索引擎, 搜索技术"><title>搜索引擎原理入门</title>
+
+<link rel='canonical' href='https://arturiamu.github.io/post/search-engine-principles/'>
+
+<link rel="stylesheet" href="/scss/style.min.3675979ff5878c10f7262acd791ef58708b6d69d8c5aa369aa10383c0e407426.css"><meta property='og:title' content='搜索引擎原理入门'>
+<meta property='og:description' content='本文将从搜索引擎的工作流程、关键技术等方面进行简单介绍，帮助读者初步了解搜索引擎的工作原理。'>
+<meta property='og:url' content='https://arturiamu.github.io/post/search-engine-principles/'>
+<meta property='og:site_name' content='木林彪的个人博客'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='搜索引擎' /><meta property='article:tag' content='搜索技术' /><meta property='article:published_time' content='2024-09-05T13:25:17&#43;08:00'/><meta property='article:modified_time' content='2024-09-05T13:25:17&#43;08:00'/>
+<meta name="twitter:site" content="@ArturiaMu">
+    <meta name="twitter:creator" content="@ArturiaMu"><meta name="twitter:title" content="搜索引擎原理入门">
+<meta name="twitter:description" content="本文将从搜索引擎的工作流程、关键技术等方面进行简单介绍，帮助读者初步了解搜索引擎的工作原理。">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-JJG6TYWNYX"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-JJG6TYWNYX');
+        }
+      </script><style>
+    :root {
+         
+        --sys-font-family: "HarmonyOS_Sans_SC_Medium", Georgia, -apple-system, 'Nimbus Roman No9 L', 'PingFang SC', 'Hiragino Sans GB', 'Noto Serif SC', 'Microsoft Yahei', 'WenQuanYi Micro Hei', 'ST Heiti', sans-serif;
+        --code-font-family: "JetBrainsMono Regular", Menlo, Monaco, Consolas, "Courier New";
+        --article-font-family: "HarmonyOS_Sans_SC_Medium", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://img.shimoko.com/fonts/font.css";
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar1_hu_d07cbf9157503b9a.jpg" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">❤️</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">木林彪的个人博客</a></h1>
+            <h2 class="site-description">~Coding my life~</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/arturiamu'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='mailto:arturiamumu@gmail.com'
+                        target="_blank"
+                        title="Gmail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-gmail" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+    <path d="M16 20h3a1 1 0 0 0 1 -1v-14a1 1 0 0 0 -1 -1h-3v16z" />
+    <path d="M5 20h3v-16h-3a1 1 0 0 0 -1 1v14a1 1 0 0 0 1 1z" />
+    <path d="M16 4l-4 4l-4 -4" />
+    <path d="M4 6.5l8 7.5l8 -7.5" />
+</svg>
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com/'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/message/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M8 9h8" />
+  <path d="M8 13h6" />
+  <path d="M9 18h-3a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-3l-3 3l-3 -3z" />
+</svg>
+
+
+
+                
+                <span>留言</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://arturiamu.github.io/" selected>中文</option>
+                        
+                            <option value="https://arturiamu.github.io/en/" >English</option>
+                        
+                            <option value="https://arturiamu.github.io/ja/" >日本</option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#什么是搜索引擎">什么是搜索引擎</a></li>
+    <li><a href="#搜索引擎的工作原理">搜索引擎的工作原理</a>
+      <ol>
+        <li><a href="#爬取网页">爬取网页：</a></li>
+        <li><a href="#建立索引">建立索引：</a></li>
+        <li><a href="#处理搜索请求">处理搜索请求：</a></li>
+        <li><a href="#排序和展示结果">排序和展示结果：</a></li>
+      </ol>
+    </li>
+    <li><a href="#搜索引擎的关键技术">搜索引擎的关键技术</a></li>
+    <li><a href="#总结">总结</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">标签云</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/bitcoin/" class="font_size_4">
+                Bitcoin
+            </a>
+        
+            <a href="/tags/ethereum/" class="font_size_4">
+                Ethereum
+            </a>
+        
+            <a href="/tags/bash/" class="font_size_3">
+                Bash
+            </a>
+        
+            <a href="/tags/docker/" class="font_size_3">
+                Docker
+            </a>
+        
+            <a href="/tags/golang/" class="font_size_3">
+                Golang
+            </a>
+        
+            <a href="/tags/mysql/" class="font_size_3">
+                MySQL
+            </a>
+        
+            <a href="/tags/python/" class="font_size_3">
+                Python
+            </a>
+        
+            <a href="/tags/shell/" class="font_size_3">
+                Shell
+            </a>
+        
+            <a href="/tags/bug/" class="font_size_2">
+                Bug
+            </a>
+        
+            <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E6%9C%AF/" class="font_size_2">
+                搜索技术
+            </a>
+        
+    </div>
+</section>
+            
+        
+        <div style="height: 30%;width: 30%">
+            <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=4gAmsOskyL921TwxZGdrq3NbkFu-hJm8dDfoHJsn25Q"></script>
+        </div>
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/archives/original/" >
+                原创
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/search-engine-principles/">搜索引擎原理入门</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            本文将从搜索引擎的工作流程、关键技术等方面进行简单介绍，帮助读者初步了解搜索引擎的工作原理。
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">2024-09-05 13:25:17 CST</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 5 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>搜索无处不在，作为信息化时代大多数人获取信息的最重要的路径，说搜索引擎是使用最为广泛和频繁的中间件之一，应该没有人会反驳。在实际的应用场景中， 小到个人博客， 大到电商平台，你在谷歌上搜索的每一个关键字， 在电商网站上搜索的每一件商品， 追剧听音乐的时候在搜索栏输入的每一个名字的背后都是搜索引擎的处理和输出。就像是你提问，然后搜索引擎告诉你一个答案，搜索不仅无处不在，无所不知，默默的主宰着网络世界的入口。</p>
+<h2 id="什么是搜索引擎">什么是搜索引擎</h2>
+<p>搜索引擎是一种在线搜索工具，旨在根据用户的搜索查询在网络上收集合适的网站存入自己的数据库中，然后使用独特的算法对它们进行排序。当用户在搜索框输入关键词时，搜索引擎就会将对应的内容展示给用户。</p>
+<h2 id="搜索引擎的工作原理">搜索引擎的工作原理</h2>
+<p>搜索引擎的工作原理可以简单概括为以下 4 个步骤：</p>
+<h3 id="爬取网页">爬取网页：</h3>
+<p>搜索引擎会派出名为“网络爬虫”的程序，像蜘蛛一样在互联网上爬行，访问各个网站，收集网页内容。 爬虫会从一个种子 URL 列表开始，然后沿着网页上的链接不断爬取新的页面并存储到搜索引擎的数据库中。
+为了避免过度消耗网站资源，爬虫会遵守 robots.txt 协议，并控制爬取频率。</p>
+<p>爬虫发现新页面的主要跟踪方法是已知的网页中的链接。从A页面上的超链接可以发现 B 页面、C 页面等，搜索引擎蜘蛛会将这些网页存储起来，当做下次访问的对象。正是基于这点，所以我们要避免某个网页成为“孤岛页面”，也就是没有任何链接指向它。</p>
+<p><strong>robots.txt</strong></p>
+<p>robots.txt 是一个纯文本文件，是网站管理者用来与网络爬虫进行沟通的工具。它遵循 Robots 排除协议 (Robots Exclusion Protocol)，通过简单的指令告诉爬虫哪些页面可以抓取，哪些页面应该避免。</p>
+<p>robots.txt 的作用：</p>
+<ul>
+<li>控制爬虫访问： 网站管理者可以通过 robots.txt 文件限制某些爬虫访问网站的特定部分，例如后台管理页面、用户个人信息等，保护敏感数据和网站安全。</li>
+<li>优化爬虫效率： 通过引导爬虫抓取重要页面，避免爬虫浪费资源在无关紧要的内容上，可以提高爬虫效率，减轻网站服务器负担。</li>
+<li>避免重复内容： 网站管理者可以使用 robots.txt 文件阻止爬虫抓取重复内容的页面，例如打印友好页面、搜索结果页面等，有利于提升网站在搜索引擎中的排名。</li>
+</ul>
+<p>robots.txt 的语法： robots.txt 文件的语法非常简单，主要由以下两个指令构成：</p>
+<p><code>User-agent</code>: 指定该规则适用于哪些爬虫。例如，User-agent: * 表示该规则适用于所有爬虫，User-agent: Googlebot 表示该规则仅适用于 Google 的爬虫。</p>
+<p><code>Disallow</code>: 指定不允许爬虫访问的路径。例如，Disallow: /admin/ 表示不允许爬虫访问 /admin/ 目录下的所有内容。</p>
+<p><strong>需要注意：</strong></p>
+<p>robots.txt 只是一个“君子协议”，它依赖于爬虫的自觉遵守。一些恶意的爬虫可能会无视 robots.txt 文件的限制。</p>
+<p>robots.txt 文件不能阻止网页被索引。即使爬虫不能抓取某个页面，如果该页面被其他页面链接，它仍然可能出现在搜索引擎结果中。</p>
+<p>如果需要更严格地控制页面索引，可以使用 noindex 元标签。</p>
+<h3 id="建立索引">建立索引：</h3>
+<p>将爬虫收集到的网页经过分析处理后，搜索引擎会将这些信息进行索引。索引的过程类似于图书馆的索引系统，目的是为快速查找内容而构建一个高效的数据结构。
+在索引过程中，搜索引擎会分析页面中的文本内容、关键词、图片、视频等，并构建倒排索引（Inverted Index）。</p>
+<p><strong>倒排索引</strong></p>
+<p>倒排索引将每个单词或短语与它在各个页面中出现的位置进行关联，这样当用户输入查询时，搜索引擎可以迅速地查找到所有包含这些单词的页面。这个索引结构大大提高了搜索引擎的查询效率。</p>
+<h3 id="处理搜索请求">处理搜索请求：</h3>
+<p><strong>理解用户意图：</strong> 当你输入关键词进行搜索时，搜索引擎会首先尝试理解你的搜索意图。
+搜索引擎会分析你的搜索关键词、搜索历史、地理位置等信息，来判断你真正想要查找的内容。
+例如，你搜索“苹果”，搜索引擎需要判断你是想了解水果“苹果”，还是科技公司“苹果”。</p>
+<p><strong>匹配关键词：</strong> 搜索引擎会根据你的搜索关键词，在索引库中查找包含这些关键词的网页。
+搜索引擎会使用各种算法来计算网页与搜索关键词的相关性。
+例如，关键词出现的频率、位置、网页的权威性等因素都会影响相关性得分。</p>
+<h3 id="排序和展示结果">排序和展示结果：</h3>
+<p><strong>相关性排序：</strong> 搜索引擎会根据一系列复杂的算法，对找到的网页进行排序。相关性越高的网页，排名越靠前。
+除了相关性，搜索引擎还会考虑其他因素，例如网页的权威性、新鲜度、用户的点击行为等。
+例如，一个来自权威网站、内容新鲜、用户点击率高的网页，排名会相对靠前。</p>
+<p><strong>展示搜索结果：</strong> 最后，搜索引擎会将排序后的结果以列表的形式展示给你，通常包括网页标题、摘要、链接等信息。
+搜索引擎会使用各种技术来优化搜索结果的展示，例如摘要生成、关键词高亮、相关搜索推荐等。
+例如，搜索引擎会根据网页内容生成简洁明了的摘要，并将搜索关键词高亮显示，方便用户快速浏览。</p>
+<h2 id="搜索引擎的关键技术">搜索引擎的关键技术</h2>
+<p><strong>1.自然语言处理（NLP）</strong></p>
+<p>自然语言处理是让计算机理解人类语言的技术。搜索引擎需要使用NLP来处理用户的查询，并将其与网页内容进行匹配。例如，NLP可以帮助搜索引擎识别同义词、理解多义词的不同含义、进行文本的情感分析等。</p>
+<p><strong>2.机器学习与人工智能（AI）</strong></p>
+<p>机器学习和AI在搜索引擎中的应用越来越广泛，特别是在排序和个性化推荐方面。搜索引擎会使用机器学习算法对用户行为进行分析，以便预测用户的需求，并根据用户的历史搜索记录、位置、兴趣等信息提供个性化的搜索结果。</p>
+<p>例如，谷歌的RankBrain算法就是基于人工智能的一个搜索算法，它通过分析大量数据来判断搜索结果的相关性，并不断学习和改进。</p>
+<p><strong>3.大数据与分布式计算</strong></p>
+<p>搜索引擎需要处理的网页数据量非常庞大，因此大数据和分布式计算技术在搜索引擎中起到了至关重要的作用。分布式计算通过将任务分配到多个服务器上，解决了海量数据处理的瓶颈问题，保证了搜索引擎的高效性和可扩展性。</p>
+<p><strong>4.信息检索技术</strong></p>
+<p>信息检索是搜索引擎的核心技术之一，它涉及如何从海量数据中快速找到相关信息。倒排索引、布尔检索、向量空间模型等都是经典的信息检索技术。现代搜索引擎还引入了深度学习等先进的技术，进一步提升了搜索精度。</p>
+<h2 id="总结">总结</h2>
+<p>虽然看起来搜索引擎的原理非常简单，但是搜索引擎实际上是个非常之复杂的系统工程。分布式的海量数据存储、超高并发的读写、搜索的速度和精确度要求、不同类型结果的渲染展示等等，每一项都面临着对应技术领域天花板级别的挑战。本文只是尝试简单的来了解搜索引擎基本原理、工作流程、运行机制。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/">搜索引擎</a>
+        
+            <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E6%9C%AF/">搜索技术</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span> 转载需要保留原始链接，未经明确许可，禁止商业使用。  <a class="link" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"  target="_blank" rel="noopener"
+    >CC BY-NC-SA 4.0</a></span>
+    </section>
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/retrieval-augmented-generation/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">从信息检索到文本生成：RAG如何让AI更懂你？</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/vscode-go-dlv-debugging/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">vscode debug golang 代码不按顺序跳转、变量不可见问题</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/prompt-tips/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">大模型提示工程（Prompt）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/baidu-include-github-pages-blog/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">如何使用 zeit.co 让百度收录 GitHub Pages 博客</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/mysql-general-log/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">mysql general_log</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "5b878f724ec8e67e08f4",
+        clientSecret: "9723d7c9b9644be68bf47cbdd6412bc895653369",
+        repo: "arturiamu.github.io",
+        owner: "arturiamu",
+        admin: ["arturiamu"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2023 - 
+        
+        2025 木林彪的个人博客
+    </section>
+
+    <section class="count_info">
+        <div>
+            本博客已稳定运行
+            <span id="ds" class="running-days"></span>
+            天
+            <span id="hs" class="running-days"></span>
+            小时
+            <span id="ms" class="running-days"></span>
+            分钟
+        </div>
+        <div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            共发表 34 篇文章 · 总计 89.04 k 字
+        </div>
+        <div>
+            <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+        </div>
+    </section>
+    
+    <section class="powerby" style="margin-top: 7px">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.18.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+<script>
+    let s1 = '2023-6-18'; 
+    s1 = new Date(s1.replace(/-/g, "/"));
+    let s2 = new Date();
+    let timeDifference = s2.getTime() - s1.getTime();
+
+    let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+    document.getElementById('ds').innerHTML = days;
+    document.getElementById('hs').innerHTML = hours;
+    document.getElementById('ms').innerHTML = minutes;
+
+</script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>
+    (function(u, c) {
+        var d = document, t = 'script', o = d.createElement(t),
+            s = d.getElementsByTagName(t)[0];
+        o.src = u;
+        if (c) { o.addEventListener('load', function(e) { c(e); }); }
+        s.parentNode.insertBefore(o, s);
+    })('//cdn.bootcss.com/pangu/4.0.7/pangu.min.js', function() {
+        pangu.spacingPage();
+    });
+</script>
+
+
+<script
+        src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/ribbon.min.js"
+        integrity="sha384-UEK8ZiP3VgFNP8KnKMKDmd4pAUAOJ59Y2Jo3ED2Z5qKQf6HLHovMxq7Beb9CLPUe"
+        crossorigin="anonymous"
+        size="300"
+        alpha="0.6"
+        zindex="-1"
+        defer
+></script>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script><script>
+    (function(){var w=window;if(w.ChannelIO){return w.console.error("ChannelIO script included twice.");}var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(args){ch.q.push(args);};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return;}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x);}}if(document.readyState==="complete"){l();}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l);}})();
+
+    ChannelIO('boot', {
+        "pluginKey": "6145a739-ffa9-4356-8e35-875010c793ef"
+    });
+</script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

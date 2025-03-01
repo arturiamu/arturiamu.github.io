@@ -303,6 +303,200 @@
 &lt;/div&gt;</description>
         </item>
         <item>
+        <title>大模型提示工程（Prompt）</title>
+        <link>https://arturiamu.github.io/post/prompt-tips/</link>
+        <pubDate>Tue, 15 Oct 2024 20:02:17 +0800</pubDate>
+        
+        <guid>https://arturiamu.github.io/post/prompt-tips/</guid>
+        <description>&lt;p&gt;现在的大模型，基本都是基于 transformer 的 GPT 模型。以 ChatGPT 为例，它是一种基于 GPT 模型的对话生成模型，它可以让计算机自动学习对话语料库中的模式，并生成连贯、自然的对话回复。 对于我们普通用户来说，无论是使用ChatGPT，还是文心一言、通义千问这些大模型，就是通过一轮一轮的对话来实现我们的诉求。&lt;/p&gt;
+&lt;h2 id=&#34;简单提示&#34;&gt;简单提示&lt;/h2&gt;
+&lt;p&gt;所谓提示词，就是如何让ChatGPT更精准的理解我们的意图，输出我们想要的答案。想要让AI生成更优质、更符合我们需求的内容，关键在于如何设计Prompt（提示词）。以下是一些改进Prompt的技巧，帮助我们更好地引导AI：&lt;/p&gt;
+&lt;p&gt;1.明确目标，清晰表达：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;避免模糊不清： 不要使用过于笼统或模棱两可的词语。例如，将“写一篇关于人工智能的文章”改为“写一篇面向初学者的、介绍人工智能发展历史的文章，字数约1000字”。&lt;/li&gt;
+&lt;li&gt;具体化需求： 明确我们希望AI生成的内容类型、风格、长度等。例如，将“写一首诗”改为“写一首关于春天、表达喜悦心情的五言绝句”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;2.提供上下文，丰富信息：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;背景信息： 提供与主题相关的背景信息，帮助AI更好地理解我们的需求。例如，在要求AI生成一篇产品文案时，可以提供产品的目标用户、核心卖点等信息。&lt;/li&gt;
+&lt;li&gt;示例参考： 提供我们希望AI模仿的风格或格式的示例，例如提供一篇你喜欢的文章作为参考。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;3.分步骤引导，细化任务：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将复杂任务拆解： 将复杂的任务拆解成多个简单的步骤，逐步引导AI生成内容。例如，将“写一篇小说”拆解为“设定故事背景”、“塑造人物形象”、“设计故事情节”等步骤。&lt;/li&gt;
+&lt;li&gt;迭代优化： 不要期望AI一次就能生成完美的内容。可以根据初步生成的结果，不断调整和优化Prompt，逐步接近你的目标。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;4.尝试不同的Prompt风格：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;指令式Prompt： 直接告诉AI我们希望它做什么，例如“翻译以下句子”、“总结这篇文章的主要观点”。&lt;/li&gt;
+&lt;li&gt;问答式Prompt： 以问题的形式引导AI生成内容，例如“什么是机器学习？”、“如何提高写作效率？”。&lt;/li&gt;
+&lt;li&gt;角色扮演Prompt： 让AI扮演特定角色来生成内容，例如“假设你是一位历史学家，请描述一下唐朝的繁荣景象”。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;5.利用工具和资源：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Prompt库： 参考一些优秀的Prompt库，例如OpenAI的Prompt Library，学习如何设计有效的Prompt。&lt;/li&gt;
+&lt;li&gt;在线工具： 使用一些在线工具，例如Prompt Generator，帮助你生成更结构化的Prompt。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;6.些额外的建议：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用自然语言： 尽量使用自然语言与AI沟通，就像与人交流一样。&lt;/li&gt;
+&lt;li&gt;保持耐心和探索精神： 设计Prompt是一个不断尝试和优化的过程，需要耐心和探索精神。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;更进一步&#34;&gt;更进一步&lt;/h2&gt;
+&lt;p&gt;我们可以通过&lt;strong&gt;提示工程（prompt engineering）&lt;/strong&gt; 和&lt;strong&gt;微调（fine-tuning）&lt;/strong&gt; 激发大型语言模型的涌现能力。 对于理解和应用LLM模型来说，这些知识都具有重要的参考价值。 作为非技术人员的日常应用，我们要关注的是：&lt;/p&gt;
+&lt;h3 id=&#34;zero-shot-提示法&#34;&gt;Zero shot 提示法&lt;/h3&gt;
+&lt;p&gt;Zero-shot(零样本) Prompt 提示词技术使得我们在无需做特定训练的情况下依然可以让大模型给我们完成一些简单的任务，我们无需提供给模型额外的数据或者做微调，在很多时候依然能得到不错的效果。Zero-shot(零样本) Prompt是一种很快速便捷的方式让我们对新任务做出尝试，很适合验证我们新的想法。 在一些简单的场景中，我们优先会考虑的就是Zero-shot(零样本) Prompt。&lt;/p&gt;
+&lt;h3 id=&#34;one-shot--few-shot-提示法&#34;&gt;One-shot &amp;amp; Few-shot 提示法&lt;/h3&gt;
+&lt;p&gt;Few-shot提示方法并不复杂，只需要将一些类似的问题的问题+答案作为prompt的一部分进行输入即可。&lt;/p&gt;
+&lt;p&gt;Few-shot的编写格式：&lt;/p&gt;
+&lt;p&gt;当需要输入多段问答作为提示词时，以Q作为问题的开头、A作为回答的开头（也可以换成“问题”、“答案”）， 并且不同的问答对话需要换行以便于更加清晰的展示，具体方法是通过转义符+换行来完成。&lt;/p&gt;
+&lt;h3 id=&#34;code-prompting&#34;&gt;Code Prompting&lt;/h3&gt;
+&lt;p&gt;代码提示工程是指通过设计特殊的代码提示来激发模型的涌现能力。这种方法不需要对模型进行额外的训练，只需要通过设计合适的代码提示来引导模型完成特定任务，代码提示工程通常用于解决那些无法通过语言提示工程解决的问题。这个不在这里描述，也是后续需要学习的一个重点专题。&lt;/p&gt;
+&lt;h3 id=&#34;思维链提示法&#34;&gt;思维链提示法&lt;/h3&gt;
+&lt;p&gt;思维链（Chain of Thought）是一种提示工具，用于帮助语言模型进行复杂的推理和思考过程。它通过引导模型逐步解决问题，以一系列连贯的步骤展示推理的思路和逻辑关系。&lt;/p&gt;
+&lt;p&gt;思维链提示的基本思想是将推理过程分解为多个步骤，并在每个步骤中指导模型逐步进行推理。每个步骤都通过自然语言描述，使模型能够理解和执行每个推理阶段所需的操作。&lt;/p&gt;
+&lt;p&gt;具体而言，思维链提示通常由多个中间步骤组成，每个中间步骤都解释了问题的一个方面或子问题。模型需要根据前一个步骤的结果和当前问题的要求来推断下一个步骤。通过这种逐步推理的方式，模型可以逐渐获得更多信息，并在整个推理过程中累积正确的推断。&lt;/p&gt;
+&lt;h4 id=&#34;zero-shot-cot提示方法&#34;&gt;Zero-shot-CoT提示方法&lt;/h4&gt;
+&lt;p&gt;Zero-shot-CoT是在Few-shot思想下，一种更好的提示方法。它借助思维链（也被称为思考链，Chain of Thought，CoT）提示法来解决这个问题。一种非常简单而有效的方式是：&lt;/p&gt;
+&lt;p&gt;在提示词尾部追加一句“Let’s think step by step”，即可大幅提高模型推理能力。&lt;/p&gt;
+&lt;p&gt;如果切换到中文语境下，对指令“Let’s think step by step”进行中文翻译，做了大量的测试后，得出结论： “请一步步进行推理并得出结论”要远远好于“请让我们一步步进行思考”等类似的提示词语句。&lt;/p&gt;
+&lt;h4 id=&#34;few-shot-cot提示方法&#34;&gt;Few-shot-CoT提示方法&lt;/h4&gt;
+&lt;p&gt;Zero-shot-CoT是零样本提示的情况下通过修改提示词后缀激发模型的思维链，而Few-shot-CoT则是通过编写思维链样本作为提示词，让模型学会思维链的推导方式，从而更好的完成推导任务。&lt;/p&gt;
+&lt;h4 id=&#34;cot改良方法least-to-most-promptingltm提示法&#34;&gt;CoT改良方法：LEAST-TO-MOST PROMPTING（LtM提示法）&lt;/h4&gt;
+&lt;p&gt;LtM提示方法提出的初衷是为了解决CoT提示方法泛化能力不足的问题——即通过人工编写的思维链提示样本可能并不能够很好的迁移到别的问题当中去，换而言之，就是解决问题的流程迁移能力不足，即泛化能力不够。而这种泛化能力不足则会导致“新的问题”无法使用“老的模板”进行解决。&lt;/p&gt;
+&lt;p&gt;所以一个思想就是：让大模型自己找到解决当前问题的思维链。谷歌大脑基于这个思路开发了一种全新的提示流程，即先通过提示过程让模型找到解决该问题必须要分步解决哪几个问题，然后再通过依次解决这些问题来解决最原始的问题。&lt;/p&gt;
+&lt;p&gt;整个提示过程会分为两个阶段进行：&lt;/p&gt;
+&lt;p&gt;第一个阶段是自上而下的分解问题（Decompose Question into subquestion）；&lt;/p&gt;
+&lt;p&gt;第二个阶段是自下而上的依次解决问题（Sequentially Solve Subquestion），整个依次回答问题的过程，其实就可以看成是CoT的过程，只不过LtM会要求模型根据每个不同的问题，单独生成解决问题的链路，从而能够更加精准的解决复杂推理问题。 而整个过程问题的由少变多，则是LEAST-TO-MOST一词的来源。&lt;/p&gt;
+&lt;h3 id=&#34;总结&#34;&gt;总结&lt;/h3&gt;
+&lt;p&gt;通过改进Prompt，我们可以更有效地引导AI生成更优质、更符合我们需求的内容。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>从信息检索到文本生成：RAG如何让AI更懂你？</title>
+        <link>https://arturiamu.github.io/post/retrieval-augmented-generation/</link>
+        <pubDate>Sat, 12 Oct 2024 19:22:39 +0800</pubDate>
+        
+        <guid>https://arturiamu.github.io/post/retrieval-augmented-generation/</guid>
+        <description>&lt;p&gt;你是否曾经感叹，虽然AI模型能写出流畅的文字，但内容却空洞无物，甚至“一本正经地胡说八道”？这是因为传统语言模型仅依赖于训练数据中的统计规律，缺乏对真实世界知识的深入理解。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;RAG（Retrieval-Augmented Generation，检索增强生成）&lt;/strong&gt; 的出现，为解决这一问题提供了新的思路。它将信息检索与文本生成相结合，让AI在动笔之前，先学会“查资料”。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;RAG的工作原理：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;提出问题：&lt;/strong&gt; 当你向RAG模型提出一个问题或指令时，它首先会将其转化为一个可检索的查询。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;检索相关知识：&lt;/strong&gt; 模型会从海量的文档库（例如维基百科、专业数据库）中检索出与查询最相关的文档片段。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;生成最终答案：&lt;/strong&gt; 模型将检索到的文档片段与原始问题相结合，生成更准确、信息更丰富的回答。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;RAG的优势：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;更准确的回答：&lt;/strong&gt; RAG模型不再局限于训练数据，能够利用外部知识库提供更准确、可靠的答案。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;更强的可解释性：&lt;/strong&gt; 由于RAG模型的回答基于检索到的文档，我们可以追踪其信息来源，提高模型的可解释性。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;更广泛的应用场景：&lt;/strong&gt; RAG可以应用于问答系统、对话系统、文本摘要等多个领域，为用户提供更智能的服务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;RAG的应用实例：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;智能客服：&lt;/strong&gt; RAG可以帮助客服机器人快速检索产品信息、常见问题解答等，为用户提供更精准的解答。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;医疗诊断：&lt;/strong&gt; RAG可以辅助医生检索医学文献、病例数据等，为诊断和治疗提供参考。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;教育领域：&lt;/strong&gt; RAG可以为学生提供个性化的学习资料，并根据学生的学习情况推荐相关的学习资源。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;RAG的未来发展：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;RAG技术仍处于快速发展阶段，未来还有许多值得探索的方向，例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;如何提高检索效率和精度？&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;如何更好地融合检索到的信息和生成的内容？&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;如何构建更高质量、更全面的知识库？&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;总结：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;RAG的出现为人工智能的发展带来了新的机遇，它让AI模型能够更好地理解和利用外部知识，从而提供更智能、更可靠的服务。相信随着技术的不断进步，RAG将在各个领域发挥越来越重要的作用，为我们的生活带来更多便利。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>搜索引擎原理入门</title>
+        <link>https://arturiamu.github.io/post/search-engine-principles/</link>
+        <pubDate>Thu, 05 Sep 2024 13:25:17 +0800</pubDate>
+        
+        <guid>https://arturiamu.github.io/post/search-engine-principles/</guid>
+        <description>&lt;p&gt;搜索无处不在，作为信息化时代大多数人获取信息的最重要的路径，说搜索引擎是使用最为广泛和频繁的中间件之一，应该没有人会反驳。在实际的应用场景中， 小到个人博客， 大到电商平台，你在谷歌上搜索的每一个关键字， 在电商网站上搜索的每一件商品， 追剧听音乐的时候在搜索栏输入的每一个名字的背后都是搜索引擎的处理和输出。就像是你提问，然后搜索引擎告诉你一个答案，搜索不仅无处不在，无所不知，默默的主宰着网络世界的入口。&lt;/p&gt;
+&lt;h2 id=&#34;什么是搜索引擎&#34;&gt;什么是搜索引擎&lt;/h2&gt;
+&lt;p&gt;搜索引擎是一种在线搜索工具，旨在根据用户的搜索查询在网络上收集合适的网站存入自己的数据库中，然后使用独特的算法对它们进行排序。当用户在搜索框输入关键词时，搜索引擎就会将对应的内容展示给用户。&lt;/p&gt;
+&lt;h2 id=&#34;搜索引擎的工作原理&#34;&gt;搜索引擎的工作原理&lt;/h2&gt;
+&lt;p&gt;搜索引擎的工作原理可以简单概括为以下 4 个步骤：&lt;/p&gt;
+&lt;h3 id=&#34;爬取网页&#34;&gt;爬取网页：&lt;/h3&gt;
+&lt;p&gt;搜索引擎会派出名为“网络爬虫”的程序，像蜘蛛一样在互联网上爬行，访问各个网站，收集网页内容。 爬虫会从一个种子 URL 列表开始，然后沿着网页上的链接不断爬取新的页面并存储到搜索引擎的数据库中。
+为了避免过度消耗网站资源，爬虫会遵守 robots.txt 协议，并控制爬取频率。&lt;/p&gt;
+&lt;p&gt;爬虫发现新页面的主要跟踪方法是已知的网页中的链接。从A页面上的超链接可以发现 B 页面、C 页面等，搜索引擎蜘蛛会将这些网页存储起来，当做下次访问的对象。正是基于这点，所以我们要避免某个网页成为“孤岛页面”，也就是没有任何链接指向它。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;robots.txt&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;robots.txt 是一个纯文本文件，是网站管理者用来与网络爬虫进行沟通的工具。它遵循 Robots 排除协议 (Robots Exclusion Protocol)，通过简单的指令告诉爬虫哪些页面可以抓取，哪些页面应该避免。&lt;/p&gt;
+&lt;p&gt;robots.txt 的作用：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;控制爬虫访问： 网站管理者可以通过 robots.txt 文件限制某些爬虫访问网站的特定部分，例如后台管理页面、用户个人信息等，保护敏感数据和网站安全。&lt;/li&gt;
+&lt;li&gt;优化爬虫效率： 通过引导爬虫抓取重要页面，避免爬虫浪费资源在无关紧要的内容上，可以提高爬虫效率，减轻网站服务器负担。&lt;/li&gt;
+&lt;li&gt;避免重复内容： 网站管理者可以使用 robots.txt 文件阻止爬虫抓取重复内容的页面，例如打印友好页面、搜索结果页面等，有利于提升网站在搜索引擎中的排名。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;robots.txt 的语法： robots.txt 文件的语法非常简单，主要由以下两个指令构成：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;User-agent&lt;/code&gt;: 指定该规则适用于哪些爬虫。例如，User-agent: * 表示该规则适用于所有爬虫，User-agent: Googlebot 表示该规则仅适用于 Google 的爬虫。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Disallow&lt;/code&gt;: 指定不允许爬虫访问的路径。例如，Disallow: /admin/ 表示不允许爬虫访问 /admin/ 目录下的所有内容。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;需要注意：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;robots.txt 只是一个“君子协议”，它依赖于爬虫的自觉遵守。一些恶意的爬虫可能会无视 robots.txt 文件的限制。&lt;/p&gt;
+&lt;p&gt;robots.txt 文件不能阻止网页被索引。即使爬虫不能抓取某个页面，如果该页面被其他页面链接，它仍然可能出现在搜索引擎结果中。&lt;/p&gt;
+&lt;p&gt;如果需要更严格地控制页面索引，可以使用 noindex 元标签。&lt;/p&gt;
+&lt;h3 id=&#34;建立索引&#34;&gt;建立索引：&lt;/h3&gt;
+&lt;p&gt;将爬虫收集到的网页经过分析处理后，搜索引擎会将这些信息进行索引。索引的过程类似于图书馆的索引系统，目的是为快速查找内容而构建一个高效的数据结构。
+在索引过程中，搜索引擎会分析页面中的文本内容、关键词、图片、视频等，并构建倒排索引（Inverted Index）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;倒排索引&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;倒排索引将每个单词或短语与它在各个页面中出现的位置进行关联，这样当用户输入查询时，搜索引擎可以迅速地查找到所有包含这些单词的页面。这个索引结构大大提高了搜索引擎的查询效率。&lt;/p&gt;
+&lt;h3 id=&#34;处理搜索请求&#34;&gt;处理搜索请求：&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;理解用户意图：&lt;/strong&gt; 当你输入关键词进行搜索时，搜索引擎会首先尝试理解你的搜索意图。
+搜索引擎会分析你的搜索关键词、搜索历史、地理位置等信息，来判断你真正想要查找的内容。
+例如，你搜索“苹果”，搜索引擎需要判断你是想了解水果“苹果”，还是科技公司“苹果”。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;匹配关键词：&lt;/strong&gt; 搜索引擎会根据你的搜索关键词，在索引库中查找包含这些关键词的网页。
+搜索引擎会使用各种算法来计算网页与搜索关键词的相关性。
+例如，关键词出现的频率、位置、网页的权威性等因素都会影响相关性得分。&lt;/p&gt;
+&lt;h3 id=&#34;排序和展示结果&#34;&gt;排序和展示结果：&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;相关性排序：&lt;/strong&gt; 搜索引擎会根据一系列复杂的算法，对找到的网页进行排序。相关性越高的网页，排名越靠前。
+除了相关性，搜索引擎还会考虑其他因素，例如网页的权威性、新鲜度、用户的点击行为等。
+例如，一个来自权威网站、内容新鲜、用户点击率高的网页，排名会相对靠前。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;展示搜索结果：&lt;/strong&gt; 最后，搜索引擎会将排序后的结果以列表的形式展示给你，通常包括网页标题、摘要、链接等信息。
+搜索引擎会使用各种技术来优化搜索结果的展示，例如摘要生成、关键词高亮、相关搜索推荐等。
+例如，搜索引擎会根据网页内容生成简洁明了的摘要，并将搜索关键词高亮显示，方便用户快速浏览。&lt;/p&gt;
+&lt;h2 id=&#34;搜索引擎的关键技术&#34;&gt;搜索引擎的关键技术&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;1.自然语言处理（NLP）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;自然语言处理是让计算机理解人类语言的技术。搜索引擎需要使用NLP来处理用户的查询，并将其与网页内容进行匹配。例如，NLP可以帮助搜索引擎识别同义词、理解多义词的不同含义、进行文本的情感分析等。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.机器学习与人工智能（AI）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;机器学习和AI在搜索引擎中的应用越来越广泛，特别是在排序和个性化推荐方面。搜索引擎会使用机器学习算法对用户行为进行分析，以便预测用户的需求，并根据用户的历史搜索记录、位置、兴趣等信息提供个性化的搜索结果。&lt;/p&gt;
+&lt;p&gt;例如，谷歌的RankBrain算法就是基于人工智能的一个搜索算法，它通过分析大量数据来判断搜索结果的相关性，并不断学习和改进。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3.大数据与分布式计算&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;搜索引擎需要处理的网页数据量非常庞大，因此大数据和分布式计算技术在搜索引擎中起到了至关重要的作用。分布式计算通过将任务分配到多个服务器上，解决了海量数据处理的瓶颈问题，保证了搜索引擎的高效性和可扩展性。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4.信息检索技术&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;信息检索是搜索引擎的核心技术之一，它涉及如何从海量数据中快速找到相关信息。倒排索引、布尔检索、向量空间模型等都是经典的信息检索技术。现代搜索引擎还引入了深度学习等先进的技术，进一步提升了搜索精度。&lt;/p&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;虽然看起来搜索引擎的原理非常简单，但是搜索引擎实际上是个非常之复杂的系统工程。分布式的海量数据存储、超高并发的读写、搜索的速度和精确度要求、不同类型结果的渲染展示等等，每一项都面临着对应技术领域天花板级别的挑战。本文只是尝试简单的来了解搜索引擎基本原理、工作流程、运行机制。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>如何使用 zeit.co 让百度收录 GitHub Pages 博客</title>
         <link>https://arturiamu.github.io/post/baidu-include-github-pages-blog/</link>
         <pubDate>Mon, 08 Apr 2024 18:20:39 +0800</pubDate>
