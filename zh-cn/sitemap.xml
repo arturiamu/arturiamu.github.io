@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://arturiamu.github.io/</loc>
-    <lastmod>2025-01-03T10:35:48+08:00</lastmod>
+    <lastmod>2025-02-01T22:05:14+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -21,7 +21,7 @@
                 />
   </url><url>
     <loc>https://arturiamu.github.io/categories/</loc>
-    <lastmod>2025-01-03T10:35:48+08:00</lastmod>
+    <lastmod>2025-02-01T22:05:14+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -38,11 +38,11 @@
                 href="https://arturiamu.github.io/categories/"
                 />
   </url><url>
-    <loc>https://arturiamu.github.io/tags/md5/</loc>
-    <lastmod>2025-01-03T10:35:48+08:00</lastmod>
+    <loc>https://arturiamu.github.io/post/local-deepseek-model/</loc>
+    <lastmod>2025-02-01T22:05:14+08:00</lastmod>
   </url><url>
     <loc>https://arturiamu.github.io/post/</loc>
-    <lastmod>2025-01-03T10:35:48+08:00</lastmod>
+    <lastmod>2025-02-01T22:05:14+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -59,11 +59,8 @@
                 href="https://arturiamu.github.io/post/"
                 />
   </url><url>
-    <loc>https://arturiamu.github.io/tags/sha512sum/</loc>
-    <lastmod>2025-01-03T10:35:48+08:00</lastmod>
-  </url><url>
     <loc>https://arturiamu.github.io/tags/</loc>
-    <lastmod>2025-01-03T10:35:48+08:00</lastmod>
+    <lastmod>2025-02-01T22:05:14+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -80,11 +77,11 @@
                 href="https://arturiamu.github.io/tags/"
                 />
   </url><url>
-    <loc>https://arturiamu.github.io/post/file-integrity-check/</loc>
-    <lastmod>2025-01-03T10:35:48+08:00</lastmod>
+    <loc>https://arturiamu.github.io/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/</loc>
+    <lastmod>2025-02-01T22:05:14+08:00</lastmod>
   </url><url>
     <loc>https://arturiamu.github.io/archives/original/</loc>
-    <lastmod>2025-01-03T10:35:48+08:00</lastmod>
+    <lastmod>2025-02-01T22:05:14+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -101,6 +98,39 @@
                 href="https://arturiamu.github.io/archives/original/"
                 />
   </url><url>
+    <loc>https://arturiamu.github.io/tags/%E4%BA%BA%E7%94%9F/</loc>
+    <lastmod>2025-01-15T22:03:45+08:00</lastmod>
+  </url><url>
+    <loc>https://arturiamu.github.io/post/pay-for-everything-twice/</loc>
+    <lastmod>2025-01-15T22:03:45+08:00</lastmod>
+  </url><url>
+    <loc>https://arturiamu.github.io/archives/repost/</loc>
+    <lastmod>2025-01-15T22:03:45+08:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://arturiamu.github.io/en/archives/repost/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://arturiamu.github.io/ja/archives/repost/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://arturiamu.github.io/archives/repost/"
+                />
+  </url><url>
+    <loc>https://arturiamu.github.io/tags/md5/</loc>
+    <lastmod>2025-01-03T10:35:48+08:00</lastmod>
+  </url><url>
+    <loc>https://arturiamu.github.io/tags/sha512sum/</loc>
+    <lastmod>2025-01-03T10:35:48+08:00</lastmod>
+  </url><url>
+    <loc>https://arturiamu.github.io/post/file-integrity-check/</loc>
+    <lastmod>2025-01-03T10:35:48+08:00</lastmod>
+  </url><url>
     <loc>https://arturiamu.github.io/tags/golang/</loc>
     <lastmod>2024-12-05T16:53:18+08:00</lastmod>
   </url><url>
@@ -111,9 +141,6 @@
     <lastmod>2024-12-05T16:53:18+08:00</lastmod>
   </url><url>
     <loc>https://arturiamu.github.io/tags/prompt/</loc>
-    <lastmod>2024-10-15T20:02:17+08:00</lastmod>
-  </url><url>
-    <loc>https://arturiamu.github.io/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/</loc>
     <lastmod>2024-10-15T20:02:17+08:00</lastmod>
   </url><url>
     <loc>https://arturiamu.github.io/post/prompt-tips/</loc>
@@ -231,24 +258,6 @@
                 rel="alternate"
                 hreflang="zh-cn"
                 href="https://arturiamu.github.io/archives/cloud-native/"
-                />
-  </url><url>
-    <loc>https://arturiamu.github.io/archives/repost/</loc>
-    <lastmod>2023-10-31T11:14:05+08:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://arturiamu.github.io/en/archives/repost/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://arturiamu.github.io/ja/archives/repost/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://arturiamu.github.io/archives/repost/"
                 />
   </url><url>
     <loc>https://arturiamu.github.io/post/docker-network-management/</loc>

@@ -6,7 +6,311 @@
         <description>Recent content in 大模型 on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Tue, 15 Oct 2024 20:02:17 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 01 Feb 2025 22:05:14 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>deepseek模型本地部署</title>
+        <link>https://arturiamu.github.io/post/local-deepseek-model/</link>
+        <pubDate>Sat, 01 Feb 2025 22:05:14 +0800</pubDate>
+        
+        <guid>https://arturiamu.github.io/post/local-deepseek-model/</guid>
+        <description>&lt;p&gt;最近 deepseek 越来越火，官网已经近乎沦陷。由于家里有台 2060 闲置笔记本，尝试利用 deepseek 开源的模型，在本地搭建一个，将模型部署在本地使用。&lt;/p&gt;
+&lt;p&gt;配置&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_1.png&#34;
+	width=&#34;599&#34;
+	height=&#34;869&#34;
+	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_1_hu_536f56cff10dced6.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_1_hu_2740cd005c893b56.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_1.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;68&#34;
+		data-flex-basis=&#34;165px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;下载运行ollama&#34;&gt;下载运行Ollama&lt;/h2&gt;
+&lt;p&gt;打开官网网址：https://ollama.com&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img.png&#34;
+	width=&#34;1917&#34;
+	height=&#34;832&#34;
+	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_hu_a3196b422b6453fd.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_hu_ce6cf6d10a41e13d.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;230&#34;
+		data-flex-basis=&#34;552px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;点击 Download&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_2.png&#34;
+	width=&#34;1905&#34;
+	height=&#34;923&#34;
+	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_2_hu_665958dfe4fef76f.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_2_hu_6aaafaf75abdce26.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_2.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;206&#34;
+		data-flex-basis=&#34;495px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;点击 Download for Windows&lt;/p&gt;
+&lt;p&gt;exe 文件约 800MB，等待下载期间先配置相关环境变量（主要是配置 ollma 模型下载位置，避免 C 盘空间不足），可以使用&lt;a class=&#34;link&#34; href=&#34;https://blog.lovefc.cn/archives/start.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;以下脚本&lt;/a&gt;快速完成，将 &lt;code&gt;path=D:/Ollama&lt;/code&gt; 修改为目标位置即可，注意 &lt;code&gt;=&lt;/code&gt; 左右不能有空格！！！&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;@echo off
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;chcp &lt;span class=&#34;m&#34;&gt;65001&lt;/span&gt; &amp;gt; nul
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;SCRIPT_DIR=%~dp0&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;D:/Ollama
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;setx OLLAMA_MODELS &lt;span class=&#34;s2&#34;&gt;&amp;#34;%path%/models&amp;#34;&lt;/span&gt; &amp;gt; nul
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;setx OLLAMA_HOST &lt;span class=&#34;s2&#34;&gt;&amp;#34;0.0.0.0&amp;#34;&lt;/span&gt; &amp;gt; nul
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;setx OLLAMA_ORIGINS &lt;span class=&#34;s2&#34;&gt;&amp;#34;*&amp;#34;&lt;/span&gt; &amp;gt; nul
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; 环境变量已设置成功,下面将进行安装程序，安装页面弹出后，直接点install即可，程序将被安装到%path%
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;%SCRIPT_DIR%OllamaSetup.exe /DIR&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;%path%&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;pause
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;将以上脚本保存到 exe 文件同级目录&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_3.png&#34;
+	width=&#34;174&#34;
+	height=&#34;141&#34;
+	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_3_hu_d9dc930af848a450.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_3_hu_5c21a2759adf5c48.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_3.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;123&#34;
+		data-flex-basis=&#34;296px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;待 ollama 下载完毕后，右键单机脚本，点击“以管理员身份运行”，会弹出以下界面，该界面可以直接关闭&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_4.png&#34;
+	width=&#34;979&#34;
+	height=&#34;512&#34;
+	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_4_hu_2ea117732abd656.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_4_hu_fc4de7a22350e133.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_4.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;191&#34;
+		data-flex-basis=&#34;458px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;同时会弹出以下界面，点击 Install 即可开始安装&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_6.png&#34;
+	width=&#34;897&#34;
+	height=&#34;663&#34;
+	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_6_hu_7e8043cdb4ea619f.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_6_hu_1033bd219b3c5444.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_6.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;135&#34;
+		data-flex-basis=&#34;324px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;安装完成后，系统会自动运行 ollama，在电脑右下角有个小图标，将ollama重启一下。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_5.png&#34;
+	width=&#34;61&#34;
+	height=&#34;30&#34;
+	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_5_hu_7b48978abf6986c6.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_5_hu_cdab7a353c3761bf.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_5.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;203&#34;
+		data-flex-basis=&#34;488px&#34;
+	
+&gt;
+&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_7.png&#34;
+	width=&#34;329&#34;
+	height=&#34;104&#34;
+	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_7_hu_2c7afc9e77168ab0.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_7_hu_676a51ce8529c9f5.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_7.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;316&#34;
+		data-flex-basis=&#34;759px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;下载-deepseek-模型&#34;&gt;下载 deepseek 模型&lt;/h2&gt;
+&lt;p&gt;ollama 安装好之后，就能下载模型了，这里我使用的是deepseek-r1的模型。&lt;/p&gt;
+&lt;p&gt;模型官方地址：https://ollama.com/library/deepseek-r1&lt;/p&gt;
+&lt;p&gt;在电脑上重新打开一个cmd窗口或者windows powershell窗口。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_8.png&#34;
+	width=&#34;302&#34;
+	height=&#34;633&#34;
+	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_8_hu_94998d5d7fa6ea80.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_8_hu_9b6c326478ea38d6.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_8.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;47&#34;
+		data-flex-basis=&#34;114px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;输入命令 &lt;code&gt;ollama help&lt;/code&gt;，如果能输出以下提示信息，说明目前设置正确。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_9.png&#34;
+	width=&#34;512&#34;
+	height=&#34;469&#34;
+	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_9_hu_157921dd7c6245fc.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_9_hu_ba4ae38bbb2e3492.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_9.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;109&#34;
+		data-flex-basis=&#34;262px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;ollama 命令，我们目前只要记住这三个就可以了：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;查看模型列表：&lt;/strong&gt; &lt;code&gt;ollama list&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;安装模型：&lt;/strong&gt; &lt;code&gt;ollama run xxxx&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;卸载模型：&lt;/strong&gt; &lt;code&gt;ollama rm xxxx&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;下载模型，直接输入命令就可以了。&lt;/p&gt;
+&lt;p&gt;这里我使用的是 8 b的模型，就在cmd里面直接输入 &lt;code&gt;ollama run deepseek-r1:8b&lt;/code&gt;。模型下载完毕之后会直接运行。&lt;/p&gt;
+&lt;p&gt;提示：下载过程中如果下载速度降的很低，直接 &lt;code&gt;ctrl+c&lt;/code&gt; 中断任务后重新下载即可。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_11.png&#34;
+	width=&#34;859&#34;
+	height=&#34;732&#34;
+	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_11_hu_cc22ad6dc6d0de3f.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_11_hu_95e1adbac8379ee7.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_11.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;117&#34;
+		data-flex-basis=&#34;281px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_12.png&#34;
+	width=&#34;859&#34;
+	height=&#34;732&#34;
+	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_12_hu_8ad821111889cadc.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_12_hu_e55058985ff99fb8.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_12.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;117&#34;
+		data-flex-basis=&#34;281px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;可视化&#34;&gt;可视化&lt;/h2&gt;
+&lt;p&gt;打开 chatbox 官网：https://chatboxai.app/zh&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_13.png&#34;
+	width=&#34;1760&#34;
+	height=&#34;873&#34;
+	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_13_hu_cafdf1a962cd4566.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_13_hu_84084dd15c20c25a.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_13.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;201&#34;
+		data-flex-basis=&#34;483px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;点击 “免费下载”&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_14.png&#34;
+	width=&#34;1383&#34;
+	height=&#34;549&#34;
+	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_14_hu_f39492bdc8a68b6f.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_14_hu_64de2d98a57a948b.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_14.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;251&#34;
+		data-flex-basis=&#34;604px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;点击 “手动下载 for Windows（PC）”&lt;/p&gt;
+&lt;p&gt;选择位置安装&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_15.png&#34;
+	width=&#34;1010&#34;
+	height=&#34;761&#34;
+	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_15_hu_d0d90da0f7df8055.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_15_hu_2beaa0aae95a8f50.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_15.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;132&#34;
+		data-flex-basis=&#34;318px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;安装完毕后设置相关参数&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_16.png&#34;
+	width=&#34;1010&#34;
+	height=&#34;761&#34;
+	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_16_hu_72ec9e2ed508f0d1.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_16_hu_e073e8b2b057c3fb.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_16.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;132&#34;
+		data-flex-basis=&#34;318px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;开始使用&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_17.png&#34;
+	width=&#34;1010&#34;
+	height=&#34;761&#34;
+	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_17_hu_d1cee6c790356160.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_17_hu_e37b9b3166c03d4b.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;img_17.png&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;132&#34;
+		data-flex-basis=&#34;318px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;完结撒花！！！！！！！&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>大模型提示工程（Prompt）</title>
         <link>https://arturiamu.github.io/post/prompt-tips/</link>
         <pubDate>Tue, 15 Oct 2024 20:02:17 +0800</pubDate>
