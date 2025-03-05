@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>木林彪的个人博客</title>
-        <link>https://arturiamu.github.io/</link>
+        <link>http://localhost:1313/</link>
         <description>Recent content on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Sat, 01 Feb 2025 22:05:14 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 01 Feb 2025 22:05:14 +0800</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>deepseek模型本地部署</title>
-        <link>https://arturiamu.github.io/post/local-deepseek-model/</link>
+        <link>http://localhost:1313/post/local-deepseek-model/</link>
         <pubDate>Sat, 01 Feb 2025 22:05:14 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/local-deepseek-model/</guid>
+        <guid>http://localhost:1313/post/local-deepseek-model/</guid>
         <description>&lt;p&gt;最近 deepseek 越来越火，官网已经近乎沦陷。由于家里有台 2060 闲置笔记本，尝试利用 deepseek 开源的模型，在本地搭建一个，将模型部署在本地使用。&lt;/p&gt;
 &lt;p&gt;配置&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_1.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/local-deepseek-model/img_1.png&#34;
 	width=&#34;599&#34;
 	height=&#34;869&#34;
-	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_1_hu_536f56cff10dced6.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_1_hu_2740cd005c893b56.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/local-deepseek-model/img_1_hu_536f56cff10dced6.png 480w, http://localhost:1313/post/local-deepseek-model/img_1_hu_2740cd005c893b56.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_1.png&#34;
@@ -30,10 +30,10 @@
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;下载运行ollama&#34;&gt;下载运行Ollama&lt;/h2&gt;
 &lt;p&gt;打开官网网址：https://ollama.com&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/local-deepseek-model/img.png&#34;
 	width=&#34;1917&#34;
 	height=&#34;832&#34;
-	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_hu_a3196b422b6453fd.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_hu_ce6cf6d10a41e13d.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/local-deepseek-model/img_hu_a3196b422b6453fd.png 480w, http://localhost:1313/post/local-deepseek-model/img_hu_ce6cf6d10a41e13d.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -45,10 +45,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;点击 Download&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_2.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/local-deepseek-model/img_2.png&#34;
 	width=&#34;1905&#34;
 	height=&#34;923&#34;
-	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_2_hu_665958dfe4fef76f.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_2_hu_6aaafaf75abdce26.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/local-deepseek-model/img_2_hu_665958dfe4fef76f.png 480w, http://localhost:1313/post/local-deepseek-model/img_2_hu_6aaafaf75abdce26.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_2.png&#34;
@@ -89,10 +89,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;将以上脚本保存到 exe 文件同级目录&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_3.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/local-deepseek-model/img_3.png&#34;
 	width=&#34;174&#34;
 	height=&#34;141&#34;
-	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_3_hu_d9dc930af848a450.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_3_hu_5c21a2759adf5c48.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/local-deepseek-model/img_3_hu_d9dc930af848a450.png 480w, http://localhost:1313/post/local-deepseek-model/img_3_hu_5c21a2759adf5c48.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_3.png&#34;
@@ -104,10 +104,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;待 ollama 下载完毕后，右键单机脚本，点击“以管理员身份运行”，会弹出以下界面，该界面可以直接关闭&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_4.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/local-deepseek-model/img_4.png&#34;
 	width=&#34;979&#34;
 	height=&#34;512&#34;
-	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_4_hu_2ea117732abd656.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_4_hu_fc4de7a22350e133.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/local-deepseek-model/img_4_hu_2ea117732abd656.png 480w, http://localhost:1313/post/local-deepseek-model/img_4_hu_fc4de7a22350e133.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_4.png&#34;
@@ -119,10 +119,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;同时会弹出以下界面，点击 Install 即可开始安装&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_6.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/local-deepseek-model/img_6.png&#34;
 	width=&#34;897&#34;
 	height=&#34;663&#34;
-	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_6_hu_7e8043cdb4ea619f.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_6_hu_1033bd219b3c5444.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/local-deepseek-model/img_6_hu_7e8043cdb4ea619f.png 480w, http://localhost:1313/post/local-deepseek-model/img_6_hu_1033bd219b3c5444.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_6.png&#34;
@@ -134,10 +134,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;安装完成后，系统会自动运行 ollama，在电脑右下角有个小图标，将ollama重启一下。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_5.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/local-deepseek-model/img_5.png&#34;
 	width=&#34;61&#34;
 	height=&#34;30&#34;
-	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_5_hu_7b48978abf6986c6.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_5_hu_cdab7a353c3761bf.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/local-deepseek-model/img_5_hu_7b48978abf6986c6.png 480w, http://localhost:1313/post/local-deepseek-model/img_5_hu_cdab7a353c3761bf.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_5.png&#34;
@@ -148,10 +148,10 @@
 		data-flex-basis=&#34;488px&#34;
 	
 &gt;
-&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_7.png&#34;
+&lt;img src=&#34;http://localhost:1313/post/local-deepseek-model/img_7.png&#34;
 	width=&#34;329&#34;
 	height=&#34;104&#34;
-	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_7_hu_2c7afc9e77168ab0.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_7_hu_676a51ce8529c9f5.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/local-deepseek-model/img_7_hu_2c7afc9e77168ab0.png 480w, http://localhost:1313/post/local-deepseek-model/img_7_hu_676a51ce8529c9f5.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_7.png&#34;
@@ -166,10 +166,10 @@
 &lt;p&gt;ollama 安装好之后，就能下载模型了，这里我使用的是deepseek-r1的模型。&lt;/p&gt;
 &lt;p&gt;模型官方地址：https://ollama.com/library/deepseek-r1&lt;/p&gt;
 &lt;p&gt;在电脑上重新打开一个cmd窗口或者windows powershell窗口。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_8.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/local-deepseek-model/img_8.png&#34;
 	width=&#34;302&#34;
 	height=&#34;633&#34;
-	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_8_hu_94998d5d7fa6ea80.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_8_hu_9b6c326478ea38d6.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/local-deepseek-model/img_8_hu_94998d5d7fa6ea80.png 480w, http://localhost:1313/post/local-deepseek-model/img_8_hu_9b6c326478ea38d6.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_8.png&#34;
@@ -181,10 +181,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;输入命令 &lt;code&gt;ollama help&lt;/code&gt;，如果能输出以下提示信息，说明目前设置正确。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_9.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/local-deepseek-model/img_9.png&#34;
 	width=&#34;512&#34;
 	height=&#34;469&#34;
-	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_9_hu_157921dd7c6245fc.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_9_hu_ba4ae38bbb2e3492.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/local-deepseek-model/img_9_hu_157921dd7c6245fc.png 480w, http://localhost:1313/post/local-deepseek-model/img_9_hu_ba4ae38bbb2e3492.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_9.png&#34;
@@ -202,10 +202,10 @@
 &lt;p&gt;下载模型，直接输入命令就可以了。&lt;/p&gt;
 &lt;p&gt;这里我使用的是 8 b的模型，就在cmd里面直接输入 &lt;code&gt;ollama run deepseek-r1:8b&lt;/code&gt;。模型下载完毕之后会直接运行。&lt;/p&gt;
 &lt;p&gt;提示：下载过程中如果下载速度降的很低，直接 &lt;code&gt;ctrl+c&lt;/code&gt; 中断任务后重新下载即可。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_11.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/local-deepseek-model/img_11.png&#34;
 	width=&#34;859&#34;
 	height=&#34;732&#34;
-	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_11_hu_cc22ad6dc6d0de3f.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_11_hu_95e1adbac8379ee7.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/local-deepseek-model/img_11_hu_cc22ad6dc6d0de3f.png 480w, http://localhost:1313/post/local-deepseek-model/img_11_hu_95e1adbac8379ee7.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_11.png&#34;
@@ -216,10 +216,10 @@
 		data-flex-basis=&#34;281px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_12.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/local-deepseek-model/img_12.png&#34;
 	width=&#34;859&#34;
 	height=&#34;732&#34;
-	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_12_hu_8ad821111889cadc.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_12_hu_e55058985ff99fb8.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/local-deepseek-model/img_12_hu_8ad821111889cadc.png 480w, http://localhost:1313/post/local-deepseek-model/img_12_hu_e55058985ff99fb8.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_12.png&#34;
@@ -232,10 +232,10 @@
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;可视化&#34;&gt;可视化&lt;/h2&gt;
 &lt;p&gt;打开 chatbox 官网：https://chatboxai.app/zh&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_13.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/local-deepseek-model/img_13.png&#34;
 	width=&#34;1760&#34;
 	height=&#34;873&#34;
-	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_13_hu_cafdf1a962cd4566.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_13_hu_84084dd15c20c25a.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/local-deepseek-model/img_13_hu_cafdf1a962cd4566.png 480w, http://localhost:1313/post/local-deepseek-model/img_13_hu_84084dd15c20c25a.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_13.png&#34;
@@ -247,10 +247,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;点击 “免费下载”&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_14.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/local-deepseek-model/img_14.png&#34;
 	width=&#34;1383&#34;
 	height=&#34;549&#34;
-	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_14_hu_f39492bdc8a68b6f.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_14_hu_64de2d98a57a948b.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/local-deepseek-model/img_14_hu_f39492bdc8a68b6f.png 480w, http://localhost:1313/post/local-deepseek-model/img_14_hu_64de2d98a57a948b.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_14.png&#34;
@@ -263,10 +263,10 @@
 &gt;&lt;/p&gt;
 &lt;p&gt;点击 “手动下载 for Windows（PC）”&lt;/p&gt;
 &lt;p&gt;选择位置安装&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_15.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/local-deepseek-model/img_15.png&#34;
 	width=&#34;1010&#34;
 	height=&#34;761&#34;
-	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_15_hu_d0d90da0f7df8055.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_15_hu_2beaa0aae95a8f50.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/local-deepseek-model/img_15_hu_d0d90da0f7df8055.png 480w, http://localhost:1313/post/local-deepseek-model/img_15_hu_2beaa0aae95a8f50.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_15.png&#34;
@@ -278,10 +278,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;安装完毕后设置相关参数&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_16.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/local-deepseek-model/img_16.png&#34;
 	width=&#34;1010&#34;
 	height=&#34;761&#34;
-	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_16_hu_72ec9e2ed508f0d1.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_16_hu_e073e8b2b057c3fb.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/local-deepseek-model/img_16_hu_72ec9e2ed508f0d1.png 480w, http://localhost:1313/post/local-deepseek-model/img_16_hu_e073e8b2b057c3fb.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_16.png&#34;
@@ -293,10 +293,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;开始使用&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_17.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/local-deepseek-model/img_17.png&#34;
 	width=&#34;1010&#34;
 	height=&#34;761&#34;
-	srcset=&#34;https://arturiamu.github.io/post/local-deepseek-model/img_17_hu_d1cee6c790356160.png 480w, https://arturiamu.github.io/post/local-deepseek-model/img_17_hu_e37b9b3166c03d4b.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/local-deepseek-model/img_17_hu_d1cee6c790356160.png 480w, http://localhost:1313/post/local-deepseek-model/img_17_hu_e37b9b3166c03d4b.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_17.png&#34;
@@ -312,18 +312,18 @@
         </item>
         <item>
         <title>一切都要支付两次</title>
-        <link>https://arturiamu.github.io/post/pay-for-everything-twice/</link>
+        <link>http://localhost:1313/post/pay-for-everything-twice/</link>
         <pubDate>Wed, 15 Jan 2025 22:03:45 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/pay-for-everything-twice/</guid>
+        <guid>http://localhost:1313/post/pay-for-everything-twice/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文转载自 &lt;a class=&#34;link&#34; href=&#34;https://www.ruanyifeng.com/blog/2025/01/weekly-issue-333.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;科技爱好者周刊（第 333 期）：一切都要支付两次&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;有一句古语&amp;quot;书非借不能读也&amp;quot;，大家可能都听过。&lt;/p&gt;
 &lt;p&gt;它的意思是，很多人买了书却不读，觉得不着急，拥有书就相当于已经开始学了，后面就慢慢来吧，反而是借来的书有急迫感会抓紧读完。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/pay-for-everything-twice/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/pay-for-everything-twice/img.png&#34;
 	width=&#34;799&#34;
 	height=&#34;203&#34;
-	srcset=&#34;https://arturiamu.github.io/post/pay-for-everything-twice/img_hu_934db558579e3c3a.png 480w, https://arturiamu.github.io/post/pay-for-everything-twice/img_hu_2f14150c675312ac.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/pay-for-everything-twice/img_hu_934db558579e3c3a.png 480w, http://localhost:1313/post/pay-for-everything-twice/img_hu_2f14150c675312ac.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -338,10 +338,10 @@
 &lt;p&gt;我最近看到一篇&lt;a class=&#34;link&#34; href=&#34;https://www.raptitude.com/2022/01/everything-must-be-paid-for-twice/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;老外的文章&lt;/a&gt;，他给这种现象起了一个全新的名字，让人觉得很贴切。老外的概念化能力真是强。&lt;/p&gt;
 &lt;p&gt;他提出，人们买书却不读，是因为没有意识到&lt;strong&gt;每样东西都需要两次支付。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/pay-for-everything-twice/img_1.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/pay-for-everything-twice/img_1.png&#34;
 	width=&#34;505&#34;
 	height=&#34;416&#34;
-	srcset=&#34;https://arturiamu.github.io/post/pay-for-everything-twice/img_1_hu_638a7161e4c0ed99.png 480w, https://arturiamu.github.io/post/pay-for-everything-twice/img_1_hu_ae667877c2328583.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/pay-for-everything-twice/img_1_hu_638a7161e4c0ed99.png 480w, http://localhost:1313/post/pay-for-everything-twice/img_1_hu_ae667877c2328583.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_1.png&#34;
@@ -367,10 +367,10 @@
         </item>
         <item>
         <title>文件完整性校验</title>
-        <link>https://arturiamu.github.io/post/file-integrity-check/</link>
+        <link>http://localhost:1313/post/file-integrity-check/</link>
         <pubDate>Fri, 03 Jan 2025 10:35:48 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/file-integrity-check/</guid>
+        <guid>http://localhost:1313/post/file-integrity-check/</guid>
         <description>&lt;p&gt;文件完整性校验是确保文件在传输、存储或处理过程中未被篡改或损坏的重要技术手段。它在信息安全、数据管理和系统维护中扮演着关键角色。&lt;/p&gt;
 &lt;h2 id=&#34;md5算法简介&#34;&gt;MD5算法简介&lt;/h2&gt;
 &lt;p&gt;MD5 算法（Message Digest Algorithm 5，消息摘要算法第5版）是一种广泛使用的哈希函数，由 Ronald Rivest 于 1991 年设计。它可以将任意长度的数据（如文件、字符串）转换为固定长度的 128 位（16 字节）哈希值，通常以 32 个十六进制字符表示。MD5 最初被设计用于数据完整性校验和密码存储，但由于其安全性问题，现已不推荐用于高安全性场景。&lt;/p&gt;
@@ -525,16 +525,16 @@
         </item>
         <item>
         <title>vscode debug golang 代码不按顺序跳转、变量不可见问题</title>
-        <link>https://arturiamu.github.io/post/vscode-go-dlv-debugging/</link>
+        <link>http://localhost:1313/post/vscode-go-dlv-debugging/</link>
         <pubDate>Thu, 05 Dec 2024 16:53:18 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/vscode-go-dlv-debugging/</guid>
+        <guid>http://localhost:1313/post/vscode-go-dlv-debugging/</guid>
         <description>&lt;h2 id=&#34;问题描述&#34;&gt;问题描述&lt;/h2&gt;
 &lt;p&gt;使用 vscode 调试 golang 项目时，发现部分代码不按顺序跳转，变量不可见。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/vscode-go-dlv-debugging/img.png&#34;
 	width=&#34;939&#34;
 	height=&#34;520&#34;
-	srcset=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_hu_8c32dbfe727a5d38.png 480w, https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_hu_58a3aaaa255f3951.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/vscode-go-dlv-debugging/img_hu_8c32dbfe727a5d38.png 480w, http://localhost:1313/post/vscode-go-dlv-debugging/img_hu_58a3aaaa255f3951.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -607,10 +607,10 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;h2 id=&#34;排查&#34;&gt;排查&lt;/h2&gt;
 &lt;p&gt;google 搜索相关词条后，初步定位是 &lt;code&gt;gcflags&lt;/code&gt; 参数问题，在 &lt;code&gt;launch.json&lt;/code&gt; 中添加 &lt;code&gt;&amp;quot;buildFlags&amp;quot;: &amp;quot;-gcflags=all=-N -l&amp;quot;&lt;/code&gt; 参数后问题仍然复现，且 debug 会触发 vscode 提示。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_1.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/vscode-go-dlv-debugging/img_1.png&#34;
 	width=&#34;465&#34;
 	height=&#34;122&#34;
-	srcset=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_1_hu_e721435217f3897a.png 480w, https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_1_hu_e65e755ed61fca6d.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/vscode-go-dlv-debugging/img_1_hu_e721435217f3897a.png 480w, http://localhost:1313/post/vscode-go-dlv-debugging/img_1_hu_e65e755ed61fca6d.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_1.png&#34;
@@ -624,10 +624,10 @@
 &lt;p&gt;提示链接 &lt;a class=&#34;link&#34; href=&#34;https://github.com/golang/vscode-go/blob/master/docs/debugging.md#debugging&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/golang/vscode-go/blob/master/docs/debugging.md#debugging&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;根据 &lt;code&gt;gcflags&lt;/code&gt; 关键词查找到相关内容&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_2.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/vscode-go-dlv-debugging/img_2.png&#34;
 	width=&#34;1191&#34;
 	height=&#34;510&#34;
-	srcset=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_2_hu_3f6f7cf2b56e48a4.png 480w, https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_2_hu_38408c7206d97ea9.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/vscode-go-dlv-debugging/img_2_hu_3f6f7cf2b56e48a4.png 480w, http://localhost:1313/post/vscode-go-dlv-debugging/img_2_hu_38408c7206d97ea9.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_2.png&#34;
@@ -641,10 +641,10 @@
 &lt;p&gt;&lt;code&gt;必须使用 go build -gcflags=all=&amp;quot;-N -l&amp;quot; 构建二进制文件以禁用可能干扰调试的内联和优化。&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&#34;解决&#34;&gt;解决&lt;/h2&gt;
 &lt;p&gt;排查makefile 文件，发现 &lt;code&gt;include&lt;/code&gt; 子文件中 &lt;code&gt;go build&lt;/code&gt; 命令没有带 &lt;code&gt;-gcflags=all=&amp;quot;-N -l&amp;quot;&lt;/code&gt; 参数。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_3.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/vscode-go-dlv-debugging/img_3.png&#34;
 	width=&#34;410&#34;
 	height=&#34;112&#34;
-	srcset=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_3_hu_427c7c78b064105a.png 480w, https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_3_hu_a5de1991525d5b05.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/vscode-go-dlv-debugging/img_3_hu_427c7c78b064105a.png 480w, http://localhost:1313/post/vscode-go-dlv-debugging/img_3_hu_a5de1991525d5b05.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_3.png&#34;
@@ -656,10 +656,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;添加参数后问题解决&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_4.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/vscode-go-dlv-debugging/img_4.png&#34;
 	width=&#34;452&#34;
 	height=&#34;115&#34;
-	srcset=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_4_hu_7615094a0ba61803.png 480w, https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_4_hu_5f162f9b5f972f50.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/vscode-go-dlv-debugging/img_4_hu_7615094a0ba61803.png 480w, http://localhost:1313/post/vscode-go-dlv-debugging/img_4_hu_5f162f9b5f972f50.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_4.png&#34;
@@ -670,10 +670,10 @@
 		data-flex-basis=&#34;943px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_6.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/vscode-go-dlv-debugging/img_6.png&#34;
 	width=&#34;883&#34;
 	height=&#34;431&#34;
-	srcset=&#34;https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_6_hu_ae6507b79a467376.png 480w, https://arturiamu.github.io/post/vscode-go-dlv-debugging/img_6_hu_f596ee22495a8541.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/vscode-go-dlv-debugging/img_6_hu_ae6507b79a467376.png 480w, http://localhost:1313/post/vscode-go-dlv-debugging/img_6_hu_f596ee22495a8541.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_6.png&#34;
@@ -821,10 +821,10 @@
         </item>
         <item>
         <title>大模型提示工程（Prompt）</title>
-        <link>https://arturiamu.github.io/post/prompt-tips/</link>
+        <link>http://localhost:1313/post/prompt-tips/</link>
         <pubDate>Tue, 15 Oct 2024 20:02:17 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/prompt-tips/</guid>
+        <guid>http://localhost:1313/post/prompt-tips/</guid>
         <description>&lt;p&gt;现在的大模型，基本都是基于 transformer 的 GPT 模型。以 ChatGPT 为例，它是一种基于 GPT 模型的对话生成模型，它可以让计算机自动学习对话语料库中的模式，并生成连贯、自然的对话回复。 对于我们普通用户来说，无论是使用ChatGPT，还是文心一言、通义千问这些大模型，就是通过一轮一轮的对话来实现我们的诉求。&lt;/p&gt;
 &lt;h2 id=&#34;简单提示&#34;&gt;简单提示&lt;/h2&gt;
 &lt;p&gt;所谓提示词，就是如何让ChatGPT更精准的理解我们的意图，输出我们想要的答案。想要让AI生成更优质、更符合我们需求的内容，关键在于如何设计Prompt（提示词）。以下是一些改进Prompt的技巧，帮助我们更好地引导AI：&lt;/p&gt;
@@ -891,10 +891,10 @@
         </item>
         <item>
         <title>从信息检索到文本生成：RAG如何让AI更懂你？</title>
-        <link>https://arturiamu.github.io/post/retrieval-augmented-generation/</link>
+        <link>http://localhost:1313/post/retrieval-augmented-generation/</link>
         <pubDate>Sat, 12 Oct 2024 19:22:39 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/retrieval-augmented-generation/</guid>
+        <guid>http://localhost:1313/post/retrieval-augmented-generation/</guid>
         <description>&lt;p&gt;你是否曾经感叹，虽然AI模型能写出流畅的文字，但内容却空洞无物，甚至“一本正经地胡说八道”？这是因为传统语言模型仅依赖于训练数据中的统计规律，缺乏对真实世界知识的深入理解。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;RAG（Retrieval-Augmented Generation，检索增强生成）&lt;/strong&gt; 的出现，为解决这一问题提供了新的思路。它将信息检索与文本生成相结合，让AI在动笔之前，先学会“查资料”。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;RAG的工作原理：&lt;/strong&gt;&lt;/p&gt;
@@ -952,10 +952,10 @@
         </item>
         <item>
         <title>搜索引擎原理入门</title>
-        <link>https://arturiamu.github.io/post/search-engine-principles/</link>
+        <link>http://localhost:1313/post/search-engine-principles/</link>
         <pubDate>Thu, 05 Sep 2024 13:25:17 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/search-engine-principles/</guid>
+        <guid>http://localhost:1313/post/search-engine-principles/</guid>
         <description>&lt;p&gt;搜索无处不在，作为信息化时代大多数人获取信息的最重要的路径，说搜索引擎是使用最为广泛和频繁的中间件之一，应该没有人会反驳。在实际的应用场景中， 小到个人博客， 大到电商平台，你在谷歌上搜索的每一个关键字， 在电商网站上搜索的每一件商品， 追剧听音乐的时候在搜索栏输入的每一个名字的背后都是搜索引擎的处理和输出。就像是你提问，然后搜索引擎告诉你一个答案，搜索不仅无处不在，无所不知，默默的主宰着网络世界的入口。&lt;/p&gt;
 &lt;h2 id=&#34;什么是搜索引擎&#34;&gt;什么是搜索引擎&lt;/h2&gt;
 &lt;p&gt;搜索引擎是一种在线搜索工具，旨在根据用户的搜索查询在网络上收集合适的网站存入自己的数据库中，然后使用独特的算法对它们进行排序。当用户在搜索框输入关键词时，搜索引擎就会将对应的内容展示给用户。&lt;/p&gt;
@@ -1015,20 +1015,20 @@
         </item>
         <item>
         <title>如何使用 zeit.co 让百度收录 GitHub Pages 博客</title>
-        <link>https://arturiamu.github.io/post/baidu-include-github-pages-blog/</link>
+        <link>http://localhost:1313/post/baidu-include-github-pages-blog/</link>
         <pubDate>Mon, 08 Apr 2024 18:20:39 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/baidu-include-github-pages-blog/</guid>
+        <guid>http://localhost:1313/post/baidu-include-github-pages-blog/</guid>
         <description>&lt;p&gt;很多程序员都会在 GitHub Pages 上搭建自己的个人博客用于分享和交流技术，对于个人博客，没有被搜索引擎收录的话，别人基本是是看不到的，再好的技术文无法被分享也是白搭。&lt;/p&gt;
 &lt;p&gt;基于 GitHub Pages 的个人博客， Google 收录非常及时全面。然而，到目前为止，GitHub 还是拒绝百度爬虫的访问，直接返回 403。
 官方给出原因是，百度爬虫爬得太狠，影响了 Github Pages 服务的正常使用。这就导致了，但凡在 Github Pages 搭建的个人博客，都无法被百度收录。&lt;/p&gt;
 &lt;h2 id=&#34;注册登录&#34;&gt;注册登录&lt;/h2&gt;
 &lt;p&gt;打开 &lt;a class=&#34;link&#34; href=&#34;https://vercel.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://vercel.com/&lt;/a&gt;，点击右上角的 &lt;code&gt;Log In&lt;/code&gt;, 使用 GitHub 账号登录。授予 zeit repo 的 read 权限&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/baidu-include-github-pages-blog/img.png&#34;
 	width=&#34;1435&#34;
 	height=&#34;713&#34;
-	srcset=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_hu_6f43a16849c0e6b1.png 480w, https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_hu_2a872be2a4904e52.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/baidu-include-github-pages-blog/img_hu_6f43a16849c0e6b1.png 480w, http://localhost:1313/post/baidu-include-github-pages-blog/img_hu_2a872be2a4904e52.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -1039,10 +1039,10 @@
 		data-flex-basis=&#34;483px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_1.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/baidu-include-github-pages-blog/img_1.png&#34;
 	width=&#34;1401&#34;
 	height=&#34;633&#34;
-	srcset=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_1_hu_dbd77a4ba1d670d.png 480w, https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_1_hu_c9aa7613396af295.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/baidu-include-github-pages-blog/img_1_hu_dbd77a4ba1d670d.png 480w, http://localhost:1313/post/baidu-include-github-pages-blog/img_1_hu_c9aa7613396af295.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_1.png&#34;
@@ -1055,10 +1055,10 @@
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;部署项目&#34;&gt;部署项目&lt;/h2&gt;
 &lt;p&gt;导入 GitHub 博客 repo&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_2.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/baidu-include-github-pages-blog/img_2.png&#34;
 	width=&#34;1319&#34;
 	height=&#34;547&#34;
-	srcset=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_2_hu_c4e036ce8c246e39.png 480w, https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_2_hu_eeadfae017d4a2c1.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/baidu-include-github-pages-blog/img_2_hu_c4e036ce8c246e39.png 480w, http://localhost:1313/post/baidu-include-github-pages-blog/img_2_hu_eeadfae017d4a2c1.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_2.png&#34;
@@ -1070,10 +1070,10 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;等待部署成功&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_3.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/baidu-include-github-pages-blog/img_3.png&#34;
 	width=&#34;1300&#34;
 	height=&#34;585&#34;
-	srcset=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_3_hu_39997e1201bc71bb.png 480w, https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_3_hu_36adad37fd286dec.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/baidu-include-github-pages-blog/img_3_hu_39997e1201bc71bb.png 480w, http://localhost:1313/post/baidu-include-github-pages-blog/img_3_hu_36adad37fd286dec.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_3.png&#34;
@@ -1086,10 +1086,10 @@
 &gt;&lt;/p&gt;
 &lt;h2 id=&#34;配置域名&#34;&gt;配置域名&lt;/h2&gt;
 &lt;p&gt;点击 &lt;code&gt;Domains&lt;/code&gt; 进入域名配置页面,添加域名&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_4.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/baidu-include-github-pages-blog/img_4.png&#34;
 	width=&#34;1324&#34;
 	height=&#34;636&#34;
-	srcset=&#34;https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_4_hu_a4f2f0a081fd0898.png 480w, https://arturiamu.github.io/post/baidu-include-github-pages-blog/img_4_hu_3a777c6c76051148.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/baidu-include-github-pages-blog/img_4_hu_a4f2f0a081fd0898.png 480w, http://localhost:1313/post/baidu-include-github-pages-blog/img_4_hu_3a777c6c76051148.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_4.png&#34;
@@ -1109,10 +1109,10 @@
         </item>
         <item>
         <title>在Go中构建区块链-4-交易-1</title>
-        <link>https://arturiamu.github.io/post/building-blockchain-in-go-part-4/</link>
+        <link>http://localhost:1313/post/building-blockchain-in-go-part-4/</link>
         <pubDate>Wed, 13 Dec 2023 10:54:23 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/building-blockchain-in-go-part-4/</guid>
+        <guid>http://localhost:1313/post/building-blockchain-in-go-part-4/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文译自 &lt;a class=&#34;link&#34; href=&#34;https://jeiwan.net/posts/building-blockchain-in-go-part-4/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Building Blockchain in Go. Part 4: Transactions 1&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
@@ -1148,10 +1148,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;新交易的输入引用先前交易的输出（不过有一个例外，我们将在稍后讨论）。 输出是实际存储币的地方。 下图展示了交易的互连：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-4/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/building-blockchain-in-go-part-4/img.png&#34;
 	width=&#34;733&#34;
 	height=&#34;379&#34;
-	srcset=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-4/img_hu_ac40bf0087599b74.png 480w, https://arturiamu.github.io/post/building-blockchain-in-go-part-4/img_hu_8a8728ea37ba6c12.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/building-blockchain-in-go-part-4/img_hu_ac40bf0087599b74.png 480w, http://localhost:1313/post/building-blockchain-in-go-part-4/img_hu_8a8728ea37ba6c12.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -1977,10 +1977,10 @@
         </item>
         <item>
         <title>在Go中构建区块链-3-持久性和CLI</title>
-        <link>https://arturiamu.github.io/post/building-blockchain-in-go-part-3/</link>
+        <link>http://localhost:1313/post/building-blockchain-in-go-part-3/</link>
         <pubDate>Tue, 12 Dec 2023 19:41:34 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/building-blockchain-in-go-part-3/</guid>
+        <guid>http://localhost:1313/post/building-blockchain-in-go-part-3/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文译自 &lt;a class=&#34;link&#34; href=&#34;https://jeiwan.net/posts/building-blockchain-in-go-part-3/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Building Blockchain in Go. Part 3: Persistence and CLI&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
@@ -2716,10 +2716,10 @@
         </item>
         <item>
         <title>在Go中构建区块链-2-工作量证明PoW</title>
-        <link>https://arturiamu.github.io/post/building-blockchain-in-go-part-2/</link>
+        <link>http://localhost:1313/post/building-blockchain-in-go-part-2/</link>
         <pubDate>Tue, 12 Dec 2023 18:05:25 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/building-blockchain-in-go-part-2/</guid>
+        <guid>http://localhost:1313/post/building-blockchain-in-go-part-2/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文译自 &lt;a class=&#34;link&#34; href=&#34;https://jeiwan.net/posts/building-blockchain-in-go-part-2/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Building Blockchain in Go. Part 2: Proof-of-Work&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
@@ -2737,10 +2737,10 @@
 &lt;li&gt;特定的数据只能有一个哈希值，且哈希是唯一的。&lt;/li&gt;
 &lt;li&gt;即使在输入数据中更改一个字节，也会导致完全不同的哈希值。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/building-blockchain-in-go-part-2/img.png&#34;
 	width=&#34;644&#34;
 	height=&#34;378&#34;
-	srcset=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img_hu_e55e4e06b6ce9fae.png 480w, https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img_hu_6e1c257c1a38ed73.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/building-blockchain-in-go-part-2/img_hu_e55e4e06b6ce9fae.png 480w, http://localhost:1313/post/building-blockchain-in-go-part-2/img_hu_6e1c257c1a38ed73.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -2769,10 +2769,10 @@
 &lt;p&gt;因此，这是一种穷举算法：更改计数器，计算新的哈希，检查它，增加计数器，计算哈希，依此类推。这就是为什么它在计算上是昂贵的原因。&lt;/p&gt;
 &lt;p&gt;现在让我们更详细地看看哈希必须满足的要求。在原始的Hashcash实现中，要求是“哈希的前20位必须为零”。在比特币中，由于设计上每10分钟必须生成一个区块，因此要求会随时间调整，尽管计算能力随着时间的推移增加，越来越多的矿工加入网络。&lt;/p&gt;
 &lt;p&gt;为了演示这个算法，我使用了前面例子中的数据(“I like donuts”)并找到了一个以3个零字节开头的哈希值：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img_1.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/building-blockchain-in-go-part-2/img_1.png&#34;
 	width=&#34;709&#34;
 	height=&#34;378&#34;
-	srcset=&#34;https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img_1_hu_d34c71d44c7d7555.png 480w, https://arturiamu.github.io/post/building-blockchain-in-go-part-2/img_1_hu_89bad53523f3a90.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/building-blockchain-in-go-part-2/img_1_hu_d34c71d44c7d7555.png 480w, http://localhost:1313/post/building-blockchain-in-go-part-2/img_1_hu_89bad53523f3a90.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_1.png&#34;
@@ -3109,10 +3109,10 @@
         </item>
         <item>
         <title>在Go中构建区块链-1-基本原型</title>
-        <link>https://arturiamu.github.io/post/building-blockchain-in-go-part-1/</link>
+        <link>http://localhost:1313/post/building-blockchain-in-go-part-1/</link>
         <pubDate>Tue, 12 Dec 2023 15:27:07 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/building-blockchain-in-go-part-1/</guid>
+        <guid>http://localhost:1313/post/building-blockchain-in-go-part-1/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文译自 &lt;a class=&#34;link&#34; href=&#34;https://jeiwan.net/posts/building-blockchain-in-go-part-1/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Building Blockchain in Go. Part 1: Basic Prototype&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;简介&#34;&gt;简介&lt;/h2&gt;
@@ -3308,18 +3308,26 @@
 </description>
         </item>
         <item>
+        <title>关于转载</title>
+        <link>http://localhost:1313/post/about-repost/</link>
+        <pubDate>Wed, 01 Nov 2023 16:47:36 +0800</pubDate>
+        
+        <guid>http://localhost:1313/post/about-repost/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>docker --link容器互联</title>
-        <link>https://arturiamu.github.io/post/docker-container-link/</link>
+        <link>http://localhost:1313/post/docker-container-link/</link>
         <pubDate>Tue, 31 Oct 2023 11:14:05 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/docker-container-link/</guid>
+        <guid>http://localhost:1313/post/docker-container-link/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文转载自 &lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/renshengdezheli/p/16640281.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;docker &amp;ndash;link容器互联&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;系统环境&#34;&gt;系统环境&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/docker-container-link/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/docker-container-link/img.png&#34;
 	width=&#34;536&#34;
 	height=&#34;130&#34;
-	srcset=&#34;https://arturiamu.github.io/post/docker-container-link/img_hu_515fa4e82be8df72.png 480w, https://arturiamu.github.io/post/docker-container-link/img_hu_9df225a118fa8a7b.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/docker-container-link/img_hu_515fa4e82be8df72.png 480w, http://localhost:1313/post/docker-container-link/img_hu_9df225a118fa8a7b.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -3551,17 +3559,17 @@
         </item>
         <item>
         <title>docker网络管理</title>
-        <link>https://arturiamu.github.io/post/docker-network-management/</link>
+        <link>http://localhost:1313/post/docker-network-management/</link>
         <pubDate>Fri, 27 Oct 2023 14:14:04 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/docker-network-management/</guid>
+        <guid>http://localhost:1313/post/docker-network-management/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文转载自 &lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/renshengdezheli/p/16639858.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;docker网络管理&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;系统环境&#34;&gt;系统环境&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/docker-network-management/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/docker-network-management/img.png&#34;
 	width=&#34;546&#34;
 	height=&#34;132&#34;
-	srcset=&#34;https://arturiamu.github.io/post/docker-network-management/img_hu_812aef768a4f6515.png 480w, https://arturiamu.github.io/post/docker-network-management/img_hu_6ea95ba4d9fd7db0.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/docker-network-management/img_hu_812aef768a4f6515.png 480w, http://localhost:1313/post/docker-network-management/img_hu_6ea95ba4d9fd7db0.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -4267,17 +4275,17 @@ Docker 容器和服务甚至不需要知道它们部署在 Docker 上，或者�
         </item>
         <item>
         <title>一文搞懂docker容器基础：docker镜像管理，docker容器管理</title>
-        <link>https://arturiamu.github.io/post/docker-container-base/</link>
+        <link>http://localhost:1313/post/docker-container-base/</link>
         <pubDate>Fri, 27 Oct 2023 10:49:41 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/docker-container-base/</guid>
+        <guid>http://localhost:1313/post/docker-container-base/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文转载自 &lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/renshengdezheli/p/16628311.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;一文搞懂docker容器基础：docker镜像管理，docker容器管理&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;系统环境&#34;&gt;系统环境&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/docker-container-base/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/docker-container-base/img.png&#34;
 	width=&#34;516&#34;
 	height=&#34;126&#34;
-	srcset=&#34;https://arturiamu.github.io/post/docker-container-base/img_hu_d59b43478e6f93e7.png 480w, https://arturiamu.github.io/post/docker-container-base/img_hu_ccaa04b65d2d39ee.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/docker-container-base/img_hu_d59b43478e6f93e7.png 480w, http://localhost:1313/post/docker-container-base/img_hu_ccaa04b65d2d39ee.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -4322,10 +4330,10 @@ Docker 非常适合高密度环境以及需要用更少资源完成更多工作�
 Docker 客户端和守护程序可以 在同一系统上运行，或者您可以将 Docker 客户端连接到远程 Docker 守护程序。
 Docker 客户端和守护程序使用 REST API，通过 UNIX 套接字或网络接口进行通信。
 另一个 Docker 客户端是 Docker Compose，它允许您使用由一组容器组成的应用程序。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/docker-container-base/img_1.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/docker-container-base/img_1.png&#34;
 	width=&#34;804&#34;
 	height=&#34;439&#34;
-	srcset=&#34;https://arturiamu.github.io/post/docker-container-base/img_1_hu_f87f702db8214f8d.png 480w, https://arturiamu.github.io/post/docker-container-base/img_1_hu_dc40c14fed0c4aa1.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/docker-container-base/img_1_hu_f87f702db8214f8d.png 480w, http://localhost:1313/post/docker-container-base/img_1_hu_dc40c14fed0c4aa1.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_1.png&#34;
@@ -5200,10 +5208,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;li&gt;Docker Desktop 上的数据卷比来自 Mac 和 Windows 主机的绑定挂载具有更高的性能。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;此外，与在容器的可写层中持久化数据相比，数据卷通常是更好的选择，因为数据卷不会增加使用它的容器的大小，并且数据卷的内容存在于给定容器的生命周期之外。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/docker-container-base/img_2.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/docker-container-base/img_2.png&#34;
 	width=&#34;666&#34;
 	height=&#34;339&#34;
-	srcset=&#34;https://arturiamu.github.io/post/docker-container-base/img_2_hu_a68bc5081f54a637.png 480w, https://arturiamu.github.io/post/docker-container-base/img_2_hu_18ea0bca578945a4.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/docker-container-base/img_2_hu_a68bc5081f54a637.png 480w, http://localhost:1313/post/docker-container-base/img_2_hu_18ea0bca578945a4.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_2.png&#34;
@@ -5440,10 +5448,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
         </item>
         <item>
         <title>mysql general_log</title>
-        <link>https://arturiamu.github.io/post/mysql-general-log/</link>
+        <link>http://localhost:1313/post/mysql-general-log/</link>
         <pubDate>Thu, 12 Oct 2023 19:38:23 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/mysql-general-log/</guid>
+        <guid>http://localhost:1313/post/mysql-general-log/</guid>
         <description>&lt;h2 id=&#34;关于mysql-general_log&#34;&gt;关于mysql general_log&lt;/h2&gt;
 &lt;p&gt;MySQL General Log（一般日志）是MySQL数据库的一种日志记录功能，用于记录数据库服务器上发生的所有操作。它可以记录包括连接、查询、事务等在内的所有操作。&lt;/p&gt;
 &lt;p&gt;General Log记录的内容包括：&lt;/p&gt;
@@ -5491,10 +5499,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
         </item>
         <item>
         <title>ssh、scp、ftp、sftp命令详解</title>
-        <link>https://arturiamu.github.io/post/ssh-scp-ftp-sftp/</link>
+        <link>http://localhost:1313/post/ssh-scp-ftp-sftp/</link>
         <pubDate>Thu, 28 Sep 2023 16:05:04 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/ssh-scp-ftp-sftp/</guid>
+        <guid>http://localhost:1313/post/ssh-scp-ftp-sftp/</guid>
         <description>&lt;h2 id=&#34;ssh&#34;&gt;ssh&lt;/h2&gt;
 &lt;p&gt;SSH（Secure Shell）是一种网络协议，用于在不安全的网络上安全地进行远程登录和执行命令。SSH提供了加密的连接，以防止敏感信息（如密码）被窃听。&lt;/p&gt;
 &lt;p&gt;SSH包括二个部分，服务端的SSHD（Secure Shell Daemon）和SSH客户端。我们通常所说的用SSH登录到某某主机，指的是用SSH客户端远程登录到某台主机（该主机运行了SSHD服务端程序）。&lt;/p&gt;
@@ -5648,10 +5656,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
         </item>
         <item>
         <title>shell 运算</title>
-        <link>https://arturiamu.github.io/post/shell-operation/</link>
+        <link>http://localhost:1313/post/shell-operation/</link>
         <pubDate>Thu, 28 Sep 2023 15:27:00 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/shell-operation/</guid>
+        <guid>http://localhost:1313/post/shell-operation/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文内容来自 &lt;a class=&#34;link&#34; href=&#34;https://www.junmajinlong.com/shell/index/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Shell：Shell 系列文章&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;bash-数值运算&#34;&gt;Bash 数值运算&lt;/h2&gt;
@@ -5885,10 +5893,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
         </item>
         <item>
         <title>Bash 变量</title>
-        <link>https://arturiamu.github.io/post/shell-bash-var/</link>
+        <link>http://localhost:1313/post/shell-bash-var/</link>
         <pubDate>Wed, 27 Sep 2023 15:52:59 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/shell-bash-var/</guid>
+        <guid>http://localhost:1313/post/shell-bash-var/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文转载自 &lt;a class=&#34;link&#34; href=&#34;https://www.junmajinlong.com/shell/script_course/shell_var/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Shell 脚本深入教程：Bash 变量&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;变量赋值&#34;&gt;变量赋值&lt;/h2&gt;
@@ -6347,10 +6355,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
         </item>
         <item>
         <title>shell脚本基础入门</title>
-        <link>https://arturiamu.github.io/post/shell-basic-knowledge/</link>
+        <link>http://localhost:1313/post/shell-basic-knowledge/</link>
         <pubDate>Wed, 27 Sep 2023 14:10:12 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/shell-basic-knowledge/</guid>
+        <guid>http://localhost:1313/post/shell-basic-knowledge/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文转载自 &lt;a class=&#34;link&#34; href=&#34;https://www.junmajinlong.com/shell/script_course/shell_tutorial/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Shell 脚本深入教程：快速入门&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;shell-脚本基础入门&#34;&gt;Shell 脚本基础入门&lt;/h2&gt;
@@ -7128,10 +7136,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;如图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/shell-basic-knowledge/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/shell-basic-knowledge/img.png&#34;
 	width=&#34;598&#34;
 	height=&#34;334&#34;
-	srcset=&#34;https://arturiamu.github.io/post/shell-basic-knowledge/img_hu_9920f12112e44864.png 480w, https://arturiamu.github.io/post/shell-basic-knowledge/img_hu_1797990a716d066e.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/shell-basic-knowledge/img_hu_9920f12112e44864.png 480w, http://localhost:1313/post/shell-basic-knowledge/img_hu_1797990a716d066e.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -7863,10 +7871,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
         </item>
         <item>
         <title>golang for循环的坑</title>
-        <link>https://arturiamu.github.io/post/go-for-loop/</link>
+        <link>http://localhost:1313/post/go-for-loop/</link>
         <pubDate>Tue, 26 Sep 2023 19:45:10 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/go-for-loop/</guid>
+        <guid>http://localhost:1313/post/go-for-loop/</guid>
         <description>&lt;h2 id=&#34;遍历修改&#34;&gt;遍历修改&lt;/h2&gt;
 &lt;p&gt;这是初学者最容易犯的问题，当我们试图修改切片中的数据时，直接使用&lt;code&gt;for range&lt;/code&gt;遍历数据并修改&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -8202,10 +8210,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
         </item>
         <item>
         <title>hugo stack 主题美化</title>
-        <link>https://arturiamu.github.io/post/stack-beautify/</link>
+        <link>http://localhost:1313/post/stack-beautify/</link>
         <pubDate>Tue, 19 Sep 2023 15:51:30 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/stack-beautify/</guid>
+        <guid>http://localhost:1313/post/stack-beautify/</guid>
         <description>&lt;h2 id=&#34;修改字体&#34;&gt;修改字体&lt;/h2&gt;
 &lt;p&gt;这里使用了&lt;a class=&#34;link&#34; href=&#34;https://www.shimoko.com/p/stcak-setting/#%E5%AD%97%E4%BD%93&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Shimoko&lt;/a&gt;的鸿蒙字体CDN&lt;/p&gt;
@@ -8254,10 +8262,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;效果对比&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img_2.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/stack-beautify/img_2.png&#34;
 	width=&#34;146&#34;
 	height=&#34;334&#34;
-	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_2_hu_b07a255f2523df1c.png 480w, https://arturiamu.github.io/post/stack-beautify/img_2_hu_cad5653dc2d90fd8.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/stack-beautify/img_2_hu_b07a255f2523df1c.png 480w, http://localhost:1313/post/stack-beautify/img_2_hu_cad5653dc2d90fd8.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -8265,10 +8273,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 		data-flex-grow=&#34;43&#34;
 		data-flex-basis=&#34;104px&#34;
 	
-&gt; &lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img_3.png&#34;
+&gt; &lt;img src=&#34;http://localhost:1313/post/stack-beautify/img_3.png&#34;
 	width=&#34;145&#34;
 	height=&#34;340&#34;
-	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_3_hu_cb68bac82db81798.png 480w, https://arturiamu.github.io/post/stack-beautify/img_3_hu_45312babc24deb53.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/stack-beautify/img_3_hu_cb68bac82db81798.png 480w, http://localhost:1313/post/stack-beautify/img_3_hu_45312babc24deb53.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -8326,10 +8334,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;效果对比&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/stack-beautify/img.png&#34;
 	width=&#34;870&#34;
 	height=&#34;509&#34;
-	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_hu_6453d7dd8e111641.png 480w, https://arturiamu.github.io/post/stack-beautify/img_hu_17a6861772c7077a.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/stack-beautify/img_hu_6453d7dd8e111641.png 480w, http://localhost:1313/post/stack-beautify/img_hu_17a6861772c7077a.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -8337,10 +8345,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 		data-flex-grow=&#34;170&#34;
 		data-flex-basis=&#34;410px&#34;
 	
-&gt; &lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img_1.png&#34;
+&gt; &lt;img src=&#34;http://localhost:1313/post/stack-beautify/img_1.png&#34;
 	width=&#34;849&#34;
 	height=&#34;465&#34;
-	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_1_hu_5f753b6b360a857b.png 480w, https://arturiamu.github.io/post/stack-beautify/img_1_hu_da429070857059b3.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/stack-beautify/img_1_hu_5f753b6b360a857b.png 480w, http://localhost:1313/post/stack-beautify/img_1_hu_da429070857059b3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -8561,10 +8569,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;其他语言同理&lt;/p&gt;
 &lt;p&gt;效果展示&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img_4.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/stack-beautify/img_4.png&#34;
 	width=&#34;541&#34;
 	height=&#34;158&#34;
-	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_4_hu_abd56465d90f687d.png 480w, https://arturiamu.github.io/post/stack-beautify/img_4_hu_a3f79708d0baee40.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/stack-beautify/img_4_hu_abd56465d90f687d.png 480w, http://localhost:1313/post/stack-beautify/img_4_hu_a3f79708d0baee40.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -8572,10 +8580,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 		data-flex-grow=&#34;342&#34;
 		data-flex-basis=&#34;821px&#34;
 	
-&gt; &lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img_5.png&#34;
+&gt; &lt;img src=&#34;http://localhost:1313/post/stack-beautify/img_5.png&#34;
 	width=&#34;341&#34;
 	height=&#34;135&#34;
-	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_5_hu_eaca8ac9904e8b0b.png 480w, https://arturiamu.github.io/post/stack-beautify/img_5_hu_67a34ea9b595d6e2.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/stack-beautify/img_5_hu_eaca8ac9904e8b0b.png 480w, http://localhost:1313/post/stack-beautify/img_5_hu_67a34ea9b595d6e2.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -8627,10 +8635,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;效果展示&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/stack-beautify/img_6.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/stack-beautify/img_6.png&#34;
 	width=&#34;410&#34;
 	height=&#34;365&#34;
-	srcset=&#34;https://arturiamu.github.io/post/stack-beautify/img_6_hu_bf50da1b5879bfbb.png 480w, https://arturiamu.github.io/post/stack-beautify/img_6_hu_58daa836cd9306ed.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/stack-beautify/img_6_hu_bf50da1b5879bfbb.png 480w, http://localhost:1313/post/stack-beautify/img_6_hu_58daa836cd9306ed.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -8643,10 +8651,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
         </item>
         <item>
         <title>深入MySQL复制(二)：基于GTID复制 </title>
-        <link>https://arturiamu.github.io/post/mysql-replication-2/</link>
+        <link>http://localhost:1313/post/mysql-replication-2/</link>
         <pubDate>Tue, 19 Sep 2023 11:35:24 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/mysql-replication-2/</guid>
+        <guid>http://localhost:1313/post/mysql-replication-2/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文转载自 &lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/f-ck-need-u/p/9164823.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;深入MySQL复制(二)&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;相比传统的MySQL复制，gtid复制无论是配置还是维护都要轻松的多。本文对gtid复制稍作介绍。&lt;/p&gt;
@@ -9470,10 +9478,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;/div&gt;&lt;h2 id=&#34;一张图说明gtid复制&#34;&gt;一张图说明GTID复制&lt;/h2&gt;
 &lt;p&gt;在前面第6节中，使用了xtrabackup备份的方式提供gtid复制的基准数据。其中涉及到一些gtid检查、设置的操作。通过这些操作，大概可以感受的到gtid复制的几个概念。&lt;/p&gt;
 &lt;p&gt;用一张图来说明：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-2/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-2/img.png&#34;
 	width=&#34;768&#34;
 	height=&#34;403&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-2/img_hu_79e0bc1fbb26e891.png 480w, https://arturiamu.github.io/post/mysql-replication-2/img_hu_90961ee912248a5c.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-2/img_hu_79e0bc1fbb26e891.png 480w, http://localhost:1313/post/mysql-replication-2/img_hu_90961ee912248a5c.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -9490,10 +9498,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
         </item>
         <item>
         <title>深入MySQL复制(一)</title>
-        <link>https://arturiamu.github.io/post/mysql-replication-1/</link>
+        <link>http://localhost:1313/post/mysql-replication-1/</link>
         <pubDate>Mon, 18 Sep 2023 14:51:23 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/mysql-replication-1/</guid>
+        <guid>http://localhost:1313/post/mysql-replication-1/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文转载自 &lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/f-ck-need-u/p/9155003.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;深入MySQL复制(一)&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;本文非常详细地介绍MySQL复制相关的内容，包括基本概念、复制原理、如何配置不同类型的复制(传统复制)等等&lt;/p&gt;
@@ -9530,10 +9538,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;站在slave的角度上看，过程如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_1.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_1.png&#34;
 	width=&#34;408&#34;
 	height=&#34;278&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_1_hu_7cee43f074e19783.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_1_hu_f2d364dda1e04e3e.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_1_hu_7cee43f074e19783.png 480w, http://localhost:1313/post/mysql-replication-1/img_1_hu_f2d364dda1e04e3e.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -9543,10 +9551,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;站在master的角度上看，过程如下(默认的异步复制模式，前提是设置了&lt;code&gt;sync_binlog=1&lt;/code&gt;，否则binlog刷盘时间由操作系统决定)：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_2.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_2.png&#34;
 	width=&#34;652&#34;
 	height=&#34;481&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_2_hu_c1f2489d57c1bd99.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_2_hu_ac1b3eeb49e5012e.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_2_hu_c1f2489d57c1bd99.png 480w, http://localhost:1313/post/mysql-replication-1/img_2_hu_ac1b3eeb49e5012e.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -9568,10 +9576,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;p&gt;复制和二进制日志息息相关，所以学习本章必须先有二进制日志的相关知识。&lt;/p&gt;
 &lt;h2 id=&#34;复制的好处&#34;&gt;复制的好处&lt;/h2&gt;
 &lt;p&gt;围绕下面的拓扑图来分析：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_3.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_3.png&#34;
 	width=&#34;507&#34;
 	height=&#34;467&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_3_hu_b85e36431d46d739.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_3_hu_c2700134c8f0a599.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_3_hu_b85e36431d46d739.png 480w, http://localhost:1313/post/mysql-replication-1/img_3_hu_c2700134c8f0a599.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -9603,10 +9611,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;p&gt;从数据同步方式的角度考虑，MySQL支持4种不同的同步方式：同步(synchronous)、半同步(semisynchronous)、异步(asynchronous)、延迟(delayed)。所以对于复制来说，就分为同步复制、半同步复制、异步复制和延迟复制。&lt;/p&gt;
 &lt;h3 id=&#34;同步复制&#34;&gt;同步复制&lt;/h3&gt;
 &lt;p&gt;客户端发送DDL/DML语句给master，master执行完毕后还需要&lt;strong&gt;等待所有的slave都写完了relay log才认为此次DDL/DML成功，然后才会返回成功信息给客户端。&lt;/strong&gt; 同步复制的问题是master必须等待，所以延迟较大，在MySQL中不使用这种复制方式。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_4.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_4.png&#34;
 	width=&#34;519&#34;
 	height=&#34;378&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_4_hu_367575419da5d04f.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_4_hu_67ebdeb89f6725bc.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_4_hu_367575419da5d04f.png 480w, http://localhost:1313/post/mysql-replication-1/img_4_hu_67ebdeb89f6725bc.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -9618,10 +9626,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;p&gt;例如上图中描述的，只有3个slave全都写完relay log并返回ACK给master后，master才会判断此次DDL/DML成功。&lt;/p&gt;
 &lt;h3 id=&#34;半同步复制&#34;&gt;半同步复制&lt;/h3&gt;
 &lt;p&gt;客户端发送DDL/DML语句给master，master执行完毕后&lt;strong&gt;还要等待一个slave写完relay log并返回确认信息给master，master才认为此次DDL/DML语句是成功的，然后才会发送成功信息给客户端。&lt;/strong&gt; 半同步复制只需等待一个slave的回应，且等待的超时时间可以设置，超时后会自动降级为异步复制，所以在局域网内(网络延迟很小)使用半同步复制是可行的。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_5.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_5.png&#34;
 	width=&#34;521&#34;
 	height=&#34;365&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_5_hu_a1e4e379b28f3ade.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_5_hu_40ef5a98d2099118.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_5_hu_a1e4e379b28f3ade.png 480w, http://localhost:1313/post/mysql-replication-1/img_5_hu_40ef5a98d2099118.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -9633,10 +9641,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;p&gt;例如上图中，只有第一个slave返回成功，master就判断此次DDL/DML成功，其他的slave无论复制进行到哪一个阶段都无关紧要。&lt;/p&gt;
 &lt;h3 id=&#34;异步复制&#34;&gt;异步复制&lt;/h3&gt;
 &lt;p&gt;客户端发送DDL/DML语句给master，&lt;strong&gt;master执行完毕立即返回成功信息给客户端，而不管slave是否已经开始复制。&lt;/strong&gt; 这样的复制方式导致的问题是，当master写完了binlog，而slave还没有开始复制或者复制还没完成时，&lt;strong&gt;slave上和master上的数据暂时不一致，且此时master突然宕机，slave将会丢失一部分数据。如果此时把slave提升为新的master，那么整个数据库就永久丢失这部分数据。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_6.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_6.png&#34;
 	width=&#34;515&#34;
 	height=&#34;330&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_6_hu_ab814a8086ac90c7.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_6_hu_7c6fb02d1b27df9f.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_6_hu_ab814a8086ac90c7.png 480w, http://localhost:1313/post/mysql-replication-1/img_6_hu_7c6fb02d1b27df9f.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -9651,10 +9659,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;p&gt;此处先配置默认的异步复制模式。由于复制和binlog息息相关，如果对binlog还不熟悉，请先了解binlog。&lt;/p&gt;
 &lt;p&gt;mysql支持一主一从和一主多从。但是每个slave必须只能是一个master的从，否则从多个master接受二进制日志后重放将会导致数据混乱的问题。&lt;/p&gt;
 &lt;p&gt;以下是一主一从的结构图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_7.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_7.png&#34;
 	width=&#34;336&#34;
 	height=&#34;365&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_7_hu_6ba008e2de96a3ff.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_7_hu_246eb751e9c49c54.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_7_hu_6ba008e2de96a3ff.png 480w, http://localhost:1313/post/mysql-replication-1/img_7_hu_246eb751e9c49c54.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -9677,10 +9685,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;/ol&gt;
 &lt;h3 id=&#34;一主一从&#34;&gt;一主一从&lt;/h3&gt;
 &lt;p&gt;一主一从是最简单的主从复制结构。本节实验环境如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_8.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_8.png&#34;
 	width=&#34;675&#34;
 	height=&#34;241&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_8_hu_51695fe0ee95cfdc.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_8_hu_9a75ae5d64c2c94c.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_8_hu_51695fe0ee95cfdc.png 480w, http://localhost:1313/post/mysql-replication-1/img_8_hu_9a75ae5d64c2c94c.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -10704,10 +10712,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
 &lt;h2 id=&#34;一主多从&#34;&gt;一主多从&lt;/h2&gt;
 &lt;p&gt;一主多从有两种情况，结构图如下。&lt;/p&gt;
 &lt;p&gt;以下是一主多从的结构图(和一主一从的配置方法完全一致)：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_9.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_9.png&#34;
 	width=&#34;564&#34;
 	height=&#34;361&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_9_hu_ed6009c6e456830f.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_9_hu_19951e081eb98b4.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_9_hu_ed6009c6e456830f.png 480w, http://localhost:1313/post/mysql-replication-1/img_9_hu_19951e081eb98b4.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -10717,10 +10725,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;以下是一主多从，但某slave是另一群MySQL实例的master：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_10.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_10.png&#34;
 	width=&#34;543&#34;
 	height=&#34;499&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_10_hu_94bfcd2008eea0f3.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_10_hu_9af733a12fcc054d.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_10_hu_94bfcd2008eea0f3.png 480w, http://localhost:1313/post/mysql-replication-1/img_10_hu_9af733a12fcc054d.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -10746,10 +10754,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
 &lt;p&gt;方法很简单，所以不做演示了。&lt;/p&gt;
 &lt;h3 id=&#34;配置一主多从从中有从&#34;&gt;配置一主多从(从中有从)&lt;/h3&gt;
 &lt;p&gt;此处实现的一主多从是下面这种结构：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_11.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_11.png&#34;
 	width=&#34;543&#34;
 	height=&#34;497&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_11_hu_45ebc6edac3ed8ff.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_11_hu_94e60aba599bad9d.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_11_hu_45ebc6edac3ed8ff.png 480w, http://localhost:1313/post/mysql-replication-1/img_11_hu_94e60aba599bad9d.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -10788,10 +10796,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
 &lt;/div&gt;&lt;p&gt;2、在slave上没有开启log-slave-updates和binlog选项时，重放relay log不会记录binlog。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;所以如果slave2要作为某些slave的master，那么在slave2上必须要开启&lt;code&gt;log-slave-updates&lt;/code&gt;和binlog选项。为了安全和数据一致性，在slave2上还应该启用read-only选项。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;环境如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_12.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_12.png&#34;
 	width=&#34;928&#34;
 	height=&#34;385&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_12_hu_7a3220683dd8a6d1.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_12_hu_7ad0e79a335e4776.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_12_hu_7a3220683dd8a6d1.png 480w, http://localhost:1313/post/mysql-replication-1/img_12_hu_7ad0e79a335e4776.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -11066,10 +11074,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;显然，多线程只有在slave上开启才有效，因为只有slave上才有SQL线程。另外，设置了该全局变量，需要重启SQL线程才生效，否则内存中还是只有一个SQL线程。&lt;/p&gt;
 &lt;p&gt;例如，初始时slave上的processlist如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_13.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_13.png&#34;
 	width=&#34;729&#34;
 	height=&#34;134&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_13_hu_a764b6dc0a8331e0.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_13_hu_3fe9b2134320dc44.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_13_hu_a764b6dc0a8331e0.png 480w, http://localhost:1313/post/mysql-replication-1/img_13_hu_3fe9b2134320dc44.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -11093,10 +11101,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mysql&amp;gt; show full processlist&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_14.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_14.png&#34;
 	width=&#34;770&#34;
 	height=&#34;173&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_14_hu_66863888b189c1c0.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_14_hu_1d5af11d2cd68de.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_14_hu_66863888b189c1c0.png 480w, http://localhost:1313/post/mysql-replication-1/img_14_hu_1d5af11d2cd68de.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -11264,10 +11272,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
         </item>
         <item>
         <title>gitlab贡献记录同步到github</title>
-        <link>https://arturiamu.github.io/post/gitlab2github/</link>
+        <link>http://localhost:1313/post/gitlab2github/</link>
         <pubDate>Fri, 15 Sep 2023 13:47:01 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/gitlab2github/</guid>
+        <guid>http://localhost:1313/post/gitlab2github/</guid>
         <description>&lt;p&gt;由于公司使用自己的git服务进行代码管理，导致很长时间我的github都没有贡献记录，现在让我们来试试将gitlab的贡献记录导出并提交到github。&lt;/p&gt;
 &lt;p&gt;这里我使用&lt;code&gt;import-gitlab-commits&lt;/code&gt;工具来操作，import-gitlab-commits是一个用golang编写的工具，可以非常简单的将gitlab贡献记录导出&lt;/p&gt;
 &lt;h2 id=&#34;操作步骤&#34;&gt;操作步骤&lt;/h2&gt;
@@ -11318,10 +11326,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
         </item>
         <item>
         <title>gin中间件统一返回结果、处理错误</title>
-        <link>https://arturiamu.github.io/post/gin-global-err/</link>
+        <link>http://localhost:1313/post/gin-global-err/</link>
         <pubDate>Wed, 13 Sep 2023 22:37:12 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/gin-global-err/</guid>
+        <guid>http://localhost:1313/post/gin-global-err/</guid>
         <description>&lt;h2 id=&#34;现状及问题&#34;&gt;现状及问题&lt;/h2&gt;
 &lt;p&gt;在golang开发中我们经常会使用gin作为web框架，gin一直以高性能和简单著称，并且有十分完善的官方文档。然而gin的错误处理却一直以来都被人吐槽，
 正常情况下我们在handler层需要根据service层返回的结果给前端相应的响应内容，如下：&lt;/p&gt;
@@ -11782,10 +11790,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
         </item>
         <item>
         <title>代码抽象艺术（bushi</title>
-        <link>https://arturiamu.github.io/post/code-abstract/</link>
+        <link>http://localhost:1313/post/code-abstract/</link>
         <pubDate>Wed, 16 Aug 2023 11:17:42 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/code-abstract/</guid>
+        <guid>http://localhost:1313/post/code-abstract/</guid>
         <description>&lt;p&gt;最近偶然刷到了B站UP主 &lt;a class=&#34;link&#34; href=&#34;https://space.bilibili.com/231911980&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Erik_Tse&lt;/a&gt; 的视频，了解到了一些&lt;strong&gt;代码抽象艺术&lt;/strong&gt;，感觉很有意思，
 所以特地开篇博客总结记录一下，欢迎大家补充~&lt;/p&gt;
@@ -12048,10 +12056,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
         </item>
         <item>
         <title>博客搜索引擎优化 SEO</title>
-        <link>https://arturiamu.github.io/post/blog-seo/</link>
+        <link>http://localhost:1313/post/blog-seo/</link>
         <pubDate>Wed, 09 Aug 2023 16:17:15 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/blog-seo/</guid>
+        <guid>http://localhost:1313/post/blog-seo/</guid>
         <description>&lt;h2 id=&#34;google&#34;&gt;Google&lt;/h2&gt;
 &lt;p&gt;1、添加站点资源&lt;/p&gt;
 &lt;p&gt;打开&lt;a class=&#34;link&#34; href=&#34;https://search.google.com/search-console/sitemaps?resource_id=https%3A%2F%2Fblog.mulinbiao.com%2F&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -12594,10 +12602,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
         </item>
         <item>
         <title>MySQL主从同步集群搭建</title>
-        <link>https://arturiamu.github.io/post/mysql-cluster/</link>
+        <link>http://localhost:1313/post/mysql-cluster/</link>
         <pubDate>Fri, 21 Jul 2023 16:48:07 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/mysql-cluster/</guid>
+        <guid>http://localhost:1313/post/mysql-cluster/</guid>
         <description>&lt;h2 id=&#34;为什么需要搭建集群&#34;&gt;为什么需要搭建集群&lt;/h2&gt;
 &lt;p&gt;搭建主从同步集群可以实现MySQL数据库的高可用、可扩展和读写分离，提升系统的性能和稳定性。这在对数据库的可靠性、
 并发读写能力和扩展性有较高要求的业务场景中尤为重要。&lt;/p&gt;
@@ -12745,10 +12753,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
         </item>
         <item>
         <title>vue axios 跨域问题</title>
-        <link>https://arturiamu.github.io/post/vue-axios-cors/</link>
+        <link>http://localhost:1313/post/vue-axios-cors/</link>
         <pubDate>Fri, 23 Jun 2023 16:37:15 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/vue-axios-cors/</guid>
+        <guid>http://localhost:1313/post/vue-axios-cors/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/article/details/125134439&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;解决 vue+axios+sprigboot 前后端分离项目 跨域请求资源和获取session不一致问题&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;直接上解决方法&#34;&gt;直接上解决方法&lt;/h2&gt;
@@ -12935,10 +12943,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
         </item>
         <item>
         <title>springboot 普通类自动注入mapper</title>
-        <link>https://arturiamu.github.io/post/spring-boot-reject-mapper/</link>
+        <link>http://localhost:1313/post/spring-boot-reject-mapper/</link>
         <pubDate>Fri, 23 Jun 2023 16:28:51 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/spring-boot-reject-mapper/</guid>
+        <guid>http://localhost:1313/post/spring-boot-reject-mapper/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/article/details/125187441&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;springboot 普通类自动注入mapper&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;解决方法&#34;&gt;解决方法&lt;/h2&gt;
@@ -12990,10 +12998,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
         </item>
         <item>
         <title>蓝桥杯 Python 语法</title>
-        <link>https://arturiamu.github.io/post/lq-py-grammar/</link>
+        <link>http://localhost:1313/post/lq-py-grammar/</link>
         <pubDate>Fri, 23 Jun 2023 14:21:55 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/lq-py-grammar/</guid>
+        <guid>http://localhost:1313/post/lq-py-grammar/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
@@ -13191,10 +13199,10 @@ map函数可以直接使用列表生成来替代
         </item>
         <item>
         <title>蓝桥杯 Python B组-代码模板</title>
-        <link>https://arturiamu.github.io/post/lq-py-code-tp/</link>
+        <link>http://localhost:1313/post/lq-py-code-tp/</link>
         <pubDate>Fri, 23 Jun 2023 14:08:55 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/lq-py-code-tp/</guid>
+        <guid>http://localhost:1313/post/lq-py-code-tp/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
@@ -13488,10 +13496,10 @@ map函数可以直接使用列表生成来替代
         </item>
         <item>
         <title>蓝桥杯 Python B组-Python基础</title>
-        <link>https://arturiamu.github.io/post/lq-py-base/</link>
+        <link>http://localhost:1313/post/lq-py-base/</link>
         <pubDate>Fri, 23 Jun 2023 14:05:35 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/lq-py-base/</guid>
+        <guid>http://localhost:1313/post/lq-py-base/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
@@ -13841,10 +13849,10 @@ map函数可以直接使用列表生成来替代
         </item>
         <item>
         <title>蓝桥杯 Python B组-说明</title>
-        <link>https://arturiamu.github.io/post/lq-py-b/</link>
+        <link>http://localhost:1313/post/lq-py-b/</link>
         <pubDate>Fri, 23 Jun 2023 13:17:35 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/lq-py-b/</guid>
+        <guid>http://localhost:1313/post/lq-py-b/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
@@ -13852,10 +13860,10 @@ map函数可以直接使用列表生成来替代
 &lt;p&gt;比赛基本上是零基础开始准备的，省赛之后因为项目比较忙，自己也是一心摆烂，直接没有准备国赛，到国赛时候写个dfs都要推半天了。其实还是有点遗憾的，当初要是好好准备一个月说不定国一就有了。&lt;/p&gt;
 &lt;p&gt;写这个文集主要是因为当初本人备赛时候基本没什么Python组的经验贴，有一些题解还需要收费，确实很不容易。（因为时间关系，这里的题解就随缘更了）&lt;/p&gt;
 &lt;p&gt;所以想把自己的经验给大家分享，希望小白可以少走一些弯路！！！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/lq-py-b/s1.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/lq-py-b/s1.jpg&#34;
 	width=&#34;2480&#34;
 	height=&#34;3508&#34;
-	srcset=&#34;https://arturiamu.github.io/post/lq-py-b/s1_hu_632d159fa7dec7bd.jpg 480w, https://arturiamu.github.io/post/lq-py-b/s1_hu_fd3326e4cc399308.jpg 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/lq-py-b/s1_hu_632d159fa7dec7bd.jpg 480w, http://localhost:1313/post/lq-py-b/s1_hu_fd3326e4cc399308.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;省一&#34;
@@ -13865,10 +13873,10 @@ map函数可以直接使用列表生成来替代
 		data-flex-grow=&#34;70&#34;
 		data-flex-basis=&#34;169px&#34;
 	
-&gt; &lt;img src=&#34;https://arturiamu.github.io/post/lq-py-b/g2.jpg&#34;
+&gt; &lt;img src=&#34;http://localhost:1313/post/lq-py-b/g2.jpg&#34;
 	width=&#34;2480&#34;
 	height=&#34;3508&#34;
-	srcset=&#34;https://arturiamu.github.io/post/lq-py-b/g2_hu_f4e438cabc5ae6bb.jpg 480w, https://arturiamu.github.io/post/lq-py-b/g2_hu_7d6c2751c4a6e4a7.jpg 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/lq-py-b/g2_hu_f4e438cabc5ae6bb.jpg 480w, http://localhost:1313/post/lq-py-b/g2_hu_7d6c2751c4a6e4a7.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;国二&#34;
@@ -13893,11 +13901,11 @@ map函数可以直接使用列表生成来替代
         </item>
         <item>
         <title>关于</title>
-        <link>https://arturiamu.github.io/about/</link>
+        <link>http://localhost:1313/about/</link>
         <pubDate>Wed, 21 Jun 2023 10:35:25 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/about/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/about/a.png" alt="Featured image of post 关于" /&gt;&lt;h2 id=&#34;关于作者&#34;&gt;关于作者&lt;/h2&gt;
+        <guid>http://localhost:1313/about/</guid>
+        <description>&lt;img src="http://localhost:1313/about/a.png" alt="Featured image of post 关于" /&gt;&lt;h2 id=&#34;关于作者&#34;&gt;关于作者&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;arturiamu 木林彪&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;昆明理工大学软件工程专业本科生&lt;/p&gt;
 &lt;p&gt;IT从业者&lt;/p&gt;
@@ -13994,10 +14002,10 @@ map函数可以直接使用列表生成来替代
         </item>
         <item>
         <title>博客bug日志</title>
-        <link>https://arturiamu.github.io/post/blog-bug-log/</link>
+        <link>http://localhost:1313/post/blog-bug-log/</link>
         <pubDate>Sun, 18 Jun 2023 13:14:35 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/blog-bug-log/</guid>
+        <guid>http://localhost:1313/post/blog-bug-log/</guid>
         <description>&lt;h2 id=&#34;bug日志&#34;&gt;bug日志&lt;/h2&gt;
 &lt;h3 id=&#34;2023-06-20-163034&#34;&gt;2023-06-20-16:30:34&lt;/h3&gt;
 &lt;h4 id=&#34;bug描述&#34;&gt;bug描述&lt;/h4&gt;
@@ -14016,10 +14024,10 @@ map函数可以直接使用列表生成来替代
         </item>
         <item>
         <title>博客说明</title>
-        <link>https://arturiamu.github.io/post/blog-description/</link>
+        <link>http://localhost:1313/post/blog-description/</link>
         <pubDate>Sun, 18 Jun 2023 12:25:48 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/blog-description/</guid>
+        <guid>http://localhost:1313/post/blog-description/</guid>
         <description>&lt;h2 id=&#34;前序&#34;&gt;前序&lt;/h2&gt;
 &lt;p&gt;很早之前就很想要开个自己的博客， 但是一直都比较忙（lǎn），趁着临近毕业的空隙，才终于决定抽出时间开始实现。开这个博客的主要目的有如下两个：&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;记录生活和思考&lt;/strong&gt;&lt;/p&gt;
@@ -14051,35 +14059,35 @@ map函数可以直接使用列表生成来替代
         </item>
         <item>
         <title>归档</title>
-        <link>https://arturiamu.github.io/archives/</link>
+        <link>http://localhost:1313/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://arturiamu.github.io/archives/</guid>
+        <guid>http://localhost:1313/archives/</guid>
         <description></description>
         </item>
         <item>
         <title>链接</title>
-        <link>https://arturiamu.github.io/links/</link>
+        <link>http://localhost:1313/links/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://arturiamu.github.io/links/</guid>
-        <description>&lt;img src="https://arturiamu.github.io/links/l.png" alt="Featured image of post 链接" /&gt;</description>
+        <guid>http://localhost:1313/links/</guid>
+        <description>&lt;img src="http://localhost:1313/links/l.png" alt="Featured image of post 链接" /&gt;</description>
         </item>
         <item>
         <title>留言</title>
-        <link>https://arturiamu.github.io/message/</link>
+        <link>http://localhost:1313/message/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://arturiamu.github.io/message/</guid>
+        <guid>http://localhost:1313/message/</guid>
         <description>&lt;h2 id=&#34;畅所欲言&#34;&gt;畅所欲言&lt;/h2&gt;
 </description>
         </item>
         <item>
         <title>搜索</title>
-        <link>https://arturiamu.github.io/search/</link>
+        <link>http://localhost:1313/search/</link>
         <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
         
-        <guid>https://arturiamu.github.io/search/</guid>
+        <guid>http://localhost:1313/search/</guid>
         <description></description>
         </item>
         

@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Prompt on 木林彪的个人博客</title>
-        <link>https://arturiamu.github.io/tags/prompt/</link>
+        <link>http://localhost:1313/tags/prompt/</link>
         <description>Recent content in Prompt on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Tue, 15 Oct 2024 20:02:17 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/tags/prompt/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 15 Oct 2024 20:02:17 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/prompt/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>大模型提示工程（Prompt）</title>
-        <link>https://arturiamu.github.io/post/prompt-tips/</link>
+        <link>http://localhost:1313/post/prompt-tips/</link>
         <pubDate>Tue, 15 Oct 2024 20:02:17 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/prompt-tips/</guid>
+        <guid>http://localhost:1313/post/prompt-tips/</guid>
         <description>&lt;p&gt;现在的大模型，基本都是基于 transformer 的 GPT 模型。以 ChatGPT 为例，它是一种基于 GPT 模型的对话生成模型，它可以让计算机自动学习对话语料库中的模式，并生成连贯、自然的对话回复。 对于我们普通用户来说，无论是使用ChatGPT，还是文心一言、通义千问这些大模型，就是通过一轮一轮的对话来实现我们的诉求。&lt;/p&gt;
 &lt;h2 id=&#34;简单提示&#34;&gt;简单提示&lt;/h2&gt;
 &lt;p&gt;所谓提示词，就是如何让ChatGPT更精准的理解我们的意图，输出我们想要的答案。想要让AI生成更优质、更符合我们需求的内容，关键在于如何设计Prompt（提示词）。以下是一些改进Prompt的技巧，帮助我们更好地引导AI：&lt;/p&gt;

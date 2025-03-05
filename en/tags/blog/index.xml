@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Blog on arturiamu&#39;s blog</title>
-        <link>https://arturiamu.github.io/en/tags/blog/</link>
+        <link>http://localhost:1313/en/tags/blog/</link>
         <description>Recent content in Blog on arturiamu&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Sun, 18 Jun 2023 12:25:48 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/en/tags/blog/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 18 Jun 2023 12:25:48 +0800</lastBuildDate><atom:link href="http://localhost:1313/en/tags/blog/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Blog description</title>
-        <link>https://arturiamu.github.io/en/post/blog-description/</link>
+        <link>http://localhost:1313/en/post/blog-description/</link>
         <pubDate>Sun, 18 Jun 2023 12:25:48 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/en/post/blog-description/</guid>
+        <guid>http://localhost:1313/en/post/blog-description/</guid>
         <description>&lt;h2 id=&#34;prelude&#34;&gt;Prelude&lt;/h2&gt;
 &lt;p&gt;I wanted to start my own blog a long time age,bug I was always busy(lazy).
 Taking advantage of the gap between graduation,I finally decided to take the time to start realizing it.

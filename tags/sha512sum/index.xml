@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Sha512sum on 木林彪的个人博客</title>
-        <link>https://arturiamu.github.io/tags/sha512sum/</link>
+        <link>http://localhost:1313/tags/sha512sum/</link>
         <description>Recent content in Sha512sum on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Fri, 03 Jan 2025 10:35:48 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/tags/sha512sum/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 03 Jan 2025 10:35:48 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/sha512sum/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>文件完整性校验</title>
-        <link>https://arturiamu.github.io/post/file-integrity-check/</link>
+        <link>http://localhost:1313/post/file-integrity-check/</link>
         <pubDate>Fri, 03 Jan 2025 10:35:48 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/file-integrity-check/</guid>
+        <guid>http://localhost:1313/post/file-integrity-check/</guid>
         <description>&lt;p&gt;文件完整性校验是确保文件在传输、存储或处理过程中未被篡改或损坏的重要技术手段。它在信息安全、数据管理和系统维护中扮演着关键角色。&lt;/p&gt;
 &lt;h2 id=&#34;md5算法简介&#34;&gt;MD5算法简介&lt;/h2&gt;
 &lt;p&gt;MD5 算法（Message Digest Algorithm 5，消息摘要算法第5版）是一种广泛使用的哈希函数，由 Ronald Rivest 于 1991 年设计。它可以将任意长度的数据（如文件、字符串）转换为固定长度的 128 位（16 字节）哈希值，通常以 32 个十六进制字符表示。MD5 最初被设计用于数据完整性校验和密码存储，但由于其安全性问题，现已不推荐用于高安全性场景。&lt;/p&gt;

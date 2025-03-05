@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Python on 木林彪的个人博客</title>
-        <link>https://arturiamu.github.io/tags/python/</link>
+        <link>http://localhost:1313/tags/python/</link>
         <description>Recent content in Python on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Fri, 23 Jun 2023 14:21:55 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 23 Jun 2023 14:21:55 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>蓝桥杯 Python 语法</title>
-        <link>https://arturiamu.github.io/post/lq-py-grammar/</link>
+        <link>http://localhost:1313/post/lq-py-grammar/</link>
         <pubDate>Fri, 23 Jun 2023 14:21:55 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/lq-py-grammar/</guid>
+        <guid>http://localhost:1313/post/lq-py-grammar/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
@@ -209,10 +209,10 @@ map函数可以直接使用列表生成来替代
         </item>
         <item>
         <title>蓝桥杯 Python B组-代码模板</title>
-        <link>https://arturiamu.github.io/post/lq-py-code-tp/</link>
+        <link>http://localhost:1313/post/lq-py-code-tp/</link>
         <pubDate>Fri, 23 Jun 2023 14:08:55 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/lq-py-code-tp/</guid>
+        <guid>http://localhost:1313/post/lq-py-code-tp/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
@@ -506,10 +506,10 @@ map函数可以直接使用列表生成来替代
         </item>
         <item>
         <title>蓝桥杯 Python B组-Python基础</title>
-        <link>https://arturiamu.github.io/post/lq-py-base/</link>
+        <link>http://localhost:1313/post/lq-py-base/</link>
         <pubDate>Fri, 23 Jun 2023 14:05:35 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/lq-py-base/</guid>
+        <guid>http://localhost:1313/post/lq-py-base/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;

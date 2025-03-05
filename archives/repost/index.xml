@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>转载 on 木林彪的个人博客</title>
-        <link>https://arturiamu.github.io/archives/repost/</link>
+        <link>http://localhost:1313/archives/repost/</link>
         <description>Recent content in 转载 on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Wed, 15 Jan 2025 22:03:45 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/archives/repost/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 15 Jan 2025 22:03:45 +0800</lastBuildDate><atom:link href="http://localhost:1313/archives/repost/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>一切都要支付两次</title>
-        <link>https://arturiamu.github.io/post/pay-for-everything-twice/</link>
+        <link>http://localhost:1313/post/pay-for-everything-twice/</link>
         <pubDate>Wed, 15 Jan 2025 22:03:45 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/pay-for-everything-twice/</guid>
+        <guid>http://localhost:1313/post/pay-for-everything-twice/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文转载自 &lt;a class=&#34;link&#34; href=&#34;https://www.ruanyifeng.com/blog/2025/01/weekly-issue-333.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;科技爱好者周刊（第 333 期）：一切都要支付两次&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;有一句古语&amp;quot;书非借不能读也&amp;quot;，大家可能都听过。&lt;/p&gt;
 &lt;p&gt;它的意思是，很多人买了书却不读，觉得不着急，拥有书就相当于已经开始学了，后面就慢慢来吧，反而是借来的书有急迫感会抓紧读完。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/pay-for-everything-twice/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/pay-for-everything-twice/img.png&#34;
 	width=&#34;799&#34;
 	height=&#34;203&#34;
-	srcset=&#34;https://arturiamu.github.io/post/pay-for-everything-twice/img_hu_934db558579e3c3a.png 480w, https://arturiamu.github.io/post/pay-for-everything-twice/img_hu_2f14150c675312ac.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/pay-for-everything-twice/img_hu_934db558579e3c3a.png 480w, http://localhost:1313/post/pay-for-everything-twice/img_hu_2f14150c675312ac.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -34,10 +34,10 @@
 &lt;p&gt;我最近看到一篇&lt;a class=&#34;link&#34; href=&#34;https://www.raptitude.com/2022/01/everything-must-be-paid-for-twice/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;老外的文章&lt;/a&gt;，他给这种现象起了一个全新的名字，让人觉得很贴切。老外的概念化能力真是强。&lt;/p&gt;
 &lt;p&gt;他提出，人们买书却不读，是因为没有意识到&lt;strong&gt;每样东西都需要两次支付。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/pay-for-everything-twice/img_1.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/pay-for-everything-twice/img_1.png&#34;
 	width=&#34;505&#34;
 	height=&#34;416&#34;
-	srcset=&#34;https://arturiamu.github.io/post/pay-for-everything-twice/img_1_hu_638a7161e4c0ed99.png 480w, https://arturiamu.github.io/post/pay-for-everything-twice/img_1_hu_ae667877c2328583.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/pay-for-everything-twice/img_1_hu_638a7161e4c0ed99.png 480w, http://localhost:1313/post/pay-for-everything-twice/img_1_hu_ae667877c2328583.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_1.png&#34;
@@ -62,18 +62,26 @@
 </description>
         </item>
         <item>
+        <title>关于转载</title>
+        <link>http://localhost:1313/post/about-repost/</link>
+        <pubDate>Wed, 01 Nov 2023 16:47:36 +0800</pubDate>
+        
+        <guid>http://localhost:1313/post/about-repost/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>docker --link容器互联</title>
-        <link>https://arturiamu.github.io/post/docker-container-link/</link>
+        <link>http://localhost:1313/post/docker-container-link/</link>
         <pubDate>Tue, 31 Oct 2023 11:14:05 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/docker-container-link/</guid>
+        <guid>http://localhost:1313/post/docker-container-link/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文转载自 &lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/renshengdezheli/p/16640281.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;docker &amp;ndash;link容器互联&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;系统环境&#34;&gt;系统环境&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/docker-container-link/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/docker-container-link/img.png&#34;
 	width=&#34;536&#34;
 	height=&#34;130&#34;
-	srcset=&#34;https://arturiamu.github.io/post/docker-container-link/img_hu_515fa4e82be8df72.png 480w, https://arturiamu.github.io/post/docker-container-link/img_hu_9df225a118fa8a7b.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/docker-container-link/img_hu_515fa4e82be8df72.png 480w, http://localhost:1313/post/docker-container-link/img_hu_9df225a118fa8a7b.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -305,17 +313,17 @@
         </item>
         <item>
         <title>docker网络管理</title>
-        <link>https://arturiamu.github.io/post/docker-network-management/</link>
+        <link>http://localhost:1313/post/docker-network-management/</link>
         <pubDate>Fri, 27 Oct 2023 14:14:04 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/docker-network-management/</guid>
+        <guid>http://localhost:1313/post/docker-network-management/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文转载自 &lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/renshengdezheli/p/16639858.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;docker网络管理&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;系统环境&#34;&gt;系统环境&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/docker-network-management/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/docker-network-management/img.png&#34;
 	width=&#34;546&#34;
 	height=&#34;132&#34;
-	srcset=&#34;https://arturiamu.github.io/post/docker-network-management/img_hu_812aef768a4f6515.png 480w, https://arturiamu.github.io/post/docker-network-management/img_hu_6ea95ba4d9fd7db0.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/docker-network-management/img_hu_812aef768a4f6515.png 480w, http://localhost:1313/post/docker-network-management/img_hu_6ea95ba4d9fd7db0.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -1021,17 +1029,17 @@ Docker 容器和服务甚至不需要知道它们部署在 Docker 上，或者�
         </item>
         <item>
         <title>一文搞懂docker容器基础：docker镜像管理，docker容器管理</title>
-        <link>https://arturiamu.github.io/post/docker-container-base/</link>
+        <link>http://localhost:1313/post/docker-container-base/</link>
         <pubDate>Fri, 27 Oct 2023 10:49:41 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/docker-container-base/</guid>
+        <guid>http://localhost:1313/post/docker-container-base/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文转载自 &lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/renshengdezheli/p/16628311.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;一文搞懂docker容器基础：docker镜像管理，docker容器管理&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;系统环境&#34;&gt;系统环境&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/docker-container-base/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/docker-container-base/img.png&#34;
 	width=&#34;516&#34;
 	height=&#34;126&#34;
-	srcset=&#34;https://arturiamu.github.io/post/docker-container-base/img_hu_d59b43478e6f93e7.png 480w, https://arturiamu.github.io/post/docker-container-base/img_hu_ccaa04b65d2d39ee.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/docker-container-base/img_hu_d59b43478e6f93e7.png 480w, http://localhost:1313/post/docker-container-base/img_hu_ccaa04b65d2d39ee.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -1076,10 +1084,10 @@ Docker 非常适合高密度环境以及需要用更少资源完成更多工作�
 Docker 客户端和守护程序可以 在同一系统上运行，或者您可以将 Docker 客户端连接到远程 Docker 守护程序。
 Docker 客户端和守护程序使用 REST API，通过 UNIX 套接字或网络接口进行通信。
 另一个 Docker 客户端是 Docker Compose，它允许您使用由一组容器组成的应用程序。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/docker-container-base/img_1.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/docker-container-base/img_1.png&#34;
 	width=&#34;804&#34;
 	height=&#34;439&#34;
-	srcset=&#34;https://arturiamu.github.io/post/docker-container-base/img_1_hu_f87f702db8214f8d.png 480w, https://arturiamu.github.io/post/docker-container-base/img_1_hu_dc40c14fed0c4aa1.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/docker-container-base/img_1_hu_f87f702db8214f8d.png 480w, http://localhost:1313/post/docker-container-base/img_1_hu_dc40c14fed0c4aa1.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_1.png&#34;
@@ -1954,10 +1962,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;li&gt;Docker Desktop 上的数据卷比来自 Mac 和 Windows 主机的绑定挂载具有更高的性能。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;此外，与在容器的可写层中持久化数据相比，数据卷通常是更好的选择，因为数据卷不会增加使用它的容器的大小，并且数据卷的内容存在于给定容器的生命周期之外。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/docker-container-base/img_2.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/docker-container-base/img_2.png&#34;
 	width=&#34;666&#34;
 	height=&#34;339&#34;
-	srcset=&#34;https://arturiamu.github.io/post/docker-container-base/img_2_hu_a68bc5081f54a637.png 480w, https://arturiamu.github.io/post/docker-container-base/img_2_hu_18ea0bca578945a4.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/docker-container-base/img_2_hu_a68bc5081f54a637.png 480w, http://localhost:1313/post/docker-container-base/img_2_hu_18ea0bca578945a4.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img_2.png&#34;
@@ -2194,10 +2202,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
         </item>
         <item>
         <title>shell 运算</title>
-        <link>https://arturiamu.github.io/post/shell-operation/</link>
+        <link>http://localhost:1313/post/shell-operation/</link>
         <pubDate>Thu, 28 Sep 2023 15:27:00 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/shell-operation/</guid>
+        <guid>http://localhost:1313/post/shell-operation/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文内容来自 &lt;a class=&#34;link&#34; href=&#34;https://www.junmajinlong.com/shell/index/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Shell：Shell 系列文章&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;bash-数值运算&#34;&gt;Bash 数值运算&lt;/h2&gt;
@@ -2431,10 +2439,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
         </item>
         <item>
         <title>Bash 变量</title>
-        <link>https://arturiamu.github.io/post/shell-bash-var/</link>
+        <link>http://localhost:1313/post/shell-bash-var/</link>
         <pubDate>Wed, 27 Sep 2023 15:52:59 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/shell-bash-var/</guid>
+        <guid>http://localhost:1313/post/shell-bash-var/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文转载自 &lt;a class=&#34;link&#34; href=&#34;https://www.junmajinlong.com/shell/script_course/shell_var/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Shell 脚本深入教程：Bash 变量&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;变量赋值&#34;&gt;变量赋值&lt;/h2&gt;
@@ -2893,10 +2901,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
         </item>
         <item>
         <title>shell脚本基础入门</title>
-        <link>https://arturiamu.github.io/post/shell-basic-knowledge/</link>
+        <link>http://localhost:1313/post/shell-basic-knowledge/</link>
         <pubDate>Wed, 27 Sep 2023 14:10:12 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/shell-basic-knowledge/</guid>
+        <guid>http://localhost:1313/post/shell-basic-knowledge/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文转载自 &lt;a class=&#34;link&#34; href=&#34;https://www.junmajinlong.com/shell/script_course/shell_tutorial/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Shell 脚本深入教程：快速入门&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;shell-脚本基础入门&#34;&gt;Shell 脚本基础入门&lt;/h2&gt;
@@ -3674,10 +3682,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;如图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/shell-basic-knowledge/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/shell-basic-knowledge/img.png&#34;
 	width=&#34;598&#34;
 	height=&#34;334&#34;
-	srcset=&#34;https://arturiamu.github.io/post/shell-basic-knowledge/img_hu_9920f12112e44864.png 480w, https://arturiamu.github.io/post/shell-basic-knowledge/img_hu_1797990a716d066e.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/shell-basic-knowledge/img_hu_9920f12112e44864.png 480w, http://localhost:1313/post/shell-basic-knowledge/img_hu_1797990a716d066e.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;img.png&#34;
@@ -4409,10 +4417,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
         </item>
         <item>
         <title>深入MySQL复制(二)：基于GTID复制 </title>
-        <link>https://arturiamu.github.io/post/mysql-replication-2/</link>
+        <link>http://localhost:1313/post/mysql-replication-2/</link>
         <pubDate>Tue, 19 Sep 2023 11:35:24 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/mysql-replication-2/</guid>
+        <guid>http://localhost:1313/post/mysql-replication-2/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文转载自 &lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/f-ck-need-u/p/9164823.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;深入MySQL复制(二)&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;相比传统的MySQL复制，gtid复制无论是配置还是维护都要轻松的多。本文对gtid复制稍作介绍。&lt;/p&gt;
@@ -5236,10 +5244,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;/div&gt;&lt;h2 id=&#34;一张图说明gtid复制&#34;&gt;一张图说明GTID复制&lt;/h2&gt;
 &lt;p&gt;在前面第6节中，使用了xtrabackup备份的方式提供gtid复制的基准数据。其中涉及到一些gtid检查、设置的操作。通过这些操作，大概可以感受的到gtid复制的几个概念。&lt;/p&gt;
 &lt;p&gt;用一张图来说明：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-2/img.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-2/img.png&#34;
 	width=&#34;768&#34;
 	height=&#34;403&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-2/img_hu_79e0bc1fbb26e891.png 480w, https://arturiamu.github.io/post/mysql-replication-2/img_hu_90961ee912248a5c.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-2/img_hu_79e0bc1fbb26e891.png 480w, http://localhost:1313/post/mysql-replication-2/img_hu_90961ee912248a5c.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -5256,10 +5264,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
         </item>
         <item>
         <title>深入MySQL复制(一)</title>
-        <link>https://arturiamu.github.io/post/mysql-replication-1/</link>
+        <link>http://localhost:1313/post/mysql-replication-1/</link>
         <pubDate>Mon, 18 Sep 2023 14:51:23 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/mysql-replication-1/</guid>
+        <guid>http://localhost:1313/post/mysql-replication-1/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文转载自 &lt;a class=&#34;link&#34; href=&#34;https://www.cnblogs.com/f-ck-need-u/p/9155003.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;深入MySQL复制(一)&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;本文非常详细地介绍MySQL复制相关的内容，包括基本概念、复制原理、如何配置不同类型的复制(传统复制)等等&lt;/p&gt;
@@ -5296,10 +5304,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;站在slave的角度上看，过程如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_1.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_1.png&#34;
 	width=&#34;408&#34;
 	height=&#34;278&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_1_hu_7cee43f074e19783.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_1_hu_f2d364dda1e04e3e.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_1_hu_7cee43f074e19783.png 480w, http://localhost:1313/post/mysql-replication-1/img_1_hu_f2d364dda1e04e3e.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -5309,10 +5317,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;站在master的角度上看，过程如下(默认的异步复制模式，前提是设置了&lt;code&gt;sync_binlog=1&lt;/code&gt;，否则binlog刷盘时间由操作系统决定)：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_2.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_2.png&#34;
 	width=&#34;652&#34;
 	height=&#34;481&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_2_hu_c1f2489d57c1bd99.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_2_hu_ac1b3eeb49e5012e.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_2_hu_c1f2489d57c1bd99.png 480w, http://localhost:1313/post/mysql-replication-1/img_2_hu_ac1b3eeb49e5012e.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -5334,10 +5342,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;p&gt;复制和二进制日志息息相关，所以学习本章必须先有二进制日志的相关知识。&lt;/p&gt;
 &lt;h2 id=&#34;复制的好处&#34;&gt;复制的好处&lt;/h2&gt;
 &lt;p&gt;围绕下面的拓扑图来分析：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_3.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_3.png&#34;
 	width=&#34;507&#34;
 	height=&#34;467&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_3_hu_b85e36431d46d739.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_3_hu_c2700134c8f0a599.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_3_hu_b85e36431d46d739.png 480w, http://localhost:1313/post/mysql-replication-1/img_3_hu_c2700134c8f0a599.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -5369,10 +5377,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;p&gt;从数据同步方式的角度考虑，MySQL支持4种不同的同步方式：同步(synchronous)、半同步(semisynchronous)、异步(asynchronous)、延迟(delayed)。所以对于复制来说，就分为同步复制、半同步复制、异步复制和延迟复制。&lt;/p&gt;
 &lt;h3 id=&#34;同步复制&#34;&gt;同步复制&lt;/h3&gt;
 &lt;p&gt;客户端发送DDL/DML语句给master，master执行完毕后还需要&lt;strong&gt;等待所有的slave都写完了relay log才认为此次DDL/DML成功，然后才会返回成功信息给客户端。&lt;/strong&gt; 同步复制的问题是master必须等待，所以延迟较大，在MySQL中不使用这种复制方式。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_4.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_4.png&#34;
 	width=&#34;519&#34;
 	height=&#34;378&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_4_hu_367575419da5d04f.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_4_hu_67ebdeb89f6725bc.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_4_hu_367575419da5d04f.png 480w, http://localhost:1313/post/mysql-replication-1/img_4_hu_67ebdeb89f6725bc.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -5384,10 +5392,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;p&gt;例如上图中描述的，只有3个slave全都写完relay log并返回ACK给master后，master才会判断此次DDL/DML成功。&lt;/p&gt;
 &lt;h3 id=&#34;半同步复制&#34;&gt;半同步复制&lt;/h3&gt;
 &lt;p&gt;客户端发送DDL/DML语句给master，master执行完毕后&lt;strong&gt;还要等待一个slave写完relay log并返回确认信息给master，master才认为此次DDL/DML语句是成功的，然后才会发送成功信息给客户端。&lt;/strong&gt; 半同步复制只需等待一个slave的回应，且等待的超时时间可以设置，超时后会自动降级为异步复制，所以在局域网内(网络延迟很小)使用半同步复制是可行的。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_5.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_5.png&#34;
 	width=&#34;521&#34;
 	height=&#34;365&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_5_hu_a1e4e379b28f3ade.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_5_hu_40ef5a98d2099118.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_5_hu_a1e4e379b28f3ade.png 480w, http://localhost:1313/post/mysql-replication-1/img_5_hu_40ef5a98d2099118.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -5399,10 +5407,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;p&gt;例如上图中，只有第一个slave返回成功，master就判断此次DDL/DML成功，其他的slave无论复制进行到哪一个阶段都无关紧要。&lt;/p&gt;
 &lt;h3 id=&#34;异步复制&#34;&gt;异步复制&lt;/h3&gt;
 &lt;p&gt;客户端发送DDL/DML语句给master，&lt;strong&gt;master执行完毕立即返回成功信息给客户端，而不管slave是否已经开始复制。&lt;/strong&gt; 这样的复制方式导致的问题是，当master写完了binlog，而slave还没有开始复制或者复制还没完成时，&lt;strong&gt;slave上和master上的数据暂时不一致，且此时master突然宕机，slave将会丢失一部分数据。如果此时把slave提升为新的master，那么整个数据库就永久丢失这部分数据。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_6.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_6.png&#34;
 	width=&#34;515&#34;
 	height=&#34;330&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_6_hu_ab814a8086ac90c7.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_6_hu_7c6fb02d1b27df9f.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_6_hu_ab814a8086ac90c7.png 480w, http://localhost:1313/post/mysql-replication-1/img_6_hu_7c6fb02d1b27df9f.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -5417,10 +5425,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;p&gt;此处先配置默认的异步复制模式。由于复制和binlog息息相关，如果对binlog还不熟悉，请先了解binlog。&lt;/p&gt;
 &lt;p&gt;mysql支持一主一从和一主多从。但是每个slave必须只能是一个master的从，否则从多个master接受二进制日志后重放将会导致数据混乱的问题。&lt;/p&gt;
 &lt;p&gt;以下是一主一从的结构图：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_7.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_7.png&#34;
 	width=&#34;336&#34;
 	height=&#34;365&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_7_hu_6ba008e2de96a3ff.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_7_hu_246eb751e9c49c54.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_7_hu_6ba008e2de96a3ff.png 480w, http://localhost:1313/post/mysql-replication-1/img_7_hu_246eb751e9c49c54.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -5443,10 +5451,10 @@ Docker Desktop 包括 Docker 守护程序 ( dockerd)、Docker 客户端 ( docker
 &lt;/ol&gt;
 &lt;h3 id=&#34;一主一从&#34;&gt;一主一从&lt;/h3&gt;
 &lt;p&gt;一主一从是最简单的主从复制结构。本节实验环境如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_8.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_8.png&#34;
 	width=&#34;675&#34;
 	height=&#34;241&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_8_hu_51695fe0ee95cfdc.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_8_hu_9a75ae5d64c2c94c.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_8_hu_51695fe0ee95cfdc.png 480w, http://localhost:1313/post/mysql-replication-1/img_8_hu_9a75ae5d64c2c94c.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -6470,10 +6478,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
 &lt;h2 id=&#34;一主多从&#34;&gt;一主多从&lt;/h2&gt;
 &lt;p&gt;一主多从有两种情况，结构图如下。&lt;/p&gt;
 &lt;p&gt;以下是一主多从的结构图(和一主一从的配置方法完全一致)：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_9.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_9.png&#34;
 	width=&#34;564&#34;
 	height=&#34;361&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_9_hu_ed6009c6e456830f.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_9_hu_19951e081eb98b4.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_9_hu_ed6009c6e456830f.png 480w, http://localhost:1313/post/mysql-replication-1/img_9_hu_19951e081eb98b4.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -6483,10 +6491,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;以下是一主多从，但某slave是另一群MySQL实例的master：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_10.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_10.png&#34;
 	width=&#34;543&#34;
 	height=&#34;499&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_10_hu_94bfcd2008eea0f3.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_10_hu_9af733a12fcc054d.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_10_hu_94bfcd2008eea0f3.png 480w, http://localhost:1313/post/mysql-replication-1/img_10_hu_9af733a12fcc054d.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -6512,10 +6520,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
 &lt;p&gt;方法很简单，所以不做演示了。&lt;/p&gt;
 &lt;h3 id=&#34;配置一主多从从中有从&#34;&gt;配置一主多从(从中有从)&lt;/h3&gt;
 &lt;p&gt;此处实现的一主多从是下面这种结构：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_11.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_11.png&#34;
 	width=&#34;543&#34;
 	height=&#34;497&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_11_hu_45ebc6edac3ed8ff.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_11_hu_94e60aba599bad9d.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_11_hu_45ebc6edac3ed8ff.png 480w, http://localhost:1313/post/mysql-replication-1/img_11_hu_94e60aba599bad9d.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -6554,10 +6562,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
 &lt;/div&gt;&lt;p&gt;2、在slave上没有开启log-slave-updates和binlog选项时，重放relay log不会记录binlog。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;所以如果slave2要作为某些slave的master，那么在slave2上必须要开启&lt;code&gt;log-slave-updates&lt;/code&gt;和binlog选项。为了安全和数据一致性，在slave2上还应该启用read-only选项。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;环境如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_12.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_12.png&#34;
 	width=&#34;928&#34;
 	height=&#34;385&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_12_hu_7a3220683dd8a6d1.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_12_hu_7ad0e79a335e4776.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_12_hu_7a3220683dd8a6d1.png 480w, http://localhost:1313/post/mysql-replication-1/img_12_hu_7ad0e79a335e4776.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -6832,10 +6840,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;显然，多线程只有在slave上开启才有效，因为只有slave上才有SQL线程。另外，设置了该全局变量，需要重启SQL线程才生效，否则内存中还是只有一个SQL线程。&lt;/p&gt;
 &lt;p&gt;例如，初始时slave上的processlist如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_13.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_13.png&#34;
 	width=&#34;729&#34;
 	height=&#34;134&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_13_hu_a764b6dc0a8331e0.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_13_hu_3fe9b2134320dc44.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_13_hu_a764b6dc0a8331e0.png 480w, http://localhost:1313/post/mysql-replication-1/img_13_hu_3fe9b2134320dc44.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -6859,10 +6867,10 @@ IO线程每次从master复制日志要写入到relay log中，但是它是先放
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;mysql&amp;gt; show full processlist&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_14.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/mysql-replication-1/img_14.png&#34;
 	width=&#34;770&#34;
 	height=&#34;173&#34;
-	srcset=&#34;https://arturiamu.github.io/post/mysql-replication-1/img_14_hu_66863888b189c1c0.png 480w, https://arturiamu.github.io/post/mysql-replication-1/img_14_hu_1d5af11d2cd68de.png 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/mysql-replication-1/img_14_hu_66863888b189c1c0.png 480w, http://localhost:1313/post/mysql-replication-1/img_14_hu_1d5af11d2cd68de.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	

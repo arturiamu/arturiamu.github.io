@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>蓝桥杯 on 木林彪的个人博客</title>
-        <link>https://arturiamu.github.io/archives/lq-cup/</link>
+        <link>http://localhost:1313/archives/lq-cup/</link>
         <description>Recent content in 蓝桥杯 on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Fri, 23 Jun 2023 14:21:55 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/archives/lq-cup/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 23 Jun 2023 14:21:55 +0800</lastBuildDate><atom:link href="http://localhost:1313/archives/lq-cup/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>蓝桥杯 Python 语法</title>
-        <link>https://arturiamu.github.io/post/lq-py-grammar/</link>
+        <link>http://localhost:1313/post/lq-py-grammar/</link>
         <pubDate>Fri, 23 Jun 2023 14:21:55 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/lq-py-grammar/</guid>
+        <guid>http://localhost:1313/post/lq-py-grammar/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
@@ -209,10 +209,10 @@ map函数可以直接使用列表生成来替代
         </item>
         <item>
         <title>蓝桥杯 Python B组-代码模板</title>
-        <link>https://arturiamu.github.io/post/lq-py-code-tp/</link>
+        <link>http://localhost:1313/post/lq-py-code-tp/</link>
         <pubDate>Fri, 23 Jun 2023 14:08:55 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/lq-py-code-tp/</guid>
+        <guid>http://localhost:1313/post/lq-py-code-tp/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
@@ -506,10 +506,10 @@ map函数可以直接使用列表生成来替代
         </item>
         <item>
         <title>蓝桥杯 Python B组-Python基础</title>
-        <link>https://arturiamu.github.io/post/lq-py-base/</link>
+        <link>http://localhost:1313/post/lq-py-base/</link>
         <pubDate>Fri, 23 Jun 2023 14:05:35 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/lq-py-base/</guid>
+        <guid>http://localhost:1313/post/lq-py-base/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
@@ -859,10 +859,10 @@ map函数可以直接使用列表生成来替代
         </item>
         <item>
         <title>蓝桥杯 Python B组-说明</title>
-        <link>https://arturiamu.github.io/post/lq-py-b/</link>
+        <link>http://localhost:1313/post/lq-py-b/</link>
         <pubDate>Fri, 23 Jun 2023 13:17:35 +0800</pubDate>
         
-        <guid>https://arturiamu.github.io/post/lq-py-b/</guid>
+        <guid>http://localhost:1313/post/lq-py-b/</guid>
         <description>&lt;p&gt;&lt;strong&gt;本文从作者CSDN专栏 &lt;a class=&#34;link&#34; href=&#34;https://blog.csdn.net/qq_43353586/category_11935685.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;蓝桥杯 Python B组&lt;/a&gt; 同步&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;本专栏主要分享介绍蓝桥杯pythonB组备赛经验，希望可以帮到有需要的同学。&lt;/strong&gt;&lt;/p&gt;
@@ -870,10 +870,10 @@ map函数可以直接使用列表生成来替代
 &lt;p&gt;比赛基本上是零基础开始准备的，省赛之后因为项目比较忙，自己也是一心摆烂，直接没有准备国赛，到国赛时候写个dfs都要推半天了。其实还是有点遗憾的，当初要是好好准备一个月说不定国一就有了。&lt;/p&gt;
 &lt;p&gt;写这个文集主要是因为当初本人备赛时候基本没什么Python组的经验贴，有一些题解还需要收费，确实很不容易。（因为时间关系，这里的题解就随缘更了）&lt;/p&gt;
 &lt;p&gt;所以想把自己的经验给大家分享，希望小白可以少走一些弯路！！！&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://arturiamu.github.io/post/lq-py-b/s1.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/post/lq-py-b/s1.jpg&#34;
 	width=&#34;2480&#34;
 	height=&#34;3508&#34;
-	srcset=&#34;https://arturiamu.github.io/post/lq-py-b/s1_hu_632d159fa7dec7bd.jpg 480w, https://arturiamu.github.io/post/lq-py-b/s1_hu_fd3326e4cc399308.jpg 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/lq-py-b/s1_hu_632d159fa7dec7bd.jpg 480w, http://localhost:1313/post/lq-py-b/s1_hu_fd3326e4cc399308.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;省一&#34;
@@ -883,10 +883,10 @@ map函数可以直接使用列表生成来替代
 		data-flex-grow=&#34;70&#34;
 		data-flex-basis=&#34;169px&#34;
 	
-&gt; &lt;img src=&#34;https://arturiamu.github.io/post/lq-py-b/g2.jpg&#34;
+&gt; &lt;img src=&#34;http://localhost:1313/post/lq-py-b/g2.jpg&#34;
 	width=&#34;2480&#34;
 	height=&#34;3508&#34;
-	srcset=&#34;https://arturiamu.github.io/post/lq-py-b/g2_hu_f4e438cabc5ae6bb.jpg 480w, https://arturiamu.github.io/post/lq-py-b/g2_hu_7d6c2751c4a6e4a7.jpg 1024w&#34;
+	srcset=&#34;http://localhost:1313/post/lq-py-b/g2_hu_f4e438cabc5ae6bb.jpg 480w, http://localhost:1313/post/lq-py-b/g2_hu_7d6c2751c4a6e4a7.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;国二&#34;
