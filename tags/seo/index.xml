@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Seo on 木林彪的个人博客</title>
-        <link>http://localhost:1313/tags/seo/</link>
+        <link>https://arturiamu.github.io/tags/seo/</link>
         <description>Recent content in Seo on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Wed, 09 Aug 2023 16:17:15 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/seo/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 09 Aug 2023 16:17:15 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/tags/seo/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>博客搜索引擎优化 SEO</title>
-        <link>http://localhost:1313/post/blog-seo/</link>
+        <link>https://arturiamu.github.io/post/blog-seo/</link>
         <pubDate>Wed, 09 Aug 2023 16:17:15 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/blog-seo/</guid>
+        <guid>https://arturiamu.github.io/post/blog-seo/</guid>
         <description>&lt;h2 id=&#34;google&#34;&gt;Google&lt;/h2&gt;
 &lt;p&gt;1、添加站点资源&lt;/p&gt;
 &lt;p&gt;打开&lt;a class=&#34;link&#34; href=&#34;https://search.google.com/search-console/sitemaps?resource_id=https%3A%2F%2Fblog.mulinbiao.com%2F&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;

@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>コンテナ on ムー・リンビアオの個人ブログ</title>
-        <link>http://localhost:1313/ja/archives/container/</link>
+        <link>https://arturiamu.github.io/ja/archives/container/</link>
         <description>Recent content in コンテナ on ムー・リンビアオの個人ブログ</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>ja</language><atom:link href="http://localhost:1313/ja/archives/container/index.xml" rel="self" type="application/rss+xml" />
+        <language>ja</language><atom:link href="https://arturiamu.github.io/ja/archives/container/index.xml" rel="self" type="application/rss+xml" />
     </channel>
 </rss>

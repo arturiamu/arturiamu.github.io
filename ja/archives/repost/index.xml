@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>転載 on ムー・リンビアオの個人ブログ</title>
-        <link>http://localhost:1313/ja/archives/repost/</link>
+        <link>https://arturiamu.github.io/ja/archives/repost/</link>
         <description>Recent content in 転載 on ムー・リンビアオの個人ブログ</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>ja</language><atom:link href="http://localhost:1313/ja/archives/repost/index.xml" rel="self" type="application/rss+xml" />
+        <language>ja</language><atom:link href="https://arturiamu.github.io/ja/archives/repost/index.xml" rel="self" type="application/rss+xml" />
     </channel>
 </rss>

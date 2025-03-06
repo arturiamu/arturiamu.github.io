@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>RAG on 木林彪的个人博客</title>
-        <link>http://localhost:1313/tags/rag/</link>
+        <link>https://arturiamu.github.io/tags/rag/</link>
         <description>Recent content in RAG on 木林彪的个人博客</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Sat, 12 Oct 2024 19:22:39 +0800</lastBuildDate><atom:link href="http://localhost:1313/tags/rag/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 12 Oct 2024 19:22:39 +0800</lastBuildDate><atom:link href="https://arturiamu.github.io/tags/rag/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>从信息检索到文本生成：RAG如何让AI更懂你？</title>
-        <link>http://localhost:1313/post/retrieval-augmented-generation/</link>
+        <link>https://arturiamu.github.io/post/retrieval-augmented-generation/</link>
         <pubDate>Sat, 12 Oct 2024 19:22:39 +0800</pubDate>
         
-        <guid>http://localhost:1313/post/retrieval-augmented-generation/</guid>
+        <guid>https://arturiamu.github.io/post/retrieval-augmented-generation/</guid>
         <description>&lt;p&gt;你是否曾经感叹，虽然AI模型能写出流畅的文字，但内容却空洞无物，甚至“一本正经地胡说八道”？这是因为传统语言模型仅依赖于训练数据中的统计规律，缺乏对真实世界知识的深入理解。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;RAG（Retrieval-Augmented Generation，检索增强生成）&lt;/strong&gt; 的出现，为解决这一问题提供了新的思路。它将信息检索与文本生成相结合，让AI在动笔之前，先学会“查资料”。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;RAG的工作原理：&lt;/strong&gt;&lt;/p&gt;
